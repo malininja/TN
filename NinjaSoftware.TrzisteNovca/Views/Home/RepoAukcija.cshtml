@@ -1,11 +1,9 @@
 ﻿@model NinjaSoftware.TrzisteNovca.Models.Home.RepoAukcijaViewModel
 @using NinjaSoftware.TrzisteNovca.Models
-
 @{
     string title = "REPO AUKCIJA";
     ViewBag.Title = title;
 }
-
 <script type="text/javascript">
     $(document).ready(function () {
         Globalize.culture("hr");
@@ -25,68 +23,79 @@
         });
     });
 </script>
-
-<h2>@title</h2>
-
+<div class="content-header">
+    <h2>@title</h2>
+</div>
+<div class="content-box">
     <table>
-        
         <tr>
-            <td>Broj aukcije:</td>
-            <td>@Model.RepoAukcija.BrojAukcije</td>
+            <td>
+                Broj aukcije:
+            </td>
+            <td>@Model.RepoAukcija.BrojAukcije
+            </td>
         </tr>
         <tr>
-            <td>Datum aukcije:</td>
-            <td>@Html.DropDownList("DatumAukcijeDropdown", Model.DatumAukcijeSelectList)</td>
+            <td>
+                Datum aukcije:
+            </td>
+            <td>@Html.DropDownList("DatumAukcijeDropdown", Model.DatumAukcijeSelectList)
+            </td>
         </tr>
-
         <tr>
-            <td>Datum reotkupa:</td>
+            <td>
+                Datum reotkupa:
+            </td>
             <td>
                 @{ string datumReotkupa = Model.RepoAukcija.DatumReotkupa.HasValue ? Model.RepoAukcija.DatumReotkupa.Value.ToShortDateString() : "-"; }
                 @datumReotkupa
             </td>
         </tr>
-
         <tr>
-            <td>Ukupan iznos pristiglih ponuda:</td>
+            <td>
+                Ukupan iznos pristiglih ponuda:
+            </td>
             <td>
                 @{ string pristiglePonude = Model.RepoAukcija.PristiglePonudeUkupno.HasValue ? Model.RepoAukcija.PristiglePonudeUkupno.Value.ToStringInMilions() : "-"; }
                 @pristiglePonude
             </td>
         </tr>
-
         <tr>
-            <td>Najviša ponuđena repo stopa:</td>
+            <td>
+                Najviša ponuđena repo stopa:
+            </td>
             <td>
                 @{ string najvisaRepoStopa = Model.RepoAukcija.NajvisaRepoStopa.HasValue ? Model.RepoAukcija.NajvisaRepoStopa.Value.ToString("N2") : "-"; }
                 @najvisaRepoStopa
             </td>
         </tr>
-
         <tr>
-            <td>Najniža ponuđena repo stopa:</td>
+            <td>
+                Najniža ponuđena repo stopa:
+            </td>
             <td>
                 @{ string najnizaRepoStopa = Model.RepoAukcija.NajnizaRepoStopa.HasValue ? Model.RepoAukcija.NajnizaRepoStopa.Value.ToString("N2") : "-"; }
                 @najnizaRepoStopa
             </td>
         </tr>
-
         <tr>
-            <td>Ukupan iznos prihvaćenih ponuda:</td>
+            <td>
+                Ukupan iznos prihvaćenih ponuda:
+            </td>
             <td>
                 @{ string prihvacenePonude = Model.RepoAukcija.PrihvacenePonudeUkupno.HasValue ? Model.RepoAukcija.PrihvacenePonudeUkupno.Value.ToStringInMilions() : "-"; }
                 @prihvacenePonude
             </td>
         </tr>
-
         <tr>
-            <td>Ukupan iznos odbijenih ponuda:</td>
+            <td>
+                Ukupan iznos odbijenih ponuda:
+            </td>
             <td>
                 @{ string odbijenePonude = Model.RepoAukcija.OdbijenePonudeUkupno.HasValue ? Model.RepoAukcija.OdbijenePonudeUkupno.Value.ToStringInMilions() : "-"; }
                 @odbijenePonude
             </td>
         </tr>
-
         <tr>
             <td>
                 Vagana repo stopa:
@@ -96,7 +105,6 @@
                 @vaganaStopa
             </td>
         </tr>
-
         <tr>
             <td>
                 Granična repo stopa:
@@ -106,7 +114,6 @@
                 @granicnaStopa
             </td>
         </tr>
-
         <tr>
             <td>
                 Fiksna repo stopa:
@@ -116,7 +123,6 @@
                 @fiksnaStopa
             </td>
         </tr>
-
         <tr>
             <td>
                 Prihvaćeno ponuda po graničnoj repo stopi:
@@ -126,7 +132,6 @@
                 @postoPrihvacenihPoGranicnojStopi
             </td>
         </tr>
-
         <tr>
             <td>
                 Koeficijent raspodjele:
@@ -137,3 +142,4 @@
             </td>
         </tr>
     </table>
+</div>

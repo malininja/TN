@@ -1,14 +1,16 @@
 ﻿@model NinjaSoftware.TrzisteNovca.Models.Home.SudionikViewModel
 @using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
-
 @{
     string title = Model.SudionikGrupa.Name;
     ViewBag.Title = title;
 }
-
-<h2>@title</h2>
-
-@foreach (SudionikEntity item in Model.SudionikCollection) {
-    <a target="_blank" href="@item.WebAdresa">@item.Naziv</a>
-    <br />
-}
+<div class="content-header">
+    <h1>@title</h1>
+</div>
+<div class="content-box">
+    @foreach (SudionikEntity item in Model.SudionikCollection)
+    {
+        <a target="_blank" href="@item.WebAdresa">@item.Naziv</a>
+        <br />
+    }
+</div>

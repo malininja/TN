@@ -1,25 +1,30 @@
 ﻿@model NinjaSoftware.TrzisteNovca.Models.Home.AukcijaTrezorskihZapisaViewModel
 @using System.Collections.Generic
-
 @{
     string title = "Aukcije trezorskih zapisa";
     ViewBag.Title = title;
 }
-
-<h2>@title</h2>
-
-<table>
-    <tr>
-        <th>Datum aukcije</th>
-        <th></th>
-    </tr>
-    @foreach (KeyValuePair<DateTime, string> aukcija in Model.AukcijaDateDictionary)
-    { 
-    <tr>
-        @{ string path = string.Format("Upload/AukcijaTZ/{0}", aukcija.Value); }
-        <td>@aukcija.Key.ToShortDateString()</td>
-        <td>@Html.ActionLink("Download", "AukcijaTrezorskihZapisaDownload", new { fileName = aukcija.Value })</td>
-        
-    </tr>
-    }
-</table>
+<div class="content-header">
+    <h1>@title</h1>
+</div>
+<div class="content-box">
+    <table>
+        <tr>
+            <th>
+                Datum aukcije
+            </th>
+            <th>
+            </th>
+        </tr>
+        @foreach (KeyValuePair<DateTime, string> aukcija in Model.AukcijaDateDictionary)
+        { 
+            <tr>
+                @{ string path = string.Format("Upload/AukcijaTZ/{0}", aukcija.Value); }
+                <td>@aukcija.Key.ToShortDateString()
+                </td>
+                <td>@Html.ActionLink("Download", "AukcijaTrezorskihZapisaDownload", new { fileName = aukcija.Value })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

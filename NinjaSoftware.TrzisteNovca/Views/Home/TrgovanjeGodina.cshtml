@@ -9,9 +9,10 @@
 <script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.highlighter.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="../../Scripts/jqplot/jquery.jqplot.min.css" />
-
-<h2>@title</h2>
-
+<div class="content-header">
+<h1>@title</h1>
+</div>
+<div class="content-box">
 Promjeni godinu: @Html.DropDownList("dropDownGodina", Model.GodinaSelectList, new { id = "dropDownGodina" })
 <br /><br />
 @Html.Partial("_TrgovanjeGodinaKuna", Model)
@@ -54,3 +55,4 @@ Promjeni godinu: @Html.DropDownList("dropDownGodina", Model.GodinaSelectList, ne
         });
     });
 </script>
+</div>

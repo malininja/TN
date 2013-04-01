@@ -3,14 +3,12 @@
 @using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
 @using System.Globalization
 @using NinjaSoftware.TrzisteNovca.Models
-
 @{
     string title = string.Format("Trgovanje po rokovima u {0}. godini", Model.Godina);
     ViewBag.Title = title;
 
     CultureInfo hrCulture = new CultureInfo("hr");
 }
-
 <script type="text/javascript">
     $(document).ready(function () {
         $("#dropDownGodina").change(function () {
@@ -18,62 +16,81 @@
         });
     });
 </script>
-
-<h2>@title</h2>
-
-<br /><br />
-Promjeni godinu: @Html.DropDownList("dropDownGodina", Model.GodinaSelectList, new { id = "dropDownGodina" })
-<br /><br />
-
-<table>
-    <tr>
-        <th></th>
-    @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
-    { 
-        <th colspan="2">@trgovanjeVrsta.Name</th>
-    }
-        <th colspan="2">UKUPNO</th>
-    </tr>
-
-    <tr>
-        <th>Mjesec</th>
-    @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
-    { 
-        <th>Promet</th>
-        <th>Kamatna <br />stopa (%)</th>
-    }
-        <th>Promet</th>
-        <th>Kamatna <br />stopa (%)</th>
-    </tr>
-
-    @foreach (TrgovanjeMjesecRok trgovanjeMjesecRok in Model.TrgovanjeMjesecRokCollection)
-    { 
-    <tr>
-        <td>
-            @Html.ActionLink(@hrCulture.DateTimeFormat.GetMonthName(trgovanjeMjesecRok.Mjesec),
+<div class="content-header">
+    <h1>@title</h1>
+</div>
+<div class="content-box">
+    Promjeni godinu: @Html.DropDownList("dropDownGodina", Model.GodinaSelectList, new { id = "dropDownGodina" })
+    <br />
+    <br />
+    <table>
+        <tr>
+            <th>
+            </th>
+            @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
+            { 
+                <th colspan="2">@trgovanjeVrsta.Name
+                </th>
+            }
+            <th colspan="2">
+                UKUPNO
+            </th>
+        </tr>
+        <tr>
+            <th>
+                Mjesec
+            </th>
+            @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
+            { 
+                <th>
+                    Promet
+                </th>
+                <th>
+                    Kamatna
+                    <br />
+                    stopa (%)
+                </th>
+            }
+            <th>
+                Promet
+            </th>
+            <th>
+                Kamatna
+                <br />
+                stopa (%)
+            </th>
+        </tr>
+        @foreach (TrgovanjeMjesecRok trgovanjeMjesecRok in Model.TrgovanjeMjesecRokCollection)
+        { 
+            <tr>
+                <td>
+                    @Html.ActionLink(@hrCulture.DateTimeFormat.GetMonthName(trgovanjeMjesecRok.Mjesec),
                 "TrgovanjeMjesecRok",
                 new { godina = Model.Godina, mjesec = trgovanjeMjesecRok.Mjesec })
-        </td>
-        
-        @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
-        { 
-            TrgovanjeRok trgovanjeRok = trgovanjeMjesecRok.TrgovanjeRokList.Where(tr => (long)tr.TrgovanjeVrstaEnum == trgovanjeVrsta.TrgovanjeVrstaId).SingleOrDefault();
-            string prometString = "-";
-            string kamatnaStopaString = "-";
+                </td>
+                @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
+                {
+                    TrgovanjeRok trgovanjeRok = trgovanjeMjesecRok.TrgovanjeRokList.Where(tr => (long)tr.TrgovanjeVrstaEnum == trgovanjeVrsta.TrgovanjeVrstaId).SingleOrDefault();
+                    string prometString = "-";
+                    string kamatnaStopaString = "-";
 
-            if (null != trgovanjeRok &&
-                trgovanjeRok.Promet.HasValue)
-            {
-                prometString = trgovanjeRok.Promet.Value.ToStringInMilions();
-                kamatnaStopaString = trgovanjeRok.KamatnaStopa.Value.ToString("N2");
-            }
+                    if (null != trgovanjeRok &&
+                        trgovanjeRok.Promet.HasValue)
+                    {
+                        prometString = trgovanjeRok.Promet.Value.ToStringInMilions();
+                        kamatnaStopaString = trgovanjeRok.KamatnaStopa.Value.ToString("N2");
+                    }
             
-            <td>@prometString</td>
-            <td>@kamatnaStopaString</td>
+                    <td>@prometString
+                    </td>
+                    <td>@kamatnaStopaString
+                    </td>
+                }
+                <td>@trgovanjeMjesecRok.PrometUkupno.Value.ToStringInMilions()
+                </td>
+                <td>@trgovanjeMjesecRok.KamatnaStopaUkupno.Value.ToString("N2")
+                </td>
+            </tr>
         }
-
-        <td>@trgovanjeMjesecRok.PrometUkupno.Value.ToStringInMilions()</td>
-        <td>@trgovanjeMjesecRok.KamatnaStopaUkupno.Value.ToString("N2")</td>
-    </tr>
-    }
-</table>
+    </table>
+</div>

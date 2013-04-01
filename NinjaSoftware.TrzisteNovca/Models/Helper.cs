@@ -19,7 +19,7 @@ namespace NinjaSoftware.TrzisteNovca.Models
         public static DataAccessAdapterBase GetDataAccessAdapterFactory()
         {
             DataAccessAdapterBase adapter;
-            switch (ConfigurationManager.ConnectionStrings[1].ProviderName)
+            switch (ConfigurationManager.ConnectionStrings[2].ProviderName)
             {
                 case "System.Data.SqlClient":
                     adapter = new NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific.DataAccessAdapter();

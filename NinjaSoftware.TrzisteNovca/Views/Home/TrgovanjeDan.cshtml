@@ -64,9 +64,12 @@
         });
     });
 </script>
-
-<h2>@title</h2>
-
+<div class="content-header">
+<h1>Dnevni pokazatelj trgovanja</h1>
+<h3>i kretanje kamatnih stopa</h3>
+</div>
+<div class="content-box">
+<h1>@title</h1>
 Promjena datuma:
 @Html.TextBox("inputDatum", Model.TrgovanjeGlava.Datum.ToShortDateString(), new { id = "inputDatum"})
 
@@ -160,4 +163,5 @@ Promjena datuma:
 
 <div id="chart">
 
+</div>
 </div>

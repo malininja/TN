@@ -2,73 +2,69 @@
 @using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 @using NinjaSoftware.TrzisteNovca.Models
 @using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
-
 @{
     string valutaGrupa = Model.ValutaEnum == ValutaEnum.Kn ? "kunama" : "devizama";
     string title = string.Format("Trgovanje {0} u {1} {2}. godine", valutaGrupa, Helper.DativMjeseca(Model.Mjesec), Model.Godina);
     ViewBag.Title = title;
 }
-
-<h2>@title</h2>
-
-<table>
-    <tr>
-        <th>
-            Datum
-        </th>
-        <th>
-            Potražnja
-        </th>
-        <th>
-            Ponuda
-        </th>
-        <th>
-            Promet
-        </th>
-        <th>
-            Kamatna stopa
-        </th>
-    </tr>
-
-@foreach (TrgovanjeGlavaEntity trgovanjeGlava in Model.TrgovanjeGlavaCollection)
-{
-    <tr>
-        @{
+<div class="content-header">
+    <h1>@title</h1>
+</div>
+<div class="content-box">
+    <table>
+        <tr>
+            <th>
+                Datum
+            </th>
+            <th>
+                Potražnja
+            </th>
+            <th>
+                Ponuda
+            </th>
+            <th>
+                Promet
+            </th>
+            <th>
+                Kamatna stopa
+            </th>
+        </tr>
+        @foreach (TrgovanjeGlavaEntity trgovanjeGlava in Model.TrgovanjeGlavaCollection)
+        {
+            <tr>
+                @{
             decimal? kamatnaStopa = trgovanjeGlava.PrometKamatnaStopaPosto(Model.ValutaEnum);
             string kamatnaStopaString = kamatnaStopa.HasValue ? kamatnaStopa.Value.ToString("N2") : "-";        
+                }
+                <td>
+                    @Html.ActionLink(trgovanjeGlava.Datum.ToShortDateString(), "TrgovanjeDan", new { date = trgovanjeGlava.Datum.ToString("yyyy-MM-dd") })
+                </td>
+                <td>
+                    @trgovanjeGlava.Potraznja(Model.ValutaEnum).ToStringInMilions()
+                </td>
+                <td>
+                    @trgovanjeGlava.Ponuda(Model.ValutaEnum).ToStringInMilions()
+                </td>
+                <td>
+                    @trgovanjeGlava.Promet(Model.ValutaEnum).ToStringInMilions()
+                </td>
+                <td>
+                    @kamatnaStopaString
+                </td>
+            </tr>
         }
-        <td>
-            @Html.ActionLink(trgovanjeGlava.Datum.ToShortDateString(), "TrgovanjeDan", new { date = trgovanjeGlava.Datum.ToString("yyyy-MM-dd") })
-        </td>
-        <td>
-            @trgovanjeGlava.Potraznja(Model.ValutaEnum).ToStringInMilions()
-        </td>
-        <td>
-            @trgovanjeGlava.Ponuda(Model.ValutaEnum).ToStringInMilions()
-        </td>
-        <td>
-            @trgovanjeGlava.Promet(Model.ValutaEnum).ToStringInMilions()
-        </td>
-        <td>
-            @kamatnaStopaString
-        </td>
-    </tr>
-}
+    </table>
+    @if (ValutaEnum.Kn == Model.ValutaEnum)
+    { 
+        <div id="chart">
+        </div>
 
-</table>
+        <script type="text/javascript" src="../../Scripts/jqplot/jquery.jqplot.min.js"></script>
+        <script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.highlighter.min.js"></script>
 
-@if (ValutaEnum.Kn == Model.ValutaEnum)
-{ 
-<div id="chart">
-
-</div>
-
-<script type="text/javascript" src="../../Scripts/jqplot/jquery.jqplot.min.js"></script>
-<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.highlighter.min.js"></script>
-
-<link rel="stylesheet" type="text/css" href="../../Scripts/jqplot/jquery.jqplot.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../Scripts/jqplot/jquery.jqplot.min.css" />
         
-<script type="text/javascript">
+        <script type="text/javascript">
     $(document).ready(function () {
         var linePonuda = @Model.ChartLinePonudaDataSource;
         var linePotraznja = @Model.ChartLinePotraznjaDataSource;
@@ -95,5 +91,6 @@
             }
         });
     });
-</script>
-}
+        </script>
+    }
+</div>
