@@ -7,12 +7,20 @@
     NsController nsController = (NsController)ViewContext.Controller;
 }
 
-<h2>@title</h2>
+<div class="content-box">
+<h3>@title</h3>
+
+    <div class="content">
 
 <b>@nsController.ViewUserErrorMessage</b>
 
 <form method="post" enctype="multipart/form-data">
 Odaberite excel datoteku koja odgovara nazivu REZUL_dd_mm_gggg.xls i nakon toga kliknite 'Pohrani'
+<br />
+<br />
     <input type="file" id="FileBlob" name="FileBlob" />
     <input type="submit" value="Pohrani" />
 </form>
+
+    </div>
+</div>

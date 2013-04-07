@@ -4,30 +4,40 @@
     ViewBag.Title = "Log in";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-</hgroup>
+<div class="content-box">
+
+<h3>Autentifikacija korisnika</h3>
+
+    <div class="content">
 
 <section id="loginForm">
-<h2>Use a local account to log in.</h2>
+<h3>Upišite korisničko ime i lozinku</h3>
 @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Log in Form</legend>
-        <ol>
-            <li>
-                @Html.LabelFor(m => m.UserName)
+        <legend></legend>
+        <table>
+            <tr>
+                <td>Korisničko ime: </td>
+                <td>
                 @Html.TextBoxFor(m => m.UserName)
-                @Html.ValidationMessageFor(m => m.UserName)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.UserName)                
+                </td>
+            </tr>
+            <tr>
+                <td>Lozinka:</td>
+                <td>
                 @Html.PasswordFor(m => m.Password)
-                @Html.ValidationMessageFor(m => m.Password)
-            </li>
-        </ol>
-        <input type="submit" value="Log in" />
+                @Html.ValidationMessageFor(m => m.Password)                
+                </td>
+            </tr>
+        </table>
+
+        <input type="submit" value="Potvrdi" />
     </fieldset>
 }
 </section>
+
+    </div>
+</div>

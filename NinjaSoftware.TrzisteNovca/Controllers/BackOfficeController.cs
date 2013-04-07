@@ -18,7 +18,7 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("TrgovanjeGlavaList");
         }
 
         #region Trgovanje
@@ -397,6 +397,18 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult TrgovanjeHnbDelete(long trgovanjeGlavaHnbId)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory(User.Identity.Name);
+            using (adapter)
+            {
+                TrgovanjeGlavaHnbEntity trgovanjeHnbGlava = TrgovanjeGlavaHnbEntity.FetchTrgovanjeGlavaHnb(adapter, null, trgovanjeGlavaHnbId);
+                trgovanjeHnbGlava.Delete(adapter);
+
+                return RedirectToAction("TrgovanjeGlavaHnbList");
+            }
+        }
         #endregion
     }
 }

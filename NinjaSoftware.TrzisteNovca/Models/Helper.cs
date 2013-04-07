@@ -9,6 +9,7 @@ using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses;
 using System.Text;
 using System.Web.Mvc;
 using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic;
+using System.Security.Principal;
 
 namespace NinjaSoftware.TrzisteNovca.Models
 {
@@ -19,7 +20,7 @@ namespace NinjaSoftware.TrzisteNovca.Models
         public static DataAccessAdapterBase GetDataAccessAdapterFactory()
         {
             DataAccessAdapterBase adapter;
-            switch (ConfigurationManager.ConnectionStrings[2].ProviderName)
+            switch (ConfigurationManager.ConnectionStrings[1].ProviderName)
             {
                 case "System.Data.SqlClient":
                     adapter = new NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific.DataAccessAdapter();
@@ -261,6 +262,24 @@ namespace NinjaSoftware.TrzisteNovca.Models
                 TrgovanjeVrstaEnum.Opoziv,
                 TrgovanjeVrstaEnum.Prekonocni
             };
+
+        #endregion
+
+        #region Menu helper
+
+        public static bool IsBackofficeMenu(ViewContext viewContext)
+        {
+            if ("backoffice" == viewContext.RouteData.Values["Controller"].ToString().ToLower() ||
+                "admin" == viewContext.RouteData.Values["Controller"].ToString().ToLower() ||
+                "account" == viewContext.RouteData.Values["Controller"].ToString().ToLower())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         #endregion
     }

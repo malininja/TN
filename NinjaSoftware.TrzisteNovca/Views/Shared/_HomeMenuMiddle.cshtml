@@ -1,0 +1,35 @@
+﻿@using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
+
+            <ul class="sf-menu">
+                    <li><a href="#">O nama</a>
+                        <ul>
+                            <li>@Html.ActionLink("O nama", "SysHtmlPage", new { sistemskaInstancaPodatakaId = 1 })</li>
+                            <li>@Html.ActionLink("Dioničari", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.Dionicari })</li>
+                            <li>@Html.ActionLink("Sustav SETT", "SysHtmlPage", new { sistemskaInstancaPodatakaId = 3 })</li>
+                        </ul>
+                    </li>  
+                    <li>
+                        <a href="#">Sudionici</a>
+                        <ul>
+                            <li>@Html.ActionLink("Banke", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.Banke })</li>
+                            <li>@Html.ActionLink("Društva za upravljanje investicijskim fondovima", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.InvesticijskiFondovi })</li>
+                            <li>@Html.ActionLink("Društva za upravljanje mirovinskim fondovima", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.MirovinskiFondovi })</li>
+                            <li>@Html.ActionLink("Osiguravajuća društva", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.OsiguravajucaDrustva })</li>
+                            <li>@Html.ActionLink("Stambene štedionice", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.StambeneStedionice })</li>
+                        </ul>
+                    </li>
+                <li><a href="#">Trgovanje</a>
+                    <ul>
+                        <li>@Html.ActionLink("Promet", "TrgovanjeGodina", null, new { style = "background-image: none;" })</li>
+                        <li>@Html.ActionLink("Trgovanje po rokovima", "TrgovanjeGodinaRok", null, new { style = "background-image: none;" })</li>
+                    </ul>
+                </li>
+                <li><a href="#">Kamatne stope</a>
+                    <ul>
+                        <li>@Html.ActionLink("Kamatne stope na tržištu novca", "TrgovanjeGodinaRokKamatneStope", null, new { style = "background-image: none;" })</li>
+                        <li>@Html.ActionLink("Kamatne stope u međubankarskom trgovanju", "TrgovanjeGodinaRokHnbKamatneStope", null, new { style = "background-image: none;" })</li>
+                    </ul>
+                </li>
+                <li>@Html.ActionLink("Aukcija trezorskih zapisa", "AukcijaTrezorskihZapisa", null, new { style = "background-image: none;" })</li>
+                <li>@Html.ActionLink("Repo aukcija HNB", "RepoAukcija")</li>
+            </ul>

@@ -5,7 +5,7 @@
 
 @{
     string title;
-    
+
     if (Model.TrgovanjeGlavaHnb.IsNew)
     {
         title = "Unos novog trgovanja";
@@ -14,18 +14,26 @@
     {
         title = string.Format("Uređivanje trgovanja za datum {0}", Model.TrgovanjeGlavaHnb.Datum.ToShortDateString());
     }
-    
+
     ViewBag.Title = title;
 }
 
-<h2>@title</h2>
+<div class="content-box">
+
+<h3>@title</h3>
+
+    <div class="content">
 
 <form id="FormTrgovanje" action="/someServerSideHandler">
     <input type="submit" value="Pohrani" />
+
+    @if (Model.TrgovanjeGlavaHnb.IsNew)
+    {
     <button onclick="viewModel.dohvatiTrgovanjeStavkaHnbCollection(); return false;">Dohvati podatke</button>
+    }
 
     <div data-bind="template: { name: 'TrgovanjeGlavaHnbTemplate', data: trgovanjeGlavaHnb }"></div>
-
+    
     <script type="text/html" id="TrgovanjeGlavaHnbTemplate">
         <table>
 @if (Model.TrgovanjeGlavaHnb.IsNew)
@@ -52,7 +60,7 @@
         </tr>
     </table>
 
-    <table id="tableStavke">
+    <table id="tableStavke" class="default">
         <thead>
             <tr>
                 <th>Naziv</th>
@@ -77,6 +85,9 @@
         </tbody>
     </table>
 </form>
+
+    </div>
+</div>
 
 <script type="text/javascript">
     Globalize.culture("hr");

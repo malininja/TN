@@ -6,7 +6,9 @@
     ViewBag.Title = title;
 }
 
-<h2>@title</h2>
+<div class="content-box">
+
+<h3>@title</h3>
 
 <p>
     @Html.ActionLink("Učitaj trgovanje iz SETT datoteke", "TrgovanjeUpload")
@@ -16,7 +18,8 @@
     @Html.ActionLink("Kreiraj trgovanje", "TrgovanjeEdit")
 </p>
 
-<table>
+<table class="default">
+  <thead>
     <tr>
         <th>
             Datum
@@ -26,16 +29,17 @@
         </th>
         <th></th>
     </tr>
-
+  </thead>
+  <tbody>
 @foreach (TrgovanjeGlavaEntity trgovanjeGlava in Model.DataSource)
 {
     <tr>
         @{
             string komentar = trgovanjeGlava.Komentar;
 
-            if (komentar.Length > 50)
+            if (komentar.Length > 120)
             {
-                komentar = komentar.Substring(0, 50);
+                komentar = komentar.Substring(0, 120);
             }
          }
         <td>
@@ -52,9 +56,13 @@
         </td>
     </tr>
 }
+  </tbody>
+  <tfoot>
     <tr>
         <td colspan="3" style="text-align: center;">
             @Model.GenerateDropDownPagingAndPrevNextHtmlElements(Config.PagerPrefixText())
         </td>
     </tr>
+  </tfoot>
 </table>
+</div>

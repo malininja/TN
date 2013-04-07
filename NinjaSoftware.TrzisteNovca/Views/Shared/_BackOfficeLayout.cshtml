@@ -11,19 +11,10 @@
         @Scripts.Render("~/bundles/jqueryval")
         @Scripts.Render("~/bundles/custom")
         @Scripts.Render("/bundles/globalize")
-
     </head>
     <body>
         <header>
-            @Html.ActionLink("Trgovanje", "TrgovanjeGlavaList", "BackOffice")
-            @Html.ActionLink("Repo aukcije", "RepoAukcijaList", "BackOffice")
-            @Html.ActionLink("Sudionici", "SudionikList", "BackOffice")
-            @Html.ActionLink("Aukcija trezorskih zapisa", "AukcijaTrezorskihZapisa", "BackOffice")
-            @Html.ActionLink("Trgovanje HNB", "TrgovanjeGlavaHnbList", "BackOffice")
-            @if (User.IsInRole("Admin"))
-            { 
-                @Html.ActionLink("HTML pages", "HtmlPageList", "Admin")
-            }
+
         </header>
         <div id="body">
             @RenderSection("featured", required: false)

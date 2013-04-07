@@ -29,7 +29,7 @@
         @foreach (TrgovanjeGlavaHnbEntity trgovanjeGlavaHnb in Model.TrgovanjeGlavaHnbCollection)
         {
             <tr>
-                <td>@Html.ActionLink(trgovanjeGlavaHnb.Datum.ToShortDateString(), "TrgovanjeDanHnb", new { date = trgovanjeGlavaHnb.Datum.ToString("yyyy-MM-dd") })
+                <td>@trgovanjeGlavaHnb.Datum.ToShortDateString()
                 </td>
                 @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
                 {

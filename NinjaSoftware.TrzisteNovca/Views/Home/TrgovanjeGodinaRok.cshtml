@@ -20,8 +20,7 @@
     <h1>@title</h1>
 </div>
 <div class="content-box">
-<h1>@title</h1>
-<div class="content">
+
     Promjeni godinu: @Html.DropDownList("dropDownGodina", Model.GodinaSelectList, new { id = "dropDownGodina" })
     <br />
     <br />
@@ -40,8 +39,7 @@
                 UKUPNO
             </th>
         </tr>
-        </thead>
-        <tbody>
+
         <tr>
             <th>
                 Mjesec
@@ -66,6 +64,8 @@
                 stopa (%)
             </th>
         </tr>
+        </thead>
+        <tbody>
         @foreach (TrgovanjeMjesecRok trgovanjeMjesecRok in Model.TrgovanjeMjesecRokCollection)
         { 
             <tr>
@@ -100,6 +100,6 @@
         }
         </tbody>
     </table>
-    </div>
+
     </div>
 </div>

@@ -25,7 +25,13 @@
     $(document).ready(function () {
         Globalize.culture("hr");
 
+        var selectedDateString = $("#inputDatum").val();
+        var selectedDateStringParsed = selectedDateString.substring(0, selectedDateString.length - 1);
+
+        var currentDate = Globalize.parseDate(selectedDateStringParsed);
+        
         $("#inputDatum").datepicker({
+            defaultDate: currentDate,
             yearRange: "2000:@currentYear",
             changeMonth: true,
             changeYear: true,

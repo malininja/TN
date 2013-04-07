@@ -6,13 +6,16 @@
     ViewBag.Title = title;
 }
 
+<div class="content-box">
+
 <h2>@title</h2>
 
 <p>
     @Html.ActionLink("Kreiraj repo aukciju", "RepoAukcijaEdit")
 </p>
 
-<table>
+<table class="default">
+  <thead>
     <tr>
         <th>
             Broj aukcije
@@ -22,7 +25,8 @@
         </th>
         <th></th>
     </tr>
-
+  </thead>
+  <tbody>
 @foreach (RepoAukcijaEntity repoAukcija in Model.DataSource)
 {
     <tr>
@@ -40,9 +44,14 @@
         </td>
     </tr>
 }
+  </tbody>
+  <tfoot>
     <tr>
         <td colspan="3" style="text-align: center;">
             @Model.GenerateDropDownPagingAndPrevNextHtmlElements(Config.PagerPrefixText())
         </td>
     </tr>
+  </tfoot>
 </table>
+
+</div>

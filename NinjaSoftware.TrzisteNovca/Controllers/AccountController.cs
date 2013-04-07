@@ -28,7 +28,7 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
                     FormsAuthentication.RedirectFromLoginPage(model.UserName, false);
                     if (string.IsNullOrWhiteSpace(returnUrl))
                     {
-                        return RedirectToAction("BackOffice", "Home");
+                        return RedirectToAction("Index", "BackOffice");
                     }
                     else
                     {
@@ -37,7 +37,7 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                    ModelState.AddModelError("", "Neispravno korisničko ime ili lozinka.");
                 }
             }
 

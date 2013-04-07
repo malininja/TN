@@ -19,31 +19,29 @@
     ViewBag.Title = title;
 }
 
-<h2>@title</h2>
+<div class="content-box">
+
+<h3>@title</h3>
+
+    <div class="content">
 
 <form id="FormTrgovanje" action="/someServerSideHandler">
+    
     <input type="submit" value="Pohrani" />
-
+    <br />
     <div data-bind="template: { name: 'TrgovanjeGlavaTemplate', data: trgovanjeGlava }"></div>
     
     <script type="text/html" id="TrgovanjeGlavaTemplate">
-        <table>
+
 @if (Model.TrgovanjeGlava.IsNew)
 {
-            <tr>
-                <td>Datum:</td>
-                <td>
-                    <input id="InputDatum" class="requred date" data-bind="value: Datum" />
-                </td>
-            </tr>
+    <span>Datum:</span> <input id="InputDatum" class="requred date" data-bind="value: Datum" />
+    
 }
-            <tr>
-                <td>Dnevni komentar:</td>
-                <td>
-                    <textarea id="TextAreaDnevniKomentar" data-bind="value: Komentar"></textarea>
-                </td>
-            </tr>
-        </table>
+        <br /><br />
+        Komentar trgovanja:
+        <br />
+        <textarea id="TextAreaDnevniKomentar" data-bind="value: Komentar"></textarea>
     </script>
     
     <h3>Rokovi</h3>
@@ -105,6 +103,9 @@
         </tbody>
     </table>
 </form>
+
+    </div>
+</div>
 
 <script type="text/javascript">
     Globalize.culture("hr");

@@ -7,12 +7,15 @@
     ViewBag.Title = title;
 }
 
-<h2>@title</h2>
+<div class="content-box">
+
+<h3>@title</h3>
 
 <p>
     @Html.ActionLink("Kreiraj novog sudionika", "SudionikEdit")
 </p>
-<table>
+<table class="default">
+  <thead> 
     <tr>
         <th>
             Naziv
@@ -22,7 +25,8 @@
         </th>
         <th></th>
     </tr>
-
+  </thead>
+  <tbody>
 @foreach (SudionikEntity item in Model.DataSource) {
     <tr>
         <td>
@@ -39,9 +43,14 @@
         </td>
     </tr>
 }
+  </tbody>
+  <tfoot>
     <tr>
         <td colspan="3" style="text-align: center;">
             @Model.GenerateDropDownPagingAndPrevNextHtmlElements(Config.PagerPrefixText())
         </td>
     </tr>
+  </tfoot>
 </table>
+
+</div>

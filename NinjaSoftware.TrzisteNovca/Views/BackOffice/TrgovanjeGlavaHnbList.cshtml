@@ -6,20 +6,24 @@
     ViewBag.Title = title;
 }
 
-<h2>@title</h2>
+<div class="content-box">
+
+<h3>@title</h3>
 
 <p>
     @Html.ActionLink("Kreiraj trgovanje", "TrgovanjeHnbEdit")
 </p>
 
-<table>
+<table class="default" style="width: 400px">
+  <thead>
     <tr>
         <th>
             Datum
         </th>
         <th></th>
     </tr>
-
+  </thead>
+  <tbody>
 @foreach (TrgovanjeGlavaHnbEntity trgovanjeGlavaHnb in Model.DataSource)
 {
     <tr>
@@ -29,14 +33,19 @@
         <td>
             @Html.ActionLink("Uredi", "TrgovanjeHnbEdit", new { trgovanjeGlavaHnbId = trgovanjeGlavaHnb.TrgovanjeGlavaHnbId }) |
             @Html.ActionLink("Obriši", "TrgovanjeHnbDelete", 
-                new { trgovanjeGlavaId = trgovanjeGlavaHnb.TrgovanjeGlavaHnbId }, 
+                new { trgovanjeGlavaHnbId = trgovanjeGlavaHnb.TrgovanjeGlavaHnbId }, 
                 new { onclick = "return confirm('Jeste li sigurni da želite obrisati trgovanje?');" })
         </td>
     </tr>
 }
+  </tbody>
+  <tfoot>
     <tr>
         <td colspan="3" style="text-align: center;">
             @Model.GenerateDropDownPagingAndPrevNextHtmlElements(Config.PagerPrefixText())
         </td>
     </tr>
+  </tfoot>
 </table>
+
+</div>

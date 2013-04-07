@@ -15,6 +15,7 @@
         <tr>
             <th>Datum
             </th>
+            <th>prosječna</th>
             @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
             { 
                 <th>@trgovanjeVrsta.Name
@@ -30,6 +31,11 @@
         {
             <tr>
                 <td>@Html.ActionLink(trgovanjeGlava.Datum.ToShortDateString(), "TrgovanjeDan", new { date = trgovanjeGlava.Datum.ToString("yyyy-MM-dd") })
+                </td>
+                <td>
+                    @{decimal? ksUkupno = trgovanjeGlava.PrometKamatnaStopaPosto(ValutaEnum.Kn);
+                      string ksUkupnoString = ksUkupno.HasValue ? ksUkupno.Value.ToString("N2") : "-";}
+                    @ksUkupnoString
                 </td>
                 @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
                 {

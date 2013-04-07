@@ -1,0 +1,11 @@
+﻿        <ul class="sf-menu">
+            <li>@Html.ActionLink("Trgovanje", "TrgovanjeGlavaList", "BackOffice")</li>
+            <li>@Html.ActionLink("Repo aukcije", "RepoAukcijaList", "BackOffice")</li>
+            <li>@Html.ActionLink("Sudionici", "SudionikList", "BackOffice")</li>
+            <li>@Html.ActionLink("Aukcija trezorskih zapisa", "AukcijaTrezorskihZapisa", "BackOffice")</li>
+            <li>@Html.ActionLink("Trgovanje HNB", "TrgovanjeGlavaHnbList", "BackOffice")</li>
+            @if (User.IsInRole("Admin"))
+            { 
+                <li>@Html.ActionLink("HTML pages", "HtmlPageList", "Admin")</li>
+            }
+        </ul>            

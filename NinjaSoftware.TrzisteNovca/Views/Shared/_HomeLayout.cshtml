@@ -1,4 +1,6 @@
 ﻿@using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
+@using NinjaSoftware.TrzisteNovca.Models
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,34 +30,31 @@
                 @Html.ActionLink("Početna", "Index", null, new { id = "logo" })
             </div>
             <div style="float: right;">
-                <ul id="top-nav">
-                    <li>@Html.ActionLink("Početna", "Index")</li>
-                    <li>@Html.ActionLink("Konferencija", "HtmlPage", new { htmlPageId = 5 })</li>
-                    <li>@Html.ActionLink("O nama", "SysHtmlPage", new { sistemskaInstancaPodatakaId = 1 })</li>
-                    <li>@Html.ActionLink("Sustav SETT", "SysHtmlPage", new { sistemskaInstancaPodatakaId = 3 }, new { style = "border: 0px;" })</li>
-                </ul>
+                @if (!Helper.IsBackofficeMenu(ViewContext))
+                {
+                    @Html.Partial("_HomeMenuUp")
+                }
             </div>
         </div>
     </div>
     <div id="navigation">
         <div class="wrapper">
-            <ul class="sf-menu">
-                <li>@Html.ActionLink("Početna", "Index")</li>
-                <li><a href="#">testing 1 2 3 ...</a>
-                    <ul>
-                        <li>@Html.ActionLink("Trgovanje promet", "TrgovanjeGodina", null, new { style = "background-image: none;" })</li>
-                        <li>@Html.ActionLink("Trgovanje po rokovima", "TrgovanjeGodinaRok", null, new { style = "background-image: none;" })</li>
-                    </ul>
-                </li>
-                <li>@Html.ActionLink("Repo aukcija HNB", "RepoAukcija")</li>
-                <li>@Html.ActionLink("Banke", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.Banke })</li>
-                <li>@Html.ActionLink("Aukcija trezorskih zapisa", "AukcijaTrezorskihZapisa", null, new { style = "background-image: none;" })</li>
-            </ul>
+            @if (Helper.IsBackofficeMenu(ViewContext))
+            { 
+                @Html.Partial("_BackofficeMenuMiddle")
+            }
+            else
+            {
+                @Html.Partial("_HomeMenuMiddle")                
+            }
         </div>
     </div>
     <div id="content">
         @RenderBody()
     </div>
+
+  @if (!Helper.IsBackofficeMenu(ViewContext))
+  {
     <div id="prefooter">
         <div class="wrapper box align-r">
             <h3>
@@ -89,5 +88,6 @@
         <div class="author" style="display: block;">
             &copy; MCS Grupa (2000 - @DateTime.Now.Year)</div>
     </div>
+  }
 </body>
 </html>

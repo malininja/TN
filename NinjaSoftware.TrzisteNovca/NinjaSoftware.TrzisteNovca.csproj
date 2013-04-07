@@ -902,6 +902,9 @@
     <Content Include="Views\Home\TrgovanjeGodinaRokKamatneStope.cshtml" />
     <Content Include="Views\Home\TrgovanjeMjesecRokHnbKamatneStope.cshtml" />
     <Content Include="Views\Home\TrgovanjeGodinaRokHnbKamatneStope.cshtml" />
+    <Content Include="Views\Shared\_HomeMenuUp.cshtml" />
+    <Content Include="Views\Shared\_HomeMenuMiddle.cshtml" />
+    <Content Include="Views\Shared\_BackofficeMenuMiddle.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

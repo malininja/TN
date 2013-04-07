@@ -21,7 +21,11 @@
     });
 </script>
 
-<h2>@title</h2>
+<div class="content-box">
+
+<h3>@title</h3>
+
+    <div class="content">
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
@@ -31,8 +35,8 @@
 
     <fieldset>
 
-    <table>
-        
+    <table class="default" style="width: 500px">
+      <tbody>
         <tr>
             <td>
                 Broj aukcije:
@@ -171,9 +175,12 @@
                 <input id="cancel" type="submit" value="Odustani" />
             </td>
         </tr>
+      </tbody>
     </table>
     </fieldset>
 }
+    </div>
+</div>
 
 <script type="text/javascript">
     $(document).ready(function () {
