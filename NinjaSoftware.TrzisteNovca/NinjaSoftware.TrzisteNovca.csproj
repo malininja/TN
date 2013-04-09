@@ -905,6 +905,8 @@
     <Content Include="Views\Shared\_HomeMenuUp.cshtml" />
     <Content Include="Views\Shared\_HomeMenuMiddle.cshtml" />
     <Content Include="Views\Shared\_BackofficeMenuMiddle.cshtml" />
+    <Content Include="Views\Home\SudionikGrupaList.cshtml" />
+    <Content Include="Views\BackOffice\KamatnaStopaHnbEdit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

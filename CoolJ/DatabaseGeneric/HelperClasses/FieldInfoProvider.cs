@@ -48,12 +48,13 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 		/// <summary>Method which initializes the internal datastores.</summary>
 		private void Init()
 		{
-			this.InitClass( (17 + 0));
+			this.InitClass( (18 + 0));
 			InitAuditInfoEntityInfos();
 			InitAuditInfoActionTypeRoEntityInfos();
 			InitEntityRoEntityInfos();
 			InitErrorEntityInfos();
 			InitHtmlPageEntityInfos();
+			InitKamatnaStopaHnbEntityInfos();
 			InitRepoAukcijaEntityInfos();
 			InitRoleRoEntityInfos();
 			InitSistemskaInstancaPodatakaRoEntityInfos();
@@ -119,6 +120,17 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 			this.AddElementFieldInfo("HtmlPageEntity", "HtmlPageId", typeof(System.Int64), true, false, false, false,  (int)HtmlPageFieldIndex.HtmlPageId, 0, 0, 19);
 			this.AddElementFieldInfo("HtmlPageEntity", "Name", typeof(System.String), false, false, false, false,  (int)HtmlPageFieldIndex.Name, 256, 0, 0);
 			this.AddElementFieldInfo("HtmlPageEntity", "SistemskaInstancaPodatakaId", typeof(Nullable<System.Int64>), false, true, false, true,  (int)HtmlPageFieldIndex.SistemskaInstancaPodatakaId, 0, 0, 19);
+		}
+		/// <summary>Inits KamatnaStopaHnbEntity's FieldInfo objects</summary>
+		private void InitKamatnaStopaHnbEntityInfos()
+		{
+			this.AddFieldIndexEnumForElementName(typeof(KamatnaStopaHnbFieldIndex), "KamatnaStopaHnbEntity");
+			this.AddElementFieldInfo("KamatnaStopaHnbEntity", "ConcurrencyGuid", typeof(System.String), false, false, false, false,  (int)KamatnaStopaHnbFieldIndex.ConcurrencyGuid, 50, 0, 0);
+			this.AddElementFieldInfo("KamatnaStopaHnbEntity", "Depozit", typeof(System.Decimal), false, false, false, false,  (int)KamatnaStopaHnbFieldIndex.Depozit, 0, 2, 6);
+			this.AddElementFieldInfo("KamatnaStopaHnbEntity", "Eskontna", typeof(System.Decimal), false, false, false, false,  (int)KamatnaStopaHnbFieldIndex.Eskontna, 0, 2, 6);
+			this.AddElementFieldInfo("KamatnaStopaHnbEntity", "KamatnaStopaHnbId", typeof(System.Int64), true, false, false, false,  (int)KamatnaStopaHnbFieldIndex.KamatnaStopaHnbId, 0, 0, 19);
+			this.AddElementFieldInfo("KamatnaStopaHnbEntity", "LombarniKredit", typeof(System.Decimal), false, false, false, false,  (int)KamatnaStopaHnbFieldIndex.LombarniKredit, 0, 2, 6);
+			this.AddElementFieldInfo("KamatnaStopaHnbEntity", "Pricuva", typeof(System.Decimal), false, false, false, false,  (int)KamatnaStopaHnbFieldIndex.Pricuva, 0, 2, 6);
 		}
 		/// <summary>Inits RepoAukcijaEntity's FieldInfo objects</summary>
 		private void InitRepoAukcijaEntityInfos()

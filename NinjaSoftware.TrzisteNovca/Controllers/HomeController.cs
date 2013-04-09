@@ -173,6 +173,12 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
         #region Sudionik
 
         [HttpGet]
+        public ActionResult SudionikGrupaList()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public ActionResult SudionikList(long sudionikGrupaId)
         {
             DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();

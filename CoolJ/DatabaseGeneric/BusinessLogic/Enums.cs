@@ -22,7 +22,8 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
         Sudionik = 7,
         TrgovanjeGlavaHnb = 8,
         TrgovanjeStavkaHnb = 9,
-        HtmlPage = 10
+        HtmlPage = 10,
+        KamatnaStopaHnb = 11
     }
 
     public enum RoleEnum
@@ -32,7 +33,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
     }
 
     public enum ValutaEnum
-    { 
+    {
         Kn = 1,
         Chf = 2,
         Eur = 3,
@@ -40,7 +41,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
     }
 
     public enum TrgovanjeVrstaEnum
-    { 
+    {
         Opoziv = 1,
         TomNext = 2,
         SpotNext = 3,
@@ -62,5 +63,13 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
         MirovinskiFondovi = 5,
         OsiguravajucaDrustva = 6,
         StambeneStedionice = 7
+    }
+
+    public enum SistemskaInstancaPodatakaEnum
+    {
+        HtmlONamaHr = 1,
+        HtmlONamaEn = 2,
+        HtmlSett = 3,
+        HtmlKontakt = 4
     }
 }

@@ -1,5 +1,8 @@
-﻿                <ul id="top-nav">
+﻿@using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
+
+                <ul id="top-nav">
                     <li>@Html.ActionLink("Početna", "Index")</li>
-                    <li>@Html.ActionLink("Kontakt", "SysHtmlPage", new { sistemskaInstancaPodatakaId = 4 })</li>
-                    <li>@Html.ActionLink("Konferencija", "HtmlPage", new { htmlPageId = 5 })</li>
+                    <li>@Html.ActionLink("Sudionici", "SudionikGrupaList")</li>
+                    <li>@Html.ActionLink("Konferencije", "HtmlPage", new { htmlPageId = 5 })</li>
+                    <li>@Html.ActionLink("Korisne adrese", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.KorisneAdrese })</li>
                 </ul>

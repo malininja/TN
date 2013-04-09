@@ -163,6 +163,41 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 		}
 	}
 
+	/// <summary>Field Creation Class for entity KamatnaStopaHnbEntity</summary>
+	public partial class KamatnaStopaHnbFields
+	{
+		/// <summary>Creates a new KamatnaStopaHnbEntity.ConcurrencyGuid field instance</summary>
+		public static EntityField2 ConcurrencyGuid
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(KamatnaStopaHnbFieldIndex.ConcurrencyGuid);}
+		}
+		/// <summary>Creates a new KamatnaStopaHnbEntity.Depozit field instance</summary>
+		public static EntityField2 Depozit
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(KamatnaStopaHnbFieldIndex.Depozit);}
+		}
+		/// <summary>Creates a new KamatnaStopaHnbEntity.Eskontna field instance</summary>
+		public static EntityField2 Eskontna
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(KamatnaStopaHnbFieldIndex.Eskontna);}
+		}
+		/// <summary>Creates a new KamatnaStopaHnbEntity.KamatnaStopaHnbId field instance</summary>
+		public static EntityField2 KamatnaStopaHnbId
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(KamatnaStopaHnbFieldIndex.KamatnaStopaHnbId);}
+		}
+		/// <summary>Creates a new KamatnaStopaHnbEntity.LombarniKredit field instance</summary>
+		public static EntityField2 LombarniKredit
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(KamatnaStopaHnbFieldIndex.LombarniKredit);}
+		}
+		/// <summary>Creates a new KamatnaStopaHnbEntity.Pricuva field instance</summary>
+		public static EntityField2 Pricuva
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(KamatnaStopaHnbFieldIndex.Pricuva);}
+		}
+	}
+
 	/// <summary>Field Creation Class for entity RepoAukcijaEntity</summary>
 	public partial class RepoAukcijaFields
 	{

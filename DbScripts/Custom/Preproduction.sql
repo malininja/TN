@@ -10,3 +10,7 @@ INSERT INTO HtmlPage (ConcurrencyGuid, Html, SistemskaInstancaPodatakaId)
 	
 INSERT INTO HtmlPage (ConcurrencyGuid, Html, SistemskaInstancaPodatakaId)
 	VALUES ('a', '', 4);
+	
+-- KamatnaStopaHnb
+INSERT INTO KamatnaStopaHnb (ConcurrencyGuid, Depozit, Eskontna, KamatnaStopaHnbId, LombarniKredit, Pricuva)
+	VALUES('a', 0, 0, 1, 0, 0);

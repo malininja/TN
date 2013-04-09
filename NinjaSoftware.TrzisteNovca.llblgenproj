@@ -171,6 +171,16 @@
           <Field Name="SistemskaInstancaPodatakaId" Type="long" IsOptional="true" />
         </Fields>
       </EntityDefinition>
+      <EntityDefinition Name="KamatnaStopaHnb">
+        <Fields>
+          <Field Name="ConcurrencyGuid" Type="string" MaxLength="50" />
+          <Field Name="Depozit" Type="decimal" Precision="6" Scale="2" />
+          <Field Name="Eskontna" Type="decimal" Precision="6" Scale="2" />
+          <Field Name="KamatnaStopaHnbId" Type="long" IsPrimaryKey="true" />
+          <Field Name="LombarniKredit" Type="decimal" Precision="6" Scale="2" />
+          <Field Name="Pricuva" Type="decimal" Precision="6" Scale="2" />
+        </Fields>
+      </EntityDefinition>
       <EntityDefinition Name="RepoAukcija">
         <Fields>
           <Field Name="BrojAukcije" Type="string" IsOptional="true" MaxLength="20" />
@@ -409,6 +419,16 @@
                     <Field Name="Name" Ordinal="5" DbType="12" Length="256" />
                   </Fields>
                 </Table>
+                <Table Name="KamatnaStopaHnb">
+                  <Fields>
+                    <Field Name="ConcurrencyGuid" Ordinal="1" DbType="12" Length="50" />
+                    <Field Name="Depozit" Ordinal="2" DbType="5" Precision="6" Scale="2" />
+                    <Field Name="Eskontna" Ordinal="3" DbType="5" Precision="6" Scale="2" />
+                    <Field Name="KamatnaStopaHnbId" Ordinal="4" TrackedChanges="4608" IsPrimaryKey="true" PkConstraintName="PK_4a82eb34eec9863e0682ad3b5d8" DbType="0" Precision="19" />
+                    <Field Name="LombarniKredit" Ordinal="5" DbType="5" Precision="6" Scale="2" />
+                    <Field Name="Pricuva" Ordinal="6" DbType="5" Precision="6" Scale="2" />
+                  </Fields>
+                </Table>
                 <Table Name="RepoAukcija">
                   <Fields>
                     <Field Name="BrojAukcije" Ordinal="1" IsOptional="true" DbType="12" Length="20" />
@@ -638,6 +658,16 @@
             <FieldMapping FieldName="HtmlPageId" TargetFieldName="HtmlPageId" SequenceToUse="SCOPE_IDENTITY()" />
             <FieldMapping FieldName="Name" TargetFieldName="Name" />
             <FieldMapping FieldName="SistemskaInstancaPodatakaId" TargetFieldName="SistemskaInstancaPodatakaId" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":KamatnaStopaHnb" TargetName="atjanmcs301107hr2706_tn:dbo:KamatnaStopaHnb">
+          <FieldMappings>
+            <FieldMapping FieldName="ConcurrencyGuid" TargetFieldName="ConcurrencyGuid" />
+            <FieldMapping FieldName="Depozit" TargetFieldName="Depozit" />
+            <FieldMapping FieldName="Eskontna" TargetFieldName="Eskontna" />
+            <FieldMapping FieldName="KamatnaStopaHnbId" TargetFieldName="KamatnaStopaHnbId" />
+            <FieldMapping FieldName="LombarniKredit" TargetFieldName="LombarniKredit" />
+            <FieldMapping FieldName="Pricuva" TargetFieldName="Pricuva" />
           </FieldMappings>
         </EntityMapping>
         <EntityMapping EntityName=":RepoAukcija" TargetName="atjanmcs301107hr2706_tn:dbo:RepoAukcija">

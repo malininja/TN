@@ -57,15 +57,13 @@
   {
     <div id="prefooter">
         <div class="wrapper box align-r">
-            <h3>
-                KONTAKT</h3>
             <p>
                 Tržište novca i kratkoročnih vrijednosnica d.d.</p>
             <p>
                 Heinzlova 62/III kat,1000 Zagreb, Hrvatska</p>
             <p>
                 <img src="@Url.Content("~/Content/icons/images/tel.png")" width="26px" height="22px" alt="Tel" title="Tel"/>
-                <span style="padding-left: 5px; color: #bec531;">+ 385 1 6009 870</span>
+                <span style="padding-left: 5px; color: #bec531;">(+385 1) 6009 840</span>
                 <img src="@Url.Content("~/Content/icons/images/mail.png")" width="24px" height="17px" alt="e-mail" title="e-mail" style="padding-left:30px;"/>
                 <span style="padding-left: 5px;"><a href="mailto:info@trzistenovca.hr" style="color: #bec531;">
                     info@trzistenovca.hr</a></span></p>
@@ -79,14 +77,13 @@
             <div style="float: right;">
                 <ul id="bottom-nav">
                     <li>@Html.ActionLink("Početna", "Index")</li>
-                    <li>@Html.ActionLink("Kamatne stope HNB-a", "TrgovanjeGodinaRokHnbKamatneStope")</li>
-                    <li>@Html.ActionLink("Kamatne stope na Tržištu novca", "TrgovanjeGodinaRokKamatneStope")</li>
-                    <li>@Html.ActionLink("Repo aukcija HNB", "RepoAukcija", null, new { style = "border: 0px;" })</li>
+                    <li>@Html.ActionLink("Sudionici", "SudionikGrupaList")</li>
+                    <li>@Html.ActionLink("Konferencije", "HtmlPage", new { htmlPageId = 5 })</li>
                 </ul>
             </div>
         </div>
         <div class="author" style="display: block;">
-            &copy; MCS Grupa (2000 - @DateTime.Now.Year)</div>
+            Sva prava pridržava Tržište novca d.d., Dizajn web stranica <a target="_blank" href="http://www.mcs.hr/">MCS Grupa</a></div>
     </div>
   }
 </body>

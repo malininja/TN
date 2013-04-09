@@ -90,6 +90,24 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ
 		/// <summary></summary>
 		AmountOfFields
 	}
+	/// <summary>Index enum to fast-access EntityFields in the IEntityFields collection for the entity: KamatnaStopaHnb.</summary>
+	public enum KamatnaStopaHnbFieldIndex
+	{
+		///<summary>ConcurrencyGuid. </summary>
+		ConcurrencyGuid,
+		///<summary>Depozit. </summary>
+		Depozit,
+		///<summary>Eskontna. </summary>
+		Eskontna,
+		///<summary>KamatnaStopaHnbId. </summary>
+		KamatnaStopaHnbId,
+		///<summary>LombarniKredit. </summary>
+		LombarniKredit,
+		///<summary>Pricuva. </summary>
+		Pricuva,
+		/// <summary></summary>
+		AmountOfFields
+	}
 	/// <summary>Index enum to fast-access EntityFields in the IEntityFields collection for the entity: RepoAukcija.</summary>
 	public enum RepoAukcijaFieldIndex
 	{
@@ -310,6 +328,8 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ
 		ErrorEntity,
 		///<summary>HtmlPage</summary>
 		HtmlPageEntity,
+		///<summary>KamatnaStopaHnb</summary>
+		KamatnaStopaHnbEntity,
 		///<summary>RepoAukcija</summary>
 		RepoAukcijaEntity,
 		///<summary>RoleRo</summary>

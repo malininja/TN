@@ -75,6 +75,9 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.Linq
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.HtmlPageEntity:
 					toReturn = this.HtmlPage;
 					break;
+				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.KamatnaStopaHnbEntity:
+					toReturn = this.KamatnaStopaHnb;
+					break;
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.RepoAukcijaEntity:
 					toReturn = this.RepoAukcija;
 					break;
@@ -146,6 +149,12 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.Linq
 		public DataSource2<HtmlPageEntity> HtmlPage
 		{
 			get { return new DataSource2<HtmlPageEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
+		}
+		
+		/// <summary>returns the datasource to use in a Linq query when targeting KamatnaStopaHnbEntity instances in the database.</summary>
+		public DataSource2<KamatnaStopaHnbEntity> KamatnaStopaHnb
+		{
+			get { return new DataSource2<KamatnaStopaHnbEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
 		}
 		
 		/// <summary>returns the datasource to use in a Linq query when targeting RepoAukcijaEntity instances in the database.</summary>

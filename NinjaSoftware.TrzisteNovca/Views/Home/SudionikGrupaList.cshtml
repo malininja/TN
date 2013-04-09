@@ -1,0 +1,18 @@
+﻿@using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
+
+@{
+    string title = "Sudionici";
+    ViewBag.Title = title;
+}
+
+<div class="content-header">
+    <h1>
+        @title</h1>
+</div>
+<div class="content-box"> 
+    <h3>@Html.ActionLink("Banke", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.Banke })</h3>
+    <h3>@Html.ActionLink("Društva za upravljanje investicijskim fondovima", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.InvesticijskiFondovi })</h3>
+    <h3>@Html.ActionLink("Društva za upravljanje mirovinskim fondovima", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.MirovinskiFondovi })</h3>
+    <h3>@Html.ActionLink("Osiguravajuća društva", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.OsiguravajucaDrustva })</h3>
+    <h3>@Html.ActionLink("Stambene štedionice", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.StambeneStedionice })</h3>
+</div>

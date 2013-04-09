@@ -42,6 +42,9 @@ INSERT INTO "EntityRo" ("Code", "Name", "EntityId")
 
 INSERT INTO "EntityRo" ("Code", "Name", "EntityId")
 	VALUES('HtmlPage', 'HtmlPage', 10);
+
+INSERT INTO "EntityRo" ("Code", "Name", "EntityId")
+	VALUES('KamatnaStopaHnb', 'KamatnaStopaHnb', 11);
 	
 -- ValutaRo
 INSERT INTO "ValutaRo" ("Code", "Name", "ValutaId", "SifraSlog")
@@ -111,13 +114,13 @@ INSERT INTO "SudionikGrupaRo" ("Code", "Name", "SudionikGrupaId")
 
 -- SistemskaInstancaPodataka
 INSERT INTO "SistemskaInstancaPodatakaRo" ("Code", "Name", "SistemskaInstancaPodatakaId")
-	VALUES('ONamaHr', 'O nama HR verzija', 1);
+	VALUES('HtmlONamaHr', 'O nama HR verzija', 1);
 
 INSERT INTO "SistemskaInstancaPodatakaRo" ("Code", "Name", "SistemskaInstancaPodatakaId")
-	VALUES('ONamaEn', 'O nama EN verzija', 2);
+	VALUES('HtmlONamaEn', 'O nama EN verzija', 2);
 
 INSERT INTO "SistemskaInstancaPodatakaRo" ("Code", "Name", "SistemskaInstancaPodatakaId")
-	VALUES('Sett', 'Sustav SETT', 3);
+	VALUES('HtmlSett', 'Sustav SETT', 3);
 
 INSERT INTO "SistemskaInstancaPodatakaRo" ("Code", "Name", "SistemskaInstancaPodatakaId")
-	VALUES('Kontakt', 'Kontakt', 4);
+	VALUES('HtmlKontakt', 'Kontakt', 4);

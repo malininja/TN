@@ -36,8 +36,8 @@
             @item.WebAdresa
         </td>
         <td>
-            @Html.ActionLink("Edit", "SudionikEdit", new { sudionikId = item.SudionikId }) |
-            @Html.ActionLink("Delete", "SudionikDelete", 
+            @Html.ActionLink("Uredi", "SudionikEdit", new { sudionikId = item.SudionikId }) |
+            @Html.ActionLink("Obriši", "SudionikDelete", 
                 new { sudionikId = item.SudionikId }, 
                 new { onclick = "return confirm('Jeste li sigurni da želite obrisati trgovanje?');" })
         </td>

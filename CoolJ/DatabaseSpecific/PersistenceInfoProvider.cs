@@ -46,12 +46,13 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 		/// <summary>Method which initializes the internal datastores with the structure of hierarchical types.</summary>
 		private void Init()
 		{
-			this.InitClass((17 + 0));
+			this.InitClass((18 + 0));
 			InitAuditInfoEntityMappings();
 			InitAuditInfoActionTypeRoEntityMappings();
 			InitEntityRoEntityMappings();
 			InitErrorEntityMappings();
 			InitHtmlPageEntityMappings();
+			InitKamatnaStopaHnbEntityMappings();
 			InitRepoAukcijaEntityMappings();
 			InitRoleRoEntityMappings();
 			InitSistemskaInstancaPodatakaRoEntityMappings();
@@ -117,6 +118,17 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 			this.AddElementFieldMapping( "HtmlPageEntity", "HtmlPageId", "HtmlPageId", false, "BigInt", 0, 0, 19, true, "SCOPE_IDENTITY()", null, typeof(System.Int64), 2 );
 			this.AddElementFieldMapping( "HtmlPageEntity", "Name", "Name", false, "NVarChar", 256, 0, 0, false, "", null, typeof(System.String), 3 );
 			this.AddElementFieldMapping( "HtmlPageEntity", "SistemskaInstancaPodatakaId", "SistemskaInstancaPodatakaId", true, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 4 );
+		}
+		/// <summary>Inits KamatnaStopaHnbEntity's mappings</summary>
+		private void InitKamatnaStopaHnbEntityMappings()
+		{
+			this.AddElementMapping( "KamatnaStopaHnbEntity", @"atjanmcs301107hr2706_tn", @"dbo", "KamatnaStopaHnb", 6 );
+			this.AddElementFieldMapping( "KamatnaStopaHnbEntity", "ConcurrencyGuid", "ConcurrencyGuid", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 0 );
+			this.AddElementFieldMapping( "KamatnaStopaHnbEntity", "Depozit", "Depozit", false, "Decimal", 0, 2, 6, false, "", null, typeof(System.Decimal), 1 );
+			this.AddElementFieldMapping( "KamatnaStopaHnbEntity", "Eskontna", "Eskontna", false, "Decimal", 0, 2, 6, false, "", null, typeof(System.Decimal), 2 );
+			this.AddElementFieldMapping( "KamatnaStopaHnbEntity", "KamatnaStopaHnbId", "KamatnaStopaHnbId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 3 );
+			this.AddElementFieldMapping( "KamatnaStopaHnbEntity", "LombarniKredit", "LombarniKredit", false, "Decimal", 0, 2, 6, false, "", null, typeof(System.Decimal), 4 );
+			this.AddElementFieldMapping( "KamatnaStopaHnbEntity", "Pricuva", "Pricuva", false, "Decimal", 0, 2, 6, false, "", null, typeof(System.Decimal), 5 );
 		}
 		/// <summary>Inits RepoAukcijaEntity's mappings</summary>
 		private void InitRepoAukcijaEntityMappings()

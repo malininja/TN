@@ -410,5 +410,40 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
             }
         }
         #endregion
+
+
+        #region Kamatne stope HNB-a
+
+        [HttpGet]
+        public ActionResult KamatnaStopaHnbEdit(long kamatnaStopaHnbId)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                KamatnaStopaHnbEntity kamatnaStopaHnb = KamatnaStopaHnbEntity.FetchKamatnaStopaHnb(adapter, null, kamatnaStopaHnbId);
+                return View(kamatnaStopaHnb);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult KamatnaStopaHnbEdit(long kamatnaStopaHnbId, FormCollection formCollection)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory(User.Identity.Name);
+            using (adapter)
+            {
+                KamatnaStopaHnbEntity kamatnaStopaHnb = KamatnaStopaHnbEntity.FetchKamatnaStopaHnb(adapter, null, kamatnaStopaHnbId);
+
+                if (TryUpdateAndSaveIEntity2(kamatnaStopaHnb, adapter, false, false))
+                {
+                    return RedirectToAction("KamatnaStopaHnbEdit", new { kamatnaStopaHnbId });
+                }
+                else
+                {
+                    return View(kamatnaStopaHnb);
+                }
+            }
+        }
+
+        #endregion
     }
 }

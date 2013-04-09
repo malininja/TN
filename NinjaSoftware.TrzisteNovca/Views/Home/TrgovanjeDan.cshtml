@@ -88,18 +88,16 @@
 </script>
 <div class="content-header">
     <h1>
-        Dnevni pokazatelj trgovanja</h1>
-    <h3>
-        i kretanje kamatnih stopa</h3>
+        Dnevni pokazatelji trgovanja</h1>
 </div>
 <div class="content-box">
-    <h1>@title</h1>
+    <h1>@danTrgovanja</h1>
     <div class="content">
         Promjena datuma:
         @Html.TextBox("inputDatum", Model.TrgovanjeGlava.Datum.ToShortDateString(), new { id = "inputDatum" })
         
         <h3>
-            Trgovanje u kunama</h3>
+            Trgovanje kunama</h3>
         <table class="default">
         <thead>
             <tr>
@@ -217,7 +215,7 @@
         @if (devizeTrgovanjeStavkaCollection.Count() > 0)
         {
             <h3>
-                Pozajmice deviza</h3>
+                Trgovanje devizama</h3>
             <table class="default">
             <thead>
                 <tr>
