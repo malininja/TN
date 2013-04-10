@@ -18,8 +18,9 @@
     });
 </script>
 
-<h2>HtmlPageEdit</h2>
 
+<div class="content-box"> 
+<div class="content"> 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <span style="color: red;"><b>@nsController.ViewUserErrorMessage</b></span>
@@ -34,7 +35,7 @@
             Naziv
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Name, "TextAreaHtmlEdit")
+            @Html.TextBoxFor(model => model.Name, new { style = "width: 800px;" })
             @Html.ValidationMessageFor(model => model.Name)
         </div>
 
@@ -51,3 +52,5 @@
         </p>
     </fieldset>
 }
+</div>
+</div>

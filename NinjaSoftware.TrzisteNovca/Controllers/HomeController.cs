@@ -266,6 +266,27 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
             return File(path, "application/pdf");
         }
 
+        [HttpGet]
+        public ActionResult KonferencijaList()
+        {
+            return View();
+        }
+
+        #endregion
+
+        #region Kamatna stope HNB
+
+        [HttpGet]
+        public ActionResult KamatnaStopaHnb()
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                KamatnaStopaHnbEntity kamatnaStopaHnb = KamatnaStopaHnbEntity.FetchKamatnaStopaHnb(adapter, null, 1);
+                return View(kamatnaStopaHnb);
+            }
+        }
+
         #endregion
     }
 }

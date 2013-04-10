@@ -11,35 +11,35 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
-	display: block;
+display: block;
 }
 body {
-	line-height: 1;
+line-height: 1;
 }
 ol, ul {
-	list-style: none;
+list-style: none;
 }
 blockquote, q {
-	quotes: none;
+quotes: none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
-	content: none;
+content: '';
+content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+border-collapse: collapse;
+border-spacing: 0;
 }
 
 
@@ -101,9 +101,6 @@ div#footer
   background-color:#fff;
 }
 
-.content-box ul { list-style-type:disc; }
-.content-box ol { list-style-type:decimal; }
-
 .content-box h1
 {
     margin: -20px -20px -40px -20px;
@@ -120,7 +117,7 @@ div#footer
 
 .content-box .content h3 { color: #006e5d;font-size: 18px; border-bottom: 2px; border-bottom-style: solid;line-height:2em;}
 
-.content-box .raw { padding:20px 0 20px 0;}
+.content-box .raw { padding:20px 0 20px 0; }
 
 .content-header
 {
@@ -141,7 +138,18 @@ h1 { font-size: 2.2em; line-height:1.5em; font-weight:bold;}
 h2 { font-size: 1.9em; line-height:1.2em; font-weight:bold;}
 h3 { font-size: 1.6em; line-height:1.0em; font-weight:bold;}
 
+em {font-style: italic;}
+strong {font-weight: bold;}
+blockquote {margin: 0px 36px; background-color: #f5f5f5;}
 p{padding-top:10px;}
+
+ul, ol { list-style-position: inside; margin: 10px 0 10px 20px; }
+ul { list-style-type: disc; }
+ol { list-style-type: decimal; }
+ul ul, ol ul { list-style-type: circle; list-style-position: inside; margin:0 0 0 15px; }
+ol ol, ul ol { list-style-type: lower-latin; list-style-position: inside; margin:0 0 0 15px;  }
+
+li { line-height:1.6em; }
 
 /* AGLINEMENT */
 .align-r { text-align:right; }

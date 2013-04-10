@@ -190,6 +190,9 @@
     <Content Include="Content\icons\images\traka_nav_pattern_03.png" />
     <Content Include="Content\icons\images\ui-bg_glass_75_e6e6e6_1x400.png" />
     <Content Include="Content\icons\traka_nav.png" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\jquery.ui.datepicker.css" />
+    <Content Include="Content\jquery.ui.theme.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\superfish.css" />
     <Content Include="Global.asax" />
@@ -907,6 +910,8 @@
     <Content Include="Views\Shared\_BackofficeMenuMiddle.cshtml" />
     <Content Include="Views\Home\SudionikGrupaList.cshtml" />
     <Content Include="Views\BackOffice\KamatnaStopaHnbEdit.cshtml" />
+    <Content Include="Views\Home\KamatnaStopaHnb.cshtml" />
+    <Content Include="Views\Home\KonferencijaList.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

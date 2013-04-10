@@ -9,7 +9,8 @@
     CultureInfo hrCulture = new CultureInfo("hr");
 }
 
-
+@if (valutaCollection.Count() > 0)
+{
 <table class="default">
 <thead>
     <tr>
@@ -30,7 +31,6 @@
         <th>
             Kamatna stopa (%)
         </th>
-        <th>valuta</th>
     </tr>
     </thead>
     <tbody>
@@ -43,14 +43,14 @@
     {
         <tr>
             @{
-                string potraznja = trgovanjeMjesec.Potraznja.HasValue ? trgovanjeMjesec.Potraznja.Value.ToStringInMilions() : "-";
-                string ponuda = trgovanjeMjesec.Ponuda.HasValue ? trgovanjeMjesec.Ponuda.Value.ToStringInMilions() : "-";
-                string promet = trgovanjeMjesec.Promet.HasValue ? trgovanjeMjesec.Promet.Value.ToStringInMilions() : "-";
-                string kamatnaStopa = trgovanjeMjesec.KamatnaStopa.HasValue ? trgovanjeMjesec.KamatnaStopa.Value.ToString("N2") : "-";
+        string potraznja = trgovanjeMjesec.Potraznja.HasValue ? trgovanjeMjesec.Potraznja.Value.ToStringInMilions() : "-";
+        string ponuda = trgovanjeMjesec.Ponuda.HasValue ? trgovanjeMjesec.Ponuda.Value.ToStringInMilions() : "-";
+        string promet = trgovanjeMjesec.Promet.HasValue ? trgovanjeMjesec.Promet.Value.ToStringInMilions() : "-";
+        string kamatnaStopa = trgovanjeMjesec.KamatnaStopa.HasValue ? trgovanjeMjesec.KamatnaStopa.Value.ToString("N2") : "-";
             }
             <td>
-                @Html.ActionLink(hrCulture.DateTimeFormat.GetMonthName(trgovanjeMjesec.Mjesec), 
-                "TrgovanjeMjesec", 
+                @Html.ActionLink(hrCulture.DateTimeFormat.GetMonthName(trgovanjeMjesec.Mjesec),
+                "TrgovanjeMjesec",
                     new { godina = trgovanjeMjesec.Godina, mjesec = trgovanjeMjesec.Mjesec, valutaEnum = trgovanjeMjesec.Valuta })
             </td>
             <td>
@@ -62,9 +62,9 @@
             <td>
                 @kamatnaStopa
             </td>
-            <td>@trgovanjeMjesec.Valuta.ToString()</td>
         </tr>
     }
 }
 </tbody>
 </table>
+}

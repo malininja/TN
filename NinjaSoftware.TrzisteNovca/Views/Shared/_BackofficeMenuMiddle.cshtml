@@ -4,6 +4,7 @@
             <li>@Html.ActionLink("Sudionici", "SudionikList", "BackOffice")</li>
             <li>@Html.ActionLink("Aukcija trezorskih zapisa", "AukcijaTrezorskihZapisa", "BackOffice")</li>
             <li>@Html.ActionLink("Trgovanje HNB", "TrgovanjeGlavaHnbList", "BackOffice")</li>
+            <li>@Html.ActionLink("Kamatne stope HNB", "KamatnaStopaHnbEdit", "BackOffice", new { kamatnaStopaHnbId = 1 }, null)</li>
             @if (User.IsInRole("Admin"))
             { 
                 <li>@Html.ActionLink("HTML pages", "HtmlPageList", "Admin")</li>

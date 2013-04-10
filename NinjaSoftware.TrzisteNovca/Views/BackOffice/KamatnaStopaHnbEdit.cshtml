@@ -21,36 +21,36 @@
             Eskontna stopa:
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Eskontna)
+            @Html.TextBoxFor(model => model.Eskontna, new { @class = "number" })
             @Html.ValidationMessageFor(model => model.Eskontna)
         </div>
-
+        <br />
         <div class="editor-label">
             Za korištenje lombarnog kredita:
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.LombarniKredit)
+            @Html.TextBoxFor(model => model.LombarniKredit, new { @class = "number" })
             @Html.ValidationMessageFor(model => model.LombarniKredit)
         </div>
-
+        <br />
         <div class="editor-label">
             Na sredstva položenog novčanog depozita kod HNB-a:
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Depozit)
+            @Html.TextBoxFor(model => model.Depozit, new { @class = "number" })
             @Html.ValidationMessageFor(model => model.Depozit)
         </div>
-        
+        <br />
         <div class="editor-label">
             Stopa obvezne pričuve:
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Pricuva)
+            @Html.TextBoxFor(model => model.Pricuva, new { @class = "number" })
             @Html.ValidationMessageFor(model => model.Pricuva)
         </div>
-
+        <br />
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Pohrani" />
         </p>
 }
     </div>
