@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8" />
     <title>@ViewBag.Title - Tržište Novca</title>
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    @*<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />*@
     <meta name="viewport" content="width=device-width" />
     @Styles.Render("~/bundles/css")
     @Scripts.Render("~/bundles/jquery")
@@ -24,7 +24,7 @@
     </script>
 </head>
 <body>
-    <div id="header">
+<div id="header">
         <div class="wrapper">
             <div style="float: left;">
                 @Html.ActionLink("Početna", "Index", null, new { id = "logo" })
@@ -86,5 +86,72 @@
             Sva prava pridržava Tržište novca d.d., Dizajn web stranica <a target="_blank" href="http://www.mcs.hr/">MCS Grupa</a></div>
     </div>
   }
+    @*<div id="header">
+        <div class="wrapper">
+            <div style="float: left;">
+                @Html.ActionLink("Početna", "Index", null, new { id = "logo" })
+            </div>
+            <div style="float: right;">
+                <ul id="top-nav">
+                    <li>@Html.ActionLink("Početna", "Index")</li>
+                    <li>@Html.ActionLink("Konferencija", "HtmlPage", new { htmlPageId = 5 })</li>
+                    <li>@Html.ActionLink("O nama", "SysHtmlPage", new { sistemskaInstancaPodatakaId = 1 })</li>
+                    <li>@Html.ActionLink("Sustav SETT", "SysHtmlPage", new { sistemskaInstancaPodatakaId = 3 }, new { style = "border: 0px;" })</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="navigation">
+        <div class="wrapper">
+            <ul class="sf-menu">
+                <li>@Html.ActionLink("Početna", "Index")</li>
+                <li><a href="#">testing 1 2 3 ...</a>
+                    <ul>
+                        <li>@Html.ActionLink("Trgovanje promet", "TrgovanjeGodina", null, new { style = "background-image: none;" })</li>
+                        <li>@Html.ActionLink("Trgovanje po rokovima", "TrgovanjeGodinaRok", null, new { style = "background-image: none;" })</li>
+                    </ul>
+                </li>
+                <li>@Html.ActionLink("Repo aukcija HNB", "RepoAukcija")</li>
+                <li>@Html.ActionLink("Banke", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.Banke })</li>
+                <li>@Html.ActionLink("Aukcija trezorskih zapisa", "AukcijaTrezorskihZapisa", null, new { style = "background-image: none;" })</li>
+            </ul>
+        </div>
+    </div>
+    <div id="content">
+        @RenderBody()
+    </div>
+    <div id="prefooter">
+        <div class="wrapper box align-r">
+            <h3>
+                KONTAKT</h3>
+            <p>
+                Tržište novca i kratkoročnih vrijednosnica d.d.</p>
+            <p>
+                Heinzlova 62/III kat,1000 Zagreb, Hrvatska</p>
+            <p>
+                <img src="@Url.Content("~/Content/icons/images/tel.png")" width="26px" height="22px" alt="Tel" title="Tel"/>
+                <span style="padding-left: 5px; color: #bec531;">+ 385 1 6009 870</span>
+                <img src="@Url.Content("~/Content/icons/images/mail.png")" width="24px" height="17px" alt="e-mail" title="e-mail" style="padding-left:30px;"/>
+                <span style="padding-left: 5px;"><a href="mailto:info@trzistenovca.hr" style="color: #bec531;">
+                    info@trzistenovca.hr</a></span></p>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="wrapper">
+            <div style="float: left;">
+                <img src="@Url.Content("~/Content/icons/images/logo_simbol.png")" width="69px" height="62px" alt="Tržište novca Zagreb" title="Tržište novca Zagreb"/>
+            </div>
+            <div style="float: right;">
+                <ul id="bottom-nav">
+                    <li>@Html.ActionLink("Početna", "Index")</li>
+                    <li>@Html.ActionLink("Kamatne stope HNB-a", "TrgovanjeGodinaRokHnbKamatneStope")</li>
+                    <li>@Html.ActionLink("Kamatne stope na Tržištu novca", "TrgovanjeGodinaRokKamatneStope")</li>
+                    <li>@Html.ActionLink("Repo aukcija HNB", "RepoAukcija", null, new { style = "border: 0px;" })</li>
+                </ul>
+            </div>
+        </div>
+        <div class="author" style="display: block;">
+            &copy; MCS Grupa (2000 - @DateTime.Now.Year)</div>
+    </div>*@
 </body>
 </html>
