@@ -1,11 +1,22 @@
 ﻿@model NinjaSoftware.TrzisteNovca.Models.BackOffice.SudionikPager
 @using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 @using NinjaSoftware.TrzisteNovca.Common
+@using NinjaSoftware.Api.Mvc
+@using NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 
 @{
     String title = "Lista sudionika";
     ViewBag.Title = title;
 }
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#DropDownSudionikGrupa").change(function () {
+            var url = window.location.pathname + "?sudionikGrupaId=" + this.value;
+            window.location.href = url;
+        });
+    });
+</script>
 
 <div class="content-box">
 
@@ -14,6 +25,9 @@
 <p>
     @Html.ActionLink("Kreiraj novog sudionika", "SudionikEdit")
 </p>
+<br />
+Grupa: @Html.DropDownList("DropDownSudionikGrupa", ViewHelper.GenerateDropDownItemSource(Model.SudionikGrupaCollection, SudionikGrupaRoFields.SudionikGrupaId.Name, SudionikGrupaRoFields.Name.Name, Model.SudionikGrupaId))
+
 <table class="default">
   <thead> 
     <tr>
@@ -23,6 +37,7 @@
         <th>
             Web adresa
         </th>
+        <th>Grupa</th>
         <th></th>
     </tr>
   </thead>
@@ -35,6 +50,7 @@
         <td>
             @item.WebAdresa
         </td>
+        <td>@item.SudionikGrupa.Name</td>
         <td>
             @Html.ActionLink("Uredi", "SudionikEdit", new { sudionikId = item.SudionikId }) |
             @Html.ActionLink("Obriši", "SudionikDelete", 
@@ -46,7 +62,7 @@
   </tbody>
   <tfoot>
     <tr>
-        <td colspan="3" style="text-align: center;">
+        <td colspan="4" style="text-align: center;">
             @Model.GenerateDropDownPagingAndPrevNextHtmlElements(Config.PagerPrefixText())
         </td>
     </tr>

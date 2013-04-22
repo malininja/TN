@@ -217,12 +217,13 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
         #region Sudionik
 
         [HttpGet]
-        public ActionResult SudionikList(int? pageNumber, string sortField, bool? isSortAscending)
+        public ActionResult SudionikList(long? sudionikGrupaId, int? pageNumber, string sortField, bool? isSortAscending)
         {
             DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory(User.Identity.Name);
             using (adapter)
             {
                 SudionikPager sudionikPager = new SudionikPager();
+                sudionikPager.SudionikGrupaId = sudionikGrupaId;
                 sudionikPager.LoadData(adapter, pageNumber, Config.PageSize(), sortField, isSortAscending);
 
                 return View(sudionikPager);

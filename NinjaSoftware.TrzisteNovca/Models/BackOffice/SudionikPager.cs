@@ -22,15 +22,26 @@ namespace NinjaSoftware.TrzisteNovca.Models.BackOffice
             get { return true; }
         }
 
-        protected override void SetDataSource(SD.LLBLGen.Pro.ORMSupportClasses.DataAccessAdapterBase adapter, int pageNumber, int pageSize, string sortField, bool isSortAscending)
+        protected override void SetDataSource(DataAccessAdapterBase adapter, int pageNumber, int pageSize, string sortField, bool isSortAscending)
         {
+            RelationPredicateBucket bucket = null;
+            if (this.SudionikGrupaId.HasValue)
+            {
+                bucket = new RelationPredicateBucket(SudionikFields.SudionikGrupaId == this.SudionikGrupaId.Value);
+            }
+
             PrefetchPath2 prefetchPath = new PrefetchPath2(EntityType.SudionikEntity);
             prefetchPath.Add(SudionikEntity.PrefetchPathSudionikGrupa);
 
-            IEnumerable<SudionikEntity> sudionikCollection = SudionikEntity.FetchSudionikCollectionForPaging(adapter, null, null, pageNumber, pageSize, sortField, isSortAscending);
+            IEnumerable<SudionikEntity> sudionikCollection = SudionikEntity.FetchSudionikCollectionForPaging(adapter, bucket, prefetchPath, pageNumber, pageSize, sortField, isSortAscending);
 
             this.DataSource = sudionikCollection;
-            this.NoOfRecords = SudionikEntity.GetNumberOfEntities(adapter, null);
+            this.NoOfRecords = SudionikEntity.GetNumberOfEntities(adapter, bucket);
+
+            this.SudionikGrupaCollection = SudionikGrupaRoEntity.FetchSudionikGrupaRoCollection(adapter, null, null).OrderBy(sg => sg.Name);
         }
+
+        public IEnumerable<SudionikGrupaRoEntity> SudionikGrupaCollection { get; set; }
+        public long? SudionikGrupaId { get; set; }
     }
 }

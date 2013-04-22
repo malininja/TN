@@ -27,6 +27,22 @@ nsUrl.getParameterValue = function (parameterName) {
         return results[1];
 }
 
+nsUrl.setParameters = function (params) {
+    var queryParameters = {};
+    var queryString = location.search.substring(1);
+    var re = /([^&=]+)=([^&]*)/g, m;
+
+    while (m = re.exec(queryString)) {
+        queryParameters[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+    }
+
+    $.each(params, function (key, value) {
+        queryParameters[key] = value;
+    });
+
+    location.search = $.param(queryParameters);
+}
+
 /* END URL specific functions */
 
 /* START HTML element specific functions */
