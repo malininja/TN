@@ -12,7 +12,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
         public SudionikViewModel(DataAccessAdapterBase adapter, long sudionikGrupaId)
         {
             this.SudionikGrupa = SudionikGrupaRoEntity.FetchSudionikGrupaRo(adapter, null, sudionikGrupaId);
-            this.SudionikCollection = SudionikEntity.FetchSudionikCollection(adapter, sudionikGrupaId);
+            this.SudionikCollection = SudionikEntity.FetchSudionikCollection(adapter, sudionikGrupaId).OrderBy(s => s.Naziv);
         }
 
         public IEnumerable<SudionikEntity> SudionikCollection { get; set; }
