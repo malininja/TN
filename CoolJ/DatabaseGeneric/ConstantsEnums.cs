@@ -312,6 +312,20 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ
 		/// <summary></summary>
 		AmountOfFields
 	}
+	/// <summary>Index enum to fast-access EntityFields in the IEntityFields collection for the entity: ZakljuceniMjesec.</summary>
+	public enum ZakljuceniMjesecFieldIndex
+	{
+		///<summary>ConcurrencyGuid. </summary>
+		ConcurrencyGuid,
+		///<summary>Godina. </summary>
+		Godina,
+		///<summary>Mjesec. </summary>
+		Mjesec,
+		///<summary>ZakljuceniMjesecId. </summary>
+		ZakljuceniMjesecId,
+		/// <summary></summary>
+		AmountOfFields
+	}
 
 
 
@@ -353,7 +367,9 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ
 		///<summary>User</summary>
 		UserEntity,
 		///<summary>ValutaRo</summary>
-		ValutaRoEntity
+		ValutaRoEntity,
+		///<summary>ZakljuceniMjesec</summary>
+		ZakljuceniMjesecEntity
 	}
 
 

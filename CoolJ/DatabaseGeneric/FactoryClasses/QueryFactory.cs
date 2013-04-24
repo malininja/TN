@@ -2,7 +2,7 @@
 // This is generated code. 
 //////////////////////////////////////////////////////////////
 // Code is generated using LLBLGen Pro version: 3.5
-// Code is generated on: 9. travanj 2013. 15:09:59
+// Code is generated on: 24. travanj 2013. 16:32:46
 // Code is generated using templates: SD.TemplateBindings.SharedTemplates.NET35
 // Templates vendor: Solutions Design.
 ////////////////////////////////////////////////////////////// 
@@ -201,6 +201,12 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 		public EntityQuery<ValutaRoEntity> ValutaRo
 		{
 			get { return Create<ValutaRoEntity>(); }
+		}
+
+		/// <summary>Creates and returns a new EntityQuery for the ZakljuceniMjesec entity</summary>
+		public EntityQuery<ZakljuceniMjesecEntity> ZakljuceniMjesec
+		{
+			get { return Create<ZakljuceniMjesecEntity>(); }
 		}
 
 	}

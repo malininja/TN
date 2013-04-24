@@ -48,7 +48,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 		/// <summary>Method which initializes the internal datastores.</summary>
 		private void Init()
 		{
-			this.InitClass( (18 + 0));
+			this.InitClass( (19 + 0));
 			InitAuditInfoEntityInfos();
 			InitAuditInfoActionTypeRoEntityInfos();
 			InitEntityRoEntityInfos();
@@ -67,6 +67,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 			InitTrgovanjeVrstaRoEntityInfos();
 			InitUserEntityInfos();
 			InitValutaRoEntityInfos();
+			InitZakljuceniMjesecEntityInfos();
 
 			this.ConstructElementFieldStructures(InheritanceInfoProviderSingleton.GetInstance());
 		}
@@ -257,6 +258,15 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 			this.AddElementFieldInfo("ValutaRoEntity", "Name", typeof(System.String), false, false, false, false,  (int)ValutaRoFieldIndex.Name, 50, 0, 0);
 			this.AddElementFieldInfo("ValutaRoEntity", "SifraSlog", typeof(System.String), false, false, false, false,  (int)ValutaRoFieldIndex.SifraSlog, 50, 0, 0);
 			this.AddElementFieldInfo("ValutaRoEntity", "ValutaId", typeof(System.Int64), true, false, false, false,  (int)ValutaRoFieldIndex.ValutaId, 0, 0, 19);
+		}
+		/// <summary>Inits ZakljuceniMjesecEntity's FieldInfo objects</summary>
+		private void InitZakljuceniMjesecEntityInfos()
+		{
+			this.AddFieldIndexEnumForElementName(typeof(ZakljuceniMjesecFieldIndex), "ZakljuceniMjesecEntity");
+			this.AddElementFieldInfo("ZakljuceniMjesecEntity", "ConcurrencyGuid", typeof(System.String), false, false, false, false,  (int)ZakljuceniMjesecFieldIndex.ConcurrencyGuid, 50, 0, 0);
+			this.AddElementFieldInfo("ZakljuceniMjesecEntity", "Godina", typeof(System.Int32), false, false, false, false,  (int)ZakljuceniMjesecFieldIndex.Godina, 0, 0, 10);
+			this.AddElementFieldInfo("ZakljuceniMjesecEntity", "Mjesec", typeof(System.Int32), false, false, false, false,  (int)ZakljuceniMjesecFieldIndex.Mjesec, 0, 0, 10);
+			this.AddElementFieldInfo("ZakljuceniMjesecEntity", "ZakljuceniMjesecId", typeof(System.Int64), true, false, false, false,  (int)ZakljuceniMjesecFieldIndex.ZakljuceniMjesecId, 0, 0, 19);
 		}
 		
 	}

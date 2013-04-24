@@ -23,7 +23,8 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
         TrgovanjeGlavaHnb = 8,
         TrgovanjeStavkaHnb = 9,
         HtmlPage = 10,
-        KamatnaStopaHnb = 11
+        KamatnaStopaHnb = 11,
+        ZakljuceniMjesec = 12
     }
 
     public enum RoleEnum

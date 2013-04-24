@@ -211,7 +211,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 			IEntity2 toReturn = new KamatnaStopaHnbEntity(fields);
 			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewKamatnaStopaHnbUsingFields
 			// __LLBLGENPRO_USER_CODE_REGION_END
-			
 			return toReturn;
 		}
 		#region Included Code
@@ -459,6 +458,26 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 		#endregion
 	}
 
+	/// <summary>Factory to create new, empty ZakljuceniMjesecEntity objects.</summary>
+	[Serializable]
+	public partial class ZakljuceniMjesecEntityFactory : EntityFactoryBase2<ZakljuceniMjesecEntity> {
+		/// <summary>CTor</summary>
+		public ZakljuceniMjesecEntityFactory() : base("ZakljuceniMjesecEntity", NinjaSoftware.TrzisteNovca.CoolJ.EntityType.ZakljuceniMjesecEntity, false) { }
+		
+		/// <summary>Creates a new ZakljuceniMjesecEntity instance but uses a special constructor which will set the Fields object of the new IEntity2 instance to the passed in fields object.</summary>
+		/// <param name="fields">Populated IEntityFields2 object for the new IEntity2 to create</param>
+		/// <returns>Fully created and populated (due to the IEntityFields2 object) IEntity2 object</returns>
+		public override IEntity2 Create(IEntityFields2 fields) {
+			IEntity2 toReturn = new ZakljuceniMjesecEntity(fields);
+			// __LLBLGENPRO_USER_CODE_REGION_START CreateNewZakljuceniMjesecUsingFields
+			// __LLBLGENPRO_USER_CODE_REGION_END
+			return toReturn;
+		}
+		#region Included Code
+
+		#endregion
+	}
+
 	/// <summary>Factory to create new, empty Entity objects based on the entity type specified. Uses  entity specific factory objects</summary>
 	[Serializable]
 	public partial class GeneralEntityFactory
@@ -524,6 +543,9 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.FactoryClasses
 					break;
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.ValutaRoEntity:
 					factoryToUse = new ValutaRoEntityFactory();
+					break;
+				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.ZakljuceniMjesecEntity:
+					factoryToUse = new ZakljuceniMjesecEntityFactory();
 					break;
 			}
 			IEntity2 toReturn = null;

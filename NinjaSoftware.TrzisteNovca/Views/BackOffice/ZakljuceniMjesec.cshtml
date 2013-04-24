@@ -1,0 +1,51 @@
+﻿@model NinjaSoftware.TrzisteNovca.Models.BackOffice.ZakljuceniMjesecViewModel
+@using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
+@using NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
+
+@{
+    string title = "Zaključivanje mjeseca";
+    ViewBag.Title = title;
+
+    NinjaSoftware.Api.Mvc.NsController nsController = (NinjaSoftware.Api.Mvc.NsController)ViewContext.Controller;
+}
+
+<h2>@title</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <span style="color: red"><b>@nsController.ViewUserErrorMessage</b></span>
+    
+    <table>
+        <tr>
+            <td>Mjesec</td>
+            <td>@Html.DropDownListFor(model => model.ZakljuceniMjesec.Mjesec, Model.MjesecSelectList)</td>
+            <td>Godina</td>
+            <td>@Html.DropDownListFor(model => model.ZakljuceniMjesec.Godina, Model.GodinaSelectList)</td>
+            <td> <input type="submit" value="Zaključi mjesec" /></td>
+        </tr>
+    </table>
+}
+
+<table class="default">
+    <thead>
+        <tr>
+            <th>Godina</th>
+            <th>Mjesec</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (ZakljuceniMjesecEntity zakljuceniMjesec in Model.ZakljuceniMjesecCollection)
+    { 
+        <tr>
+            <td>@zakljuceniMjesec.Godina</td>
+            <td>@zakljuceniMjesec.Mjesec</td>
+            <td>
+                @Html.ActionLink("Obriši", "ZakljuceniMjesecDelete",
+                    new { zakljuceniMjesecId = zakljuceniMjesec.ZakljuceniMjesecId }, 
+                    new { onclick = "return confirm('Jeste li sigurni da želite obrisati zaključeni mjesec?');" })            
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

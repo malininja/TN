@@ -26,10 +26,10 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 {
 	// __LLBLGENPRO_USER_CODE_REGION_START AdditionalNamespaces
 	// __LLBLGENPRO_USER_CODE_REGION_END
-	/// <summary>Entity class which represents the entity 'KamatnaStopaHnb'.<br/><br/></summary>
+	/// <summary>Entity class which represents the entity 'ZakljuceniMjesec'.<br/><br/></summary>
 	[Serializable]
 	[JsonObject(MemberSerialization.OptIn)]	
-	public partial class KamatnaStopaHnbEntity : CommonEntityBase
+	public partial class ZakljuceniMjesecEntity : CommonEntityBase
 		// __LLBLGENPRO_USER_CODE_REGION_START AdditionalInterfaces
 		// __LLBLGENPRO_USER_CODE_REGION_END	
 	{
@@ -55,7 +55,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		public static int GetNumberOfEntities(DataAccessAdapterBase adapter, 
 			IRelationPredicateBucket filterBucket)
 		{
-			EntityCollection entityCollection = new EntityCollection(new KamatnaStopaHnbEntityFactory());
+			EntityCollection entityCollection = new EntityCollection(new ZakljuceniMjesecEntityFactory());
 			return adapter.GetDbCount(entityCollection, filterBucket);
 		}
 		
@@ -64,7 +64,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
         /// </summary>
         /// <param name="pageNumber">Must be greater than zero.</param>
         /// <param name="sortDirection">Validne vrijednosti su 'asc' i 'desc'.</param>
-        public static EntityCollection<KamatnaStopaHnbEntity> FetchKamatnaStopaHnbCollectionForPaging(DataAccessAdapterBase adapter,
+        public static EntityCollection<ZakljuceniMjesecEntity> FetchZakljuceniMjesecCollectionForPaging(DataAccessAdapterBase adapter,
 			RelationPredicateBucket bucket,
 			PrefetchPath2 prefetchPath,
             int pageNumber,
@@ -74,7 +74,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
         {
 			string sortDirection = isSortAscending ? "asc" : "desc";
 
-            Type sortEntityFieldType = typeof(KamatnaStopaHnbFields);
+            Type sortEntityFieldType = typeof(ZakljuceniMjesecFields);
             string sortEntityFieldTypeName = SortHelper.GetEntityFieldTypeNameForSorting(sortField, sortEntityFieldType);
             if (!string.IsNullOrWhiteSpace(sortEntityFieldTypeName))
             {
@@ -85,38 +85,38 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 
 			SortExpression sort = SortHelper.GetSortExpression(sortField, sortDirection, sortEntityFieldType);
 			
-            EntityCollection<KamatnaStopaHnbEntity> toReturn = new EntityCollection<KamatnaStopaHnbEntity>(new KamatnaStopaHnbEntityFactory());
+            EntityCollection<ZakljuceniMjesecEntity> toReturn = new EntityCollection<ZakljuceniMjesecEntity>(new ZakljuceniMjesecEntityFactory());
             adapter.FetchEntityCollection(toReturn, bucket, pageSize, sort, prefetchPath, pageNumber, pageSize);
 
             return toReturn;
         }
 		
-		public static EntityCollection<KamatnaStopaHnbEntity> FetchKamatnaStopaHnbCollection(DataAccessAdapterBase adapter,
+		public static EntityCollection<ZakljuceniMjesecEntity> FetchZakljuceniMjesecCollection(DataAccessAdapterBase adapter,
 			IRelationPredicateBucket filterBucket,
 			PrefetchPath2 prefetchPath)
 		{
-			EntityCollection<KamatnaStopaHnbEntity> toReturn = new EntityCollection<KamatnaStopaHnbEntity>(new KamatnaStopaHnbEntityFactory());
+			EntityCollection<ZakljuceniMjesecEntity> toReturn = new EntityCollection<ZakljuceniMjesecEntity>(new ZakljuceniMjesecEntityFactory());
 			adapter.FetchEntityCollection(toReturn, filterBucket, prefetchPath);
 			return toReturn;
 		}
 		
-		public static KamatnaStopaHnbEntity FetchKamatnaStopaHnb(DataAccessAdapterBase adapter, PrefetchPath2 prefetchPath, long KamatnaStopaHnbId)
+		public static ZakljuceniMjesecEntity FetchZakljuceniMjesec(DataAccessAdapterBase adapter, PrefetchPath2 prefetchPath, long ZakljuceniMjesecId)
 		{
-			KamatnaStopaHnbEntity _KamatnaStopaHnbEntity = new KamatnaStopaHnbEntity(KamatnaStopaHnbId);
-			adapter.FetchEntity(_KamatnaStopaHnbEntity, prefetchPath);
-			return _KamatnaStopaHnbEntity;
+			ZakljuceniMjesecEntity _ZakljuceniMjesecEntity = new ZakljuceniMjesecEntity(ZakljuceniMjesecId);
+			adapter.FetchEntity(_ZakljuceniMjesecEntity, prefetchPath);
+			return _ZakljuceniMjesecEntity;
 		}
 
 		#endregion
 		
 		/// <summary> Static CTor for setting up custom property hashtables. Is executed before the first instance of this entity class or derived classes is constructed. </summary>
-		static KamatnaStopaHnbEntity()
+		static ZakljuceniMjesecEntity()
 		{
 			SetupCustomPropertyHashtables();
 		}
 		
 		/// <summary> CTor</summary>
-		public KamatnaStopaHnbEntity():base("KamatnaStopaHnbEntity")
+		public ZakljuceniMjesecEntity():base("ZakljuceniMjesecEntity")
 		{
 			InitClassEmpty(null, null);
 		}
@@ -124,42 +124,42 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		/// <summary> CTor</summary>
 		/// <remarks>For framework usage.</remarks>
 		/// <param name="fields">Fields object to set as the fields for this entity.</param>
-		public KamatnaStopaHnbEntity(IEntityFields2 fields):base("KamatnaStopaHnbEntity")
+		public ZakljuceniMjesecEntity(IEntityFields2 fields):base("ZakljuceniMjesecEntity")
 		{
 			InitClassEmpty(null, fields);
 		}
 
 		/// <summary> CTor</summary>
-		/// <param name="validator">The custom validator object for this KamatnaStopaHnbEntity</param>
-		public KamatnaStopaHnbEntity(IValidator validator):base("KamatnaStopaHnbEntity")
+		/// <param name="validator">The custom validator object for this ZakljuceniMjesecEntity</param>
+		public ZakljuceniMjesecEntity(IValidator validator):base("ZakljuceniMjesecEntity")
 		{
 			InitClassEmpty(validator, null);
 		}
 				
 		/// <summary> CTor</summary>
-		/// <param name="kamatnaStopaHnbId">PK value for KamatnaStopaHnb which data should be fetched into this KamatnaStopaHnb object</param>
+		/// <param name="zakljuceniMjesecId">PK value for ZakljuceniMjesec which data should be fetched into this ZakljuceniMjesec object</param>
 		/// <remarks>The entity is not fetched by this constructor. Use a DataAccessAdapter for that.</remarks>
-		public KamatnaStopaHnbEntity(System.Int64 kamatnaStopaHnbId):base("KamatnaStopaHnbEntity")
+		public ZakljuceniMjesecEntity(System.Int64 zakljuceniMjesecId):base("ZakljuceniMjesecEntity")
 		{
 			InitClassEmpty(null, null);
-			this.KamatnaStopaHnbId = kamatnaStopaHnbId;
+			this.ZakljuceniMjesecId = zakljuceniMjesecId;
 		}
 
 		/// <summary> CTor</summary>
-		/// <param name="kamatnaStopaHnbId">PK value for KamatnaStopaHnb which data should be fetched into this KamatnaStopaHnb object</param>
-		/// <param name="validator">The custom validator object for this KamatnaStopaHnbEntity</param>
+		/// <param name="zakljuceniMjesecId">PK value for ZakljuceniMjesec which data should be fetched into this ZakljuceniMjesec object</param>
+		/// <param name="validator">The custom validator object for this ZakljuceniMjesecEntity</param>
 		/// <remarks>The entity is not fetched by this constructor. Use a DataAccessAdapter for that.</remarks>
-		public KamatnaStopaHnbEntity(System.Int64 kamatnaStopaHnbId, IValidator validator):base("KamatnaStopaHnbEntity")
+		public ZakljuceniMjesecEntity(System.Int64 zakljuceniMjesecId, IValidator validator):base("ZakljuceniMjesecEntity")
 		{
 			InitClassEmpty(validator, null);
-			this.KamatnaStopaHnbId = kamatnaStopaHnbId;
+			this.ZakljuceniMjesecId = zakljuceniMjesecId;
 		}
 
 		/// <summary> Protected CTor for deserialization</summary>
 		/// <param name="info"></param>
 		/// <param name="context"></param>
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		protected KamatnaStopaHnbEntity(SerializationInfo info, StreamingContext context) : base(info, context)
+		protected ZakljuceniMjesecEntity(SerializationInfo info, StreamingContext context) : base(info, context)
 		{
 			if(SerializationHelper.Optimization != SerializationOptimization.Fast) 
 			{
@@ -291,14 +291,14 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		/// <returns>A list of all the EntityRelation objects the type of this instance has. Hierarchy relations are excluded.</returns>
 		protected override List<IEntityRelation> GetAllRelations()
 		{
-			return new KamatnaStopaHnbRelations().GetAllRelations();
+			return new ZakljuceniMjesecRelations().GetAllRelations();
 		}
 		
 
 		/// <summary>Creates a new instance of the factory related to this entity</summary>
 		protected override IEntityFactory2 CreateEntityFactory()
 		{
-			return EntityFactoryCache2.GetEntityFactory(typeof(KamatnaStopaHnbEntityFactory));
+			return EntityFactoryCache2.GetEntityFactory(typeof(ZakljuceniMjesecEntityFactory));
 		}
 #if !CF
 		/// <summary>Adds the member collections to the collections queue (base first)</summary>
@@ -361,20 +361,16 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 			fieldHashtable = new Dictionary<string, string>();
 			_fieldsCustomProperties.Add("ConcurrencyGuid", fieldHashtable);
 			fieldHashtable = new Dictionary<string, string>();
-			_fieldsCustomProperties.Add("Depozit", fieldHashtable);
+			_fieldsCustomProperties.Add("Godina", fieldHashtable);
 			fieldHashtable = new Dictionary<string, string>();
-			_fieldsCustomProperties.Add("Eskontna", fieldHashtable);
+			_fieldsCustomProperties.Add("Mjesec", fieldHashtable);
 			fieldHashtable = new Dictionary<string, string>();
-			_fieldsCustomProperties.Add("KamatnaStopaHnbId", fieldHashtable);
-			fieldHashtable = new Dictionary<string, string>();
-			_fieldsCustomProperties.Add("LombarniKredit", fieldHashtable);
-			fieldHashtable = new Dictionary<string, string>();
-			_fieldsCustomProperties.Add("Pricuva", fieldHashtable);
+			_fieldsCustomProperties.Add("ZakljuceniMjesecId", fieldHashtable);
 		}
 		#endregion
 
 		/// <summary> Initializes the class with empty data, as if it is a new Entity.</summary>
-		/// <param name="validator">The validator object for this KamatnaStopaHnbEntity</param>
+		/// <param name="validator">The validator object for this ZakljuceniMjesecEntity</param>
 		/// <param name="fields">Fields of this entity</param>
 		private void InitClassEmpty(IValidator validator, IEntityFields2 fields)
 		{
@@ -392,9 +388,9 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 
 		#region Class Property Declarations
 		/// <summary> The relations object holding all relations of this entity with other entity classes.</summary>
-		public  static KamatnaStopaHnbRelations Relations
+		public  static ZakljuceniMjesecRelations Relations
 		{
-			get	{ return new KamatnaStopaHnbRelations(); }
+			get	{ return new ZakljuceniMjesecRelations(); }
 		}
 		
 		/// <summary> The custom properties for this entity type.</summary>
@@ -428,70 +424,48 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 			get { return FieldsCustomProperties;}
 		}
 
-		/// <summary> The ConcurrencyGuid property of the Entity KamatnaStopaHnb<br/><br/></summary>
-		/// <remarks>Mapped on  table field: "KamatnaStopaHnb"."ConcurrencyGuid"<br/>
+		/// <summary> The ConcurrencyGuid property of the Entity ZakljuceniMjesec<br/><br/></summary>
+		/// <remarks>Mapped on  table field: "ZakljuceniMjesec"."ConcurrencyGuid"<br/>
 		/// Table field type characteristics (type, precision, scale, length): NVarChar, 0, 0, 50<br/>
 		/// Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
 		[JsonProperty]		
 		public virtual System.String ConcurrencyGuid
 		{
-			get { return (System.String)GetValue((int)KamatnaStopaHnbFieldIndex.ConcurrencyGuid, true); }
-			set	{ SetValue((int)KamatnaStopaHnbFieldIndex.ConcurrencyGuid, value); }
+			get { return (System.String)GetValue((int)ZakljuceniMjesecFieldIndex.ConcurrencyGuid, true); }
+			set	{ SetValue((int)ZakljuceniMjesecFieldIndex.ConcurrencyGuid, value); }
 		}
 
-		/// <summary> The Depozit property of the Entity KamatnaStopaHnb<br/><br/></summary>
-		/// <remarks>Mapped on  table field: "KamatnaStopaHnb"."Depozit"<br/>
-		/// Table field type characteristics (type, precision, scale, length): Decimal, 6, 2, 0<br/>
+		/// <summary> The Godina property of the Entity ZakljuceniMjesec<br/><br/></summary>
+		/// <remarks>Mapped on  table field: "ZakljuceniMjesec"."Godina"<br/>
+		/// Table field type characteristics (type, precision, scale, length): Int, 10, 0, 0<br/>
 		/// Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
 		[JsonProperty]		
-		public virtual System.Decimal Depozit
+		public virtual System.Int32 Godina
 		{
-			get { return (System.Decimal)GetValue((int)KamatnaStopaHnbFieldIndex.Depozit, true); }
-			set	{ SetValue((int)KamatnaStopaHnbFieldIndex.Depozit, value); }
+			get { return (System.Int32)GetValue((int)ZakljuceniMjesecFieldIndex.Godina, true); }
+			set	{ SetValue((int)ZakljuceniMjesecFieldIndex.Godina, value); }
 		}
 
-		/// <summary> The Eskontna property of the Entity KamatnaStopaHnb<br/><br/></summary>
-		/// <remarks>Mapped on  table field: "KamatnaStopaHnb"."Eskontna"<br/>
-		/// Table field type characteristics (type, precision, scale, length): Decimal, 6, 2, 0<br/>
+		/// <summary> The Mjesec property of the Entity ZakljuceniMjesec<br/><br/></summary>
+		/// <remarks>Mapped on  table field: "ZakljuceniMjesec"."Mjesec"<br/>
+		/// Table field type characteristics (type, precision, scale, length): Int, 10, 0, 0<br/>
 		/// Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
 		[JsonProperty]		
-		public virtual System.Decimal Eskontna
+		public virtual System.Int32 Mjesec
 		{
-			get { return (System.Decimal)GetValue((int)KamatnaStopaHnbFieldIndex.Eskontna, true); }
-			set	{ SetValue((int)KamatnaStopaHnbFieldIndex.Eskontna, value); }
+			get { return (System.Int32)GetValue((int)ZakljuceniMjesecFieldIndex.Mjesec, true); }
+			set	{ SetValue((int)ZakljuceniMjesecFieldIndex.Mjesec, value); }
 		}
 
-		/// <summary> The KamatnaStopaHnbId property of the Entity KamatnaStopaHnb<br/><br/></summary>
-		/// <remarks>Mapped on  table field: "KamatnaStopaHnb"."KamatnaStopaHnbId"<br/>
+		/// <summary> The ZakljuceniMjesecId property of the Entity ZakljuceniMjesec<br/><br/></summary>
+		/// <remarks>Mapped on  table field: "ZakljuceniMjesec"."ZakljuceniMjesecId"<br/>
 		/// Table field type characteristics (type, precision, scale, length): BigInt, 19, 0, 0<br/>
-		/// Table field behavior characteristics (is nullable, is PK, is identity): false, true, false</remarks>
+		/// Table field behavior characteristics (is nullable, is PK, is identity): false, true, true</remarks>
 		[JsonProperty]		
-		public virtual System.Int64 KamatnaStopaHnbId
+		public virtual System.Int64 ZakljuceniMjesecId
 		{
-			get { return (System.Int64)GetValue((int)KamatnaStopaHnbFieldIndex.KamatnaStopaHnbId, true); }
-			set	{ SetValue((int)KamatnaStopaHnbFieldIndex.KamatnaStopaHnbId, value); }
-		}
-
-		/// <summary> The LombarniKredit property of the Entity KamatnaStopaHnb<br/><br/></summary>
-		/// <remarks>Mapped on  table field: "KamatnaStopaHnb"."LombarniKredit"<br/>
-		/// Table field type characteristics (type, precision, scale, length): Decimal, 6, 2, 0<br/>
-		/// Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
-		[JsonProperty]		
-		public virtual System.Decimal LombarniKredit
-		{
-			get { return (System.Decimal)GetValue((int)KamatnaStopaHnbFieldIndex.LombarniKredit, true); }
-			set	{ SetValue((int)KamatnaStopaHnbFieldIndex.LombarniKredit, value); }
-		}
-
-		/// <summary> The Pricuva property of the Entity KamatnaStopaHnb<br/><br/></summary>
-		/// <remarks>Mapped on  table field: "KamatnaStopaHnb"."Pricuva"<br/>
-		/// Table field type characteristics (type, precision, scale, length): Decimal, 6, 2, 0<br/>
-		/// Table field behavior characteristics (is nullable, is PK, is identity): false, false, false</remarks>
-		[JsonProperty]		
-		public virtual System.Decimal Pricuva
-		{
-			get { return (System.Decimal)GetValue((int)KamatnaStopaHnbFieldIndex.Pricuva, true); }
-			set	{ SetValue((int)KamatnaStopaHnbFieldIndex.Pricuva, value); }
+			get { return (System.Int64)GetValue((int)ZakljuceniMjesecFieldIndex.ZakljuceniMjesecId, true); }
+			set	{ SetValue((int)ZakljuceniMjesecFieldIndex.ZakljuceniMjesecId, value); }
 		}
 	
 		/// <summary> Gets the type of the hierarchy this entity is in. </summary>
@@ -510,7 +484,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 		[Browsable(false), XmlIgnore]
 		protected override int LLBLGenProEntityTypeValue 
 		{ 
-			get { return (int)NinjaSoftware.TrzisteNovca.CoolJ.EntityType.KamatnaStopaHnbEntity; }
+			get { return (int)NinjaSoftware.TrzisteNovca.CoolJ.EntityType.ZakljuceniMjesecEntity; }
 		}
 
 		#endregion

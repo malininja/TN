@@ -587,6 +587,31 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses
 			get { return (EntityField2)EntityFieldFactory.Create(ValutaRoFieldIndex.ValutaId);}
 		}
 	}
+
+	/// <summary>Field Creation Class for entity ZakljuceniMjesecEntity</summary>
+	public partial class ZakljuceniMjesecFields
+	{
+		/// <summary>Creates a new ZakljuceniMjesecEntity.ConcurrencyGuid field instance</summary>
+		public static EntityField2 ConcurrencyGuid
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(ZakljuceniMjesecFieldIndex.ConcurrencyGuid);}
+		}
+		/// <summary>Creates a new ZakljuceniMjesecEntity.Godina field instance</summary>
+		public static EntityField2 Godina
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(ZakljuceniMjesecFieldIndex.Godina);}
+		}
+		/// <summary>Creates a new ZakljuceniMjesecEntity.Mjesec field instance</summary>
+		public static EntityField2 Mjesec
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(ZakljuceniMjesecFieldIndex.Mjesec);}
+		}
+		/// <summary>Creates a new ZakljuceniMjesecEntity.ZakljuceniMjesecId field instance</summary>
+		public static EntityField2 ZakljuceniMjesecId
+		{
+			get { return (EntityField2)EntityFieldFactory.Create(ZakljuceniMjesecFieldIndex.ZakljuceniMjesecId);}
+		}
+	}
 	
 
 }

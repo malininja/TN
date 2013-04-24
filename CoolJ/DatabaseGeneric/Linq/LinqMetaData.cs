@@ -114,6 +114,9 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.Linq
 				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.ValutaRoEntity:
 					toReturn = this.ValutaRo;
 					break;
+				case NinjaSoftware.TrzisteNovca.CoolJ.EntityType.ZakljuceniMjesecEntity:
+					toReturn = this.ZakljuceniMjesec;
+					break;
 				default:
 					toReturn = null;
 					break;
@@ -227,6 +230,12 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.Linq
 		public DataSource2<ValutaRoEntity> ValutaRo
 		{
 			get { return new DataSource2<ValutaRoEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
+		}
+		
+		/// <summary>returns the datasource to use in a Linq query when targeting ZakljuceniMjesecEntity instances in the database.</summary>
+		public DataSource2<ZakljuceniMjesecEntity> ZakljuceniMjesec
+		{
+			get { return new DataSource2<ZakljuceniMjesecEntity>(_adapterToUse, new ElementCreator(), _customFunctionMappings, _contextToUse); }
 		}
 		
 		

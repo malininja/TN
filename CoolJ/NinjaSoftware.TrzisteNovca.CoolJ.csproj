@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseGeneric\BusinessLogic\ZakljuceniMjesecEntity.cs" />
     <Compile Include="DatabaseGeneric\BusinessLogic\TrgovanjeMjesecRokHnb.cs" />
     <Compile Include="DatabaseGeneric\BusinessLogic\TrgovanjeStavkaHnbEntity.cs" />
     <Compile Include="DatabaseGeneric\BusinessLogic\HtmlPageEntity.cs" />
@@ -140,6 +141,9 @@
       <GeneratedBy>LLBLGen Pro</GeneratedBy>
     </Compile>
     <Compile Include="DatabaseGeneric\EntityClasses\ValutaRoEntity.cs">
+      <GeneratedBy>LLBLGen Pro</GeneratedBy>
+    </Compile>
+    <Compile Include="DatabaseGeneric\EntityClasses\ZakljuceniMjesecEntity.cs">
       <GeneratedBy>LLBLGen Pro</GeneratedBy>
     </Compile>
     <Compile Include="DatabaseGeneric\FactoryClasses\EntityFactories.cs">
@@ -230,6 +234,9 @@
       <GeneratedBy>LLBLGen Pro</GeneratedBy>
     </Compile>
     <Compile Include="DatabaseGeneric\RelationClasses\ValutaRoRelations.cs">
+      <GeneratedBy>LLBLGen Pro</GeneratedBy>
+    </Compile>
+    <Compile Include="DatabaseGeneric\RelationClasses\ZakljuceniMjesecRelations.cs">
       <GeneratedBy>LLBLGen Pro</GeneratedBy>
     </Compile>
   </ItemGroup>

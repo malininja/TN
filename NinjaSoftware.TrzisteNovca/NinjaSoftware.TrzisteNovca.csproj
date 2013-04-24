@@ -143,6 +143,7 @@
     <Compile Include="Models\BackOffice\SudionikViewModel.cs" />
     <Compile Include="Models\BackOffice\TrgovanjeGlavaPager.cs" />
     <Compile Include="Models\BackOffice\TrgovanjeViewModel.cs" />
+    <Compile Include="Models\BackOffice\ZakljuceniMjesecViewModel.cs" />
     <Compile Include="Models\Extensions.cs" />
     <Compile Include="Models\Helper.cs" />
     <Compile Include="Models\Account\LoginModel.cs" />
@@ -936,6 +937,7 @@
     <Content Include="Views\BackOffice\KamatnaStopaHnbEdit.cshtml" />
     <Content Include="Views\Home\KamatnaStopaHnb.cshtml" />
     <Content Include="Views\Home\KonferencijaList.cshtml" />
+    <Content Include="Views\BackOffice\ZakljuceniMjesec.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

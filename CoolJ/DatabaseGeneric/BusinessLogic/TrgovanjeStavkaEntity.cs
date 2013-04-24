@@ -63,11 +63,36 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 
         #region Static methods
 
+        /// <summary>
+        /// NE dohvaća stavke za trenutni mjesec, osim ako trenutni mjesec nije zaključen.
+        /// </summary>
         public static EntityCollection<TrgovanjeStavkaEntity> FetchTrgovanjeStavkaCollection(DataAccessAdapterBase adapter, 
-            int godina, ValutaEnum? valutaEnum)
+            int godina, 
+            ValutaEnum? valutaEnum)
         {
             DateTime startDate = new DateTime(godina, 1, 1);
-            DateTime endDate = startDate.AddYears(1);
+            DateTime endDate;
+
+            if (DateTime.Now.Year == godina)
+            {
+                int month;
+
+                ZakljuceniMjesecEntity zakljuceniMjesec = ZakljuceniMjesecEntity.FetchZakljuceniMjesec(adapter, godina, DateTime.Now.Month);
+                if (null == zakljuceniMjesec)
+                {
+                    month = DateTime.Now.Month;
+                }
+                else
+                {
+                    month = DateTime.Now.Month + 1;
+                }
+
+                endDate = new DateTime(godina, month, 1);
+            }
+            else
+            {
+                endDate = startDate.AddYears(1);
+            }
 
             RelationPredicateBucket bucket = new RelationPredicateBucket();
             bucket.Relations.Add(TrgovanjeStavkaEntity.Relations.TrgovanjeGlavaEntityUsingTrgovanjeGlavaId);

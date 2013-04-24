@@ -295,6 +295,14 @@
           <Field Name="ValutaId" Type="long" IsPrimaryKey="true" />
         </Fields>
       </EntityDefinition>
+      <EntityDefinition Name="ZakljuceniMjesec">
+        <Fields>
+          <Field Name="ConcurrencyGuid" Type="string" MaxLength="50" />
+          <Field Name="Godina" Type="int" />
+          <Field Name="Mjesec" Type="int" />
+          <Field Name="ZakljuceniMjesecId" Type="long" IsPrimaryKey="true" />
+        </Fields>
+      </EntityDefinition>
     </EntityDefinitions>
     <Relationships>
       <NormalRelationship Name="AuditInfo.AuditInfoActionType-AuditInfoActionTypeRo.AuditInfoCollection" Start=":AuditInfo" End=":AuditInfoActionTypeRo" StartNavigator="AuditInfoActionType" EndNavigator="AuditInfoCollection" Type="4">
@@ -424,7 +432,7 @@
                     <Field Name="ConcurrencyGuid" Ordinal="1" DbType="12" Length="50" />
                     <Field Name="Depozit" Ordinal="2" DbType="5" Precision="6" Scale="2" />
                     <Field Name="Eskontna" Ordinal="3" DbType="5" Precision="6" Scale="2" />
-                    <Field Name="KamatnaStopaHnbId" Ordinal="4" TrackedChanges="4608" IsPrimaryKey="true" PkConstraintName="PK_4a82eb34eec9863e0682ad3b5d8" DbType="0" Precision="19" />
+                    <Field Name="KamatnaStopaHnbId" Ordinal="4" IsPrimaryKey="true" PkConstraintName="PK_4a82eb34eec9863e0682ad3b5d8" DbType="0" Precision="19" />
                     <Field Name="LombarniKredit" Ordinal="5" DbType="5" Precision="6" Scale="2" />
                     <Field Name="Pricuva" Ordinal="6" DbType="5" Precision="6" Scale="2" />
                   </Fields>
@@ -541,6 +549,14 @@
                     <Field Name="Name" Ordinal="2" DbType="12" Length="50" />
                     <Field Name="SifraSlog" Ordinal="3" DbType="12" Length="50" />
                     <Field Name="ValutaId" Ordinal="4" IsPrimaryKey="true" PkConstraintName="PK_11cce9f433e95c5a2f16f294f4f" DbType="0" Precision="19" />
+                  </Fields>
+                </Table>
+                <Table Name="ZakljuceniMjesec">
+                  <Fields>
+                    <Field Name="ConcurrencyGuid" Ordinal="1" DbType="12" Length="50" />
+                    <Field Name="Godina" Ordinal="2" DbType="8" Precision="10" />
+                    <Field Name="Mjesec" Ordinal="3" DbType="8" Precision="10" />
+                    <Field Name="ZakljuceniMjesecId" Ordinal="4" IsIdentity="true" IsPrimaryKey="true" PkConstraintName="PK_1cec7544bc0b39099411671f82a" DbType="0" Precision="19" />
                   </Fields>
                 </Table>
               </Tables>
@@ -782,6 +798,14 @@
             <FieldMapping FieldName="Name" TargetFieldName="Name" />
             <FieldMapping FieldName="SifraSlog" TargetFieldName="SifraSlog" />
             <FieldMapping FieldName="ValutaId" TargetFieldName="ValutaId" />
+          </FieldMappings>
+        </EntityMapping>
+        <EntityMapping EntityName=":ZakljuceniMjesec" TargetName="atjanmcs301107hr2706_tn:dbo:ZakljuceniMjesec">
+          <FieldMappings>
+            <FieldMapping FieldName="ConcurrencyGuid" TargetFieldName="ConcurrencyGuid" />
+            <FieldMapping FieldName="Godina" TargetFieldName="Godina" />
+            <FieldMapping FieldName="Mjesec" TargetFieldName="Mjesec" />
+            <FieldMapping FieldName="ZakljuceniMjesecId" TargetFieldName="ZakljuceniMjesecId" SequenceToUse="SCOPE_IDENTITY()" />
           </FieldMappings>
         </EntityMapping>
       </EntityMappings>

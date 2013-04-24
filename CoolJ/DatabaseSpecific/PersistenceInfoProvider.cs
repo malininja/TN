@@ -46,7 +46,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 		/// <summary>Method which initializes the internal datastores with the structure of hierarchical types.</summary>
 		private void Init()
 		{
-			this.InitClass((18 + 0));
+			this.InitClass((19 + 0));
 			InitAuditInfoEntityMappings();
 			InitAuditInfoActionTypeRoEntityMappings();
 			InitEntityRoEntityMappings();
@@ -65,6 +65,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 			InitTrgovanjeVrstaRoEntityMappings();
 			InitUserEntityMappings();
 			InitValutaRoEntityMappings();
+			InitZakljuceniMjesecEntityMappings();
 
 		}
 
@@ -255,6 +256,15 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseSpecific
 			this.AddElementFieldMapping( "ValutaRoEntity", "Name", "Name", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 1 );
 			this.AddElementFieldMapping( "ValutaRoEntity", "SifraSlog", "SifraSlog", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 2 );
 			this.AddElementFieldMapping( "ValutaRoEntity", "ValutaId", "ValutaId", false, "BigInt", 0, 0, 19, false, "", null, typeof(System.Int64), 3 );
+		}
+		/// <summary>Inits ZakljuceniMjesecEntity's mappings</summary>
+		private void InitZakljuceniMjesecEntityMappings()
+		{
+			this.AddElementMapping( "ZakljuceniMjesecEntity", @"atjanmcs301107hr2706_tn", @"dbo", "ZakljuceniMjesec", 4 );
+			this.AddElementFieldMapping( "ZakljuceniMjesecEntity", "ConcurrencyGuid", "ConcurrencyGuid", false, "NVarChar", 50, 0, 0, false, "", null, typeof(System.String), 0 );
+			this.AddElementFieldMapping( "ZakljuceniMjesecEntity", "Godina", "Godina", false, "Int", 0, 0, 10, false, "", null, typeof(System.Int32), 1 );
+			this.AddElementFieldMapping( "ZakljuceniMjesecEntity", "Mjesec", "Mjesec", false, "Int", 0, 0, 10, false, "", null, typeof(System.Int32), 2 );
+			this.AddElementFieldMapping( "ZakljuceniMjesecEntity", "ZakljuceniMjesecId", "ZakljuceniMjesecId", false, "BigInt", 0, 0, 19, true, "SCOPE_IDENTITY()", null, typeof(System.Int64), 3 );
 		}
 
 	}

@@ -6,7 +6,9 @@
 }
 
 <script type="text/javascript" src="../../Scripts/jqplot/jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
 <script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.highlighter.min.js"></script>
+<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.enhancedLegendRenderer.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="../../Scripts/jqplot/jquery.jqplot.min.css" />
 <div class="content-header">
@@ -42,11 +44,15 @@ Promjeni godinu: @Html.DropDownList("dropDownGodina", Model.GodinaSelectList, ne
                 }
             },
             legend: { 
+                renderer: $.jqplot.EnhancedLegendRenderer,
                 show: true,
                 location: "s",
                 placement: "outside",
                 labels: ["Ponuda", "Potražnja", "Promet"],
-                noColumns: 1
+                marginTop: "35px",
+                rendererOptions: {
+                    numberRows: 1
+                }
             }
         });
 

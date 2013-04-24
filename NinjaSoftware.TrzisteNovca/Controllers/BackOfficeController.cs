@@ -411,8 +411,7 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
             }
         }
         #endregion
-
-
+        
         #region Kamatne stope HNB-a
 
         [HttpGet]
@@ -442,6 +441,62 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
                 {
                     return View(kamatnaStopaHnb);
                 }
+            }
+        }
+
+        #endregion
+
+        #region Zakljuceni mjesec
+
+        [HttpGet]
+        public ActionResult ZakljuceniMjesec()
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                ZakljuceniMjesecViewModel viewModel = new ZakljuceniMjesecViewModel();
+                viewModel.LoadViewSpecificData(adapter);
+
+                return View(viewModel);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult ZakljuceniMjesec(FormCollection formCollection)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory(User.Identity.Name);
+            using (adapter)
+            {
+                ZakljuceniMjesecViewModel viewModel = new ZakljuceniMjesecViewModel();
+
+                if (TryUpdateAndSaveIViewModel(viewModel, adapter))
+                {
+                    return RedirectToAction("ZakljuceniMjesec");
+                }
+                else
+                {
+                    return View(viewModel);
+                }
+            }
+        }
+
+        [HttpGet]
+        public ActionResult ZakljuceniMjesecDelete(int zakljuceniMjesecId)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory(User.Identity.Name);
+            using (adapter)
+            {
+                try
+                {
+                    ZakljuceniMjesecEntity zakljuceniMjesec = ZakljuceniMjesecEntity.FetchZakljuceniMjesec(adapter, null, zakljuceniMjesecId);
+                    zakljuceniMjesec.Delete(adapter);
+                }
+                catch (Exception)
+                {
+                    // Ne pada mi na pamet ništa pametno
+                }
+
+                return RedirectToAction("ZakljuceniMjesec");
             }
         }
 
