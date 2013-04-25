@@ -454,7 +454,7 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
             DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
             using (adapter)
             {
-                ZakljuceniMjesecViewModel viewModel = new ZakljuceniMjesecViewModel();
+                ZakljuceniMjesecViewModel viewModel = new ZakljuceniMjesecViewModel(true);
                 viewModel.LoadViewSpecificData(adapter);
 
                 return View(viewModel);
@@ -467,7 +467,7 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
             DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory(User.Identity.Name);
             using (adapter)
             {
-                ZakljuceniMjesecViewModel viewModel = new ZakljuceniMjesecViewModel();
+                ZakljuceniMjesecViewModel viewModel = new ZakljuceniMjesecViewModel(false);
 
                 if (TryUpdateAndSaveIViewModel(viewModel, adapter))
                 {

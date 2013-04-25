@@ -64,16 +64,16 @@ INSERT INTO "ValutaRo" ("Code", "Name", "ValutaId", "SifraSlog")
 
 -- TrgovanjeVrstaRo
 INSERT INTO "TrgovanjeVrstaRo" ("Code", "Name", "TrgovanjeVrstaId", "SifraSlog")
-	VALUES('Opoziv', 'Opoziv', 1, 'OPO');
+	VALUES('Opoziv', 'opoziv', 1, 'OPO');
 
 INSERT INTO "TrgovanjeVrstaRo" ("Code", "Name", "TrgovanjeVrstaId", "SifraSlog")
-	VALUES('TomNext', 'TOM/NEXT', 2, 'T/N');
+	VALUES('TomNext', 'T/N', 2, 'T/N');
 	
 INSERT INTO "TrgovanjeVrstaRo" ("Code", "Name", "TrgovanjeVrstaId", "SifraSlog")
-	VALUES('SpotNext', 'SPOT/NEXT', 3, 'S/N');
+	VALUES('SpotNext', 'S/N', 3, 'S/N');
 
 INSERT INTO "TrgovanjeVrstaRo" ("Code", "Name", "TrgovanjeVrstaId", "SifraSlog")
-	VALUES('RocniDepozit', 'Roèni depozit', 4, '2-6');
+	VALUES('RocniDepozit', 'roèni depozit', 4, '2-6');
 	
 INSERT INTO "TrgovanjeVrstaRo" ("Code", "Name", "TrgovanjeVrstaId", "SifraSlog")
 	VALUES('JedanTjedan', '1 tjedan', 5, '1TJ');
@@ -88,7 +88,7 @@ INSERT INTO "TrgovanjeVrstaRo" ("Code", "Name", "TrgovanjeVrstaId", "SifraSlog")
 	VALUES('TriMjeseca', '3 mjeseca', 8, '3MJ');
 	
 INSERT INTO "TrgovanjeVrstaRo" ("Code", "Name", "TrgovanjeVrstaId", "SifraSlog")
-	VALUES('ViseOdTriMjeseca', 'više od tri mjeseca', 9, '3M+');
+	VALUES('ViseOdTriMjeseca', 'više od 3 mjeseca', 9, '3M+');
 
 INSERT INTO "TrgovanjeVrstaRo" ("Code", "Name", "TrgovanjeVrstaId", "SifraSlog")
 	VALUES('Prekonocni', 'prekonoæni', 10, 'O/N');

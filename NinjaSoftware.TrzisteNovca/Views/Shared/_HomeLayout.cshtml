@@ -30,7 +30,11 @@
                 @Html.ActionLink("Početna", "Index", null, new { id = "logo" })
             </div>
             <div style="float: right;">
-                @if (!Helper.IsBackofficeMenu(ViewContext))
+                @if (Helper.IsBackofficeMenu(ViewContext))
+                {
+                    @Html.Partial("_BackofficeMenuUp")
+                }
+                else
                 {
                     @Html.Partial("_HomeMenuUp")
                 }

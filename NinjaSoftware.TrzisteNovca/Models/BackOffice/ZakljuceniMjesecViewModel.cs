@@ -13,9 +13,15 @@ namespace NinjaSoftware.TrzisteNovca.Models.BackOffice
     {
         #region Constructors
 
-        public ZakljuceniMjesecViewModel()
+        public ZakljuceniMjesecViewModel(bool doSetDefaultDate)
         {
             this.ZakljuceniMjesec = new ZakljuceniMjesecEntity();
+
+            if (doSetDefaultDate)
+            {
+                this.ZakljuceniMjesec.Mjesec = DateTime.Now.Month;
+                this.ZakljuceniMjesec.Godina = DateTime.Now.Year;
+            }
         }
 
         #endregion
@@ -34,8 +40,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.BackOffice
                 SelectListItem item = new SelectListItem() 
                 {
                     Value = i.ToString(),
-                    Text = i.ToString(),
-                    Selected = i == DateTime.Now.Year
+                    Text = i.ToString()
                 };
 
                 this.GodinaSelectList.Add(item);
@@ -47,8 +52,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.BackOffice
                 SelectListItem item = new SelectListItem()
                 {
                     Value = i.ToString(),
-                    Text = i.ToString(),
-                    Selected = i == DateTime.Now.Month
+                    Text = i.ToString()
                 };
 
                 this.MjesecSelectList.Add(item);

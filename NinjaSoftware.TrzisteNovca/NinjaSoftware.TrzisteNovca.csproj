@@ -938,6 +938,7 @@
     <Content Include="Views\Home\KamatnaStopaHnb.cshtml" />
     <Content Include="Views\Home\KonferencijaList.cshtml" />
     <Content Include="Views\BackOffice\ZakljuceniMjesec.cshtml" />
+    <Content Include="Views\Shared\_BackofficeMenuUp.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -30,6 +30,7 @@
         var currentDate = Globalize.parseDate(selectedDateStringParsed);
         
         $("#inputDatum").datepicker({
+            showOn: "both",
             defaultDate: currentDate,
             yearRange: "2000:@currentYear",
             changeMonth: true,
@@ -39,7 +40,8 @@
                 var linkParameter = datum.getFullYear() + "-" + (datum.getMonth() + 1) + "-" + datum.getDate();
 
                 window.location.href = '@Url.Action("TrgovanjeDan")' + "?date=" + linkParameter;
-            }
+            },
+            buttonImage: "../../Content/layout/kalendar.png"
         });
 
         var linePonuda = @Model.ChartLinePonudaDataSource;

@@ -1,0 +1,11 @@
+﻿@using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
+
+                <ul id="top-nav">
+                    <li>@Html.ActionLink("Kamatne stope HNB", "KamatnaStopaHnbEdit", "BackOffice", new { kamatnaStopaHnbId = 1 }, null)</li>
+                    <li>@Html.ActionLink("Zaključivanje mjeseca", "ZakljuceniMjesec", "BackOffice")</li>
+                    <li>@Html.ActionLink("Početna", "TrgovanjeDan", "Home", null, new { @target = "_blank" })</li>
+                    @if (User.IsInRole("Admin"))
+                    { 
+                        <li>@Html.ActionLink("HTML pages", "HtmlPageList", "Admin")</li>
+                    }
+                </ul>
