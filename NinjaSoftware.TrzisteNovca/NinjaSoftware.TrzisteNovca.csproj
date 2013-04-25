@@ -196,7 +196,6 @@
     <Content Include="Content\jquery.ui.datepicker.css" />
     <Content Include="Content\layout\BG_pattern.jpg" />
     <Content Include="Content\jquery.ui.theme.css" />
-    <Content Include="Content\layout\gradijent_za_tablicu.jpg" />
     <Content Include="Content\layout\kalendar.png" />
     <Content Include="Content\layout\kontakt_BG.png" />
     <Content Include="Content\layout\logo_footer.png" />
@@ -214,6 +213,7 @@
     <Content Include="Content\layout\strelica_gore.png" />
     <Content Include="Content\layout\strelica_za_naslov_desna.png" />
     <Content Include="Content\layout\strelica_za_naslov_lijeva.png" />
+    <Content Include="Content\layout\tablica_pattern.jpg" />
     <Content Include="Content\layout\tel.png" />
     <Content Include="Content\layout\traka_naslov_graf.gif" />
     <Content Include="Content\layout\za_nabrajanje.png" />

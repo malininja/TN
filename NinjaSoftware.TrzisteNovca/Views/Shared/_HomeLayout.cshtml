@@ -1,12 +1,11 @@
 ﻿@using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
-@using NinjaSoftware.TrzisteNovca.Models
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>@ViewBag.Title - Tržište Novca</title>
-    @*<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />*@
+    <title>@ViewBag.Title - Tržište Novca</title>@*<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />*@
+    <link href='http://fonts.googleapis.com/css?family=Noticia+Text' rel='stylesheet'
+        type='text/css'>
     <meta name="viewport" content="width=device-width" />
     @Styles.Render("~/bundles/css")
     @Scripts.Render("~/bundles/jquery")
@@ -24,73 +23,7 @@
     </script>
 </head>
 <body>
-<div id="header">
-        <div class="wrapper">
-            <div style="float: left;">
-                @Html.ActionLink("Početna", "Index", null, new { id = "logo" })
-            </div>
-            <div style="float: right;">
-                @if (Helper.IsBackofficeMenu(ViewContext))
-                {
-                    @Html.Partial("_BackofficeMenuUp")
-                }
-                else
-                {
-                    @Html.Partial("_HomeMenuUp")
-                }
-            </div>
-        </div>
-    </div>
-    <div id="navigation">
-        <div class="wrapper">
-            @if (Helper.IsBackofficeMenu(ViewContext))
-            { 
-                @Html.Partial("_BackofficeMenuMiddle")
-            }
-            else
-            {
-                @Html.Partial("_HomeMenuMiddle")                
-            }
-        </div>
-    </div>
-    <div id="content">
-        @RenderBody()
-    </div>
-
-  @if (!Helper.IsBackofficeMenu(ViewContext))
-  {
-    <div id="prefooter">
-        <div class="wrapper box align-r">
-            <p>
-                Tržište novca i kratkoročnih vrijednosnica d.d.</p>
-            <p>
-                Heinzlova 62/III kat,1000 Zagreb, Hrvatska</p>
-            <p>
-                <img src="@Url.Content("~/Content/icons/images/tel.png")" width="26px" height="22px" alt="Tel" title="Tel"/>
-                <span style="padding-left: 5px; color: #bec531;">(+385 1) 6009 840</span>
-                <img src="@Url.Content("~/Content/icons/images/mail.png")" width="24px" height="17px" alt="e-mail" title="e-mail" style="padding-left:30px;"/>
-                <span style="padding-left: 5px;"><a href="mailto:info@trzistenovca.hr" style="color: #bec531;">
-                    info@trzistenovca.hr</a></span></p>
-        </div>
-    </div>
-    <div id="footer">
-        <div class="wrapper">
-            <div style="float: left;">
-                <img src="@Url.Content("~/Content/icons/images/logo_simbol.png")" width="69px" height="62px" alt="Tržište novca Zagreb" title="Tržište novca Zagreb"/>
-            </div>
-            <div style="float: right;">
-                <ul id="bottom-nav">
-                    <li>@Html.ActionLink("Početna", "Index")</li>
-                    <li>@Html.ActionLink("Sudionici", "SudionikGrupaList")</li>
-                    <li>@Html.ActionLink("Konferencije", "HtmlPage", new { htmlPageId = 5 })</li>
-                </ul>
-            </div>
-        </div>
-        <div class="author" style="display: block;">
-            Sva prava pridržava Tržište novca d.d., Dizajn web stranica <a target="_blank" href="http://www.mcs.hr/">MCS Grupa</a></div>
-    </div>
-  }
-    @*<div id="header">
+    <div id="header">
         <div class="wrapper">
             <div style="float: left;">
                 @Html.ActionLink("Početna", "Index", null, new { id = "logo" })
@@ -121,7 +54,7 @@
             </ul>
         </div>
     </div>
-    <div id="content">
+    <div id="content" class="wrapper">
         @RenderBody()
     </div>
     <div id="prefooter">
@@ -156,6 +89,6 @@
         </div>
         <div class="author" style="display: block;">
             &copy; MCS Grupa (2000 - @DateTime.Now.Year)</div>
-    </div>*@
+    </div>
 </body>
 </html>
