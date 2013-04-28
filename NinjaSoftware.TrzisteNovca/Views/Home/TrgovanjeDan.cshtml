@@ -25,6 +25,7 @@
         Globalize.culture("hr");
 
         $("#inputDatum").datepicker({
+            showOn: "both",
             yearRange: "2000:@currentYear",
             changeMonth: true,
             changeYear: true,
@@ -33,7 +34,8 @@
                 var linkParameter = datum.getFullYear() + "-" + (datum.getMonth() + 1) + "-" + datum.getDate();
 
                 window.location.href = '@Url.Action("TrgovanjeDan")' + "?date=" + linkParameter;
-            }
+            },
+            buttonImage: "../../Content/layout/kalendar.png"
         });
 
         var linePonuda = @Model.ChartLinePonudaDataSource;
@@ -83,10 +85,8 @@
     Dnevni pokazatelji</h1>
 <h2>@title</h2>
 <div class="tn-datepicker">
-    <div class="calendar">
-    </div>
     <div class="input">
-        @Html.TextBox("inputDatum", Model.TrgovanjeGlava.Datum.ToString("dd.MM.yyyy"), new { id = "inputDatum" })</div>
+        Promjeni datum: @Html.TextBox("inputDatum", Model.TrgovanjeGlava.Datum.ToString("dd.MM.yyyy"), new { id = "inputDatum" })</div>
     <div class="print">
     </div>
 </div>
