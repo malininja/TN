@@ -3,7 +3,7 @@
  padding: 0;
 }
 
-h1 {
+h4 {
  margin: 0;
 }
 
@@ -20,9 +20,12 @@ table {
 html, body { font-family:'Noticia Text', Arial, serif; margin: 0; padding: 0; border: 0; }
 h1, h2, h3, h4, h5 { color:#006757; text-align:center; }
 h1 { font-size: 33px; }
+h1.no-space{margin:0;}
+
 h2 { font-size: 22px; }
 h3
 {
+    margin-top:40px;
     border-color: #006757;
     text-transform:uppercase;
     font-size: 20px;
@@ -49,10 +52,20 @@ h3:after
     margin-right:-3px;
 }
 
+h4
+{
+    margin-top:40px;
+    line-height: 47px;
+    font-size: 16px;
+    background-image: url('layout/traka_naslov_graf.gif');
+    background-repeat: repeat-x;
+    text-transform: uppercase;
+}
+
 /* LAYOUT */
 html
 {
-    background-color: #FFFFFF;
+    background-color: #CEDBAA;
     background-image: url('layout/BG_pattern.jpg');
     background-repeat: repeat-x;
 }
@@ -71,48 +84,52 @@ div#header
 
 #navigation
 {
+    background-position: bottom;
     background-image: url('layout/navigacija/pattern_nav.gif');
     background-repeat: repeat-x;
+    height: 77px;
 }
 
 div#content
 {
+    margin-top:-18px;
+    border-style: solid;
+    border-width: 0px 1px 1px 1px;
+    border-color: #CCCCCC;
     background-color: #FFFFFF;
-    padding:40px 20px 40px 20px;
+    padding: 40px 20px 10px 20px;
 }
 
-div#prefooter
+div#content-info
 {
-    color:#fff;
-    background-image: url('icons/images/BG_footer.png');
-    background-repeat: repeat-x;
+    margin: 70px 0 0 -35.5px;
+    background-image: url('layout/kontakt_BG.png');
+    background-repeat: no-repeat;
+    width: 1052px;
+    height: 188px;
 }
 
 div#footer
 {
     padding:30px 0 0 0;
-    border-style: solid;
-    border-top-color: #999999;
-    border-width: 2px 0px 0px 0px;
-    background-image: url('icons/images/header_BG_ispod_loga.jpg');
-    background-repeat:repeat-x;
-    height:160px;
-    color: #006e5d;
+    height:140px;
 }
 
 .wrapper{ width:980px; margin: auto;}
+.wrapper-top{ width:1032px; margin: auto;}
+.wrapper-navi{ width:1000px; margin: auto;}
 .box{padding:40px 20px 20px 20px;}
 
 /* ELEMENTS */
 a#logo
 {
-    background-image: url('icons/images/logo.png');
+    background-image: url('layout/logo.png');
     background-repeat: no-repeat;
-    width:203px;
-    height:89px;
-    text-indent:-5000px;
-    display:inline-block;
-    margin-top:30px;
+    width: 203px;
+    height: 89px;
+    text-indent: -5000px;
+    display: inline-block;
+    margin-top: 115px;
 }
 
 div.tn-datepicker {margin:0 0 0 340px;}
@@ -136,7 +153,59 @@ div.tn-datepicker .print
     float:left;
 }
 
+div.chart-box
+{
+    border-style: solid;
+    border-width: 0px 1px 1px 1px;
+    border-color: #C0C0C0;
+    padding: 20px 20px;
+}
+
+div.jqplot-table-legend tr td
+{
+    margin:20px !important;
+}
+
+div.info-box
+{
+    color:#FFF;
+    margin:25px 20px 20px 40px;
+}
+
+div.info-box div.title
+{
+    font-size:20px;
+}
+
+div.info-box div.content
+{
+    margin-top:10px;
+    font-size:12px;
+}
+
+div.contact
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #d3a665;
+}
+
+div.author
+{
+    margin-top:20px;
+    text-align:center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
 /*Table*/
+div.table-fixed-m { width:600px;display: table;margin: 0 auto;}
+
+table.center {
+    margin-left:auto; 
+    margin-right:auto;
+}
+  
 table.default
 {
     width:100%;
@@ -149,28 +218,49 @@ table.default
 
 table.default thead, table.default tfoot
 {
-    background: #e6e6e6 url('layout/tablica_pattern.jpg') repeat-x;
+    background: #edf3d1 url('layout/tablica_pattern.jpg') repeat-x;
     font-weight: bold;
     text-align: center;
     line-height:30px;
-    
 }
-table.default thead tr th, table.default tfoot tr td{padding:0 10px 0 10px;}
+
+table.default tbody { line-height:30px; text-align: center;}
+
+table.default thead tr th, table.default tbody tr td, table.default tfoot tr td
+{
+    background-position: right center;
+    background-image: url('layout/separator_tablica.png');
+    background-repeat: no-repeat;
+}
+
+table.default tbody tr td
+{
+    border-width: 0px 0px 1px 0px;
+    border-style: solid;
+    border-color: #C0C0C0;
+}
+
+table.default thead tr th:last-child, table.default tbody tr td:last-child, table.default tfoot tr td:last-child
+{
+    background-image: none;
+}
+
 table span.value-up
 {
-    background-image: url('icons/images/poz_gore_strelica_za_tablicu.png');
+    background-image: url('layout/strelica_gore.png');
     background-repeat: no-repeat;
-    width:13px;
-    height:12px;
+    width: 13px;
+    height: 12px;
     display: inline-block;
 }
 
+
 table span.value-down
 {
-    background-image: url('icons/images/neg_dolje_strelica_za_tablicu.png');
+    background-image: url('layout/strelica_dolje.png');
     background-repeat: no-repeat;
-    width:13px;
-    height:12px;
+    width: 13px;
+    height: 12px;
     display: inline-block;
 }
 
@@ -180,29 +270,40 @@ table span.value-down
     clear:both;
 }
 /* NAVIGATION */
-ul#top-nav{ list-style-type: none; margin: 70px 0 0 0; }
+ul#top-nav
+{
+    list-style-type: none;
+    margin: 155px 0 0 0;
+}
 ul#top-nav li
 {
     float:left; 
+    border-color: #086b2a;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
 }
 
 ul#top-nav li a
 {
-    border-style: solid;
-    border-width: 0px 2px 0px 0px;
-    border-color: #006e5d;
     padding-right: 10px;
     padding-left: 10px;
     display: block;
     text-decoration: none;
-    font-family: Georgia, "Times New Roman" , Times, serif;
-    font-size: 18px;
-    color: #006e5d;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #086b2a;
 }
 
-ul#top-nav li a:hover { text-decoration:underline;}
+ul#top-nav li a:hover
+{
+    color:#172e25;
+    font-weight:bold;
+    border-style: solid;
+    border-width: 0px 0px 5px 0px;
+    border-color: #086b2a;
+}
 
-ul#bottom-nav{ list-style-type: none; margin: 30px 0 0 0; }
+ul#bottom-nav{ list-style-type: none; margin: 20px 0 0 0; }
 ul#bottom-nav li
 {
     float:left; 
@@ -211,18 +312,23 @@ ul#bottom-nav li
 ul#bottom-nav li a
 {
     border-style: solid;
-    border-width: 0px 2px 0px 0px;
+    border-width: 0px;
     border-color: #006e5d;
     padding-right: 10px;
     padding-left: 10px;
     display: block;
     text-decoration: none;
-    font-family: Georgia, "Times New Roman" , Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 11px;
-    color: #006e5d;
+    color: #172e25;
 }
 
-ul#bottom-nav li a:hover { text-decoration:underline;}
+ul#bottom-nav li a:hover
+{
+    border-style: solid;
+    font-weight: bold;
+    border-bottom-width: 2px;
+}
 
 ul#main-nav{ list-style-type: none; margin: auto; }
 ul#main-nav li
@@ -247,3 +353,29 @@ ul#main-nav li a
 }
 
 ul#main-nav li a:hover { text-decoration:underline;}
+
+div.main-navi-c
+{
+    background-image: url('layout/navigacija/pattern_nav.gif');
+    background-repeat: repeat-x;    
+}
+
+div.main-navi-l
+{
+    background-image: url('layout/navigacija/kraj_lijevi.png');
+    background-repeat: no-repeat;
+    width:26px;
+    height:77px;
+    margin-left: -26px;
+    margin-top: -59px;
+}
+
+div.main-navi-r
+{
+    background-image: url('layout/navigacija/kraj_desni.png');
+    background-repeat: no-repeat;
+    width:26px;
+    height:77px;
+    margin-top: -77px;
+    margin-left: 1000px;
+}

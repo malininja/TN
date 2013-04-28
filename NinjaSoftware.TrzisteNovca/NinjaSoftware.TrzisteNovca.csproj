@@ -167,30 +167,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Content Include="Content\icons\images\arrows-ffffff.png" />
-    <Content Include="Content\icons\images\BG_footer.png" />
-    <Content Include="Content\icons\images\BG_main.png" />
-    <Content Include="Content\icons\images\grafika_ispod_slogana.png" />
-    <Content Include="Content\icons\images\header_BG_ispod_loga.jpg" />
-    <Content Include="Content\icons\images\horiz_crta_za_footer_03.png" />
-    <Content Include="Content\icons\images\kalendar.png" />
-    <Content Include="Content\icons\images\logo.png" />
-    <Content Include="Content\icons\images\logo_simbol.png" />
-    <Content Include="Content\icons\images\mail.png" />
-    <Content Include="Content\icons\images\mala_strelica.png" />
-    <Content Include="Content\icons\images\naslov_BG.png" />
-    <Content Include="Content\icons\images\Nav_crtica_03.png" />
-    <Content Include="Content\icons\images\neg_dolje_strelica_za_tablicu.png" />
-    <Content Include="Content\icons\images\neg_gore_strelica_za_tablicu.png" />
-    <Content Include="Content\icons\images\podnaslov_BG.png" />
-    <Content Include="Content\icons\images\poz_dolje_strelica_za_tablicu.png" />
-    <Content Include="Content\icons\images\poz_gore_strelica_za_tablicu.png" />
-    <Content Include="Content\icons\images\print.png" />
-    <Content Include="Content\icons\images\strelica_vise_link.png" />
-    <Content Include="Content\icons\images\tel.png" />
-    <Content Include="Content\icons\images\traka_nav_pattern_03.png" />
-    <Content Include="Content\icons\images\ui-bg_glass_75_e6e6e6_1x400.png" />
-    <Content Include="Content\icons\traka_nav.png" />
+    <Content Include="Content\grid960.css" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\layout\BG_body.png" />
     <Content Include="Content\jquery.ui.datepicker.css" />
@@ -198,6 +175,7 @@
     <Content Include="Content\jquery.ui.theme.css" />
     <Content Include="Content\layout\kalendar.png" />
     <Content Include="Content\layout\kontakt_BG.png" />
+    <Content Include="Content\layout\logo.png" />
     <Content Include="Content\layout\logo_footer.png" />
     <Content Include="Content\layout\logo_header.png" />
     <Content Include="Content\layout\mail.png" />
@@ -209,6 +187,7 @@
     <Content Include="Content\layout\pismo_slika_bez_sjene.png" />
     <Content Include="Content\layout\print.png" />
     <Content Include="Content\layout\print_hover.png" />
+    <Content Include="Content\layout\separator_tablica.png" />
     <Content Include="Content\layout\strelica_dolje.png" />
     <Content Include="Content\layout\strelica_gore.png" />
     <Content Include="Content\layout\strelica_za_naslov_desna.png" />
@@ -218,7 +197,7 @@
     <Content Include="Content\layout\traka_naslov_graf.gif" />
     <Content Include="Content\layout\za_nabrajanje.png" />
     <Content Include="Content\main.css" />
-    <Content Include="Content\style.css" />
+    <Content Include="Content\overrides.css" />
     <Content Include="Content\superfish.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\ckeditor\build-config.js" />
@@ -872,13 +851,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_BackOfficeLayout.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\BackOffice\TrgovanjeGlavaList.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_HomeLayout.cshtml" />
+    <Content Include="Views\Shared\_PrintLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\BackOffice\TrgovanjeEdit.cshtml" />
@@ -939,6 +915,7 @@
     <Content Include="Views\Home\KonferencijaList.cshtml" />
     <Content Include="Views\BackOffice\ZakljuceniMjesec.cshtml" />
     <Content Include="Views\Shared\_BackofficeMenuUp.cshtml" />
+    <Content Include="Views\Shared\_HomeLayout.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

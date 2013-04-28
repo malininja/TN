@@ -1,6 +1,5 @@
 ﻿@using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
 @using NinjaSoftware.TrzisteNovca.Models
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,12 +20,18 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("ul.sf-menu").superfish();
+
+            $("div.print").click(function () {
+                var params = {};
+                params["printPage"] = "true";
+                ninjaSoftware.url.setParameters(params, true);
+            });
         });
     </script>
 </head>
 <body>
     <div id="header">
-        <div class="wrapper">
+        <div class="wrapper-top">
             <div style="float: left;">
                 @Html.ActionLink("Početna", "Index", null, new { id = "logo" })
             </div>
@@ -43,8 +48,9 @@
         </div>
     </div>
     <div id="navigation">
-        <div class="wrapper">
-            @if (Helper.IsBackofficeMenu(ViewContext))
+        <div class="wrapper-navi">
+        <div class="main-navi-c">
+         @if (Helper.IsBackofficeMenu(ViewContext))
             {
                 @Html.Partial("_BackofficeMenuMiddle")
             }
@@ -53,42 +59,70 @@
                 @Html.Partial("_HomeMenuMiddle")
             }
         </div>
+            <div class="main-navi-l"></div>
+            <div class="main-navi-r"></div>
+        </div>
     </div>
     <div id="content" class="wrapper">
         @RenderBody()
-    </div>
-    <div id="prefooter">
-        <div class="wrapper box align-r">
-            <h3>
-                KONTAKT</h3>
-            <p>
-                Tržište novca i kratkoročnih vrijednosnica d.d.</p>
-            <p>
-                Heinzlova 62/III kat,1000 Zagreb, Hrvatska</p>
-            <p>
-                <img src="@Url.Content("~/Content/icons/images/tel.png")" width="26px" height="22px" alt="Tel" title="Tel"/>
-                <span style="padding-left: 5px; color: #bec531;">+ 385 1 6009 870</span>
-                <img src="@Url.Content("~/Content/icons/images/mail.png")" width="24px" height="17px" alt="e-mail" title="e-mail" style="padding-left:30px;"/>
-                <span style="padding-left: 5px;"><a href="mailto:info@trzistenovca.hr" style="color: #bec531;">
-                    info@trzistenovca.hr</a></span></p>
+        <div id="content-info">
+            <div class="container_12">
+                <div class="grid_12">
+                    <div class="grid_9 alpha">
+                        <div class="grid_12">
+                            <div class="grid_5 alpha">
+                                <div class="info-box">
+                                    <div class="title">
+                                        Kontakt</div>
+                                    <div class="content">
+                                        Tržište novca i<br />
+                                        kratkoročnih vrijednosnica d.d.
+                                        <br />
+                                        <br />
+                                        Heinzelova 62a/III kat<br />
+                                        10000 Zagreb, Hrvatska
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid_7 omega">
+                                <div class="contact">
+                                    <img src="@Url.Content("~/Content/layout/tel.png")" style="margin-top:70px;margin-right:20px;" alt=""/>+
+                                    385 1 6009 870<br />
+                                    <img src="@Url.Content("~/Content/layout/mail.png")" style="margin-top:25px;margin-right:20px;" alt=""/>info@trzistenovca.hr
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid_3 omega">
+                        <img src="@Url.Content("~/Content/layout/pismo_slika_bez_sjene.png")" style="float:right;margin-right:40px;margin-top:20px;" alt=""/>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div id="footer">
         <div class="wrapper">
-            <div style="float: left;">
-                <img src="@Url.Content("~/Content/icons/images/logo_simbol.png")" width="69px" height="62px" alt="Tržište novca Zagreb" title="Tržište novca Zagreb"/>
-            </div>
-            <div style="float: right;">
-                <ul id="bottom-nav">
-                    <li>@Html.ActionLink("Početna", "Index")</li>
-                    <li>@Html.ActionLink("Kamatne stope HNB-a", "TrgovanjeGodinaRokHnbKamatneStope")</li>
-                    <li>@Html.ActionLink("Kamatne stope na Tržištu novca", "TrgovanjeGodinaRokKamatneStope")</li>
-                    <li>@Html.ActionLink("Repo aukcija HNB", "RepoAukcija", null, new { style = "border: 0px;" })</li>
-                </ul>
+            <div class="container_12">
+                <div class="grid_12">
+                    <div class="grid_2">
+                        <img src="@Url.Content("~/Content/layout/logo_footer.png")" style="margin-left:40px;" alt="" />
+                    </div>
+                    <div class="grid_10">
+                        <ul id="bottom-nav">
+                            <li>@Html.ActionLink("Početna", "Index")</li>
+                            <li>@Html.ActionLink("Sudionici", "SudionikGrupaList")</li>
+                            <li>@Html.ActionLink("Konferencije", "KonferencijaList")</li>
+                            <li>@Html.ActionLink("Korisne adrese", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.KorisneAdrese })</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="grid_12">
+                <div class="author">
+                    MSC &copy; @DateTime.Now.Year
+                </div>
+                </div>
             </div>
         </div>
-        <div class="author" style="display: block;">
-            &copy; MCS Grupa (2000 - @DateTime.Now.Year)</div>
     </div>
 </body>
 </html>

@@ -44,9 +44,10 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
 
             foreach (TrgovanjeGlavaEntity trgovanjeGlava in trgovanjeGlavaCollection)
             {
-                chartLinePonuda.Append(string.Format("{0},", trgovanjeGlava.Ponuda(ValutaEnum.Kn).ToStringInMilions("F", "en")));
-                chartLinePotraznja.Append(string.Format("{0},", trgovanjeGlava.Potraznja(ValutaEnum.Kn).ToStringInMilions("F", "en")));
-                chartLinePromet.Append(string.Format("{0},", trgovanjeGlava.Promet(ValutaEnum.Kn).ToStringInMilions("F", "en")));
+                string dateString = trgovanjeGlava.Datum.ToString("yyyy-MM-dd");
+                chartLinePonuda.Append(string.Format("['{0}', {1}],", dateString, trgovanjeGlava.Ponuda(ValutaEnum.Kn).ToStringInMilions("F", "en")));
+                chartLinePotraznja.Append(string.Format("['{0}', {1}],", dateString, trgovanjeGlava.Potraznja(ValutaEnum.Kn).ToStringInMilions("F", "en")));
+                chartLinePromet.Append(string.Format("['{0}', {1}],", dateString, trgovanjeGlava.Promet(ValutaEnum.Kn).ToStringInMilions("F", "en")));
             }
 
             chartLinePonuda.Append("]");

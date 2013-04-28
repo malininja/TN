@@ -11,7 +11,8 @@
 .sf-menu li {
 	position: relative;
 }
-.sf-menu ul {
+.sf-menu ul 
+{
 	position: absolute;
 	display: none;
 	top: 100%;
@@ -41,8 +42,9 @@
 	/*float: left;*/
 	/*margin-bottom: 1em;*/
 }
-.sf-menu ul {
-	box-shadow: 2px 2px 6px rgba(0,0,0,.2);
+.sf-menu ul 
+{
+    box-shadow: 2px 2px 6px rgba(0,0,0,.2);
 	min-width: 12em; /* allow long menu items to determine submenu width */
 	*width: 12em; /* no auto sub width for IE7, see white-space comment below */
 }
@@ -61,7 +63,8 @@
     text-transform:uppercase;
     line-height: 32px;
 }
-.sf-menu li { 
+.sf-menu li  
+{
 	background-color:transparent;
 	white-space: nowrap; /* no need for Supersubs plugin */
 	* white-space: normal; /* ...unless you support IE7 (let it wrap) */

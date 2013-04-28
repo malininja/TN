@@ -1,3 +1,10 @@
 ﻿@{
-    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+    if (string.IsNullOrWhiteSpace(Request["printPage"]))
+    {
+        Layout = "~/Views/Shared/_HomeLayout.cshtml";                
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_PrintLayout.cshtml";
+    }
 }

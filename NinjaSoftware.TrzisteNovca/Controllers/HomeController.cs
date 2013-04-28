@@ -19,7 +19,7 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
     public class HomeController : Controller
     {
         public ActionResult Index(DateTime? date)
-        {
+        { 
             return RedirectToAction("TrgovanjeDan");
         }
 

@@ -14,6 +14,8 @@
     }
     
     ViewBag.Title = title;
+
+    NinjaSoftware.Api.Mvc.NsController nsController = (NinjaSoftware.Api.Mvc.NsController)ViewContext.Controller;
 }
 
 <div class="content-box">
@@ -24,12 +26,10 @@
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
-
+    <span style="color: red"><b>@nsController.ViewUserErrorMessage</b></span>
+    
     @Html.HiddenFor(model => model.Sudionik.SudionikId)
     @Html.HiddenFor(model => model.Sudionik.ConcurrencyGuid)
-
-    <fieldset>
-        <legend>SudionikEntity</legend>
 
         <div class="editor-label">
             Naziv
@@ -43,7 +43,7 @@
             Grupa
         </div>
         <div class="editor-field">
-            @Html.DropDownListFor(model => model.Sudionik.SudionikGrupaId, 
+            @Html.DropDownListFor(model => model.Sudionik.SudionikGrupaId,
             new SelectList(Model.SudionikGrupaCollection, SudionikGrupaRoFields.SudionikGrupaId.Name, SudionikGrupaRoFields.Name.Name, Model.Sudionik.SudionikGrupaId))
             @Html.ValidationMessageFor(model => model.Sudionik.SudionikGrupaId)
         </div>
@@ -59,7 +59,6 @@
         <p>
             <input type="submit" value="Pohrani" />
         </p>
-    </fieldset>
 }
     </div>
 </div>

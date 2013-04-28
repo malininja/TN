@@ -18,7 +18,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
         {
             this.TrgovanjeMjesecList = TrgovanjeMjesec.GetTrgovanjeMjesecCollection(adapter, godina);
             this.Godina = godina;
-            LoadChartData(this.TrgovanjeMjesecList);
+            LoadChartData(this.TrgovanjeMjesecList.Where(tm => tm.Valuta == ValutaEnum.Kn));
 
             this.GodinaSelectList = Helper.CreateTrgovanjeGlavaGodinaSelectList(adapter, godina);
         }
