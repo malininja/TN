@@ -20,7 +20,11 @@
     <h1>@title</h1>
 </div>
 <div class="content-box">
-    Promjeni godinu: @Html.DropDownList("dropDownGodina", Model.GodinaSelectList, new { id = "dropDownGodina" })
+<div class="tn-datepicker">
+    <div class="input">Promjeni godinu: @Html.DropDownList("dropDownGodina", Model.GodinaSelectList, new { id = "dropDownGodina" })</div>
+    <div class="print">
+    </div>
+</div>
     <br />
     <br />
     <table class="default">
@@ -71,5 +75,5 @@
         }
         </tbody>
     </table>
-    <span class="hnb">(izvor HNB)</span>
+    <span style="font-size: 8px;">(izvor HNB)</span>
 </div>

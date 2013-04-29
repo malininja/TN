@@ -11,6 +11,11 @@
     <h1>@title</h1>
 </div>
 <div class="content-box">
+<div class="tn-datepicker">
+    <div class="print">
+    </div>
+</div>
+<br />
     <div class="content">
         <table class="default">
             <thead>
@@ -58,6 +63,15 @@
                     </tr>
                 }
             </tbody>
+            <tfoot>
+                <tr>
+                    <td>Ukupno:</td>
+                    <td>@Model.PotraznjaUkupno.ToStringInMilions()</td>
+                    <td>@Model.PonudaUkupno.ToStringInMilions()</td>
+                    <td>@Model.PrometUkupno.ToStringInMilions()</td>
+                    <td>-</td>
+                </tr>
+            </tfoot>
         </table>
         @if (ValutaEnum.Kn == Model.ValutaEnum)
         { 

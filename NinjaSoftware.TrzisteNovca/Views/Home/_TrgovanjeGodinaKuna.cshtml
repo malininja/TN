@@ -35,8 +35,6 @@
    <tbody>
 @foreach (TrgovanjeMjesec trgovanjeMjesec in Model.TrgovanjeMjesecList.Where(tm => tm.Valuta == ValutaEnum.Kn))
 {
-    
-    
     <tr>
         @{
             string potraznja = trgovanjeMjesec.Potraznja.HasValue ? trgovanjeMjesec.Potraznja.Value.ToStringInMilions() : "-";
@@ -64,4 +62,14 @@
     </tr>
 }
 </tbody>
+<tfoot>
+    <tr>
+        <td>Ukupno:</td>
+        <td>@Model.TrgovanjeMjesecList.Where(tm => tm.Valuta == ValutaEnum.Kn).Sum(tm => tm.Potraznja ?? 0).ToStringInMilions()</td>
+        <td>@Model.TrgovanjeMjesecList.Where(tm => tm.Valuta == ValutaEnum.Kn).Sum(tm => tm.Ponuda ?? 0).ToStringInMilions()</td>
+        <td>@Model.TrgovanjeMjesecList.Where(tm => tm.Valuta == ValutaEnum.Kn).Sum(tm => tm.Promet ?? 0).ToStringInMilions()</td>
+        <td>-</td>
+    </tr>
+    
+</tfoot>
 </table>

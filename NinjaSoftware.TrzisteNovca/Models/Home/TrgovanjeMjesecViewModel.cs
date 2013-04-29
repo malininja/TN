@@ -44,10 +44,18 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
 
             foreach (TrgovanjeGlavaEntity trgovanjeGlava in trgovanjeGlavaCollection)
             {
+                decimal ponuda = trgovanjeGlava.Ponuda(ValutaEnum.Kn);
+                decimal potraznja = trgovanjeGlava.Potraznja(ValutaEnum.Kn);
+                decimal promet = trgovanjeGlava.Promet(ValutaEnum.Kn);
+
                 string dateString = trgovanjeGlava.Datum.ToString("yyyy-MM-dd");
-                chartLinePonuda.Append(string.Format("['{0}', {1}],", dateString, trgovanjeGlava.Ponuda(ValutaEnum.Kn).ToStringInMilions("F", "en")));
-                chartLinePotraznja.Append(string.Format("['{0}', {1}],", dateString, trgovanjeGlava.Potraznja(ValutaEnum.Kn).ToStringInMilions("F", "en")));
-                chartLinePromet.Append(string.Format("['{0}', {1}],", dateString, trgovanjeGlava.Promet(ValutaEnum.Kn).ToStringInMilions("F", "en")));
+                chartLinePonuda.Append(string.Format("['{0}', {1}],", dateString, ponuda.ToStringInMilions("F", "en")));
+                chartLinePotraznja.Append(string.Format("['{0}', {1}],", dateString, potraznja.ToStringInMilions("F", "en")));
+                chartLinePromet.Append(string.Format("['{0}', {1}],", dateString, promet.ToStringInMilions("F", "en")));
+
+                this.PonudaUkupno += ponuda;
+                this.PotraznjaUkupno += potraznja;
+                this.PrometUkupno += promet;
             }
 
             chartLinePonuda.Append("]");
@@ -70,6 +78,9 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
         public HtmlString ChartLinePonudaDataSource { get; set; }
         public HtmlString ChartLinePotraznjaDataSource { get; set; }
         public HtmlString ChartLinePrometDataSource { get; set; }
+        public decimal PonudaUkupno { get; set; }
+        public decimal PotraznjaUkupno { get; set; }
+        public decimal PrometUkupno { get; set; }
 
         #endregion
     }

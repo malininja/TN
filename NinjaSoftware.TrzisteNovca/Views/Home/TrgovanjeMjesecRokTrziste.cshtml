@@ -10,6 +10,11 @@
     <h1>@title</h1>
 </div>
 <div class="content-box">
+<div class="tn-datepicker">
+    <div class="print">
+    </div>
+</div>
+<br />
   <div class="table-wrapper">
     <table class="default">
       <thead>
@@ -64,7 +69,7 @@
 
                     string prometString = "-";
                     string kamatnaStopaString = "-";
-
+                    
                     if (null != trgovanjeStavka)
                     {
                         prometString = trgovanjeStavka.Promet.ToStringInMilions();
