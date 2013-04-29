@@ -90,6 +90,32 @@
             </tr>
         }
       </tbody>
+      <tfoot>
+        <tr>
+            <td>Ukupno:</td>
+        @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
+        {
+            string prometUkupnoString = "-";
+            TrgovanjeRok trgovanjeRok = Model.TrgovanjeMjesecRok.TrgovanjeRokList.Where(tr => (long)tr.TrgovanjeVrstaEnum == trgovanjeVrsta.TrgovanjeVrstaId).SingleOrDefault();
+            if (null != trgovanjeRok && trgovanjeRok.Promet.HasValue)
+            {
+                prometUkupnoString = trgovanjeRok.Promet.Value.ToStringInMilions();
+            }
+            
+            <td>@prometUkupnoString</td>
+            <td>-</td>
+        }
+            @{
+                string totalString = "-";
+                if (Model.TrgovanjeMjesecRok.PrometUkupno.HasValue)
+                {
+                    totalString = Model.TrgovanjeMjesecRok.PrometUkupno.Value.ToStringInMilions();
+                }
+                }
+            <td>@totalString</td>
+            <td>-</td>
+        </tr>
+      </tfoot>
     </table>
   <//div>
 </div>

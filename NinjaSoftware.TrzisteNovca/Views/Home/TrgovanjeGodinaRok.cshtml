@@ -102,6 +102,27 @@
             </tr>
         }
         </tbody>
+        <tfoot>
+            <tr>
+                @{decimal prometUkupno = 0;}
+                <td>Ukupno:</td>
+            @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
+            {
+                string prometString = "-";
+                TrgovanjeRok trgovanjeRok = Model.TrgovanjeRokList.Where(tr => (long)tr.TrgovanjeVrstaEnum == trgovanjeVrsta.TrgovanjeVrstaId).SingleOrDefault();
+                if (null != trgovanjeRok && trgovanjeRok.Promet.HasValue)
+                {
+                    prometString = trgovanjeRok.Promet.Value.ToStringInMilions();
+                    prometUkupno += trgovanjeRok.Promet.Value;
+                }
+                
+                <td>@prometString</td>
+                <td>-</td>
+            }
+            <td>@prometUkupno.ToStringInMilions()</td>
+            <td>-</td>
+            </tr>
+        </tfoot>
     </table>
 
     </div>

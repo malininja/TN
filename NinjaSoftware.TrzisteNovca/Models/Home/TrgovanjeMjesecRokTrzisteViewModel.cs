@@ -17,6 +17,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
             base(adapter, godina, mjesec)
         {
             this.TrgovanjeGlavaCollection = TrgovanjeGlavaEntity.FetchTrgovanjeGlavaCollection(adapter, godina, mjesec, ValutaEnum.Kn).OrderBy(tg => tg.Datum);
+            this.TrgovanjeMjesecRok = TrgovanjeMjesecRok.GetTrgovanjeMjesecRok(adapter, godina, mjesec, Helper.TrgovanjeVrstaEnumArrayZaPrikaz);
 
             //foreach (TrgovanjeGlavaEntity trgovanjeGlava in this.TrgovanjeGlavaCollection)
             //{
@@ -29,6 +30,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
         #region Properties
 
         public IEnumerable<TrgovanjeGlavaEntity> TrgovanjeGlavaCollection { get; set; }
+        public TrgovanjeMjesecRok TrgovanjeMjesecRok { get; set; }
 
         #endregion
     }

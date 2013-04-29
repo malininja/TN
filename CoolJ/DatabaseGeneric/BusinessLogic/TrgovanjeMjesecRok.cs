@@ -16,6 +16,51 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
         public decimal? PrometUkupno { get; set; }
         public decimal? KamatnaStopaUkupno { get; set; }
 
+        public static TrgovanjeMjesecRok GetTrgovanjeMjesecRok(DataAccessAdapterBase adapter, int godina, int mjesec, TrgovanjeVrstaEnum[] trgovanjeVrstaEnumArray)
+        {
+            EntityCollection<TrgovanjeStavkaEntity> trgovanjeStavkaCollection =
+                    TrgovanjeStavkaEntity.FetchTrgovanjeStavkaCollection(adapter, godina, mjesec, ValutaEnum.Kn);
+
+            TrgovanjeMjesecRok trgovanjeMjesecRok = (from ts in trgovanjeStavkaCollection
+                                                     where ts.ValutaId == (long)ValutaEnum.Kn && ts.TrgovanjeGlava.Datum.Month == mjesec
+                                                     group ts by ts.ValutaId into g
+                                                     select new TrgovanjeMjesecRok()
+                                                     {
+                                                         Valuta = (ValutaEnum)g.Key,
+                                                         Godina = godina,
+                                                         Mjesec = mjesec,
+                                                         PrometUkupno = g.Sum(ts => ts.Promet),
+                                                         KamatnaStopaUkupno = g.Sum(ts => ts.Promet * ts.PrometDodatak) / g.Sum(ts => ts.Promet)
+                                                     }).SingleOrDefault();
+
+            if (null != trgovanjeMjesecRok)
+            {
+                trgovanjeMjesecRok.TrgovanjeRokList = new List<TrgovanjeRok>();
+                foreach (TrgovanjeVrstaEnum trgovanjeVrstaEnum in trgovanjeVrstaEnumArray)
+                {
+                    TrgovanjeRok trgovanjeRok = (from ts in trgovanjeStavkaCollection
+                                                 where ts.ValutaId == (long)ValutaEnum.Kn &&
+                                                 ts.TrgovanjeGlava.Datum.Month == mjesec &&
+                                                 ts.TrgovanjeVrstaId == (long)trgovanjeVrstaEnum &&
+                                                 ts.Promet > 0
+                                                 group ts by ts.ValutaId into g
+                                                 select new TrgovanjeRok()
+                                                 {
+                                                     TrgovanjeVrstaEnum = trgovanjeVrstaEnum,
+                                                     Promet = g.Sum(ts => ts.Promet),
+                                                     KamatnaStopa = g.Sum(ts => ts.Promet * ts.PrometDodatak) / g.Sum(ts => ts.Promet)
+                                                 }).SingleOrDefault();
+
+                    if (null != trgovanjeRok)
+                    {
+                        trgovanjeMjesecRok.TrgovanjeRokList.Add(trgovanjeRok);
+                    }
+                }
+            }
+
+            return trgovanjeMjesecRok;
+        }
+
         public static List<TrgovanjeMjesecRok> GetTrgovanjeMjesecRokCollection(DataAccessAdapterBase adapter, int godina, TrgovanjeVrstaEnum[] trgovanjeVrstaEnumArray)
         {
             List<TrgovanjeMjesecRok> trgovanjeMjesecListRok = new List<TrgovanjeMjesecRok>();

@@ -94,9 +94,28 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
                 endDate = startDate.AddYears(1);
             }
 
+            return FetchTrgovanjeStavkaCollection(adapter, startDate, endDate, valutaEnum);
+        }
+
+        public static EntityCollection<TrgovanjeStavkaEntity> FetchTrgovanjeStavkaCollection(DataAccessAdapterBase adapter,
+            int godina,
+            int mjesec,
+            ValutaEnum? valutaEnum)
+        {
+            DateTime startDate = new DateTime(godina, mjesec, 1);
+            DateTime endDate = startDate.AddMonths(1);
+
+            return FetchTrgovanjeStavkaCollection(adapter, startDate, endDate, valutaEnum);
+        }
+
+        public static EntityCollection<TrgovanjeStavkaEntity> FetchTrgovanjeStavkaCollection(DataAccessAdapterBase adapter,
+            DateTime startDate,
+            DateTime endDate,
+            ValutaEnum? valutaEnum)
+        {
             RelationPredicateBucket bucket = new RelationPredicateBucket();
             bucket.Relations.Add(TrgovanjeStavkaEntity.Relations.TrgovanjeGlavaEntityUsingTrgovanjeGlavaId);
-            
+
             bucket.PredicateExpression.Add(PredicateHelper.FilterValidEntities(startDate, endDate, TrgovanjeGlavaFields.Datum));
 
             if (valutaEnum.HasValue)
@@ -111,7 +130,6 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 
             return trgovanjeStavkaCollection;
         }
-
         #endregion
     }
 }
