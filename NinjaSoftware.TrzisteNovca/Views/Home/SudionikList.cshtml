@@ -5,12 +5,14 @@
     ViewBag.Title = title;
 }
 <div class="content-header">
-    <h1>@title</h1>
+<h1>Sudionici</h1>
+    <h3>@title</h3>
 </div>
-<div class="content-box">
-    @foreach (SudionikEntity item in Model.SudionikCollection)
-    {
-        <a target="_blank" href="@item.WebAdresa">@item.Naziv</a>
-        <br />
-    }
+<div class="participant-p1">
+    <ul>
+        @foreach (SudionikEntity item in Model.SudionikCollection)
+        {
+            <li><a target="_blank" href="@item.WebAdresa">@item.Naziv</a></li>
+        }
+    </ul>
 </div>

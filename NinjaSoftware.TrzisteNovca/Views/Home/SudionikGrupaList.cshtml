@@ -1,22 +1,21 @@
 ﻿@using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
-
 @{
     string title = "Sudionici";
     ViewBag.Title = title;
 }
-
 <div class="content-header">
-    <h1>
-        @title</h1>
+<h1>Sudionici</h1>
+    <h3>
+        @title</h3>
 </div>
-<div class="content-box"> 
-    <h3>@Html.ActionLink("Banke", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.Banke })</h3>
-    <br />
-    <h3>@Html.ActionLink("Društva za upravljanje investicijskim fondovima", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.InvesticijskiFondovi })</h3>
-    <br />
-    <h3>@Html.ActionLink("Društva za upravljanje mirovinskim fondovima", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.MirovinskiFondovi })</h3>
-    <br />
-    <h3>@Html.ActionLink("Osiguravajuća društva", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.OsiguravajucaDrustva })</h3>
-    <br />
-    <h3>@Html.ActionLink("Stambene štedionice", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.StambeneStedionice })</h3>
+<div class="participant-p2">
+    <ul>
+        <li>
+            @Html.ActionLink("Banke", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.Banke })
+        </li>
+        <li>@Html.ActionLink("Društva za upravljanje investicijskim fondovima", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.InvesticijskiFondovi })</li>
+        <li>@Html.ActionLink("Društva za upravljanje mirovinskim fondovima", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.MirovinskiFondovi })</li>
+        <li>@Html.ActionLink("Osiguravajuća društva", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.OsiguravajucaDrustva })</li>
+        <li>@Html.ActionLink("Stambene štedionice", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.StambeneStedionice })</li>
+    </ul>
 </div>

@@ -148,6 +148,7 @@
     <Compile Include="Models\Helper.cs" />
     <Compile Include="Models\Account\LoginModel.cs" />
     <Compile Include="Models\Home\AukcijaTrezorskihZapisaViewModel.cs" />
+    <Compile Include="Models\Home\KamatnaStopaViewModel.cs" />
     <Compile Include="Models\Home\TrgovanjeGodinaRokHnbViewModel.cs" />
     <Compile Include="Models\Home\TrgovanjeGodinaRokTrzisteViewModel.cs" />
     <Compile Include="Models\Home\TrgovanjeMjesecRokHnbViewModel.cs" />
