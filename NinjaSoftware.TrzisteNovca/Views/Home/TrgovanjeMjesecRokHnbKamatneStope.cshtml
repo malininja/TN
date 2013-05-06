@@ -34,8 +34,8 @@
         @foreach (TrgovanjeGlavaHnbEntity trgovanjeGlavaHnb in Model.TrgovanjeGlavaHnbCollection)
         {
             <tr>
-                <td>@trgovanjeGlavaHnb.Datum.ToShortDateString()
-                </td>
+                @*<td>@trgovanjeGlavaHnb.Datum.ToShortDateString()</td>*@
+                <td>@Html.ActionLink(trgovanjeGlavaHnb.Datum.ToShortDateString(), "KamatnaStopa", new { jeHnbTrgovanje = true, trgovanjeId = trgovanjeGlavaHnb.TrgovanjeGlavaHnbId})</td>
                 @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
                 {
                     TrgovanjeStavkaHnbEntity trgovanjeStavka = trgovanjeGlavaHnb.TrgovanjeStavkaHnbCollection.

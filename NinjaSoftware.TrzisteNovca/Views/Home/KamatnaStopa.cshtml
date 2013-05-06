@@ -1,0 +1,88 @@
+﻿@model NinjaSoftware.TrzisteNovca.Models.Home.KamatnaStopaViewModel
+@using NinjaSoftware.TrzisteNovca.Models.Home
+
+@{
+    string subtitle;
+    string asterix;
+    HtmlString legend;
+    if (Model.JeHnbTrgovanje)
+    {
+        subtitle = "u međubankarskom trgovanju";
+        asterix = "*";
+        legend = new HtmlString("<br /> <br /> * obuhvaćeno sveukupno međubankarsko trgovanje <br /> <br /> Izvor: HNB");
+    }
+    else
+    {
+        subtitle = "na Tržištu novca Zagreb";
+        asterix = string.Empty;
+        legend = new HtmlString(string.Empty);
+    }
+
+    string title = string.Format("Kamatne stope {0}", asterix);
+    ViewBag.Title = title;
+}
+
+<h1 class="no-space">
+    @title</h1>
+<h2>@subtitle</h2>
+<h2>@string.Format("{0}, {1}", Model.Datum.ToString("dd.MM.yyyy."), Model.Datum.ToString("dddd"))</h2>
+<div class="tn-datepicker">
+    <div class="calendar" id="divCalendar">
+    </div>
+    <div class="input">
+        @Html.TextBox("inputDatum", Model.Datum.ToString("dd.MM.yyyy"), new { id = "inputDatum" })</div>
+    <div class="print">
+    </div>
+</div>
+
+
+<div class="table-fixed-m">
+    <table class="default">
+        <thead>
+            <tr>
+                <th>ročnost</th>
+                <th>kamatna stopa u %</th>
+                <th>promjena</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (KamatnaStopaContainer kamatnaStopaContainer in Model.KamatnaStopaContainerList)
+            { 
+            <tr>
+                <td>@kamatnaStopaContainer.TrgovanjeVrsta.Name</td>
+                <td>@kamatnaStopaContainer.KamatnaStopa</td>
+                <td>@kamatnaStopaContainer.KamatnaStopaPromjena</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="table-fixed-m">
+     <div class="raw">
+        @legend
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        Globalize.culture("hr");
+
+        $("#inputDatum").datepicker({
+            yearRange: "2000:@DateTime.Now.Year",
+            changeMonth: true,
+            changeYear: true,
+            onSelect: function (dateText) {
+                var datum = Globalize.parseDate(this.value);
+                var linkParameter = datum.getFullYear() + "-" + (datum.getMonth() + 1) + "-" + datum.getDate();
+
+                window.location.href = '@Url.Action("TrgovanjeDan")' + "?date=" + linkParameter;
+            }
+        });
+
+        $("#divCalendar").click(function () {
+            $("#inputDatum").datepicker("show");
+        });
+    });
+</script>

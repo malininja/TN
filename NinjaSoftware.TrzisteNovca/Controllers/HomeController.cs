@@ -214,27 +214,6 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
 
         #endregion
 
-        #region Kamatne stope HNB
-
-        [HttpGet]
-        public ActionResult FetchKamatneStopeHnb()
-        {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://www.hnb.hr/monet/novcano-trziste/h-tablice-depozitni-novac.htm");
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            Stream responseStream = response.GetResponseStream();
-            StreamReader resultStream = new StreamReader(responseStream);
-            //string source = resultStream.ReadToEnd();
-            
-            HtmlDocument doc = new HtmlDocument();
-            doc.Load(resultStream);
-
-            string s = doc.DocumentNode.SelectNodes("/html[1]/body[1]/table[1]/tbody[1]/tr[5]/td[2]")[0].InnerText;
-
-            return View();
-        }
-
-        #endregion
-
         #region HtmlPage
 
         [HttpGet]
@@ -284,6 +263,21 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
             {
                 KamatnaStopaHnbEntity kamatnaStopaHnb = KamatnaStopaHnbEntity.FetchKamatnaStopaHnb(adapter, null, 1);
                 return View(kamatnaStopaHnb);
+            }
+        }
+
+        #endregion
+
+        #region Kamatna stopa
+
+        [HttpGet]
+        public ActionResult KamatnaStopa(long trgovanjeId, bool jeHnbTrgovanje)
+        {
+            DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
+            using (adapter)
+            {
+                KamatnaStopaViewModel viewModel = new KamatnaStopaViewModel(adapter, jeHnbTrgovanje, trgovanjeId);
+                return View(viewModel);
             }
         }
 
