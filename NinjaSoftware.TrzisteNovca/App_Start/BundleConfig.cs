@@ -9,7 +9,6 @@ namespace NinjaSoftware.TrzisteNovca
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/bundles/css").Include(
-                "~/Content/main.css",
                 "~/Content/jquery.ui.css",
                 "~/Content/jquery.ui.theme.css",
                 "~/Content/jquery.ui.datepicker.css",

@@ -77,6 +77,11 @@ body
     background-repeat: no-repeat;
 }
 
+html.clean, body.clean
+{
+    background:none;
+}
+
 div#header
 {
     height: 261px;
@@ -216,7 +221,7 @@ table.center {
   
 table.default
 {
-    width:100%;
+    width: 100%;
     border: 1px solid #C0C0C0;
     margin: 20px 0 20px 0;
     color: #006757;
@@ -232,10 +237,18 @@ table.default thead, table.default tfoot
     line-height:30px;
 }
 
+table.default thead th
+{
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: #c0c0c0;
+}
+
 table.default tbody { line-height:30px; text-align: center;}
 
 table.default thead tr th, table.default tbody tr td, table.default tfoot tr td
 {
+    padding:0 10px 0 10px;
     background-position: right center;
     background-image: url('layout/separator_tablica.png');
     background-repeat: no-repeat;

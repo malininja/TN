@@ -359,7 +359,8 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
             trgovanjeStavka.Promet = decimal.Parse(settRecordParts[6]);
             trgovanjeStavka.PrometDodatak = decimal.Parse(settRecordParts[7]);
 
-            string[] vrstaTrgovanjaValutaParts = settRecordParts[0].Split('-');
+            settRecordParts[0] = settRecordParts[0].Replace(" - ", ";");
+            string[] vrstaTrgovanjaValutaParts = settRecordParts[0].Split(';');
             string trgovanjeVrstaSifraSlog = string.Empty;
             bool isVrstaTrgovanjaValutaInvalid = false;
 
@@ -394,7 +395,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 
             if (isVrstaTrgovanjaValutaInvalid)
             {
-                throw new UserException(string.Format("Neispravnja vrsta trgovanja - '{0}'", settRecordParts[0]));
+                throw new UserException(string.Format("Neispravna vrsta trgovanja - '{0}'", settRecordParts[0]));
             }
 
             trgovanjeStavka.TrgovanjeVrstaId = trgovanjeVrsta.TrgovanjeVrstaId;

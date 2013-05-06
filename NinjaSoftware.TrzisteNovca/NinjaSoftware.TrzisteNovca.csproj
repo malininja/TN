@@ -196,7 +196,7 @@
     <Content Include="Content\layout\tel.png" />
     <Content Include="Content\layout\traka_naslov_graf.gif" />
     <Content Include="Content\layout\za_nabrajanje.png" />
-    <Content Include="Content\main.css" />
+    <Content Include="Content\main1.css" />
     <Content Include="Content\overrides.css" />
     <Content Include="Content\superfish.css" />
     <Content Include="Global.asax" />
