@@ -14,31 +14,17 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
     {
         #region Constructors
 
-        public KamatnaStopaViewModel(DataAccessAdapterBase adapter, bool jeHnbTrgovanje, long trgovanjeId)
+        public KamatnaStopaViewModel(DataAccessAdapterBase adapter, bool jeHnbTrgovanje, long? trgovanjeId, DateTime? datum)
         {
             this.JeHnbTrgovanje = jeHnbTrgovanje;
 
             if (jeHnbTrgovanje)
             {
-                this.LoadKamateHnb(adapter, trgovanjeId);
+                this.LoadKamateHnb(adapter, trgovanjeId, datum);
             }
             else
             {
-                this.LoadKamateTrzisteNovca(adapter, trgovanjeId, null);
-            }
-        }
-
-        public KamatnaStopaViewModel(DataAccessAdapterBase adapter, bool jeHnbTrgovanje, DateTime datum)
-        {
-            this.JeHnbTrgovanje = jeHnbTrgovanje;
-
-            if (jeHnbTrgovanje)
-            {
-                this.LoadKamateHnb(adapter, 0);
-            }
-            else
-            {
-                this.LoadKamateTrzisteNovca(adapter, null, datum);
+                this.LoadKamateTrzisteNovca(adapter, trgovanjeId, datum);
             }
         }
 
@@ -92,12 +78,17 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
             }
         }
 
-        private void LoadKamateHnb(DataAccessAdapterBase adapter, long trgovanjeId)
+        private void LoadKamateHnb(DataAccessAdapterBase adapter, long? trgovanjeId, DateTime? datum)
         {
+            if (!trgovanjeId.HasValue)
+            {
+                trgovanjeId = TrgovanjeGlavaHnbEntity.GetTrgovanjeGlavaHnbIdFromDate(adapter, datum.Value);
+            }
+
             PrefetchPath2 prefetchPath = new PrefetchPath2(EntityType.TrgovanjeGlavaHnbEntity);
             prefetchPath.Add(TrgovanjeGlavaHnbEntity.PrefetchPathTrgovanjeStavkaHnbCollection);
 
-            TrgovanjeGlavaHnbEntity trgovanjeGlava = TrgovanjeGlavaHnbEntity.FetchTrgovanjeGlavaHnb(adapter, prefetchPath, trgovanjeId);
+            TrgovanjeGlavaHnbEntity trgovanjeGlava = TrgovanjeGlavaHnbEntity.FetchTrgovanjeGlavaHnb(adapter, prefetchPath, trgovanjeId.Value);
             trgovanjeGlava.LoadTrgovanjeGlavaHnbPrethodniDan(adapter);
 
             this.Datum = trgovanjeGlava.Datum;

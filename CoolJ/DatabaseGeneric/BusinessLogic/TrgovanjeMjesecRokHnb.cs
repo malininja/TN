@@ -15,7 +15,9 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
         public decimal? PrometUkupno { get; set; }
         public decimal? KamatnaStopaUkupno { get; set; }
 
-        public static List<TrgovanjeMjesecRokHnb> GetTrgovanjeMjesecRokHnbCollection(DataAccessAdapterBase adapter, int godina, TrgovanjeVrstaEnum[] trgovanjeVrstaEnumArray)
+        public static List<TrgovanjeMjesecRokHnb> GetTrgovanjeMjesecRokHnbCollection(DataAccessAdapterBase adapter, 
+            int godina, 
+            TrgovanjeVrstaEnum[] trgovanjeVrstaEnumArray)
         {
             List<TrgovanjeMjesecRokHnb> trgovanjeMjesecListRok = new List<TrgovanjeMjesecRokHnb>();
 

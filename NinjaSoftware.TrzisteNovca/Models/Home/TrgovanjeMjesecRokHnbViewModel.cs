@@ -12,8 +12,8 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
     {
         #region Constructors
 
-        public TrgovanjeMjesecRokHnbViewModel(DataAccessAdapterBase adapter, int godina, int mjesec):
-            base(adapter, godina, mjesec)
+        public TrgovanjeMjesecRokHnbViewModel(DataAccessAdapterBase adapter, int godina, int mjesec, TrgovanjeVrstaEnum[] trgovanjeVrstaEnumArray) :
+            base(adapter, godina, mjesec, trgovanjeVrstaEnumArray)
         {
             this.TrgovanjeGlavaHnbCollection = TrgovanjeGlavaHnbEntity.FetchTrgovanjeGlavaHnbCollection(adapter, godina, mjesec).OrderBy(tg => tg.Datum);
 

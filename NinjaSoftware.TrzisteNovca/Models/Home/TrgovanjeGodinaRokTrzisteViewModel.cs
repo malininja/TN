@@ -14,10 +14,10 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
     {
         #region Constructors
 
-        public TrgovanjeGodinaRokTrzisteViewModel(DataAccessAdapterBase adapter, int godina)
-            :base(adapter, godina)
+        public TrgovanjeGodinaRokTrzisteViewModel(DataAccessAdapterBase adapter, int godina, TrgovanjeVrstaEnum[] trgovanjeVrstaEnumArray)
+            :base(adapter, godina, trgovanjeVrstaEnumArray)
         {
-            this.TrgovanjeMjesecRokCollection = TrgovanjeMjesecRok.GetTrgovanjeMjesecRokCollection(adapter, godina, Helper.TrgovanjeVrstaEnumArrayZaPrikaz);
+            this.TrgovanjeMjesecRokCollection = TrgovanjeMjesecRok.GetTrgovanjeMjesecRokCollection(adapter, godina, trgovanjeVrstaEnumArray);
             this.GodinaSelectList = Helper.CreateTrgovanjeGlavaGodinaSelectList(adapter, godina);
 
             this.TrgovanjeRokList = new List<TrgovanjeRok>();

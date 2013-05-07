@@ -76,8 +76,8 @@
             onSelect: function (dateText) {
                 var datum = Globalize.parseDate(this.value);
                 var linkParameter = datum.getFullYear() + "-" + (datum.getMonth() + 1) + "-" + datum.getDate();
-
-                window.location.href = '@Url.Action("TrgovanjeDan")' + "?date=" + linkParameter;
+                
+                window.location.href = '@Url.Action("KamatnaStopa")' + "?jeHnbTrgovanje=@Model.JeHnbTrgovanje&date=" + linkParameter;
             }
         });
 

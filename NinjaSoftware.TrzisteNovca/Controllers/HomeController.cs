@@ -79,7 +79,8 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
                     godina = DateTime.Now.Year;
                 }
 
-                TrgovanjeGodinaRokTrzisteViewModel trgovanjeGodinaRokViewModel = new TrgovanjeGodinaRokTrzisteViewModel(adapter, godina.Value);
+                TrgovanjeGodinaRokTrzisteViewModel trgovanjeGodinaRokViewModel = 
+                    new TrgovanjeGodinaRokTrzisteViewModel(adapter, godina.Value, Helper.TrgovanjeVrstaEnumArrayZaPrikaz);
                 return View(trgovanjeGodinaRokViewModel);
             }  
         }
@@ -95,7 +96,8 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
                     godina = DateTime.Now.Year;
                 }
 
-                TrgovanjeGodinaRokTrzisteViewModel trgovanjeGodinaRokViewModel = new TrgovanjeGodinaRokTrzisteViewModel(adapter, godina.Value);
+                TrgovanjeGodinaRokTrzisteViewModel trgovanjeGodinaRokViewModel = 
+                    new TrgovanjeGodinaRokTrzisteViewModel(adapter, godina.Value, Helper.TrgovanjeVrstaEnumArrayZaPrikaz);
                 return View(trgovanjeGodinaRokViewModel);
             }
         }
@@ -106,7 +108,8 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
             DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
             using (adapter)
             {
-                TrgovanjeMjesecRokTrzisteViewModel trgovanjeMjesecRokViewModel = new TrgovanjeMjesecRokTrzisteViewModel(adapter, godina, mjesec);
+                TrgovanjeMjesecRokTrzisteViewModel trgovanjeMjesecRokViewModel = 
+                    new TrgovanjeMjesecRokTrzisteViewModel(adapter, godina, mjesec, Helper.TrgovanjeVrstaEnumArrayZaPrikaz);
                 return View(trgovanjeMjesecRokViewModel);
             }
         }
@@ -117,7 +120,8 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
             DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
             using (adapter)
             {
-                TrgovanjeMjesecRokTrzisteViewModel trgovanjeMjesecRokViewModel = new TrgovanjeMjesecRokTrzisteViewModel(adapter, godina, mjesec);
+                TrgovanjeMjesecRokTrzisteViewModel trgovanjeMjesecRokViewModel = 
+                    new TrgovanjeMjesecRokTrzisteViewModel(adapter, godina, mjesec, Helper.TrgovanjeVrstaEnumArrayZaPrikaz);
                 return View(trgovanjeMjesecRokViewModel);
             }
         }
@@ -137,7 +141,8 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
                     godina = DateTime.Now.Year;
                 }
 
-                TrgovanjeGodinaRokHnbViewModel viewModel = new TrgovanjeGodinaRokHnbViewModel(adapter, godina.Value);
+                TrgovanjeGodinaRokHnbViewModel viewModel = 
+                    new TrgovanjeGodinaRokHnbViewModel(adapter, godina.Value, Helper.HnbTrgovanjeVrstaEnumArrayZaPrikaz);
                 return View(viewModel);
             }
         }
@@ -148,7 +153,8 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
             DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
             using (adapter)
             {
-                TrgovanjeMjesecRokHnbViewModel trgovanjeMjesecRokViewModel = new TrgovanjeMjesecRokHnbViewModel(adapter, godina, mjesec);
+                TrgovanjeMjesecRokHnbViewModel trgovanjeMjesecRokViewModel = 
+                    new TrgovanjeMjesecRokHnbViewModel(adapter, godina, mjesec, Helper.HnbTrgovanjeVrstaEnumArrayZaPrikaz);
                 return View(trgovanjeMjesecRokViewModel);
             }
         }
@@ -271,16 +277,15 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
         #region Kamatna stopa
 
         [HttpGet]
-        public ActionResult KamatnaStopa(long trgovanjeId, bool jeHnbTrgovanje)
+        public ActionResult KamatnaStopa(DateTime? date, long? trgovanjeId, bool jeHnbTrgovanje)
         {
             DataAccessAdapterBase adapter = Helper.GetDataAccessAdapterFactory();
             using (adapter)
             {
-                KamatnaStopaViewModel viewModel = new KamatnaStopaViewModel(adapter, jeHnbTrgovanje, trgovanjeId);
+                KamatnaStopaViewModel viewModel = new KamatnaStopaViewModel(adapter, jeHnbTrgovanje, trgovanjeId, date);
                 return View(viewModel);
             }
         }
-
 
         #endregion
     }

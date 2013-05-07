@@ -249,6 +249,14 @@ namespace NinjaSoftware.TrzisteNovca.Models
             }
         }
 
+        public static TrgovanjeVrstaEnum[] HnbTrgovanjeVrstaEnumArrayZaPrikaz
+        {
+            get
+            {
+                return _trgovanjeVrstaEnumArray.Where(t => t != TrgovanjeVrstaEnum.ViseOdTriMjeseca).ToArray();
+            }
+        }
+
         private static TrgovanjeVrstaEnum[] _trgovanjeVrstaEnumArray = 
             { 
                 TrgovanjeVrstaEnum.TomNext,

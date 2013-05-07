@@ -14,12 +14,12 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
     {
         #region Constructors
 
-        public TrgovanjeGodinaRokViewModelBase(DataAccessAdapterBase adapter, int godina)
+        public TrgovanjeGodinaRokViewModelBase(DataAccessAdapterBase adapter, int godina, TrgovanjeVrstaEnum[] trgovanjeVrstaEnumArray)
         {
             this.Godina = godina;
 
             this.TrgovanjeVrstaList = new List<TrgovanjeVrstaRoEntity>();
-            foreach (TrgovanjeVrstaEnum trgovanjeVrstaEnum in Helper.TrgovanjeVrstaEnumArrayZaPrikaz)
+            foreach (TrgovanjeVrstaEnum trgovanjeVrstaEnum in trgovanjeVrstaEnumArray)
             {
                 TrgovanjeVrstaRoEntity trgovanjeVrsta = TrgovanjeVrstaRoEntity.FetchTrgovanjeVrstaRo(adapter, null, (long)trgovanjeVrstaEnum);
                 this.TrgovanjeVrstaList.Add(trgovanjeVrsta);

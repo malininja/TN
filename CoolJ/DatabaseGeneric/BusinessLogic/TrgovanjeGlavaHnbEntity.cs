@@ -151,6 +151,25 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
             return FetchTrgovanjeGlavaHnbCollection(adapter, bucket, prefetchPath);
         }
 
+        public static long GetTrgovanjeGlavaHnbIdFromDate(DataAccessAdapterBase adapter, DateTime date)
+        {
+            RelationPredicateBucket bucket = new RelationPredicateBucket();
+            bucket.PredicateExpression.Add(TrgovanjeGlavaHnbFields.Datum <= date.Date);
+
+            SortExpression sort = new SortExpression(TrgovanjeGlavaHnbFields.Datum | SortOperator.Descending);
+
+            EntityCollection<TrgovanjeGlavaHnbEntity> trgovanjeGlavaHnbCollection = new EntityCollection<TrgovanjeGlavaHnbEntity>(new TrgovanjeGlavaHnbEntityFactory());
+            adapter.FetchEntityCollection(trgovanjeGlavaHnbCollection, bucket, 1, sort);
+
+            if (0 == trgovanjeGlavaHnbCollection.Count)
+            {
+                sort = new SortExpression(TrgovanjeGlavaHnbFields.Datum | SortOperator.Ascending);
+                adapter.FetchEntityCollection(trgovanjeGlavaHnbCollection, null, 1, sort);
+            }
+
+            return trgovanjeGlavaHnbCollection.Single().TrgovanjeGlavaHnbId;
+        }
+
         #endregion
 
         #region private methods
