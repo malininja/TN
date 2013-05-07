@@ -15,6 +15,12 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 {
     public partial class TrgovanjeGlavaHnbEntity
     {
+        #region Custom properties
+
+        public TrgovanjeGlavaHnbEntity TrgovanjeGlavaHnbPrethodniDan { get; protected set; }
+
+        #endregion
+
         #region Dynamic methods
 
         /// <summary>
@@ -91,6 +97,22 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
             {
                 return this.TrgovanjeStavkaHnbCollection.Sum(ts => ts.IznosMilijuniKn * ts.KamatnaStopa) / iznosUkupno;
             }
+        }
+
+        public void LoadTrgovanjeGlavaHnbPrethodniDan(DataAccessAdapterBase adapter)
+        {
+            RelationPredicateBucket bucket = new RelationPredicateBucket();
+            bucket.PredicateExpression.Add(TrgovanjeGlavaHnbFields.Datum < this.Datum);
+
+            PrefetchPath2 prefetchPath = new PrefetchPath2(EntityType.TrgovanjeGlavaHnbEntity);
+            prefetchPath.Add(TrgovanjeGlavaHnbEntity.PrefetchPathTrgovanjeStavkaHnbCollection);
+
+            SortExpression sort = new SortExpression(TrgovanjeGlavaHnbFields.Datum | SortOperator.Descending);
+
+            EntityCollection<TrgovanjeGlavaHnbEntity> trgovanjeGlavaHnbCollection = new EntityCollection<TrgovanjeGlavaHnbEntity>(new TrgovanjeGlavaHnbEntityFactory());
+            adapter.FetchEntityCollection(trgovanjeGlavaHnbCollection, bucket, 1, sort, prefetchPath);
+
+            this.TrgovanjeGlavaHnbPrethodniDan = trgovanjeGlavaHnbCollection.SingleOrDefault();
         }
 
         #endregion

@@ -11,6 +11,33 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 {
     public partial class TrgovanjeStavkaHnbEntity
     {
+        #region Custom properties
+
+        public decimal? KamatnaStopaPromjenaPosto
+        {
+            get
+            {
+                decimal? kamataPromjenaPosto = null;
+
+                if (null != this.TrgovanjeGlavaHnb.TrgovanjeGlavaHnbPrethodniDan)
+                {
+                    TrgovanjeStavkaHnbEntity stavkaPrethodniDan = this.TrgovanjeGlavaHnb.TrgovanjeGlavaHnbPrethodniDan.TrgovanjeStavkaHnbCollection.
+                        Where(ts => ts.TrgovanjeVrstaId == this.TrgovanjeVrstaId).
+                        SingleOrDefault();
+
+                    if (null != stavkaPrethodniDan &&
+                        0 != stavkaPrethodniDan.KamatnaStopa)
+                    {
+                        kamataPromjenaPosto = (this.KamatnaStopa / stavkaPrethodniDan.KamatnaStopa - 1) * 100;
+                    }
+                }
+
+                return kamataPromjenaPosto;
+            }
+        }
+
+        #endregion
+
         #region Static methods
 
         public static EntityCollection<TrgovanjeStavkaHnbEntity> FetchTrgovanjeStavkaHnbCollection(DataAccessAdapterBase adapter, int godina)

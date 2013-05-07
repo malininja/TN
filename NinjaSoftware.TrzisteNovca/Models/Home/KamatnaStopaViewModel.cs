@@ -6,11 +6,14 @@ using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic;
 using SD.LLBLGen.Pro.ORMSupportClasses;
 using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses;
 using NinjaSoftware.TrzisteNovca.CoolJ;
+using NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses;
 
 namespace NinjaSoftware.TrzisteNovca.Models.Home
 {
     public class KamatnaStopaViewModel
     {
+        #region Constructors
+
         public KamatnaStopaViewModel(DataAccessAdapterBase adapter, bool jeHnbTrgovanje, long trgovanjeId)
         {
             this.JeHnbTrgovanje = jeHnbTrgovanje;
@@ -21,16 +24,43 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
             }
             else
             {
-                this.LoadKamateTrzisteNovca(adapter, trgovanjeId);
+                this.LoadKamateTrzisteNovca(adapter, trgovanjeId, null);
             }
         }
 
-        private void LoadKamateTrzisteNovca(DataAccessAdapterBase adapter, long trgovanjeId)
+        public KamatnaStopaViewModel(DataAccessAdapterBase adapter, bool jeHnbTrgovanje, DateTime datum)
         {
-            PrefetchPath2 prefetchPath = new PrefetchPath2(EntityType.TrgovanjeGlavaEntity);
-            prefetchPath.Add(TrgovanjeGlavaEntity.PrefetchPathTrgovanjeStavkaCollection);
+            this.JeHnbTrgovanje = jeHnbTrgovanje;
 
-            TrgovanjeGlavaEntity trgovanjeGlava = TrgovanjeGlavaEntity.FetchTrgovanjeGlava(adapter, prefetchPath, trgovanjeId);
+            if (jeHnbTrgovanje)
+            {
+                this.LoadKamateHnb(adapter, 0);
+            }
+            else
+            {
+                this.LoadKamateTrzisteNovca(adapter, null, datum);
+            }
+        }
+
+        #endregion
+
+        #region Private methods
+
+        private void LoadKamateTrzisteNovca(DataAccessAdapterBase adapter, long? trgovanjeId, DateTime? datum)
+        {
+            if (!trgovanjeId.HasValue)
+            {
+                trgovanjeId = TrgovanjeGlavaEntity.GetTrgovanjeGlavaIdFromDate(adapter, datum.Value);
+            }
+
+            PrefetchPath2 prefetchPath = new PrefetchPath2(EntityType.TrgovanjeGlavaEntity);
+
+            PredicateExpression stavkaPredicate = new PredicateExpression(TrgovanjeStavkaFields.ValutaId == (long)ValutaEnum.Kn);
+            prefetchPath.Add(TrgovanjeGlavaEntity.PrefetchPathTrgovanjeStavkaCollection, 0, stavkaPredicate);
+
+            TrgovanjeGlavaEntity trgovanjeGlava = TrgovanjeGlavaEntity.FetchTrgovanjeGlava(adapter, prefetchPath, trgovanjeId.Value);
+            trgovanjeGlava.LoadTrgovanjeGlavaPrethodniDan(adapter);
+
             this.Datum = trgovanjeGlava.Datum;
 
             this.KamatnaStopaContainerList = new List<KamatnaStopaContainer>();
@@ -46,11 +76,17 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
                 }
                 else
                 {
+                    string promjenaPosto = "-";
+                    if (trgovanjeStavka.PrometDodatakPromjenaPosto.HasValue)
+                    {
+                        promjenaPosto = trgovanjeStavka.PrometDodatakPromjenaPosto.Value.ToString("N2");
+                    }
+
                     this.KamatnaStopaContainerList.Add(new KamatnaStopaContainer() 
                     {
                         TrgovanjeVrsta = trgovanjeVrsta, 
                         KamatnaStopa = trgovanjeStavka.PrometDodatak.ToString("N2"), 
-                        KamatnaStopaPromjena = null 
+                        KamatnaStopaPromjena =  promjenaPosto
                     });
                 }
             }
@@ -62,6 +98,8 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
             prefetchPath.Add(TrgovanjeGlavaHnbEntity.PrefetchPathTrgovanjeStavkaHnbCollection);
 
             TrgovanjeGlavaHnbEntity trgovanjeGlava = TrgovanjeGlavaHnbEntity.FetchTrgovanjeGlavaHnb(adapter, prefetchPath, trgovanjeId);
+            trgovanjeGlava.LoadTrgovanjeGlavaHnbPrethodniDan(adapter);
+
             this.Datum = trgovanjeGlava.Datum;
 
             this.KamatnaStopaContainerList = new List<KamatnaStopaContainer>();
@@ -77,19 +115,31 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
                 }
                 else
                 {
+                    string promjenaPosto = "-";
+                    if (trgovanjeStavka.KamatnaStopaPromjenaPosto.HasValue)
+                    {
+                        promjenaPosto = trgovanjeStavka.KamatnaStopaPromjenaPosto.Value.ToString("N2");
+                    }
+
                     this.KamatnaStopaContainerList.Add(new KamatnaStopaContainer() 
                     {
                         TrgovanjeVrsta = trgovanjeVrsta, 
                         KamatnaStopa = trgovanjeStavka.KamatnaStopa.ToString("N2"), 
-                        KamatnaStopaPromjena = "todo" 
+                        KamatnaStopaPromjena = promjenaPosto 
                     });
                 }
             }
         }
 
+        #endregion
+
+        #region Properties
+
         public List<KamatnaStopaContainer> KamatnaStopaContainerList { get; set; }
         public DateTime Datum { get; set; }
         public bool JeHnbTrgovanje { get; set; }
+
+        #endregion
     }
 
     public class KamatnaStopaContainer

@@ -15,7 +15,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 {
     public partial class TrgovanjeGlavaEntity
     {
-        #region Dynamic properties
+        #region Custom properties
 
         private TrgovanjeGlavaEntity _trgovanjeGlavaPrethodniDan;
         public TrgovanjeGlavaEntity TrgovanjeGlavaPrethodniDan 
@@ -257,6 +257,13 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 
         public static TrgovanjeGlavaEntity FetchTrgovanjeGlavaForGuiDisplay(DataAccessAdapterBase adapter, DateTime date)
         {
+            long trgovanjeGlavaId = GetTrgovanjeGlavaIdFromDate(adapter, date);
+
+            return FetchTrgovanjeGlavaForGuiDisplay(adapter, trgovanjeGlavaId);
+        }
+
+        public static long GetTrgovanjeGlavaIdFromDate(DataAccessAdapterBase adapter, DateTime date)
+        {
             RelationPredicateBucket bucket = new RelationPredicateBucket();
             bucket.PredicateExpression.Add(TrgovanjeGlavaFields.Datum <= date.Date);
 
@@ -271,7 +278,7 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
                 adapter.FetchEntityCollection(trgovanjeGlavaCollection, null, 1, sort);
             }
 
-            return FetchTrgovanjeGlavaForGuiDisplay(adapter, trgovanjeGlavaCollection.Single().TrgovanjeGlavaId);
+            return trgovanjeGlavaCollection.Single().TrgovanjeGlavaId;
         }
 
         public static TrgovanjeGlavaEntity FetchTrgovanjeGlavaForGuiDisplay(DataAccessAdapterBase adapter, long trgovanjeGlavaId)
