@@ -20,14 +20,12 @@
         <tr>
             <th>Datum
             </th>
+            <th>prosječna</th>
             @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
             { 
                 <th>@trgovanjeVrsta.Name
                 </th>
             }
-            <th>
-                UKUPNO
-            </th>
         </tr>
       </thead>
       <tbody>
@@ -36,6 +34,11 @@
             <tr>
                 @*<td>@trgovanjeGlavaHnb.Datum.ToShortDateString()</td>*@
                 <td>@Html.ActionLink(trgovanjeGlavaHnb.Datum.ToShortDateString(), "KamatnaStopa", new { jeHnbTrgovanje = true, trgovanjeId = trgovanjeGlavaHnb.TrgovanjeGlavaHnbId})</td>
+                @{
+                    decimal? ukupnoKamatnaStopa = trgovanjeGlavaHnb.KamatnaStopaUkupno();
+                    string ukupnoKamatnaStopaString = ukupnoKamatnaStopa.HasValue ? ukupnoKamatnaStopa.Value.ToString("N2") : "-";
+                    }
+                <td><strong>@ukupnoKamatnaStopaString</strong></td>
                 @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
                 {
                     TrgovanjeStavkaHnbEntity trgovanjeStavka = trgovanjeGlavaHnb.TrgovanjeStavkaHnbCollection.
@@ -52,11 +55,6 @@
                     <td>@kamatnaStopaString
                     </td>
                 }
-                @{
-                    decimal? ukupnoKamatnaStopa = trgovanjeGlavaHnb.KamatnaStopaUkupno();
-                    string ukupnoKamatnaStopaString = ukupnoKamatnaStopa.HasValue ? ukupnoKamatnaStopa.Value.ToString("N2") : "-";
-                    }
-                <td>@ukupnoKamatnaStopaString</td>
             </tr>
         }
       </tbody>

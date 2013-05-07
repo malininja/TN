@@ -32,14 +32,12 @@
         <tr>
             <th>Mjesec
             </th>
+            <th>prosječna</th>
             @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
             { 
                 <th>@trgovanjeVrsta.Name
                 </th>
             }
-            <th>
-                UKUPNO
-            </th>
         </tr>
         </thead>
         <tbody>
@@ -50,6 +48,11 @@
                     @Html.ActionLink(@hrCulture.DateTimeFormat.GetMonthName(trgovanjeMjesecRokHnb.Mjesec),
                 "TrgovanjeMjesecRokHnbKamatneStope",
                 new { godina = Model.Godina, mjesec = trgovanjeMjesecRokHnb.Mjesec })
+                </td>
+                @{
+                    string kamatnaStopaUkupnoString = trgovanjeMjesecRokHnb.KamatnaStopaUkupno.HasValue ? trgovanjeMjesecRokHnb.KamatnaStopaUkupno.Value.ToString("N2") : "-"; ;
+                 }
+                <td><strong>@kamatnaStopaUkupnoString</strong>
                 </td>
                 @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
                 {
@@ -65,12 +68,6 @@
                     <td>@kamatnaStopaString
                     </td>
                 }
-
-                @{
-                    string kamatnaStopaUkupnoString = trgovanjeMjesecRokHnb.KamatnaStopaUkupno.HasValue ? trgovanjeMjesecRokHnb.KamatnaStopaUkupno.Value.ToString("N2") : "-"; ;
-                 }
-                <td>@kamatnaStopaUkupnoString
-                </td>
             </tr>
         }
         </tbody>

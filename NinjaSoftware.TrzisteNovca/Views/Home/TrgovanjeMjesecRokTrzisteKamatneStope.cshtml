@@ -37,7 +37,7 @@
                 <td>
                     @{decimal? ksUkupno = trgovanjeGlava.PrometKamatnaStopaPosto(ValutaEnum.Kn);
                       string ksUkupnoString = ksUkupno.HasValue ? ksUkupno.Value.ToString("N2") : "-";}
-                    @ksUkupnoString
+                    <strong>@ksUkupnoString</strong>
                 </td>
                 @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
                 {
