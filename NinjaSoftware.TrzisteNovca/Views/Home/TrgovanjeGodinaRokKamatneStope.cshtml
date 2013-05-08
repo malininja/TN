@@ -9,10 +9,34 @@
 
     CultureInfo hrCulture = new CultureInfo("hr");
 }
+
+<script type="text/javascript" src="../../Scripts/jqplot/jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
+<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.highlighter.min.js"></script>
+<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.enhancedLegendRenderer.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../../Scripts/jqplot/jquery.jqplot.min.css" />
+
 <script type="text/javascript">
     $(document).ready(function () {
         $("#dropDownGodina").change(function () {
             window.location.href = "@Url.Action("TrgovanjeGodinaRokKamatneStope")" + "?godina=" + this.value;
+        });
+
+        var lineProsjecna = @Model.ChartLineProsjecnaDataSource;
+
+        var plot1 = $.jqplot('chart', [lineProsjecna], {
+            title: 'Prosječna kamatna stopa (%)',
+            axes: {
+                xaxis: {
+                    min: 1,
+                    max: 12,
+                    tickInterval: 1
+                },
+                yaxis: {
+                    min: 0
+                }
+            }
         });
     });
 </script>
@@ -49,7 +73,11 @@
                 "TrgovanjeMjesecRokTrzisteKamatneStope",
                 new { godina = Model.Godina, mjesec = trgovanjeMjesecRok.Mjesec })
                 </td>
-                <td><strong>@trgovanjeMjesecRok.KamatnaStopaUkupno.Value.ToString("N2")</strong>
+
+                @{
+            string ukupnoString = trgovanjeMjesecRok.KamatnaStopaUkupno.HasValue ? trgovanjeMjesecRok.KamatnaStopaUkupno.Value.ToString("N2") : "-";
+                    }
+                <td><strong>@ukupnoString</strong>
                 </td>
                 @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
                 {
@@ -69,4 +97,8 @@
         }
         </tbody>
     </table>
+
+    <div id="chart">
+
+    </div>
 </div>

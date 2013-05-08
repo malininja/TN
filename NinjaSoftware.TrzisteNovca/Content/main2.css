@@ -166,6 +166,14 @@ div.participant-p4
     background-position: 700px 40px;
     min-height:400px;
 }
+div.participant-p5
+{
+    padding-top:20px;
+    background-image: url('layout/participants/5.png');
+    background-repeat: no-repeat;
+    background-position: 700px 40px;
+    min-height:400px;
+}
 
 div.participant-p1 ul, div.participant-p2 ul, div.participant-p3 ul, div.participant-p4 ul
 {

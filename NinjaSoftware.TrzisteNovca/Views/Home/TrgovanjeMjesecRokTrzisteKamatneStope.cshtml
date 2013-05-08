@@ -6,6 +6,31 @@
     string title = string.Format("Kamatne stope u {0} {1}. godine", Helper.DativMjeseca(Model.Mjesec), Model.Godina);
     ViewBag.Title = title;
 }
+<script type="text/javascript" src="../../Scripts/jqplot/jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
+<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.highlighter.min.js"></script>
+<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.enhancedLegendRenderer.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../../Scripts/jqplot/jquery.jqplot.min.css" />
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var lineProsjecna = @Model.ChartLineProsjecnaDataSource;
+
+        var plot1 = $.jqplot('chart', [lineProsjecna], {
+            title: 'Prosječna kamatna stopa (%)',
+            axes: {
+                xaxis: {
+                    renderer: $.jqplot.DateAxisRenderer,
+                    tickOptions: { formatString: "%d. %m." }
+                },
+                yaxis: {
+                    min: 0
+                }
+            }
+        });
+    });
+</script>
+
 <div class="content-header">
     <h1>@title</h1>
 </div>
@@ -59,4 +84,6 @@
         }
       </tbody>
     </table>
+
+    <div id="chart"></div>
 </div>

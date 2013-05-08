@@ -110,6 +110,24 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
                 }
             }
 
+            int currentMonth = DateTime.Now.Month;
+            TrgovanjeMjesecRok trgovanjeCurrentMonth = trgovanjeMjesecListRok.Where(tm => tm.Mjesec == currentMonth).SingleOrDefault();
+            if (null == trgovanjeCurrentMonth)
+            {
+                trgovanjeCurrentMonth = new TrgovanjeMjesecRok() 
+                {
+                    Valuta = ValutaEnum.Kn,
+                    Godina = godina,
+                    Mjesec = currentMonth,
+                    PrometUkupno = null,
+                    KamatnaStopaUkupno = null
+                };
+
+                trgovanjeCurrentMonth.TrgovanjeRokList = new List<TrgovanjeRok>();
+
+                trgovanjeMjesecListRok.Add(trgovanjeCurrentMonth);
+            }
+
             return trgovanjeMjesecListRok;
         }
     }

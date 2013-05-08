@@ -7,6 +7,8 @@ using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic;
 using SD.LLBLGen.Pro.ORMSupportClasses;
 using NinjaSoftware.TrzisteNovca.CoolJ.HelperClasses;
 using System.Web.Mvc;
+using System.Text;
+using System.Globalization;
 
 namespace NinjaSoftware.TrzisteNovca.Models.Home
 {
@@ -22,8 +24,22 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
 
             this.TrgovanjeRokList = new List<TrgovanjeRok>();
 
+            StringBuilder bob = new StringBuilder(256);
+            bob.Append("[");
+
             foreach (TrgovanjeMjesecRok trgovanjeMjesecRok in this.TrgovanjeMjesecRokCollection)
             {
+                if (trgovanjeMjesecRok.Mjesec != DateTime.Now.Month)
+                {
+                    string kamatnaUkupno = "0";
+                    if (trgovanjeMjesecRok.KamatnaStopaUkupno.HasValue)
+                    {
+                        kamatnaUkupno = trgovanjeMjesecRok.KamatnaStopaUkupno.Value.ToString("F", new CultureInfo("en"));
+                    }
+
+                    bob.Append(string.Format("{0},", kamatnaUkupno));
+                }
+
                 foreach (TrgovanjeRok trgovanjeRok in trgovanjeMjesecRok.TrgovanjeRokList)
                 {
                     TrgovanjeRok trgovanjeRokTmp =
@@ -44,6 +60,9 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
                     }
                 }
             }
+
+            bob.Append("]");
+            this.ChartLineProsjecnaDataSource = new HtmlString(bob.ToString());
         }
 
         #endregion
@@ -58,6 +77,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
 
         public IEnumerable<TrgovanjeMjesecRok> TrgovanjeMjesecRokCollection { get; set; }
         public List<TrgovanjeRok> TrgovanjeRokList { get; set; }
+        public HtmlString ChartLineProsjecnaDataSource { get; set; }
 
         #endregion
     }
