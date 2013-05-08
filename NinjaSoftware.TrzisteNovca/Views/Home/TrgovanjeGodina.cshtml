@@ -1,7 +1,7 @@
 ﻿@model NinjaSoftware.TrzisteNovca.Models.Home.TrgovanjeGodinaViewModel
 
 @{
-    string title = string.Format("Trgovanje u {0}. godini.", Model.Godina);
+    string title = string.Format("Trgovanje u {0}. godini", Model.Godina);
     ViewBag.Title = title;
 }
 
@@ -16,7 +16,7 @@
 </div>
 <div class="content-box">
 <div class="tn-datepicker">
-    <div class="input">Promjeni godinu: @Html.DropDownList("dropDownGodina", Model.GodinaSelectList, new { id = "dropDownGodina" })</div>
+    <div class="input">Promijeni godinu: @Html.DropDownList("dropDownGodina", Model.GodinaSelectList, new { id = "dropDownGodina" })</div>
     <div class="print">
     </div>
 </div>

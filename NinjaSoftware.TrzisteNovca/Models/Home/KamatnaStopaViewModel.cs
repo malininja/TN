@@ -76,6 +76,9 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
                     });
                 }
             }
+
+            this.ProsjecnaKamatnaStopa = trgovanjeGlava.TrgovanjeStavkaCollection.Sum(ts => ts.Promet * ts.PrometDodatak) /
+                trgovanjeGlava.TrgovanjeStavkaCollection.Sum(ts => ts.Promet);
         }
 
         private void LoadKamateHnb(DataAccessAdapterBase adapter, long? trgovanjeId, DateTime? datum)
@@ -120,6 +123,9 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
                     });
                 }
             }
+
+            this.ProsjecnaKamatnaStopa = trgovanjeGlava.TrgovanjeStavkaHnbCollection.Sum(ts => ts.IznosMilijuniKn * ts.KamatnaStopa) /
+                trgovanjeGlava.TrgovanjeStavkaHnbCollection.Sum(ts => ts.IznosMilijuniKn);
         }
 
         #endregion
@@ -129,6 +135,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
         public List<KamatnaStopaContainer> KamatnaStopaContainerList { get; set; }
         public DateTime Datum { get; set; }
         public bool JeHnbTrgovanje { get; set; }
+        public decimal ProsjecnaKamatnaStopa { get; set; }
 
         #endregion
     }

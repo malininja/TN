@@ -38,6 +38,9 @@
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td colspan="5"><strong>@Model.ValutaEnum.ToString().ToUpperInvariant()</strong></td>
+                </tr>
                 @foreach (TrgovanjeGlavaEntity trgovanjeGlava in Model.TrgovanjeGlavaCollection)
                 {
                     <tr>

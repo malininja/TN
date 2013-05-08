@@ -40,14 +40,17 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
 
             foreach (TrgovanjeMjesec trgovanjeMjesec in trgovanjeMjesecCollection)
             {
-                string ponudaString = trgovanjeMjesec.Ponuda.HasValue ? trgovanjeMjesec.Ponuda.Value.ToStringInMilions("F", "en") : "0";
-                chartLinePonuda.Append(string.Format("{0},", ponudaString));
+                if (trgovanjeMjesec.Mjesec != DateTime.Now.Month)
+                {
+                    string ponudaString = trgovanjeMjesec.Ponuda.HasValue ? trgovanjeMjesec.Ponuda.Value.ToStringInMilions("F", "en") : "0";
+                    chartLinePonuda.Append(string.Format("{0},", ponudaString));
 
-                string potraznjaString = trgovanjeMjesec.Potraznja.HasValue ? trgovanjeMjesec.Potraznja.Value.ToStringInMilions("F", "en") : "0";
-                chartLinePotraznja.Append(string.Format("{0},", potraznjaString));
+                    string potraznjaString = trgovanjeMjesec.Potraznja.HasValue ? trgovanjeMjesec.Potraznja.Value.ToStringInMilions("F", "en") : "0";
+                    chartLinePotraznja.Append(string.Format("{0},", potraznjaString));
 
-                string prometString = trgovanjeMjesec.Promet.HasValue ? trgovanjeMjesec.Promet.Value.ToStringInMilions("F", "en") : "0";
-                chartLinePromet.Append(string.Format("{0},", prometString));
+                    string prometString = trgovanjeMjesec.Promet.HasValue ? trgovanjeMjesec.Promet.Value.ToStringInMilions("F", "en") : "0";
+                    chartLinePromet.Append(string.Format("{0},", prometString));
+                }
             }
 
             chartLinePonuda.Append("]");
