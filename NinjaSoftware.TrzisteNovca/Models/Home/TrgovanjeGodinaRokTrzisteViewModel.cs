@@ -29,7 +29,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
 
             foreach (TrgovanjeMjesecRok trgovanjeMjesecRok in this.TrgovanjeMjesecRokCollection)
             {
-                if (trgovanjeMjesecRok.Mjesec != DateTime.Now.Month)
+                if (ZakljuceniMjesecEntity.JeZakljucenMjesec(adapter, trgovanjeMjesecRok.Godina, trgovanjeMjesecRok.Mjesec))
                 {
                     string kamatnaUkupno = "0";
                     if (trgovanjeMjesecRok.KamatnaStopaUkupno.HasValue)
@@ -37,7 +37,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
                         kamatnaUkupno = trgovanjeMjesecRok.KamatnaStopaUkupno.Value.ToString("F", new CultureInfo("en"));
                     }
 
-                    bob.Append(string.Format("{0},", kamatnaUkupno));
+                    bob.Append(string.Format("['{0}', {1}],", trgovanjeMjesecRok.Mjesec, kamatnaUkupno));
                 }
 
                 foreach (TrgovanjeRok trgovanjeRok in trgovanjeMjesecRok.TrgovanjeRokList)

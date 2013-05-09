@@ -9,13 +9,38 @@
 
     CultureInfo hrCulture = new CultureInfo("hr");
 }
+
+<script type="text/javascript" src="../../Scripts/jqplot/jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
+<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.highlighter.min.js"></script>
+<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.enhancedLegendRenderer.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../../Scripts/jqplot/jquery.jqplot.min.css" />
+
 <script type="text/javascript">
     $(document).ready(function () {
         $("#dropDownGodina").change(function () {
-            window.location.href = "@Url.Action("TrgovanjeGodinaRokHnbKamatneStope")" + "?godina=" + this.value;
+            window.location.href = "@Url.Action("TrgovanjeGodinaRokKamatneStope")" + "?godina=" + this.value;
+        });
+
+        var lineProsjecna = @Model.ChartLineProsjecnaDataSource;
+
+        var plot1 = $.jqplot('chart', [lineProsjecna], {
+            title: 'Prosječna kamatna stopa (%)',
+            axes: {
+                xaxis: {
+                    min: 1,
+                    max: 12,
+                    tickInterval: 1
+                },
+                yaxis: {
+                    min: 0
+                }
+            }
         });
     });
 </script>
+
 <div class="content-header">
     <h1>@title</h1>
 </div>
@@ -73,4 +98,8 @@
         </tbody>
     </table>
     <span style="font-size: 8px;">(izvor HNB)</span>
+
+    <div id="chart">
+
+    </div>
 </div>

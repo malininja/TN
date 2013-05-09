@@ -95,9 +95,23 @@
                     <td>@kamatnaStopaString
                     </td>
                 }
-                <td>@trgovanjeMjesecRok.PrometUkupno.Value.ToStringInMilions()
+                @{
+            string mjesecUkupnoString = "-";
+            string mjesecKsUkupno = "-";
+            
+            if (trgovanjeMjesecRok.PrometUkupno.HasValue)
+            { 
+                mjesecUkupnoString = trgovanjeMjesecRok.PrometUkupno.Value.ToStringInMilions();
+            }
+
+            if (trgovanjeMjesecRok.KamatnaStopaUkupno.HasValue)
+            { 
+                mjesecKsUkupno = trgovanjeMjesecRok.KamatnaStopaUkupno.Value.ToString("N2");
+            }
+                    }
+                <td>@mjesecUkupnoString
                 </td>
-                <td>@trgovanjeMjesecRok.KamatnaStopaUkupno.Value.ToString("N2")
+                <td>@mjesecKsUkupno
                 </td>
             </tr>
         }

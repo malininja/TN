@@ -18,7 +18,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
         {
             this.TrgovanjeMjesecList = TrgovanjeMjesec.GetTrgovanjeMjesecCollection(adapter, godina);
             this.Godina = godina;
-            LoadChartData(this.TrgovanjeMjesecList.Where(tm => tm.Valuta == ValutaEnum.Kn));
+            LoadChartData(adapter, this.TrgovanjeMjesecList.Where(tm => tm.Valuta == ValutaEnum.Kn));
 
             this.GodinaSelectList = Helper.CreateTrgovanjeGlavaGodinaSelectList(adapter, godina);
         }
@@ -27,7 +27,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
 
         #region Private methods
 
-        private void LoadChartData(IEnumerable<TrgovanjeMjesec> trgovanjeMjesecCollection)
+        private void LoadChartData(DataAccessAdapterBase adapter, IEnumerable<TrgovanjeMjesec> trgovanjeMjesecCollection)
         {
             StringBuilder chartLinePonuda = new StringBuilder(256);
             chartLinePonuda.Append("[");
@@ -40,7 +40,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
 
             foreach (TrgovanjeMjesec trgovanjeMjesec in trgovanjeMjesecCollection)
             {
-                if (trgovanjeMjesec.Mjesec != DateTime.Now.Month)
+                if (ZakljuceniMjesecEntity.JeZakljucenMjesec(adapter, trgovanjeMjesec.Godina, trgovanjeMjesec.Mjesec))
                 {
                     string ponudaString = trgovanjeMjesec.Ponuda.HasValue ? trgovanjeMjesec.Ponuda.Value.ToStringInMilions("F", "en") : "0";
                     chartLinePonuda.Append(string.Format("{0},", ponudaString));

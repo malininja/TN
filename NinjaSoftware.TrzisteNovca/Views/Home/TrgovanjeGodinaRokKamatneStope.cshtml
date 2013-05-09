@@ -59,7 +59,16 @@
             <th>prosječna</th>
             @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
             { 
-                <th>@trgovanjeVrsta.Name
+                string trgovanjeVrstaName;
+                if (trgovanjeVrsta.TrgovanjeVrstaId == (long)TrgovanjeVrstaEnum.ViseOdTriMjeseca)
+                {
+                    trgovanjeVrstaName = "više od<br />3 mjeseca";
+                }
+                else
+                {
+                    trgovanjeVrstaName = trgovanjeVrsta.Name;
+                }
+                <th>@Html.Raw(trgovanjeVrstaName)
                 </th>
             }
         </tr>

@@ -32,5 +32,30 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
             
             return FetchZakljuceniMjesecCollection(adapter, bucket, null).SingleOrDefault();
         }
+
+        public static bool JeZakljucenMjesec(DataAccessAdapterBase adapter, int godina, int mjesec)
+        {
+            if (godina < DateTime.Now.Year)
+            {
+                return true;
+            }
+            else if (godina == DateTime.Now.Year && mjesec < DateTime.Now.Month)
+            {
+                return true;
+            }
+            else
+            {
+                ZakljuceniMjesecEntity zakljuceniMjesec = FetchZakljuceniMjesec(adapter, godina, mjesec);
+
+                if (null == zakljuceniMjesec)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
     }
 }
