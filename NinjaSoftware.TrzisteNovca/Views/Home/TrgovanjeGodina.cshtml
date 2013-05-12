@@ -21,9 +21,11 @@
     </div>
 </div>
 <br /><br />
+
 @Html.Partial("_TrgovanjeGodinaKuna", Model)
 <br /><br />
 @Html.Partial("_TrgovanjeGodinaDevize", Model)
+
 
 <div id="chart">
 
@@ -36,7 +38,7 @@
         var linePromet = @Model.ChartLinePrometDataSource;
 
         var plot1 = $.jqplot('chart', [linePonuda, linePotraznja, linePromet], {
-            title: 'Trgovanje kunama',
+            title: 'Trgovanje kunama (u mil.)',
             axes: {
                 xaxis: {
                     min: 1,

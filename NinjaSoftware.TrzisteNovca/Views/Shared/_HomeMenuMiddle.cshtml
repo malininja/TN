@@ -1,6 +1,7 @@
 ﻿@using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
 
             <ul class="sf-menu">
+                <li>@Html.ActionLink("Početna", "Index")</li>
                 <li><a href="#">Trgovanje</a>
                     <ul>
                         <li>@Html.ActionLink("Promet", "TrgovanjeGodina", null, new { style = "background-image: none;" })</li>
@@ -14,11 +15,11 @@
                         <li>@Html.ActionLink("Kamatne stope HNB-a", "KamatnaStopaHnb", null, new { style = "background-image: none;" })</li>
                     </ul>
                 </li>
-                <li>@Html.ActionLink("Aukcija trezorskih zapisa MF", "AukcijaTrezorskihZapisa", null, new { style = "background-image: none;" })</li>
-                <li>@Html.ActionLink("Repo aukcija HNB", "RepoAukcija")</li>
+                <li>@Html.ActionLink("Sudionici", "SudionikGrupaList")</li>
+                <li>@Html.ActionLink("Konferencije", "KonferencijaList")</li>
                     <li><a href="#">O nama</a>
                         <ul>
-                            <li>@Html.ActionLink("O Tržištu novca d.d.", "SysHtmlPage", new { sistemskaInstancaPodatakaId = (long)SistemskaInstancaPodatakaEnum.HtmlONamaHr })</li>
+                            <li>@Html.ActionLink("O nama", "SysHtmlPage", new { sistemskaInstancaPodatakaId = (long)SistemskaInstancaPodatakaEnum.HtmlONamaHr })</li>
                             <li>@Html.ActionLink("Dioničari", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.Dionicari })</li>
                             <li>@Html.ActionLink("Sustav SETT", "SysHtmlPage", new { sistemskaInstancaPodatakaId = (long)SistemskaInstancaPodatakaEnum.HtmlSett })</li>
                             <li>@Html.ActionLink("Kontakt", "SysHtmlPage", new { sistemskaInstancaPodatakaId = (long)SistemskaInstancaPodatakaEnum.HtmlKontakt })</li>

@@ -23,6 +23,12 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
             return RedirectToAction("TrgovanjeDan");
         }
 
+        [HttpGet]
+        public ActionResult Aukcija()
+        {
+            return View();
+        }
+
         #region Trgovanje
 
         [HttpGet]

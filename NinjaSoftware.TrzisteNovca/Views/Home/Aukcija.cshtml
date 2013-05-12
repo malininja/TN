@@ -1,0 +1,15 @@
+﻿@{
+    string title = "Aukcije";
+    ViewBag.Title = title;
+}
+
+<div class="content-header">
+    <h1>
+        @title</h1>
+</div>
+<div class="content-box"> 
+    <h4>@Html.ActionLink("Aukcija trezorskih zapisa MF", "AukcijaTrezorskihZapisa")</h4>
+    <br />
+    <h4>@Html.ActionLink("Repo aukcija HNB", "RepoAukcija")</h4>
+    <br />
+</div>

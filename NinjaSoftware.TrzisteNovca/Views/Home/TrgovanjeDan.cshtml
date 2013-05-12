@@ -2,6 +2,7 @@
 @using NinjaSoftware.TrzisteNovca.Models
 @using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 @using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
+
 <script type="text/javascript" src="../../Scripts/jqplot/jquery.jqplot.min.js"></script>
 <script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
 <script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.highlighter.min.js"></script>
@@ -34,22 +35,22 @@
 <div class="clearfix">
 </div>
 <h3>
-    Trgovanje u kunama</h3>
+    Trgovanje kunama</h3>
 <div class="table-fixed-m">
     <table class="default">
         <thead>
             <tr>
                 <th>
-                    Ponuda u mil. kn
+                    ponuda u mil. kn
                 </th>
                 <th>
-                    Promjena u %
+                    promjena u %
                 </th>
                 <th>
-                    Potražnja u mil. kn
+                    potražnja u mil. kn
                 </th>
                 <th>
-                    Promjena u %
+                    promjena u %
                 </th>
             </tr>
         </thead>
@@ -80,7 +81,7 @@
         <thead>
             <tr>
                 <th>
-                    Promet
+                    promet
                 </th>
                 <th>
                     u mil. kn
@@ -144,7 +145,7 @@
                     string ukupnoPrometKamatnaStopaPromjenaPosto = kamatnaStopaPromjena.HasValue ? kamatnaStopaPromjena.Value.ToString("N2") : "-";
                 }
                 <td>
-                    Ukupno:
+                    ukupno:
                 </td>
                 <td>@Model.TrgovanjeGlava.Promet(ValutaEnum.Kn).ToStringInMilions()
                 </td>
@@ -179,19 +180,19 @@
 @if (devizeTrgovanjeStavkaCollection.Count() > 0)
 {
     <h3>
-        Pozajmice deviza</h3>
+        Trgovanje devizama</h3>
     <div class="table-fixed-m">
         <table class="default">
             <thead>
                 <tr>
                     <th>
-                        Valuta
+                        valuta
                     </th>
                     <th>
-                        Promet u mil.
+                        promet u mil.
                     </th>
                     <th>
-                        Kamatna stopa u %
+                        kamatna stopa u %
                     </th>
                 </tr>
             </thead>

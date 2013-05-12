@@ -21,19 +21,19 @@
             <thead>
                 <tr>
                     <th>
-                        Datum
+                        datum
                     </th>
                     <th>
-                        Potražnja
+                        potražnja
                     </th>
                     <th>
-                        Ponuda
+                        ponuda
                     </th>
                     <th>
-                        Promet
+                        promet
                     </th>
                     <th>
-                        Kamatna stopa
+                        kamatna stopa
                     </th>
                 </tr>
             </thead>
@@ -94,7 +94,7 @@
         var linePromet = @Model.ChartLinePrometDataSource;
 
         var plot1 = $.jqplot('chart', [linePonuda, linePotraznja, linePromet], {
-            title: 'Trgovanje kunama',
+            title: 'Trgovanje kunama (u mil.)',
             axes: {
                 xaxis: {
                     renderer: $.jqplot.DateAxisRenderer,

@@ -32,24 +32,24 @@
         </tr>
         <tr>
             <th>
-                Datum
+                datum
             </th>
             @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
             { 
                 <th>
-                    Promet
+                    promet
                 </th>
                 <th>
-                    Kamatna
+                    kamatna&nbsp;
                     <br />
                     stopa (%)
                 </th>
             }
             <th>
-                Promet
+                promet
             </th>
             <th>
-                Kamatna
+                kamatna&nbsp;
                 <br />
                 stopa (%)
             </th>
@@ -92,11 +92,17 @@
       </tbody>
       <tfoot>
         <tr>
-            <td>Ukupno:</td>
+            <td>ukupno:</td>
         @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
         {
             string prometUkupnoString = "-";
-            TrgovanjeRok trgovanjeRok = Model.TrgovanjeMjesecRok.TrgovanjeRokList.Where(tr => (long)tr.TrgovanjeVrstaEnum == trgovanjeVrsta.TrgovanjeVrstaId).SingleOrDefault();
+            TrgovanjeRok trgovanjeRok = null;
+
+            if (null != Model.TrgovanjeMjesecRok)
+            {
+                Model.TrgovanjeMjesecRok.TrgovanjeRokList.Where(tr => (long)tr.TrgovanjeVrstaEnum == trgovanjeVrsta.TrgovanjeVrstaId).SingleOrDefault();
+            }
+            
             if (null != trgovanjeRok && trgovanjeRok.Promet.HasValue)
             {
                 prometUkupnoString = trgovanjeRok.Promet.Value.ToStringInMilions();
@@ -107,7 +113,7 @@
         }
             @{
                 string totalString = "-";
-                if (Model.TrgovanjeMjesecRok.PrometUkupno.HasValue)
+                if (null != Model.TrgovanjeMjesecRok && Model.TrgovanjeMjesecRok.PrometUkupno.HasValue)
                 {
                     totalString = Model.TrgovanjeMjesecRok.PrometUkupno.Value.ToStringInMilions();
                 }

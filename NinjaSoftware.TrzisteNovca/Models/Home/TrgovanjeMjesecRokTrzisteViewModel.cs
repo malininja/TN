@@ -18,6 +18,8 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
         public TrgovanjeMjesecRokTrzisteViewModel(DataAccessAdapterBase adapter, int godina, int mjesec, TrgovanjeVrstaEnum[] trgovanjeVrstaEnumArray) :
             base(adapter, godina, mjesec, trgovanjeVrstaEnumArray)
         {
+            this.TrgovanjeMjesecRok = TrgovanjeMjesecRok.GetTrgovanjeMjesecRok(adapter, godina, mjesec, Helper.TrgovanjeVrstaEnumArrayZaPrikaz); 
+                
             this.TrgovanjeGlavaCollection = TrgovanjeGlavaEntity.FetchTrgovanjeGlavaCollection(adapter, godina, mjesec, ValutaEnum.Kn).OrderBy(tg => tg.Datum);
 
             StringBuilder bob = new StringBuilder(256);
@@ -48,6 +50,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
 
         public IEnumerable<TrgovanjeGlavaEntity> TrgovanjeGlavaCollection { get; set; }
         public HtmlString ChartLineProsjecnaDataSource { get; set; }
+        public TrgovanjeMjesecRok TrgovanjeMjesecRok { get; set; } 
 
         #endregion
     }
