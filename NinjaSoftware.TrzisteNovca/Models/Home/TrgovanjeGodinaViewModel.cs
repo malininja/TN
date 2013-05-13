@@ -43,13 +43,13 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
                 if (ZakljuceniMjesecEntity.JeZakljucenMjesec(adapter, trgovanjeMjesec.Godina, trgovanjeMjesec.Mjesec))
                 {
                     string ponudaString = trgovanjeMjesec.Ponuda.HasValue ? trgovanjeMjesec.Ponuda.Value.ToStringInMilions("F", "en") : "0";
-                    chartLinePonuda.Append(string.Format("{0},", ponudaString));
+                    chartLinePonuda.Append(string.Format("['{0}', {1}],", trgovanjeMjesec.Mjesec, ponudaString));
 
                     string potraznjaString = trgovanjeMjesec.Potraznja.HasValue ? trgovanjeMjesec.Potraznja.Value.ToStringInMilions("F", "en") : "0";
-                    chartLinePotraznja.Append(string.Format("{0},", potraznjaString));
+                    chartLinePotraznja.Append(string.Format("['{0}', {1}],", trgovanjeMjesec.Mjesec, potraznjaString));
 
                     string prometString = trgovanjeMjesec.Promet.HasValue ? trgovanjeMjesec.Promet.Value.ToStringInMilions("F", "en") : "0";
-                    chartLinePromet.Append(string.Format("{0},", prometString));
+                    chartLinePromet.Append(string.Format("['{0}', {1}],", trgovanjeMjesec.Mjesec, prometString));
                 }
             }
 

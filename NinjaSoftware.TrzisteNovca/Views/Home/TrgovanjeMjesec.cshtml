@@ -78,6 +78,7 @@
         </table>
         @if (ValutaEnum.Kn == Model.ValutaEnum)
         { 
+            <h4>Trgovanje kunama (u mil.)</h4>
             <div id="chart">
             </div>
 
@@ -94,7 +95,6 @@
         var linePromet = @Model.ChartLinePrometDataSource;
 
         var plot1 = $.jqplot('chart', [linePonuda, linePotraznja, linePromet], {
-            title: 'Trgovanje kunama (u mil.)',
             axes: {
                 xaxis: {
                     renderer: $.jqplot.DateAxisRenderer,

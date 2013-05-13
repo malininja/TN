@@ -17,7 +17,6 @@
         var lineProsjecna = @Model.ChartLineProsjecnaDataSource;
 
         var plot1 = $.jqplot('chart', [lineProsjecna], {
-            title: 'Prosječna kamatna stopa (%)',
             axes: {
                 xaxis: {
                     renderer: $.jqplot.DateAxisRenderer,
@@ -94,5 +93,6 @@
       </tbody>
     </table>
 
+    <h4>Prosječna kamatna stopa (%)</h4>
     <div id="chart"></div>
 </div>
