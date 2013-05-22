@@ -42,8 +42,8 @@
         if (Request.Browser.Type.ToLower().Contains("ie"))
         {
             decimal version;
-            
-            if(decimal.TryParse(Request.Browser.Version, out version))
+
+            if (decimal.TryParse(Request.Browser.Version, System.Globalization.NumberStyles.Any, new System.Globalization.CultureInfo("en-US"), out version))
             {
                 if(version < 9)
                 {

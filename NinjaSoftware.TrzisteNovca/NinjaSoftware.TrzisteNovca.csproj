@@ -926,6 +926,7 @@
     <Content Include="Views\Shared\_HomeLayout.cshtml" />
     <Content Include="Views\Home\KamatnaStopa.cshtml" />
     <Content Include="Views\Home\Aukcija.cshtml" />
+    <Content Include="Views\Home\_IzvorHnb.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

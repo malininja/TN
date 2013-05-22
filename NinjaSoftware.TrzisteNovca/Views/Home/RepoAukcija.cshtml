@@ -1,7 +1,7 @@
 ﻿@model NinjaSoftware.TrzisteNovca.Models.Home.RepoAukcijaViewModel
 @using NinjaSoftware.TrzisteNovca.Models
 @{
-    string title = "Repo aukcija HNB";
+    string title = "Repo aukcija HNB-a";
     ViewBag.Title = title;
 
     string milKunaString = "mil. kuna";
@@ -162,5 +162,6 @@
             </td>
         </tr>
     </table>
+    @Html.Partial("_IzvorHnb")
     </div>
 </div>
