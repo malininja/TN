@@ -6,6 +6,13 @@
     string valutaGrupa = Model.ValutaEnum == ValutaEnum.Kn ? "kunama" : "devizama";
     string title = string.Format("Trgovanje {0} u {1} {2}. godine", valutaGrupa, Helper.DativMjeseca(Model.Mjesec), Model.Godina);
     ViewBag.Title = title;
+    
+    string iznosApendix = string.Empty;
+    if (Model.ValutaEnum == ValutaEnum.Kn)
+    {
+        iznosApendix = "(u mil. kn)";
+    }
+    
 }
 <div class="content-header">
     <h1>@title</h1>
@@ -21,26 +28,31 @@
             <thead>
                 <tr>
                     <th>
-                        datum
+                        datum @iznosApendix
                     </th>
                     <th>
-                        potražnja
+                        potražnja @iznosApendix
                     </th>
                     <th>
-                        ponuda
+                        ponuda @iznosApendix
                     </th>
                     <th>
-                        promet
+                        promet @iznosApendix
                     </th>
                     <th>
-                        kamatna stopa
+                        kamatna stopa (%)
                     </th>
                 </tr>
             </thead>
             <tbody>
+
+                @if (Model.ValutaEnum != ValutaEnum.Kn)
+                {
                 <tr>
                     <td colspan="5"><strong>@Model.ValutaEnum.ToString().ToUpperInvariant()</strong></td>
                 </tr>
+                }
+
                 @foreach (TrgovanjeGlavaEntity trgovanjeGlava in Model.TrgovanjeGlavaCollection)
                 {
                     <tr>
@@ -78,16 +90,10 @@
         </table>
         @if (ValutaEnum.Kn == Model.ValutaEnum)
         { 
-            <h4>Trgovanje kunama (u mil.)</h4>
+            <h4>TRGOVANJE KUNAMA (u mil. kn)</h4>
             <div id="chart">
             </div>
-
-<script type="text/javascript" src="../../Scripts/jqplot/jquery.jqplot.min.js"></script>
-<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
-<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.highlighter.min.js"></script>
-<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.enhancedLegendRenderer.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../../Scripts/jqplot/jquery.jqplot.min.css" />
-        
+       
             <script type="text/javascript">
     $(document).ready(function () {
         var linePonuda = @Model.ChartLinePonudaDataSource;

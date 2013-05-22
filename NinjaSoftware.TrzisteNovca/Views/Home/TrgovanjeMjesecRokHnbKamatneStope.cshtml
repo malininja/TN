@@ -3,15 +3,9 @@
 @using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 @using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
 @{
-    string title = string.Format("Kamatne stope u {0} {1}. godine u međubankarskom trgovanju", Helper.DativMjeseca(Model.Mjesec), Model.Godina);
+    string title = string.Format("Kamatne stope u {0} {1}. godine u međubankarskom trgovanju u %", Helper.DativMjeseca(Model.Mjesec), Model.Godina);
     ViewBag.Title = title;
 }
-
-<script type="text/javascript" src="../../Scripts/jqplot/jquery.jqplot.min.js"></script>
-<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
-<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.highlighter.min.js"></script>
-<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.enhancedLegendRenderer.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../../Scripts/jqplot/jquery.jqplot.min.css" />
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -43,7 +37,7 @@
     <table class="default">
       <thead>
         <tr>
-            <th>Datum
+            <th>datum
             </th>
             <th>prosječna</th>
             @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
@@ -86,6 +80,6 @@
     </table>
     <span style="font-size: 8px;">Izvor: HNB </span>
 
-    <h4>Prosječna kamatna stopa (%)</h4>
+    <h4>PROSJEČNA KAMATNA STOPA (%)</h4>
     <div id="chart"></div>
 </div>

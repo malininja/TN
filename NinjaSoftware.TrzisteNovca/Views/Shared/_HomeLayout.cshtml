@@ -8,7 +8,7 @@
     <link href='http://fonts.googleapis.com/css?family=Noticia+Text' rel='stylesheet'
         type='text/css'>
     <meta name="viewport" content="width=device-width" />
-    <link href="../../Content/main2.css" rel="stylesheet"/>
+    <link href="../../Content/main3.css" rel="stylesheet"/>
     @Styles.Render("~/bundles/css")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryui")
@@ -29,6 +29,35 @@
             });
         });
     </script>
+
+    <script type="text/javascript" src="../../Scripts/jqplot/jquery.jqplot.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.highlighter.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.enhancedLegendRenderer.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../Scripts/jqplot/jquery.jqplot.min.css" />
+
+    @{
+        bool isOldIe = false;
+        
+        if (Request.Browser.Type.ToLower().Contains("ie"))
+        {
+            decimal version;
+            
+            if(decimal.TryParse(Request.Browser.Version, out version))
+            {
+                if(version < 9)
+                {
+                    isOldIe = true;
+                }
+            }
+        }
+        }
+    @if (isOldIe)
+    { 
+    <text>
+        <script type="text/javascript" src="../../Scripts/jqplot/excanvas.min.js"></script>
+    </text>
+    }
 </head>
 <body>
     <div id="header">

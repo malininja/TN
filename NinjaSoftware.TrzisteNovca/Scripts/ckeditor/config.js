@@ -28,7 +28,7 @@ CKEDITOR.editorConfig = function( config ) {
 
 	config.toolbar_Basic =
     [
-	    ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'PasteText', '-', 'RemoveFormat', 'Source']
+	    ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'PasteText', '-', 'RemoveFormat', 'Source', 'NumberedList', 'BulletedList']
     ];
 	// Remove some buttons, provided by the standard plugins, which we don't
 	// need to have in the Standard(s) toolbar.

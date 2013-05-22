@@ -10,13 +10,6 @@
     CultureInfo hrCulture = new CultureInfo("hr");
 }
 
-<script type="text/javascript" src="../../Scripts/jqplot/jquery.jqplot.min.js"></script>
-<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
-<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.highlighter.min.js"></script>
-<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.enhancedLegendRenderer.min.js"></script>
-
-<link rel="stylesheet" type="text/css" href="../../Scripts/jqplot/jquery.jqplot.min.css" />
-
 <script type="text/javascript">
     $(document).ready(function () {
         $("#dropDownGodina").change(function () {
@@ -45,7 +38,7 @@
 </div>
 <div class="content-box">
 <div class="tn-datepicker">
-    <div class="input">Promjeni godinu: @Html.DropDownList("dropDownGodina", Model.GodinaSelectList, new { id = "dropDownGodina" })</div>
+    <div class="input">Promijeni godinu: @Html.DropDownList("dropDownGodina", Model.GodinaSelectList, new { id = "dropDownGodina" })</div>
     <div class="print">
     </div>
 </div>
@@ -54,7 +47,7 @@
     <table class="default">
     <thead>
         <tr>
-            <th>Mjesec
+            <th>mjesec
             </th>
             <th>prosječna</th>
             @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
@@ -98,7 +91,7 @@
     </table>
     <span style="font-size: 8px;">Izvor: HNB</span>
 
-    <h4>Prosječna kamatna stopa (%)</h4>
+    <h4>PROSJEČNA KAMATNA STOPA (%)</h4>
     <div id="chart">
 
     </div>

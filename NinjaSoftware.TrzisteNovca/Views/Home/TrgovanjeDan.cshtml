@@ -3,11 +3,6 @@
 @using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 @using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
 
-<script type="text/javascript" src="../../Scripts/jqplot/jquery.jqplot.min.js"></script>
-<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
-<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.highlighter.min.js"></script>
-<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.enhancedLegendRenderer.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../../Scripts/jqplot/jquery.jqplot.min.css" />
 @{
     decimal? ponudaPromjena = Model.TrgovanjeGlava.PonudaPromjenaPosto(ValutaEnum.Kn);
     string ponudaPromjenaPosto = ponudaPromjena.HasValue ? ponudaPromjena.Value.ToString("N2") : "-";
@@ -225,14 +220,14 @@
 
 <div class="container_12">
     <div class="grid_6 alpha">
-    <h4>Trgovanje kunama (u mil.)</h4>
+    <h4>TRGOVANJE KUNAMA (u mil. kn)</h4>
     <div class="chart-box">
         <div id="chart">
         </div>
     </div>
     </div>
     <div class="grid_6 omega">
-    <h4>Prosječna kamatna stopa (%)</h4>
+    <h4>PROSJEČNA KAMATNA STOPA (%)</h4>
     <div class="chart-box">
         <div id="chartKamatnaStopa">
         </div>

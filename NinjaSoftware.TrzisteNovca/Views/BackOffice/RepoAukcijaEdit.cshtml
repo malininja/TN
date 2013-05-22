@@ -51,7 +51,7 @@
                 Datum aukcije:
             </td>
             <td>
-                @Html.TextBoxFor(model => model.DatumAukcije, new { id = "DatumAukcije", @Value = Model.DatumAukcije.ToString("dd.MM.yyyy"), @class = "number" })
+                @Html.TextBoxFor(model => model.DatumAukcije, new { id = "DatumAukcije", @Value = Model.DatumAukcije.ToString("dd.MM.yyyy"), @class = "date" })
                 @Html.ValidationMessageFor(model => model.DatumAukcije)
             </td>
         </tr>

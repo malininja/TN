@@ -37,7 +37,7 @@
             @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
             { 
                 <th>
-                    promet
+                    promet  <br /> (u mil. kn)
                 </th>
                 <th>
                     kamatna&nbsp;
@@ -100,7 +100,7 @@
 
             if (null != Model.TrgovanjeMjesecRok)
             {
-                Model.TrgovanjeMjesecRok.TrgovanjeRokList.Where(tr => (long)tr.TrgovanjeVrstaEnum == trgovanjeVrsta.TrgovanjeVrstaId).SingleOrDefault();
+                trgovanjeRok = Model.TrgovanjeMjesecRok.TrgovanjeRokList.Where(tr => (long)tr.TrgovanjeVrstaEnum == trgovanjeVrsta.TrgovanjeVrstaId).SingleOrDefault();
             }
             
             if (null != trgovanjeRok && trgovanjeRok.Promet.HasValue)
