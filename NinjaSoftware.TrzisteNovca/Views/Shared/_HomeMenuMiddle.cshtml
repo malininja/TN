@@ -8,7 +8,11 @@
                         <li>@Html.ActionLink("TRGOVANJE PO ROKOVIMA", "TrgovanjeGodinaRok", null, new { style = "background-image: none;" })</li>
                     </ul>
                 </li>
-                <li><a href="#">KAMATNE STOPE</a>
+                <li>
+                    <a href="#">
+                        KAMATNE STOPE &nbsp;&nbsp;
+                        <img src="@Url.Content("~/Content/layout/oblacic.png")" alt="" style="width: 33px; height: 18px;" />
+                    </a>
                     <ul>
                         <li>@Html.ActionLink("KAMATNE STOPE NA TRŽIŠTU NOVCA ZAGREB", "TrgovanjeGodinaRokKamatneStope", null, new { style = "background-image: none;" })</li>
                         <li>@Html.ActionLink("KAMATNE STOPE U MEĐUBANKARSKOM TRGOVANJU", "TrgovanjeGodinaRokHnbKamatneStope", null, new { style = "background-image: none;" })</li>

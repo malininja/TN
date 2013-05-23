@@ -99,6 +99,28 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
             }
         }
 
+        public decimal? KamatnaStopaUkupnoPromjena()
+        {
+            decimal? prometKamatnaStopa = this.KamatnaStopaUkupno();
+            decimal? prometKamatnaStopaPrethodniDan = 0;
+
+            if (null != this.TrgovanjeGlavaHnbPrethodniDan)
+            {
+                prometKamatnaStopaPrethodniDan = this.TrgovanjeGlavaHnbPrethodniDan.KamatnaStopaUkupno();
+            }
+
+            if (prometKamatnaStopa.HasValue &&
+                prometKamatnaStopaPrethodniDan.HasValue &&
+                0 != prometKamatnaStopaPrethodniDan)
+            {
+                return (Math.Round(prometKamatnaStopa.Value, 2) / Math.Round(prometKamatnaStopaPrethodniDan.Value, 2) - 1) * 100;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public void LoadTrgovanjeGlavaHnbPrethodniDan(DataAccessAdapterBase adapter)
         {
             RelationPredicateBucket bucket = new RelationPredicateBucket();

@@ -58,8 +58,12 @@
         <tfoot>
             <tr>
                 <td>prosječna</td>
-                <td>@Model.ProsjecnaKamatnaStopa.ToString("N2")</td>
-                <td>-</td>
+                @{
+                    string prosjecnaString = Model.ProsjecnaKamatnaStopa.HasValue ? Model.ProsjecnaKamatnaStopa.Value.ToString("N2") : "-";
+                    string prosjecnaPromjenaString = Model.ProsjecnaKamatnaStopaPromjena.HasValue ? Model.ProsjecnaKamatnaStopaPromjena.Value.ToString("N2") : "-";
+                    }
+                <td>@prosjecnaString</td>
+                <td>@prosjecnaPromjenaString</td>
             </tr>
         </tfoot>
     </table>

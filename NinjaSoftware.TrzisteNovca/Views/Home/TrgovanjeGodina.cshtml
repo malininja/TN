@@ -5,6 +5,8 @@
     ViewBag.Title = title;
 }
 
+<script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+
 <div class="content-header">
 <h1>@title</h1>
 </div>
@@ -34,9 +36,8 @@
         var plot1 = $.jqplot('chart', [linePonuda, linePotraznja, linePromet], {
             axes: {
                 xaxis: {
-                    min: 1,
-                    max: 12,
-                    tickInterval: 1
+                    ticks: [[1, "sječanj"], [2, "veljača"], [3, "ožujak"], [4, "travanj"], [5, "svibanj"], [6, "lipanj"], 
+                    [7, "srpanj"], [8, "kolovoz"], [9, "rujan"], [10, "listopad"], [11, "studeni"], [12, "prosinac"]]
                 },
                 yaxis: {
                     min: 0

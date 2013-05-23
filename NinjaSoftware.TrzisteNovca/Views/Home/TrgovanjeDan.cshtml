@@ -195,7 +195,7 @@
                 @foreach (TrgovanjeStavkaEntity trgovanjeStavka in devizeTrgovanjeStavkaCollection)
                 { 
                     <tr>
-                        <td>@string.Format("{0} - {1}", trgovanjeStavka.Valuta.Name, trgovanjeStavka.TrgovanjeVrsta.Name)
+                        <td>@string.Format("{0} - {1}", trgovanjeStavka.Valuta.Code.ToUpperInvariant(), trgovanjeStavka.TrgovanjeVrsta.Name)
                         </td>
                         <td>@trgovanjeStavka.Promet.ToStringInMilions()
                         </td>
@@ -213,7 +213,7 @@
     </div>
 }
 <div class="table-fixed-m">
-     <div class="raw">
+     <div class="raw" style="text-align:justify">
         @Html.Raw(Model.TrgovanjeGlava.Komentar)
     </div>
 </div>

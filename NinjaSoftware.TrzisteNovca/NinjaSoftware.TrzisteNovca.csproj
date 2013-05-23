@@ -185,6 +185,7 @@
     <Content Include="Content\layout\navigacija\kraj_lijevi.png" />
     <Content Include="Content\layout\navigacija\pattern_nav.gif" />
     <Content Include="Content\layout\navigacija\separator.png" />
+    <Content Include="Content\layout\oblacic.png" />
     <Content Include="Content\layout\participants\1.png" />
     <Content Include="Content\layout\participants\2.png" />
     <Content Include="Content\layout\participants\3.png" />
@@ -204,9 +205,9 @@
     <Content Include="Content\layout\tel.png" />
     <Content Include="Content\layout\traka_naslov_graf.gif" />
     <Content Include="Content\layout\za_nabrajanje.png" />
-    <Content Include="Content\main3.css" />
+    <Content Include="Content\main4.css" />
     <Content Include="Content\overrides.css" />
-    <Content Include="Content\superfish.css" />
+    <Content Include="Content\superfish1.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\ckeditor\build-config.js" />
     <Content Include="Scripts\ckeditor\ckeditor.js" />
@@ -927,6 +928,7 @@
     <Content Include="Views\Home\KamatnaStopa.cshtml" />
     <Content Include="Views\Home\Aukcija.cshtml" />
     <Content Include="Views\Home\_IzvorHnb.cshtml" />
+    <Content Include="Views\Home\_UPostotcima.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
