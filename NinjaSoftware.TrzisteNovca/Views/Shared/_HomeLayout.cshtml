@@ -27,6 +27,10 @@
                 params["printPage"] = "true";
                 ninjaSoftware.url.setParameters(params, true);
             });
+
+            $("a").click(function () {
+                this.blur();
+            });
         });
     </script>
 
@@ -62,6 +66,10 @@
 <body>
     <div id="header">
         <div class="wrapper-top">
+            @if (Helper.IsBackofficeMenu(ViewContext) && Request.IsAuthenticated)
+            {
+                <a href="@Url.Action("LogOff", "Account")" style="display: block; text-align: right; color: #006757; font-family: 'Arial'; font-size: 13px;">log off</a>
+            }
             <div style="float: left;">
                 @Html.ActionLink("Početna", "Index", null, new { id = "logo" })
             </div>

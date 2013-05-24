@@ -131,10 +131,11 @@ div#footer
 
 div.raw
 {
-    padding: 20px;
+    padding: 0px;
     color:#7a7a7a;
     font-size:14px;
     line-height:1.5em;
+    text-align:justify;
 }
 
 div.participant-p1

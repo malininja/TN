@@ -44,7 +44,7 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
             return View(model);
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();
