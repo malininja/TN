@@ -1,5 +1,6 @@
 ﻿@model NinjaSoftware.TrzisteNovca.Models.Home.KamatnaStopaViewModel
 @using NinjaSoftware.TrzisteNovca.Models.Home
+@using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
 
 @{
     string subtitle;
@@ -47,12 +48,16 @@
         </thead>
         <tbody>
             @foreach (KamatnaStopaContainer kamatnaStopaContainer in Model.KamatnaStopaContainerList)
-            { 
+            {
+                if (!Model.JeHnbTrgovanje ||
+                    kamatnaStopaContainer.TrgovanjeVrsta.TrgovanjeVrstaId != (long)TrgovanjeVrstaEnum.ViseOdTriMjeseca)
+                {
             <tr>
                 <td>@kamatnaStopaContainer.TrgovanjeVrsta.Name</td>
                 <td>@kamatnaStopaContainer.KamatnaStopa</td>
                 <td>@kamatnaStopaContainer.KamatnaStopaPromjena</td>
             </tr>
+                }
             }
         </tbody>
         <tfoot>

@@ -1,0 +1,150 @@
+﻿@model NinjaSoftware.TrzisteNovca.Models.Home.TrgovanjeMjesecRokTrzisteViewModel
+@using NinjaSoftware.TrzisteNovca.Models
+@using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
+@using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
+
+@{
+    IEnumerable<TrgovanjeVrstaRoEntity> trgovanjeVrstaCollection = null;
+    bool isFinalTable = false;    
+    
+    if (null != ViewData && null != ViewData["startColumn"])
+    {
+        int startColumn = int.Parse(ViewData["startColumn"].ToString());
+        int noOfColumns = int.Parse(ViewData["onOfColumns"].ToString());
+
+        trgovanjeVrstaCollection = Model.TrgovanjeVrstaList.Skip(startColumn).Take(noOfColumns);
+        
+        if ((startColumn + noOfColumns) == (Model.TrgovanjeVrstaList.Count + 1))
+        {
+            isFinalTable = true;
+        }
+    }
+    else
+    {
+        trgovanjeVrstaCollection = Model.TrgovanjeVrstaList;
+    }
+    }
+  <div class="table-wrapper">
+    <table class="default">
+      <thead>
+        <tr>
+            <th>
+            </th>
+            @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in trgovanjeVrstaCollection)
+            { 
+                <th colspan="2">@trgovanjeVrsta.Name
+                </th>
+            }
+
+            @if (isFinalTable)
+            {
+            <th colspan="2">
+                UKUPNO
+            </th>
+            }
+        </tr>
+        <tr>
+            <th>
+                datum
+            </th>
+            @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in trgovanjeVrstaCollection)
+            { 
+                <th>
+                    &nbsp;&nbsp;&nbsp;promet&nbsp;&nbsp;&nbsp; <br /> (u mil. kn)
+                </th>
+                <th>
+                    kamatna&nbsp;
+                    <br />
+                    stopa (%)
+                </th>
+            }
+
+            @if (isFinalTable)
+            {
+            <th>
+                &nbsp;&nbsp;&nbsp;promet&nbsp;&nbsp;&nbsp; <br /> (u mil. kn)
+            </th>
+            <th>
+                kamatna&nbsp;
+                <br />
+                stopa (%)
+            </th>
+            }
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (TrgovanjeGlavaEntity trgovanjeGlava in Model.TrgovanjeGlavaCollection)
+        {
+            <tr>
+                <td>@Html.ActionLink(trgovanjeGlava.Datum.ToShortDateString(), "TrgovanjeDan", new { date = trgovanjeGlava.Datum.ToString("yyyy-MM-dd") })
+                </td>
+                @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in trgovanjeVrstaCollection)
+                {
+                    TrgovanjeStavkaEntity trgovanjeStavka = trgovanjeGlava.TrgovanjeStavkaCollection.
+                        Where(ts => ts.TrgovanjeVrstaId == (long)trgovanjeVrsta.TrgovanjeVrstaId).SingleOrDefault();
+
+
+                    string prometString = "-";
+                    string kamatnaStopaString = "-";
+                    
+                    if (null != trgovanjeStavka)
+                    {
+                        prometString = trgovanjeStavka.Promet.ToStringInMilions();
+                        kamatnaStopaString = trgovanjeStavka.PrometDodatak.ToString("N2");
+                    }
+            
+                    <td>@prometString
+                    </td>
+                    <td>@kamatnaStopaString
+                    </td>
+                }
+
+                @if (isFinalTable)
+                {
+                decimal? ukupnoKamatnaStopa = trgovanjeGlava.PrometKamatnaStopaPosto(ValutaEnum.Kn);
+                string ukupnoKamatnaStopaString = ukupnoKamatnaStopa.HasValue ? ukupnoKamatnaStopa.Value.ToString("N2") : "-";
+                    
+                <td>@trgovanjeGlava.Promet(ValutaEnum.Kn).ToStringInMilions()</td>
+
+                <td>@ukupnoKamatnaStopaString</td>
+                }
+            </tr>
+        }
+      </tbody>
+      <tfoot>
+        <tr>
+            <td>ukupno:</td>
+        @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in trgovanjeVrstaCollection)
+        {
+            string prometUkupnoString = "-";
+            TrgovanjeRok trgovanjeRok = null;
+
+            if (null != Model.TrgovanjeMjesecRok)
+            {
+                trgovanjeRok = Model.TrgovanjeMjesecRok.TrgovanjeRokList.Where(tr => (long)tr.TrgovanjeVrstaEnum == trgovanjeVrsta.TrgovanjeVrstaId).SingleOrDefault();
+            }
+            
+            if (null != trgovanjeRok && trgovanjeRok.Promet.HasValue)
+            {
+                prometUkupnoString = trgovanjeRok.Promet.Value.ToStringInMilions();
+            }
+            
+            <td>@prometUkupnoString</td>
+            <td>-</td>
+        }
+
+        @if (isFinalTable)
+        {
+            string totalString = "-";
+            if (null != Model.TrgovanjeMjesecRok && Model.TrgovanjeMjesecRok.PrometUkupno.HasValue)
+            {
+                totalString = Model.TrgovanjeMjesecRok.PrometUkupno.Value.ToStringInMilions();
+            }
+                
+            <td>@totalString</td>
+            <td>-</td>
+        }
+        </tr>
+      </tfoot>
+    </table>
+  </div>

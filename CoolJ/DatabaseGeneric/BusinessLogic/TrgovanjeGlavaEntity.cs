@@ -359,12 +359,12 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
             string[] settRecordParts = settRecord.Split('#');
 
             TrgovanjeStavkaEntity trgovanjeStavka = new TrgovanjeStavkaEntity();
-            trgovanjeStavka.Ponuda = decimal.Parse(settRecordParts[2]);
-            trgovanjeStavka.PonudaDodatak = decimal.Parse(settRecordParts[3]);
-            trgovanjeStavka.Potraznja = decimal.Parse(settRecordParts[4]);
-            trgovanjeStavka.PotraznjaDodatak = decimal.Parse(settRecordParts[5]);
-            trgovanjeStavka.Promet = decimal.Parse(settRecordParts[6]);
-            trgovanjeStavka.PrometDodatak = decimal.Parse(settRecordParts[7]);
+            trgovanjeStavka.Ponuda = ParseDecimal(settRecordParts[2]);
+            trgovanjeStavka.PonudaDodatak = ParseDecimal(settRecordParts[3]);
+            trgovanjeStavka.Potraznja = ParseDecimal(settRecordParts[4]);
+            trgovanjeStavka.PotraznjaDodatak = ParseDecimal(settRecordParts[5]);
+            trgovanjeStavka.Promet = ParseDecimal(settRecordParts[6]);
+            trgovanjeStavka.PrometDodatak = ParseDecimal(settRecordParts[7]);
 
             settRecordParts[0] = settRecordParts[0].Replace(" - ", ";");
             string[] vrstaTrgovanjaValutaParts = settRecordParts[0].Split(';');
@@ -410,6 +410,18 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
             return trgovanjeStavka;
         }
 
+        private static decimal ParseDecimal(string numberString)
+        {
+            if (string.IsNullOrEmpty(numberString))
+            {
+                return 0;
+            }
+            else
+            {
+                return decimal.Parse(numberString);
+            }
+        }
+
         private static void ValidateSettFileName(string[] fileNameParts)
         {
             string fileNameError = "Neispravan naziv datoteke.";
@@ -445,16 +457,20 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
                 throw new UserException("Neispravan broj polja u slogu.");
             }
 
-            bool areNumbersValid = true;
             for (int i = 2; i < 8; i++)
             {
-                decimal foo;
-                areNumbersValid = decimal.TryParse(settRecordParts[i], out foo);
-            }
+                bool isNumberValid = true;
 
-            if (!areNumbersValid)
-            {
-                throw new UserException("Brojčane vrijednosti u datoteci nisu ispravne.");
+                if (!string.IsNullOrEmpty(settRecordParts[i]))
+                {
+                    decimal foo;
+                    isNumberValid = decimal.TryParse(settRecordParts[i], out foo);
+                }
+
+                if (!isNumberValid)
+                {
+                    throw new UserException("Brojčane vrijednosti u datoteci nisu ispravne.");
+                }
             }
         }
 

@@ -186,6 +186,8 @@
     <Content Include="Content\layout\navigacija\pattern_nav.gif" />
     <Content Include="Content\layout\navigacija\separator.png" />
     <Content Include="Content\layout\oblacic.png" />
+    <Content Include="Content\layout\oblacic_crveni.png" />
+    <Content Include="Content\layout\oblacic_zuti.png" />
     <Content Include="Content\layout\participants\1.png" />
     <Content Include="Content\layout\participants\2.png" />
     <Content Include="Content\layout\participants\3.png" />
@@ -205,7 +207,7 @@
     <Content Include="Content\layout\tel.png" />
     <Content Include="Content\layout\traka_naslov_graf.gif" />
     <Content Include="Content\layout\za_nabrajanje.png" />
-    <Content Include="Content\main4.css" />
+    <Content Include="Content\main6.css" />
     <Content Include="Content\overrides.css" />
     <Content Include="Content\superfish1.css" />
     <Content Include="Global.asax" />
@@ -929,6 +931,8 @@
     <Content Include="Views\Home\Aukcija.cshtml" />
     <Content Include="Views\Home\_IzvorHnb.cshtml" />
     <Content Include="Views\Home\_UPostotcima.cshtml" />
+    <Content Include="Views\Home\_TrgovanjeMjesecRokTable.cshtml" />
+    <Content Include="Views\Home\_TrgovanjeGodinaRokTable.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

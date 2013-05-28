@@ -6,8 +6,6 @@
 @{
     string title = string.Format("Trgovanje po rokovima u {0}. godini", Model.Godina);
     ViewBag.Title = title;
-
-    CultureInfo hrCulture = new CultureInfo("hr");
 }
 <script type="text/javascript">
     $(document).ready(function () {
@@ -28,116 +26,38 @@
     <br />
     <br />
     <div class="table-wrapper">
-    <table class="default">
-    <thead>
-        <tr>
-            <th>
-            </th>
-            @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
-            { 
-                <th colspan="2">@trgovanjeVrsta.Name
-                </th>
-            }
-            <th colspan="2">
-                UKUPNO
-            </th>
-        </tr>
 
-        <tr>
-            <th>
-                mjesec
-            </th>
-            @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
-            { 
-                <th>
-                    &nbsp;&nbsp;&nbsp;promet&nbsp;&nbsp;&nbsp; <br /> (u mil. kn)
-                </th>
-                <th>
-                    kamatna&nbsp;
-                    <br />
-                    stopa (%)
-                </th>
-            }
-            <th>
-                &nbsp;&nbsp;&nbsp;promet&nbsp;&nbsp;&nbsp; <br /> (u mil. kn)
-            </th>
-            <th>
-                kamatna&nbsp;
-                <br />
-                stopa (%)
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (TrgovanjeMjesecRok trgovanjeMjesecRok in Model.TrgovanjeMjesecRokCollection)
-        { 
-            <tr>
-                <td>
-                    @Html.ActionLink(@hrCulture.DateTimeFormat.GetMonthName(trgovanjeMjesecRok.Mjesec),
-                "TrgovanjeMjesecRokTrziste",
-                new { godina = Model.Godina, mjesec = trgovanjeMjesecRok.Mjesec })
-                </td>
-                @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
-                {
-                    TrgovanjeRok trgovanjeRok = trgovanjeMjesecRok.TrgovanjeRokList.Where(tr => (long)tr.TrgovanjeVrstaEnum == trgovanjeVrsta.TrgovanjeVrstaId).SingleOrDefault();
-                    string prometString = "-";
-                    string kamatnaStopaString = "-";
-
-                    if (null != trgovanjeRok &&
-                        trgovanjeRok.Promet.HasValue)
-                    {
-                        prometString = trgovanjeRok.Promet.Value.ToStringInMilions();
-                        kamatnaStopaString = trgovanjeRok.KamatnaStopa.Value.ToString("N2");
-                    }
-            
-                    <td>@prometString
-                    </td>
-                    <td>@kamatnaStopaString
-                    </td>
-                }
-                @{
-            string mjesecUkupnoString = "-";
-            string mjesecKsUkupno = "-";
-            
-            if (trgovanjeMjesecRok.PrometUkupno.HasValue)
-            { 
-                mjesecUkupnoString = trgovanjeMjesecRok.PrometUkupno.Value.ToStringInMilions();
-            }
-
-            if (trgovanjeMjesecRok.KamatnaStopaUkupno.HasValue)
-            { 
-                mjesecKsUkupno = trgovanjeMjesecRok.KamatnaStopaUkupno.Value.ToString("N2");
-            }
-                    }
-                <td>@mjesecUkupnoString
-                </td>
-                <td>@mjesecKsUkupno
-                </td>
-            </tr>
+    @{
+        bool isPrintPage = false;
+        
+        if (null != @Request.Params["printPage"] &&
+            "true" == @Request.Params["printPage"])
+        {
+            isPrintPage = true;
         }
-        </tbody>
-        <tfoot>
-            <tr>
-                @{decimal prometUkupno = 0;}
-                <td>Ukupno:</td>
-            @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
-            {
-                string prometString = "-";
-                TrgovanjeRok trgovanjeRok = Model.TrgovanjeRokList.Where(tr => (long)tr.TrgovanjeVrstaEnum == trgovanjeVrsta.TrgovanjeVrstaId).SingleOrDefault();
-                if (null != trgovanjeRok && trgovanjeRok.Promet.HasValue)
-                {
-                    prometString = trgovanjeRok.Promet.Value.ToStringInMilions();
-                    prometUkupno += trgovanjeRok.Promet.Value;
-                }
-                
-                <td>@prometString</td>
-                <td>-</td>
-            }
-            <td>@prometUkupno.ToStringInMilions()</td>
-            <td>-</td>
-            </tr>
-        </tfoot>
-    </table>
+    }
+        @if (isPrintPage)
+        {
+            ViewDataDictionary viewData = new ViewDataDictionary();
+            viewData["startColumn"] = 0;
+            viewData["onOfColumns"] = 4;
+            @Html.Partial("_TrgovanjeGodinaRokTable", Model, viewData)
 
+            <br /><br />
+            viewData["startColumn"] = 4;
+            viewData["onOfColumns"] = 4;
+            
+            @Html.Partial("_TrgovanjeGodinaRokTable", Model, viewData)
+
+            <br /><br />
+            viewData["startColumn"] = 8;
+            viewData["onOfColumns"] = 3;
+            
+            @Html.Partial("_TrgovanjeGodinaRokTable", Model, viewData)            
+        }
+        else
+        {
+    @Html.Partial("_TrgovanjeGodinaRokTable", Model)
+        }
     </div>
 </div>

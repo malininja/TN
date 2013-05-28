@@ -170,7 +170,9 @@
     </table>
 </div>
 @{
-    IEnumerable<TrgovanjeStavkaEntity> devizeTrgovanjeStavkaCollection = Model.TrgovanjeGlava.TrgovanjeStavkaCollection.Where(ts => ts.ValutaId != (long)ValutaEnum.Kn);
+    IEnumerable<TrgovanjeStavkaEntity> devizeTrgovanjeStavkaCollection = Model.TrgovanjeGlava.TrgovanjeStavkaCollection.Where(ts => 
+        ts.ValutaId != (long)ValutaEnum.Kn &&
+        ts.Promet != 0);
 }
 @if (devizeTrgovanjeStavkaCollection.Count() > 0)
 {
@@ -219,14 +221,14 @@
 </div>
 
 <div class="container_12">
-    <div class="grid_6 alpha">
+    <div class="grid_6 alpha chartArea">
     <h4>TRGOVANJE KUNAMA (u mil. kn)</h4>
     <div class="chart-box">
         <div id="chart">
         </div>
     </div>
     </div>
-    <div class="grid_6 omega">
+    <div class="grid_6 omega chartArea">
     <h4>PROSJEČNA KAMATNA STOPA (%)</h4>
     <div class="chart-box">
         <div id="chartKamatnaStopa">

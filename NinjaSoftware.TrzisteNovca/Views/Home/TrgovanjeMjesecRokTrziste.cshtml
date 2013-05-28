@@ -10,118 +10,41 @@
     <h1>@title</h1>
 </div>
 <div class="content-box">
-<div class="tn-datepicker">
-    <div class="print">
+    <div class="tn-datepicker">
+        <div class="print">
+        </div>
     </div>
-</div>
-<br />
-  <div class="table-wrapper">
-    <table class="default">
-      <thead>
-        <tr>
-            <th>
-            </th>
-            @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
-            { 
-                <th colspan="2">@trgovanjeVrsta.Name
-                </th>
-            }
-            <th colspan="2">
-                UKUPNO
-            </th>
-        </tr>
-        <tr>
-            <th>
-                datum
-            </th>
-            @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
-            { 
-                <th>
-                    &nbsp;&nbsp;&nbsp;promet&nbsp;&nbsp;&nbsp; <br /> (u mil. kn)
-                </th>
-                <th>
-                    kamatna&nbsp;
-                    <br />
-                    stopa (%)
-                </th>
-            }
-            <th>
-                &nbsp;&nbsp;&nbsp;promet&nbsp;&nbsp;&nbsp; <br /> (u mil. kn)
-            </th>
-            <th>
-                kamatna&nbsp;
-                <br />
-                stopa (%)
-            </th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach (TrgovanjeGlavaEntity trgovanjeGlava in Model.TrgovanjeGlavaCollection)
+    <br />
+    @{
+        bool isPrintPage = false;
+        
+        if (null != @Request.Params["printPage"] &&
+            "true" == @Request.Params["printPage"])
         {
-            <tr>
-                <td>@Html.ActionLink(trgovanjeGlava.Datum.ToShortDateString(), "TrgovanjeDan", new { date = trgovanjeGlava.Datum.ToString("yyyy-MM-dd") })
-                </td>
-                @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
-                {
-                    TrgovanjeStavkaEntity trgovanjeStavka = trgovanjeGlava.TrgovanjeStavkaCollection.
-                        Where(ts => ts.TrgovanjeVrstaId == (long)trgovanjeVrsta.TrgovanjeVrstaId).SingleOrDefault();
-
-
-                    string prometString = "-";
-                    string kamatnaStopaString = "-";
-                    
-                    if (null != trgovanjeStavka)
-                    {
-                        prometString = trgovanjeStavka.Promet.ToStringInMilions();
-                        kamatnaStopaString = trgovanjeStavka.PrometDodatak.ToString("N2");
-                    }
-            
-                    <td>@prometString
-                    </td>
-                    <td>@kamatnaStopaString
-                    </td>
-                }
-                <td>@trgovanjeGlava.Promet(ValutaEnum.Kn).ToStringInMilions()</td>
-                @{
-                    decimal? ukupnoKamatnaStopa = trgovanjeGlava.PrometKamatnaStopaPosto(ValutaEnum.Kn);
-                    string ukupnoKamatnaStopaString = ukupnoKamatnaStopa.HasValue ? ukupnoKamatnaStopa.Value.ToString("N2") : "-";
-                    }
-                <td>@ukupnoKamatnaStopaString</td>
-            </tr>
+            isPrintPage = true;
         }
-      </tbody>
-      <tfoot>
-        <tr>
-            <td>ukupno:</td>
-        @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
+        }
+        @if (isPrintPage)
         {
-            string prometUkupnoString = "-";
-            TrgovanjeRok trgovanjeRok = null;
+            ViewDataDictionary viewData = new ViewDataDictionary();
+            viewData["startColumn"] = 0;
+            viewData["onOfColumns"] = 4;
+            @Html.Partial("_TrgovanjeMjesecRokTable", Model, viewData)
 
-            if (null != Model.TrgovanjeMjesecRok)
-            {
-                trgovanjeRok = Model.TrgovanjeMjesecRok.TrgovanjeRokList.Where(tr => (long)tr.TrgovanjeVrstaEnum == trgovanjeVrsta.TrgovanjeVrstaId).SingleOrDefault();
-            }
+            <br /><br />
+            viewData["startColumn"] = 4;
+            viewData["onOfColumns"] = 4;
             
-            if (null != trgovanjeRok && trgovanjeRok.Promet.HasValue)
-            {
-                prometUkupnoString = trgovanjeRok.Promet.Value.ToStringInMilions();
-            }
+            @Html.Partial("_TrgovanjeMjesecRokTable", Model, viewData)
+
+            <br /><br />
+            viewData["startColumn"] = 8;
+            viewData["onOfColumns"] = 3;
             
-            <td>@prometUkupnoString</td>
-            <td>-</td>
+            @Html.Partial("_TrgovanjeMjesecRokTable", Model, viewData)            
         }
-            @{
-                string totalString = "-";
-                if (null != Model.TrgovanjeMjesecRok && Model.TrgovanjeMjesecRok.PrometUkupno.HasValue)
-                {
-                    totalString = Model.TrgovanjeMjesecRok.PrometUkupno.Value.ToStringInMilions();
-                }
-                }
-            <td>@totalString</td>
-            <td>-</td>
-        </tr>
-      </tfoot>
-    </table>
-  <//div>
+        else
+        {
+    @Html.Partial("_TrgovanjeMjesecRokTable", Model)
+        }
 </div>
