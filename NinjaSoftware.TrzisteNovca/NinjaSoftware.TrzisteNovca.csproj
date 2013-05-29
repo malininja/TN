@@ -209,6 +209,7 @@
     <Content Include="Content\layout\za_nabrajanje.png" />
     <Content Include="Content\main6.css" />
     <Content Include="Content\overrides.css" />
+    <Content Include="Content\Ie6DropDown.css" />
     <Content Include="Content\superfish1.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\ckeditor\build-config.js" />
@@ -918,7 +919,6 @@
     <Content Include="Views\Home\TrgovanjeMjesecRokHnbKamatneStope.cshtml" />
     <Content Include="Views\Home\TrgovanjeGodinaRokHnbKamatneStope.cshtml" />
     <Content Include="Views\Shared\_HomeMenuUp.cshtml" />
-    <Content Include="Views\Shared\_HomeMenuMiddle.cshtml" />
     <Content Include="Views\Shared\_BackofficeMenuMiddle.cshtml" />
     <Content Include="Views\Home\SudionikGrupaList.cshtml" />
     <Content Include="Views\BackOffice\KamatnaStopaHnbEdit.cshtml" />
@@ -933,6 +933,8 @@
     <Content Include="Views\Home\_UPostotcima.cshtml" />
     <Content Include="Views\Home\_TrgovanjeMjesecRokTable.cshtml" />
     <Content Include="Views\Home\_TrgovanjeGodinaRokTable.cshtml" />
+    <Content Include="Views\Shared\_HomeMenuMiddleIe6.cshtml" />
+    <Content Include="Views\Shared\_HomeMenuMiddle.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

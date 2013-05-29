@@ -15,9 +15,8 @@
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/globalize")
     @Scripts.Render("~/bundles/custom")
-    <script type="text/javascript" src="../../Scripts/superfish.js"></script>
+    
     <script src="../../Scripts/hoverIntent.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="../../Content/superfish1.css" media="screen" />
     <script type="text/javascript">
         $(document).ready(function () {
             $("ul.sf-menu").superfish();
@@ -41,7 +40,8 @@
     <link rel="stylesheet" type="text/css" href="../../Scripts/jqplot/jquery.jqplot.min.css" />
 
     @{
-        bool isOldIe = false;
+        bool isIe8OrLess = false;
+        bool isIe7OrLess = false;
         
         if (Request.Browser.Type.ToLower().Contains("ie"))
         {
@@ -51,16 +51,36 @@
             {
                 if(version < 9)
                 {
-                    isOldIe = true;
+                    isIe8OrLess = true;
                 }
+
+                if (version < 8)
+                {
+                    isIe7OrLess = true;
+                }                
             }
         }
         }
-    @if (isOldIe)
-    { 
+
+    @if (isIe8OrLess)
+    {
     <text>
         <script type="text/javascript" src="../../Scripts/jqplot/excanvas.min.js"></script>
+    </text>    
+    }
+    
+    @if (isIe7OrLess)
+    { 
+    <text>
+        <link rel="stylesheet" href="../../Content/Ie6DropDown.css" media="screen" />
     </text>
+    }
+    else
+    {
+    <text>
+        <script type="text/javascript" src="../../Scripts/superfish.js"></script>
+        <link rel="stylesheet" href="../../Content/superfish1.css" media="screen" />
+    </text>        
     }
 </head>
 <body>
@@ -89,13 +109,13 @@
         <div class="wrapper-navi">
         <div class="main-navi-c">
          @if (Helper.IsBackofficeMenu(ViewContext))
-            {
+         {
                 @Html.Partial("_BackofficeMenuMiddle")
-            }
-            else
-            {
-                @Html.Partial("_HomeMenuMiddle")
-            }
+         }
+         else
+         {
+                @Html.Partial("_HomeMenuMiddleIe6")
+         }
         </div>
             <div class="main-navi-l"></div>
             <div class="main-navi-r"></div>
