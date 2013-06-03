@@ -10,6 +10,7 @@ using System.Text;
 using System.Web.Mvc;
 using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic;
 using System.Security.Principal;
+using System.Collections;
 
 namespace NinjaSoftware.TrzisteNovca.Models
 {
@@ -169,6 +170,20 @@ namespace NinjaSoftware.TrzisteNovca.Models
             }
 
             return true;
+        }
+
+        public static HtmlString GetTableSeparator(object currentItem, IList list)
+        {
+            int currentItemIndex = list.IndexOf(currentItem);
+
+            if (currentItemIndex == list.Count - 1)
+            {
+                return new HtmlString("class='noseparator'");
+            }
+            else
+            {
+                return new HtmlString(string.Empty);
+            }
         }
 
         #endregion HTML helpers

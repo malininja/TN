@@ -95,8 +95,10 @@ div#header
     height: 261px;
 }
 
-#navigation
+div#navigation
 {
+    margin-top:59px;
+    *margin-top: -20px !important; /* IE 7 (IE6 also uses this, so put it first) */
     background-position: bottom;
     background-image: url('layout/navigacija/pattern_nav.gif');
     background-repeat: repeat-x;
@@ -204,8 +206,8 @@ div.participant-p1 ul li, div.participant-p2 ul li, div.participant-p3 ul li, di
 /* ELEMENTS */
 a#logo
 {
-    background-image: url('layout/logo.png');
-    background-repeat: no-repeat;
+    background: url('layout/logo.png') no-repeat scroll 0 0 transparent;
+    float: left;
     width: 203px;
     height: 89px;
     text-indent: -5000px;
@@ -222,9 +224,10 @@ div.tn-datepicker .calendar
     background-position: right center;
     background-image: url('layout/kalendar.png');
     background-repeat: no-repeat;
-    width:34px;height:28px;
-    margin-right:10px;
+    width:34px;
+    height:28px;
     float:left;
+    display:inline;
 }
 div.tn-datepicker .input{float:left;}
 div.tn-datepicker .print
@@ -232,9 +235,11 @@ div.tn-datepicker .print
     background-position: right center;
     background-image: url('layout/print.png');
     background-repeat: no-repeat;
-    width:34px;height:28px;
+    width:34px;
+    height:28px;
     margin-left:70px;
     float:left;
+    display:inline;
 }
 
 div.chart-box
@@ -243,6 +248,9 @@ div.chart-box
     border-width: 0px 1px 1px 1px;
     border-color: #C0C0C0;
     padding: 20px 20px 40px 20px;
+    *width:428px  !important;
+    *height:300px  !important;
+    display:block;
 }
 
 div.jqplot-table-legend tr td
@@ -332,7 +340,8 @@ table.default tbody tr td
     border-color: #C0C0C0;
 }
 
-table.default thead tr th:last-child, table.default tbody tr td:last-child, table.default tfoot tr td:last-child
+table.default thead tr th:last-child, table.default tbody tr td:last-child, table.default tfoot tr td:last-child,
+table.default thead tr th.noseparator, table.default tbody tr td.noseparator, table.default tfoot tr td.noseparator
 {
     background-image: none;
 }
@@ -453,8 +462,7 @@ ul#main-nav li a:hover { text-decoration:underline;}
 
 div.main-navi-c
 {
-    background-image: url('layout/navigacija/pattern_nav.gif');
-    background-repeat: repeat-x;    
+    background: url('layout/navigacija/pattern_nav.gif') repeat-x scroll 0 0 transparent;
 }
 
 div.main-navi-l
@@ -465,6 +473,7 @@ div.main-navi-l
     height:77px;
     margin-left: -26px;
     margin-top: -59px;
+    *margin-top: -69px  !important;
 }
 
 div.main-navi-r

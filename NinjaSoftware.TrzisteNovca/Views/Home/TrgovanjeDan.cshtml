@@ -19,13 +19,20 @@
 <h1 class="no-space">
     Dnevni pokazatelji</h1>
 <h2>@title</h2>
+
 <div class="tn-datepicker">
-    <div class="calendar" id="divCalendar">
-    </div>
-    <div class="input">
-        @Html.TextBox("inputDatum", Model.TrgovanjeGlava.Datum.ToString("dd.MM.yyyy"), new { id = "inputDatum" })</div>
-    <div class="print">
-    </div>
+    <table>
+        <tr>
+            <td>
+                <img src="@Url.Content("~/Content/layout/kalendar.png")" />
+            </td>
+            <td>@Html.TextBox("inputDatum", Model.TrgovanjeGlava.Datum.ToString("dd.MM.yyyy"), new { id = "inputDatum" })
+            </td>
+            <td>
+            <img src="@Url.Content("~/Content/layout/print.png")" />
+            </td>
+        </tr>
+    </table>
 </div>
 <div class="clearfix">
 </div>
@@ -44,7 +51,7 @@
                 <th>
                     potražnja u mil. kn
                 </th>
-                <th>
+                <th class="noseparator">
                     promjena u %
                 </th>
             </tr>
@@ -62,7 +69,7 @@
                 </td>
                 <td>@Model.TrgovanjeGlava.Potraznja(ValutaEnum.Kn).ToStringInMilions()
                 </td>
-                <td>@potraznjaPromjenaPosto
+                <td class="noseparator">@potraznjaPromjenaPosto
                     @if (potraznjaPromjenaPosto == "-") { }
                     else if (potraznjaPromjenaPosto.Contains("-"))
                     {<span class="value-down"></span>}
@@ -87,7 +94,7 @@
                 <th>
                     kamatna stopa u %
                 </th>
-                <th>
+                <th class="noseparator">
                     promjena u %
                 </th>
             </tr>
@@ -117,7 +124,7 @@
                         else
                         { <span class="value-up"></span>}
                     </td>
-                    <td>@prometDodatakPromjenaPosto
+                    <td class="noseparator">@prometDodatakPromjenaPosto
                         @if (prometDodatakPromjenaPosto == "-") { }
                         else if (prometDodatakPromjenaPosto.Contains("-"))
                         {<span class="value-down"></span>}
@@ -158,7 +165,7 @@
                     else
                     { <span class="value-up"></span>}
                 </td>
-                <td>@ukupnoPrometKamatnaStopaPromjenaPosto
+                <td class="noseparator">@ukupnoPrometKamatnaStopaPromjenaPosto
                     @if (ukupnoPrometKamatnaStopaPromjenaPosto == "-") { }
                     else if (ukupnoPrometKamatnaStopaPromjenaPosto.Contains("-"))
                     {<span class="value-down"></span>}
@@ -188,7 +195,7 @@
                     <th>
                         promet u mil.
                     </th>
-                    <th>
+                    <th class="noseparator">
                         kamatna stopa u %
                     </th>
                 </tr>
@@ -201,7 +208,7 @@
                         </td>
                         <td>@trgovanjeStavka.Promet.ToStringInMilions()
                         </td>
-                        <td>@trgovanjeStavka.PrometDodatak.ToString("N2")
+                        <td class="noseparator">@trgovanjeStavka.PrometDodatak.ToString("N2")
                             @if (trgovanjeStavka.PrometDodatak.ToString("N2") == "-") { }
                             else if (trgovanjeStavka.PrometDodatak.ToString("N2").Contains("-"))
                             {<span class="value-down"></span>}
@@ -238,7 +245,6 @@
 </div>
 <div class="clearfix"></div>
 
-</style>
 <script type="text/javascript">
     $(document).ready(function () {
 

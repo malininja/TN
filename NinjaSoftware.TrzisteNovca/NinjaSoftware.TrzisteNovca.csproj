@@ -209,8 +209,8 @@
     <Content Include="Content\layout\za_nabrajanje.png" />
     <Content Include="Content\main6.css" />
     <Content Include="Content\overrides.css" />
-    <Content Include="Content\Ie6DropDown.css" />
     <Content Include="Content\superfish1.css" />
+    <Content Include="Content\tn.navigation.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\ckeditor\build-config.js" />
     <Content Include="Scripts\ckeditor\ckeditor.js" />
@@ -817,6 +817,7 @@
     <Content Include="Scripts\methods_hr.js" />
     <Content Include="Scripts\NinjaSoftwareLib.js" />
     <Content Include="Scripts\superfish.js" />
+    <Content Include="Scripts\tn.navigation.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

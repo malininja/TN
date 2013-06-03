@@ -1,0 +1,11 @@
+﻿.nav-wrapper { background-image: url('layout/navigacija/pattern_nav.gif'); background-repeat: repeat-x; width:100%; }
+#nav, #nav ul { margin:0; padding:0; list-style-type:none; list-style-position:outside; position:relative; }
+#nav a:link, #nav a:active, #nav a:visited { display: block; font-family: Georgia, "Times New Roman", Times, serif; font-size: 15px; color: #fff; line-height: 32px; text-decoration: none; padding: .75em 1em;  background-image: url('layout/navigacija/separator.png'); background-repeat: no-repeat; background-position: right center;}
+#nav a:hover { color: #FFF; background: #356c66; background-image: url('layout/navigacija/separator.png'); background-repeat: no-repeat; background-position: right center;}
+#nav li, #nav li:hover { float: left; position: relative; }
+#nav ul { position: absolute; width: 14em; display: none; }
+#nav li ul a { width: 18em; float: left; background: #183C35; }
+#nav ul ul { top: auto; }  
+#nav li ul ul { left: 14em; margin: 0 0 0 10px; }
+#nav li:hover ul, #nav li.ie6hover ul { display:none; }
+#nav li:hover ul, #nav li li:hover ul, #nav li.ie6hover ul, #nav li li.ie6hover ul { display:block; }

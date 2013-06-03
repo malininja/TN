@@ -39,7 +39,7 @@
                     <th>
                         promet @iznosApendix
                     </th>
-                    <th>
+                    <th class="noseparator">
                         kamatna stopa (%)
                     </th>
                 </tr>
@@ -72,7 +72,7 @@
                         <td>
                             @trgovanjeGlava.Promet(Model.ValutaEnum).ToStringInMilions()
                         </td>
-                        <td>
+                        <td class="noseparator">
                             @kamatnaStopaString
                         </td>
                     </tr>
@@ -84,7 +84,7 @@
                     <td>@Model.PotraznjaUkupno.ToStringInMilions()</td>
                     <td>@Model.PonudaUkupno.ToStringInMilions()</td>
                     <td>@Model.PrometUkupno.ToStringInMilions()</td>
-                    <td>-</td>
+                    <td class="noseparator">-</td>
                 </tr>
             </tfoot>
         </table>

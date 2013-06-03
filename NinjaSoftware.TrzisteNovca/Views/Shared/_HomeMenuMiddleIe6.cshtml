@@ -1,49 +1,30 @@
 ﻿@using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
-
-            <ul class="nav">
-                <li>@Html.ActionLink("POČETNA", "Index")</li>
+<div class="nav-wrapper">
+    <ul id="nav">
+        <li>@Html.ActionLink("POČETNA", "Index")</li>
+        <li><a href="#">TRGOVANJE</a>
+            <ul>
+                <li>@Html.ActionLink("PROMET", "TrgovanjeGodina", null, new { style = "background-image: none;" })</li>
+                <li>@Html.ActionLink("TRGOVANJE PO ROKOVIMA", "TrgovanjeGodinaRok", null, new { style = "background-image: none;" })</li>
             </ul>
-            <ul class="nav">
-                <li class="sub-li">
-                    <a href="#" class="sub-a">TRGOVANJE</a>
-                    <ul>
-                        <li>@Html.ActionLink("PROMET", "TrgovanjeGodina", null, new { style = "background-image: none;" })</li>
-                        <li>@Html.ActionLink("TRGOVANJE PO ROKOVIMA", "TrgovanjeGodinaRok", null, new { style = "background-image: none;" })</li>
-                    </ul>
-                </li>
+        </li>
+        <li><a href="#">KAMATNE STOPE</a>
+            <ul>
+                <li>@Html.ActionLink("KAMATNE STOPE NA TRŽIŠTU NOVCA ZAGREB", "TrgovanjeGodinaRokKamatneStope", null, new { style = "background-image: none;" })</li>
+                <li><a href="@Url.Action("TrgovanjeGodinaRokHnbKamatneStope")">KAMATNE STOPE U MEĐUBANKARSKOM
+                    TRGOVANJU </a></li>
+                <li><a href="@Url.Action("KamatnaStopaHnb")">KAMATNE STOPE HNB-a</a></li>
             </ul>
-
-            <ul class="nav">
-                <li class="sub-li">
-                    <a href="#" class="sub-a">
-                        KAMATNE STOPE
-                    </a>
-                    <ul>
-                        @{
-                            
-                            }
-                        <li>@Html.ActionLink("KAMATNE STOPE NA TRŽIŠTU NOVCA ZAGREB", "TrgovanjeGodinaRokKamatneStope", null, new { style = "background-image: none;" })</li>
-                        <li><a href="@Url.Action("TrgovanjeGodinaRokHnbKamatneStope")">KAMATNE STOPE U MEĐUBANKARSKOM TRGOVANJU </a></li>
-                        <li><a href="@Url.Action("KamatnaStopaHnb")">KAMATNE STOPE HNB-a</a></li>
-                    </ul>
-                </li>
+        </li>
+        <li>@Html.ActionLink("SUDIONICI", "SudionikGrupaList")</li>
+        <li>@Html.ActionLink("KONFERENCIJE", "KonferencijaList")</li>
+        <li><a href="#">O NAMA</a>
+            <ul>
+                <li>@Html.ActionLink("O NAMA", "SysHtmlPage", new { sistemskaInstancaPodatakaId = (long)SistemskaInstancaPodatakaEnum.HtmlONamaHr })</li>
+                <li>@Html.ActionLink("DIONIČARI", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.Dionicari })</li>
+                <li>@Html.ActionLink("SUSTAV SETT", "SysHtmlPage", new { sistemskaInstancaPodatakaId = (long)SistemskaInstancaPodatakaEnum.HtmlSett })</li>
+                <li>@Html.ActionLink("KONTAKT", "SysHtmlPage", new { sistemskaInstancaPodatakaId = (long)SistemskaInstancaPodatakaEnum.HtmlKontakt })</li>
             </ul>
-
-            <ul class="nav">
-                <li>@Html.ActionLink("SUDIONICI", "SudionikGrupaList")</li>
-            </ul>
-
-            <ul class="nav">
-                <li>@Html.ActionLink("KONFERENCIJE", "KonferencijaList")</li>
-            </ul>
-
-            <ul class="nav">
-                    <li class="sub-li"><a href="#" class="sub-a">O NAMA</a>
-                        <ul>
-                            <li>@Html.ActionLink("O NAMA", "SysHtmlPage", new { sistemskaInstancaPodatakaId = (long)SistemskaInstancaPodatakaEnum.HtmlONamaHr })</li>
-                            <li>@Html.ActionLink("DIONIČARI", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.Dionicari })</li>
-                            <li>@Html.ActionLink("SUSTAV SETT", "SysHtmlPage", new { sistemskaInstancaPodatakaId = (long)SistemskaInstancaPodatakaEnum.HtmlSett })</li>
-                            <li>@Html.ActionLink("KONTAKT", "SysHtmlPage", new { sistemskaInstancaPodatakaId = (long)SistemskaInstancaPodatakaEnum.HtmlKontakt })</li>
-                        </ul>
-                    </li> 
-            </ul>
+        </li>
+    </ul>
+</div>
