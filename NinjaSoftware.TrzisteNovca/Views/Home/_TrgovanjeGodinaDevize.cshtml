@@ -14,7 +14,7 @@
 <table class="default">
 <thead>
     <tr>
-        <th colspan="4">
+        <th colspan="4" class="noseparator">
             @string.Format("Trgovanje devizama u {0}. godini (mil.)", Model.Godina)
         </th>
     </tr>
@@ -37,7 +37,7 @@
 @foreach (ValutaEnum valuta in valutaCollection)
 {
     <tr>
-        <td colspan="4" style="text-align: center;">@valuta.ToString().ToUpperInvariant()</td>
+        <td colspan="4" style="text-align: center;" class="noseparator">@valuta.ToString().ToUpperInvariant()</td>
     </tr>
     foreach (TrgovanjeMjesec trgovanjeMjesec in Model.TrgovanjeMjesecList.Where(tm => tm.Valuta == valuta))
     {

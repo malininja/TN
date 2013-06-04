@@ -10,10 +10,13 @@
         </li>
         <li><a href="#">KAMATNE STOPE</a>
             <ul>
-                <li>@Html.ActionLink("KAMATNE STOPE NA TRŽIŠTU NOVCA ZAGREB", "TrgovanjeGodinaRokKamatneStope", null, new { style = "background-image: none;" })</li>
-                <li><a href="@Url.Action("TrgovanjeGodinaRokHnbKamatneStope")">KAMATNE STOPE U MEĐUBANKARSKOM
-                    TRGOVANJU </a></li>
-                <li><a href="@Url.Action("KamatnaStopaHnb")">KAMATNE STOPE HNB-a</a></li>
+                <li>@Html.ActionLink("KAMATNE STOPE NA TRŽIŠTU NOVCA ZAGREB", "TrgovanjeGodinaRokKamatneStope", null, new { style = "background-image: none; width: 21em;" })</li>
+                <li>
+                    <a style="width: 21em;" href="@Url.Action("TrgovanjeGodinaRokHnbKamatneStope")">KAMATNE STOPE U MEĐUBANKARSKOM TRGOVANJU</a>
+                </li>
+                <li>
+                    <a style="width: 21em;" href="@Url.Action("KamatnaStopaHnb")">KAMATNE STOPE HNB-a</a>
+                </li>
             </ul>
         </li>
         <li>@Html.ActionLink("SUDIONICI", "SudionikGrupaList")</li>

@@ -22,12 +22,7 @@
 <br /><br />
 @Html.Partial("_TrgovanjeGodinaDevize", Model)
 
-<div class="chartArea">
-<h4>TRGOVANJE KUNAMA (u mil. kn)</h4>
-<div id="chart">
-
-</div>
-</div>
+@Html.Partial("_WideChartHtml", "TRGOVANJE KUNAMA (u mil. kn)")
 
 <script type="text/javascript">
     $(document).ready(function () {

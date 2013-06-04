@@ -1,0 +1,77 @@
+﻿/* ================================================================ 
+This copyright notice must be untouched at all times.
+
+The original version of this stylesheet and the associated (x)html
+is available at http://www.cssplay.co.uk/menus/snowstorm.html
+Copyright (c) Stu Nicholls. All rights reserved.
+This stylesheet and the associated (x)html may be modified in any 
+way to fit your requirements.
+=================================================================== */
+
+.nav-wrapper
+{
+    list-style-type: none;
+    margin: 0 0 10px 0;
+    padding: 0;
+    float: left;
+    z-index: 100;
+    height: 59px;
+    background-image: url('layout/navigacija/pattern_nav.gif');
+    background-repeat: repeat-x;
+    width:100%;
+}
+
+/* default styling */
+.nav,
+.nav ul {list-style-type:none; margin-top:5px; padding:0; float:left;}
+.nav a {text-decoration:none;}
+.nav {font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 15px; margin-bottom:-1px;}
+
+/* style the links */
+.nav a {float:left; text-align:center; background: #356c66; padding:4px 0; border:1px solid #fff; margin-bottom:-1px;
+    color: #fff;
+    line-height: 32px;}
+.nav a.sub-a {background: #356c66;}
+
+.nav a:hover,
+.nav a:focus,
+.nav a:active {outline:0; color:#fff; background: #183C35;}
+
+/* this is for the path highlight in all browsers except IE6 and lower */
+.nav li:hover > a {color:#fff; background: #356c66;} 
+
+/* WIDTH change this WITH CARE to suit your requirements */
+.nav {width:120px; margin-right:-1px;}
+.nav a {width:118px; margin-right:-119px;} /* take into account the borders when calculating the link width, margin-right = total link width - 1px */
+.nav ul li {max-width:120px;} /* fix for IE8 */
+
+/* flyout TOP positions */
+.nav ul.fly {top:-25px;} /* position the top of the flyout first sub-limenus */
+.nav ul.fly2 {top:-41px;} /* position the top of the flyout sub-limenus with previous text on two lines */
+
+/* flyout LEFT/RIGHT positions */
+.nav ul.fly {left:119px;}
+.nav .left ul.fly {left:auto; right:119px;}
+
+
+/* DO NOT CHANGE ANYTHING BELOW THIS LINE */
+/* ---------------------------------------------------------------------------- */
+.nav ul {position:relative; margin-bottom:-10000px;} 
+.nav ul li {float:left; clear:left;}
+.nav a {position:relative;}
+.sub-li {margin-top:-10000px;}
+.sub-a {margin-top:10000px;}
+
+/* The bit that does ALL the work to bring the sub-limenus into view */
+.sub-li a:hover,
+.sub-li a:focus,
+.sub-li a:active {margin-right:0;}
+
+/* OPERA fix */
+.nav ul:hover {clear:left;}
+
+/*IE5-7 fixes*/
+.nav .sub-li {width:100%;}
+a:active {}
+/* ---------------------------------------------------------------------------- */

@@ -51,8 +51,10 @@
             </th>
             <th>prosječna</th>
             @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
-            { 
-                <th>@trgovanjeVrsta.Name
+            {
+                HtmlString thClass = Helper.GetTableSeparator(trgovanjeVrsta, Model.TrgovanjeVrstaList);
+                
+                <th @thClass>@trgovanjeVrsta.Name
                 </th>
             }
         </tr>
@@ -81,8 +83,10 @@
                     {
                         kamatnaStopaString = trgovanjeRok.KamatnaStopa.Value.ToString("N2");
                     }
-            
-                    <td>@kamatnaStopaString
+
+                    HtmlString tdClass = Helper.GetTableSeparator(trgovanjeVrsta, Model.TrgovanjeVrstaList);
+                    
+                    <td @tdClass>@kamatnaStopaString
                     </td>
                 }
             </tr>
@@ -91,8 +95,5 @@
     </table>
     @Html.Partial("_IzvorHnb")
 
-    <div class="chartArea">
-        <h4>PROSJEČNA KAMATNA STOPA (%)</h4>
-        <div id="chart"></div>
-    </div>
+    @Html.Partial("_WideChartHtml", "PROSJEČNA KAMATNA STOPA (%)")
 </div>

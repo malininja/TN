@@ -38,9 +38,6 @@
     <script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.enhancedLegendRenderer.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../Scripts/jqplot/jquery.jqplot.min.css" />
    
-    @* NOVI MENI ZA IE7 I MANJE *@
-    <link href="../../Content/tn.navigation.css" rel="stylesheet" type="text/css" />
-    <script src="../../Scripts/tn.navigation.js" type="text/javascript"></script>
     @{
         bool isIe8OrLess = false;
         bool isIe7OrLess = false;
@@ -64,26 +61,28 @@
         }
         }
 
-@*    @if (isIe8OrLess)
-    {*@
+    @if (isIe8OrLess)
+    {
     <text>
         <script type="text/javascript" src="../../Scripts/jqplot/excanvas.min.js"></script>
     </text>    
-@*    }*@
+    }
     
-@*    @if (isIe7OrLess)
-    { *@
+    @if (isIe7OrLess)
+    { 
     <text>
+        <link href="../../Content/tn.navigation.css" rel="stylesheet" type="text/css" />
+        <script src="../../Scripts/tn.navigation.js" type="text/javascript"></script>
         <link rel="stylesheet" href="../../Content/Ie6DropDown.css" media="screen" />
     </text>
-@*    }
+    }
     else
     {
     <text>
         <script type="text/javascript" src="../../Scripts/superfish.js"></script>
         <link rel="stylesheet" href="../../Content/superfish1.css" media="screen" />
     </text>        
-    }*@
+    }
 </head>
 <body>
     <div id="header">
@@ -113,11 +112,18 @@
         <div class="main-navi-c">
          @if (Helper.IsBackofficeMenu(ViewContext))
          {
-                @Html.Partial("_BackofficeMenuMiddle")
+             @Html.Partial("_BackofficeMenuMiddle")
          }
          else
          {
+             if (isIe7OrLess)
+             {
                 @Html.Partial("_HomeMenuMiddleIe6")
+             }
+             else
+             {
+                 @Html.Partial("_HomeMenuMiddle")
+             }
          }
         </div>
             <div class="main-navi-l"></div>
@@ -147,13 +153,35 @@
                             </div>
                             <div class="grid_7 omega">
                                 <div class="contact">
-                                    <img src="@Url.Content("~/Content/layout/tel.png")" style="margin-top:25px;margin-right:20px;" alt=""/>+
-                                    385 1 6009 840<br />
-                                    <img src="@Url.Content("~/Content/layout/fax.png")" style="margin-top:25px;margin-right:20px;" alt=""/>+
-                                    385 1 6009 870<br />
-                                    <img src="@Url.Content("~/Content/layout/mail.png")" style="margin-top:25px;margin-right:20px;" alt=""/>
-                                        @*<a href="mailto:info@trzistenovca.hr">info@trzistenovca.hr</a>*@
-                                        info@trzistenovca.hr
+                                    @if (isIe7OrLess)
+                                    {
+                                        <span style="margin-top:25px; margin-right:20px; display: inline-block;"> Tel: &nbsp; </span>
+                                    }
+                                    else
+                                    {
+                                        <img src="@Url.Content("~/Content/layout/tel.png")" style="margin-top:25px;margin-right:20px;" alt=""/>
+                                    }
+                                    + 385 1 6009 840<br />
+
+                                    @if (isIe7OrLess)
+                                    {
+                                        <span style="margin-top:25px; margin-right:20px; display: inline-block;"> Fax: &nbsp; </span>
+                                    }
+                                    else
+                                    {
+                                        <img src="@Url.Content("~/Content/layout/fax.png")" style="margin-top:25px;margin-right:20px;" alt=""/>
+                                    }
+                                    + 385 1 6009 870<br />
+
+                                    @if (isIe7OrLess)
+                                    {
+                                        <span style="margin-top:25px; margin-right:20px; display: inline-block;"> Mail: &nbsp; </span>
+                                    }
+                                    else
+                                    {
+                                        <img src="@Url.Content("~/Content/layout/mail.png")" style="margin-top:25px;margin-right:20px;" alt=""/>
+                                    }
+                                    info@trzistenovca.hr
                                 </div>
                             </div>
                         </div>

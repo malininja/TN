@@ -60,7 +60,10 @@
                 {
                     trgovanjeVrstaName = trgovanjeVrsta.Name;
                 }
-                <th>@Html.Raw(trgovanjeVrstaName)
+
+                HtmlString thClass = Helper.GetTableSeparator(trgovanjeVrsta, Model.TrgovanjeVrstaList);
+                
+                <th @thClass>@Html.Raw(trgovanjeVrstaName)
                 </th>
             }
         </tr>
@@ -90,16 +93,16 @@
                     {
                         kamatnaStopaString = trgovanjeRok.KamatnaStopa.Value.ToString("N2");
                     }
-            
-                    <td>@kamatnaStopaString
+
+                    HtmlString tdClass = Helper.GetTableSeparator(trgovanjeVrsta, Model.TrgovanjeVrstaList);
+                    
+                    <td @tdClass>@kamatnaStopaString
                     </td>
                 }
             </tr>
         }
         </tbody>
     </table>
-    <div class="chartArea">
-        <h4>PROSJEČNA KAMATNA STOPA (%)</h4>
-        <div id="chart"></div>
-    </div>
+
+    @Html.Partial("_WideChartHtml", "PROSJEČNA KAMATNA STOPA (%)")
 </div>

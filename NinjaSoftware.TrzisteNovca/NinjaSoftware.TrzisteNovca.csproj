@@ -169,6 +169,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Content\grid960.css" />
+    <Content Include="Content\Ie6DropDown.css" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\layout\BG_body.png" />
     <Content Include="Content\jquery.ui.datepicker.css" />
@@ -936,6 +937,7 @@
     <Content Include="Views\Home\_TrgovanjeGodinaRokTable.cshtml" />
     <Content Include="Views\Shared\_HomeMenuMiddleIe6.cshtml" />
     <Content Include="Views\Shared\_HomeMenuMiddle.cshtml" />
+    <Content Include="Views\Home\_WideChartHtml.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
