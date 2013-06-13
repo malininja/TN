@@ -169,6 +169,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Content\grid960.css" />
+    <Content Include="Content\ie6.css" />
     <Content Include="Content\Ie6DropDown.css" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\layout\BG_body.png" />
@@ -176,6 +177,18 @@
     <Content Include="Content\layout\BG_pattern.jpg" />
     <Content Include="Content\jquery.ui.theme.css" />
     <Content Include="Content\layout\fax.png" />
+    <Content Include="Content\layout\ie6\BG_body.jpg" />
+    <Content Include="Content\layout\ie6\fax.jpg" />
+    <Content Include="Content\layout\ie6\logo_03.jpg" />
+    <Content Include="Content\layout\ie6\logo_footer.jpg" />
+    <Content Include="Content\layout\ie6\mail.jpg" />
+    <Content Include="Content\layout\ie6\participants\1.jpg" />
+    <Content Include="Content\layout\ie6\participants\2.jpg" />
+    <Content Include="Content\layout\ie6\participants\3.jpg" />
+    <Content Include="Content\layout\ie6\participants\4.jpg" />
+    <Content Include="Content\layout\ie6\participants\5.jpg" />
+    <Content Include="Content\layout\ie6\pismo_slika_bez_sjene.jpg" />
+    <Content Include="Content\layout\ie6\tel.jpg" />
     <Content Include="Content\layout\kalendar.png" />
     <Content Include="Content\layout\kontakt_BG.png" />
     <Content Include="Content\layout\logo.png" />
@@ -208,7 +221,8 @@
     <Content Include="Content\layout\tel.png" />
     <Content Include="Content\layout\traka_naslov_graf.gif" />
     <Content Include="Content\layout\za_nabrajanje.png" />
-    <Content Include="Content\main6.css" />
+    <Content Include="Content\main-ie.css" />
+    <Content Include="Content\main7.css" />
     <Content Include="Content\overrides.css" />
     <Content Include="Content\superfish1.css" />
     <Content Include="Content\tn.navigation.css" />

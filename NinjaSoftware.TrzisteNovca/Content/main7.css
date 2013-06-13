@@ -289,7 +289,54 @@ div.contact
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     color: #d3a665;
+    margin-top:30px;
+    line-height:2.3em;
 }
+
+div.contact span.tel
+{
+    background-position: left center;
+    width: 26px;
+    height: 22px;
+    background-image: url('layout/tel.png');
+    background-repeat: no-repeat;
+    display: inline-block;
+    margin-right:20px;
+}
+
+div.contact span.fax
+{
+    background-position: center center;
+    width: 26px;
+    height: 27px;
+    background-image: url('layout/fax.png');
+    background-repeat: no-repeat;
+     display: inline-block;
+    margin-right:20px;
+}
+
+div.contact span.mail
+{
+    background-position: center center;
+    width: 24px;
+    height: 17px;
+    background-image: url('layout/mail.png');
+    background-repeat: no-repeat;
+     display: inline-block;
+    margin-right:20px;
+}
+
+div.letter
+{
+    float: right;
+    margin-right: 40px;
+    margin-top: 20px;
+    background-image: url('layout/pismo_slika_bez_sjene.png');
+    background-repeat: no-repeat;
+    width:164px;
+    height:132px;
+}
+
 
 div.author
 {

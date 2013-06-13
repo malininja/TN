@@ -13,3 +13,12 @@
 if (window.attachEvent) {
     window.attachEvent("onload", ie6hover);
 }
+
+
+$(document).ready(function () {
+    $("#ie-breaker").mouseover(function () {
+        $("#dropDownGodina").hide();
+    }).mouseout(function () {
+        $("#dropDownGodina").show();
+    });
+});

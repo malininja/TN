@@ -1,5 +1,5 @@
 ﻿@using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
-<div class="nav-wrapper">
+<div class="nav-wrapper" style="position:relative; z-index: 100;">
     <ul id="nav">
         <li>@Html.ActionLink("POČETNA", "Index")</li>
         <li><a href="#">TRGOVANJE</a>
@@ -8,7 +8,7 @@
                 <li>@Html.ActionLink("TRGOVANJE PO ROKOVIMA", "TrgovanjeGodinaRok", null, new { style = "background-image: none;" })</li>
             </ul>
         </li>
-        <li><a href="#">KAMATNE STOPE</a>
+        <li><a href="#" id="ie-breaker">KAMATNE STOPE</a>
             <ul>
                 <li>@Html.ActionLink("KAMATNE STOPE NA TRŽIŠTU NOVCA ZAGREB", "TrgovanjeGodinaRokKamatneStope", null, new { style = "background-image: none; width: 21em;" })</li>
                 <li>

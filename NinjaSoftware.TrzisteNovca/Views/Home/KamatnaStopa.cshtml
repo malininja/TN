@@ -27,15 +27,21 @@
     @title</h1>
 <h2>@subtitle</h2>
 <h2>@string.Format("{0}, {1}", Model.Datum.ToString("dd.MM.yyyy."), Model.Datum.ToString("dddd"))</h2>
-<div class="tn-datepicker">
-    <div class="calendar" id="divCalendar">
-    </div>
-    <div class="input">
-        @Html.TextBox("inputDatum", Model.Datum.ToString("dd.MM.yyyy"), new { id = "inputDatum" })</div>
-    <div class="print">
-    </div>
-</div>
 
+<div class="tn-datepicker">
+    <table>
+        <tr>
+            <td>
+                <img src="@Url.Content("~/Content/layout/kalendar.png")" />
+            </td>
+            <td>@Html.TextBox("inputDatum", Model.Datum.ToString("dd.MM.yyyy"), new { id = "inputDatum" })
+            </td>
+            <td>
+            <img src="@Url.Content("~/Content/layout/print.png")" />
+            </td>
+        </tr>
+    </table>
+</div>
 
 <div class="table-fixed-m">
     <table class="default">

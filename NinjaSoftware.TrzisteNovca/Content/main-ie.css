@@ -1,0 +1,513 @@
+﻿body {
+ margin: 0;
+ padding: 0;
+}
+
+h4 {
+ margin: 0;
+}
+
+h2 {
+ margin: 0 0 40px 0;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a img {
+ border:none;
+}
+
+/* TYPO */
+html, body { font-family:'Noticia Text', Arial, serif; margin: 0; padding: 0; border: 0; }
+h1, h2, h3, h4, h5
+{
+    font-family: 'palatino Linotype';
+    color: #006757;
+    text-align: center;
+}
+h1 { font-size: 33px; }
+h1.no-space{margin:0;}
+
+h2 { font-size: 22px; }
+h3
+{
+    margin-top:40px;
+    border-color: #006757;
+    text-transform:uppercase;
+    font-size: 20px;
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+    line-height:2.2em;
+}
+
+h3:before
+{
+    content: url('layout/strelica_za_naslov_lijeva.png');
+    display: block;
+    float: left;
+    margin-top:19px;
+    margin-left:-3px;
+}
+
+h3:after
+{
+    content: url('layout/strelica_za_naslov_desna.png');
+    display: block;
+    float: right;
+    margin-top:19px;
+    margin-right:-3px;
+}
+
+h4
+{
+    margin-top:40px;
+    line-height: 47px;
+    font-size: 16px;
+    background-image: url('layout/traka_naslov_graf.gif');
+    background-repeat: repeat-x;
+}
+
+/* LAYOUT */
+html
+{
+    background-color: #CEDBAA;
+    background-image: url('layout/BG_pattern.jpg');
+    background-repeat: repeat-x;
+}
+
+body
+{
+    background-position: center top;
+    background-image: url('layout/BG_body.png');
+    background-repeat: no-repeat;
+}
+
+html.clean, body.clean
+{
+    background:none;
+}
+
+div#header
+{
+    height: 261px;
+}
+
+div#navigation
+{
+    margin-top:59px;
+    *margin-top: -20px !important;
+    background-position: bottom;
+    background-image: url('layout/navigacija/pattern_nav.gif');
+    background-repeat: repeat-x;
+    height: 77px;
+}
+
+div#content
+{
+    margin-top: -18px;
+    border-style: solid;
+    border-width: 0px 1px 1px 1px;
+    border-color: #CCCCCC;
+    background-color: #FFFFFF;
+    padding: 40px 30px 10px 30px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+div#content-info
+{
+    background-image: url('layout/kontakt_BG.png');
+    background-repeat: no-repeat;
+    margin: 70px 0 0 -35.5px; 
+    height: 188px;
+    width: 1052px;
+}
+
+div#footer
+{
+    padding:30px 0 0 0;
+    height:140px;
+}
+
+div.raw
+{
+    padding: 0px;
+    color:#7a7a7a;
+    font-size:14px;
+    line-height:1.5em;
+    text-align:justify;
+}
+
+div.participant-p1
+{
+    padding-top: 20px;
+    background-image: url('layout/participants/1.png');
+    background-repeat: no-repeat;
+    background-position: 700px 40px;
+    min-height:400px;
+}
+div.participant-p2 
+{
+    padding-top:20px;
+    background-image: url('layout/participants/2.png');
+    background-repeat: no-repeat;
+    background-position: 700px 40px;
+    min-height:400px;
+}
+div.participant-p3 
+{
+    padding-top:20px;
+    background-image: url('layout/participants/3.png');
+    background-repeat: no-repeat;
+    background-position: 700px 40px;
+    min-height:400px;
+    }
+div.participant-p4 
+{
+    padding-top:20px;
+    background-image: url('layout/participants/4.png');
+    background-repeat: no-repeat;
+    background-position: 700px 40px;
+    min-height:400px;
+}
+div.participant-p5
+{
+    padding-top:20px;
+    background-image: url('layout/participants/5.png');
+    background-repeat: no-repeat;
+    background-position: 700px 40px;
+    min-height:400px;
+}
+
+div.participant-p1 ul, div.participant-p2 ul, div.participant-p3 ul, div.participant-p4 ul
+{
+    line-height:1.5em;
+    font-size:14px;
+    list-style-type: none;
+    padding: 0px;
+    margin-left:20px;
+}
+
+div.participant-p1 ul li, div.participant-p2 ul li, div.participant-p3 ul li, div.participant-p4 ul li
+{
+    background-image: url('layout/participants/bullet.png');
+    background-repeat: no-repeat;
+    background-position: 0px 7px;
+    padding-left: 18px;
+}
+
+.wrapper{ width:980px; margin: auto;}
+.wrapper-top{ width:1032px; margin: auto;}
+.wrapper-navi{ width:1000px; margin: auto;}
+.box{padding:40px 20px 20px 20px;}
+
+/* ELEMENTS */
+a#logo
+{
+    background: url('layout/logo.png') no-repeat scroll 0 0 transparent;
+    float: left;
+    width: 203px;
+    height: 89px;
+    text-indent: -5000px;
+    display: inline-block;
+    margin-top: 115px;
+}
+
+div#content a {color:#006757;text-decoration:none;}
+div#content a:hover {text-decoration:underline;}
+
+div.tn-datepicker {margin:0 0 0 340px;}
+div.tn-datepicker .calendar
+{
+    background-position: right center;
+    background-image: url('layout/kalendar.png');
+    background-repeat: no-repeat;
+    width:34px;
+    height:28px;
+    float:left;
+    display:inline;
+}
+div.tn-datepicker .input{float:left;}
+div.tn-datepicker .print
+{
+    background-position: right center;
+    background-image: url('layout/print.png');
+    background-repeat: no-repeat;
+    width:34px;
+    height:28px;
+    margin-left:70px;
+    float:left;
+    display:inline;
+}
+
+div.chart-box
+{
+    border-style: solid;
+    border-width: 0px 1px 1px 1px;
+    border-color: #C0C0C0;
+    padding: 20px 20px 40px 20px;
+    *height:300px  !important;
+    display:block;
+}
+
+div.chart-box-wide
+{
+    border-style: solid;
+    border-width: 0px 1px 1px 1px;
+    border-color: #C0C0C0;
+    padding:20px 20px 40px 20px;
+    display:block;
+    *height:300px  !important;
+}
+
+div.jqplot-table-legend tr td
+{
+    margin:20px !important;
+}
+
+div.info-box
+{
+    color:#FFF;
+    margin:25px 20px 20px 40px;
+}
+
+div.info-box div.title
+{
+    font-size:20px;
+}
+
+div.info-box div.content
+{
+    margin-top:10px;
+    font-size:12px;
+}
+
+div.contact
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #d3a665;
+    margin-top:30px;
+    line-height:2.3em;
+}
+
+div.contact span.tel
+{
+    background-position: left center;
+    width: 26px;
+    height: 22px;
+    background-image: url('layout/tel.png');
+    background-repeat: no-repeat;
+    display: inline-block;
+    margin-right:20px;
+}
+
+div.contact span.fax
+{
+    background-position: center center;
+    width: 26px;
+    height: 27px;
+    background-image: url('layout/fax.png');
+    background-repeat: no-repeat;
+     display: inline-block;
+    margin-right:20px;
+}
+
+div.contact span.mail
+{
+    background-position: center center;
+    width: 24px;
+    height: 17px;
+    background-image: url('layout/mail.png');
+    background-repeat: no-repeat;
+     display: inline-block;
+    margin-right:20px;
+}
+
+div.letter
+{
+    float: right;
+    margin-right: 40px;
+    margin-top: 20px;
+    background-image: url('layout/pismo_slika_bez_sjene.png');
+    background-repeat: no-repeat;
+    width:164px;
+    height:132px;
+}
+
+div.author
+{
+    margin-top:20px;
+    text-align:center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+/*Table*/
+div.table-fixed-m { width:600px;display: table;margin: 0 auto;}
+
+table.center {
+    margin-left:auto; 
+    margin-right:auto;
+}
+  
+table.default
+{
+    width: 100%;
+    border: 1px solid #C0C0C0;
+    margin: 10px 0 10px 0;
+    color: #006757;
+    font-family: "Arial";
+    font-size: 13px;
+}
+
+table.default thead, table.default tfoot
+{
+    background: #edf3d1 url('layout/tablica_pattern.jpg') repeat-x;
+    font-weight: bold;
+    text-align: center;
+    line-height:30px;
+}
+
+table.default thead th
+{
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: #c0c0c0;
+}
+
+table.default tbody { line-height:30px; text-align: center;}
+
+table.default thead tr th, table.default tbody tr td, table.default tfoot tr td
+{
+    padding:0 10px 0 10px;
+    background-position: right center;
+    background-image: url('layout/separator_tablica.png');
+    background-repeat: no-repeat;
+}
+
+table.default tbody tr td
+{
+    border-width: 0px 0px 1px 0px;
+    border-style: solid;
+    border-color: #C0C0C0;
+}
+
+table.default thead tr th:last-child, table.default tbody tr td:last-child, table.default tfoot tr td:last-child,
+table.default thead tr th.noseparator, table.default tbody tr td.noseparator, table.default tfoot tr td.noseparator
+{
+    background-image: none;
+}
+
+table span.value-up
+{
+    background-image: url('layout/strelica_gore.png');
+    background-repeat: no-repeat;
+    width: 13px;
+    height: 12px;
+    display: inline-block;
+}
+
+
+table span.value-down
+{
+    background-image: url('layout/strelica_dolje.png');
+    background-repeat: no-repeat;
+    width: 13px;
+    height: 12px;
+    display: inline-block;
+}
+
+div.table-wrapper {
+  width: 960px;
+  overflow-x: scroll;
+}
+
+.center{text-align:center;}
+.clearfix
+{
+    clear:both;
+}
+/* NAVIGATION */
+ul#top-nav
+{
+    list-style-type: none;
+    margin: 155px 0 0 0;
+}
+ul#top-nav li
+{
+    float:left; 
+    border-color: #086b2a;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+}
+
+ul#top-nav li a
+{
+    padding-right: 10px;
+    padding-left: 10px;
+    display: block;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #086b2a;
+}
+
+ul#top-nav li a:hover
+{
+    color:#172e25;
+    font-weight:bold;
+    border-style: solid;
+    border-width: 0px 0px 5px 0px;
+    border-color: #086b2a;
+}
+
+ul#bottom-nav{ list-style-type: none; margin: 20px 0 0 0; }
+ul#bottom-nav li
+{
+    float:left; 
+}
+
+ul#bottom-nav li a
+{
+    border-style: solid;
+    border-width: 0px;
+    border-color: #006e5d;
+    padding-right: 10px;
+    padding-left: 10px;
+    display: block;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #172e25;
+}
+
+ul#bottom-nav li a:hover
+{
+    border-style: solid;
+    font-weight: bold;
+    border-bottom-width: 2px;
+}
+
+div.main-navi-l
+{
+    background-image: url('layout/navigacija/kraj_lijevi.png');
+    background-repeat: no-repeat;
+    width:26px;
+    height:77px;
+    margin-left: -25px;
+    margin-top: -59px;
+    *margin-top: -59.5px  !important;
+}
+
+div.main-navi-r
+{
+    background-image: url('layout/navigacija/kraj_desni.png');
+    background-repeat: no-repeat;
+    width:26px;
+    height:77px;
+    margin-top: -77px;
+    margin-left: 1000px;
+}
