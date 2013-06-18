@@ -7,19 +7,7 @@
     <title>@ViewBag.Title - Tržište Novca</title>
     <link href='http://fonts.googleapis.com/css?family=Noticia+Text' rel='stylesheet' type='text/css' />
 
-        @{
-        int? ieVersion = null;
-        
-        if (Request.Browser.Type.ToLower().Contains("ie"))
-        {
-            int version;
-
-            if (int.TryParse(Request.Browser.Version, System.Globalization.NumberStyles.Any, new System.Globalization.CultureInfo("en-US"), out version))
-            {
-                ieVersion = version;
-            }
-        }
-    }
+    @{ int? ieVersion = Helper.GetIeVersion(Request); }
 
     @if (ieVersion.HasValue && ieVersion <= 7)
     {
@@ -44,15 +32,23 @@
             //$("ul.sf-menu").superfish();
 
             $("div.print").click(function () {
-                var params = {};
-                params["printPage"] = "true";
-                ninjaSoftware.url.setParameters(params, true);
+                redirectToPrintPage();
+            });
+
+            $("img.print-1").click(function () {
+                redirectToPrintPage();
             });
 
             $("a").click(function () {
                 this.blur();
             });
         });
+
+        function redirectToPrintPage() {
+            var params = {};
+            params["printPage"] = "true";
+            ninjaSoftware.url.setParameters(params, true);        
+        }
     </script>
 
     <script type="text/javascript" src="../../Scripts/jqplot/jquery.jqplot.min.js"></script>
@@ -134,35 +130,28 @@
     </div>
     <div id="content" class="wrapper">
         @RenderBody()
-        <!--[if !IE 6]><!-->
+        @if (!ieVersion.HasValue || ieVersion.Value > 7)
+        {
             @Html.Partial("_ContactInfo")
-        <!--<![endif]-->
+        }
     </div>
-    <!--[if IE 6]>
+    @if (ieVersion.HasValue && ieVersion.Value <= 7)
+    {
+        <br /><br />
         @Html.Partial("_ContactInfo")
-    <![endif]-->
+    }
     <div id="footer">
         <div class="wrapper">
             <div class="container_12">
                 <div class="grid_12">
-                    <div class="grid_2">
-                        @if (ieVersion.HasValue && ieVersion.Value < 7)
-                        { 
-                            <img src="@Url.Content("~/Content/layout/ie6/logo_footer.jpg")" style="margin-left:40px;" alt="" />                        
-                        }
-                        else
-                        {
-                            <img src="@Url.Content("~/Content/layout/logo_footer.png")" style="margin-left:40px;" alt="" />                            
-                        }
-                    </div>
-                    <div class="grid_10">
-                        <ul id="bottom-nav">
-                            <li>@Html.ActionLink("Početna", "Index")</li>
-                            <li>@Html.ActionLink("Sudionici", "SudionikGrupaList")</li>
-                            <li>@Html.ActionLink("Konferencije", "KonferencijaList")</li>
-                            <li>@Html.ActionLink("Korisne adrese", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.KorisneAdrese })</li>
-                        </ul>
-                    </div>
+                @if (ieVersion.HasValue && ieVersion.Value <= 7)
+                { 
+                    @Html.Partial("_HomeMenuBottomIe6")
+                }
+                else
+                {
+                    @Html.Partial("_HomeMenuBottom")
+                }
                 </div>
                 <div class="grid_12">
                 <div class="author">

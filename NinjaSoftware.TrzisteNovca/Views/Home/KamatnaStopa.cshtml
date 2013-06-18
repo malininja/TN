@@ -1,6 +1,7 @@
 ﻿@model NinjaSoftware.TrzisteNovca.Models.Home.KamatnaStopaViewModel
 @using NinjaSoftware.TrzisteNovca.Models.Home
 @using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
+@using NinjaSoftware.TrzisteNovca.Models
 
 @{
     string subtitle;
@@ -21,6 +22,8 @@
 
     string title = string.Format("Kamatne stope {0}", asterix);
     ViewBag.Title = title;
+
+    int? ieVersion = Helper.GetIeVersion(Request);
 }
 
 <h1 class="no-space">
@@ -31,13 +34,28 @@
 <div class="tn-datepicker">
     <table>
         <tr>
+            <td width="40px"></td>
             <td>
-                <img src="@Url.Content("~/Content/layout/kalendar.png")" />
+            @if (ieVersion.HasValue && ieVersion.Value < 7)
+            { 
+                <img src="@Url.Content("~/Content/layout/ie6/kalendar.jpg")" />          
+            }
+            else
+            {
+                <img src="@Url.Content("~/Content/layout/kalendar.png")" />              
+            }
             </td>
             <td>@Html.TextBox("inputDatum", Model.Datum.ToString("dd.MM.yyyy"), new { id = "inputDatum" })
             </td>
             <td>
-            <img src="@Url.Content("~/Content/layout/print.png")" />
+            @if (ieVersion.HasValue && ieVersion.Value < 7)
+            { 
+                <img class="print-1" src="@Url.Content("~/Content/layout/ie6/print.jpg")" />            
+            }
+            else
+            {
+                <img class="print-1" src="@Url.Content("~/Content/layout/print.png")" />                
+            }
             </td>
         </tr>
     </table>

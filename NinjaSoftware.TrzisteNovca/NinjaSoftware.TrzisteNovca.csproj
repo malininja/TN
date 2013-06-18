@@ -179,6 +179,7 @@
     <Content Include="Content\layout\fax.png" />
     <Content Include="Content\layout\ie6\BG_body.jpg" />
     <Content Include="Content\layout\ie6\fax.jpg" />
+    <Content Include="Content\layout\ie6\kalendar.jpg" />
     <Content Include="Content\layout\ie6\kontakt_BG_1052_i_papir.jpg" />
     <Content Include="Content\layout\ie6\logo_03.jpg" />
     <Content Include="Content\layout\ie6\logo_footer.jpg" />
@@ -189,6 +190,7 @@
     <Content Include="Content\layout\ie6\participants\4.jpg" />
     <Content Include="Content\layout\ie6\participants\5.jpg" />
     <Content Include="Content\layout\ie6\pismo_slika_bez_sjene.jpg" />
+    <Content Include="Content\layout\ie6\print.jpg" />
     <Content Include="Content\layout\ie6\strelica_dolje.jpg" />
     <Content Include="Content\layout\ie6\strelica_gore.jpg" />
     <Content Include="Content\layout\ie6\tel.jpg" />
@@ -956,6 +958,8 @@
     <Content Include="Views\Shared\_HomeMenuMiddle.cshtml" />
     <Content Include="Views\Home\_WideChartHtml.cshtml" />
     <Content Include="Views\Shared\_ContactInfo.cshtml" />
+    <Content Include="Views\Shared\_HomeMenuBottom.cshtml" />
+    <Content Include="Views\Shared\_HomeMenuBottomIe6.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

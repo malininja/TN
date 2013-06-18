@@ -234,7 +234,7 @@ div.tn-datepicker .input{float:left;}
 div.tn-datepicker .print
 {
     background-position: right center;
-    background-image: url('layout/print.png');
+    background-image: url('layout/ie6/print.jpg');
     background-repeat: no-repeat;
     width:34px;
     height:28px;

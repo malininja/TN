@@ -186,6 +186,23 @@ namespace NinjaSoftware.TrzisteNovca.Models
             }
         }
 
+        public static int? GetIeVersion(HttpRequestBase request)
+        {
+            int? ieVersion = null;
+
+            if (request.Browser.Type.ToLower().Contains("ie"))
+            {
+                int version;
+
+                if (int.TryParse(request.Browser.Version, System.Globalization.NumberStyles.Any, new System.Globalization.CultureInfo("en-US"), out version))
+                {
+                    ieVersion = version;
+                }
+            }
+
+            return ieVersion;
+        }
+
         #endregion HTML helpers
 
         #region DateTime helper

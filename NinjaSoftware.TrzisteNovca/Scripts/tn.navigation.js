@@ -16,7 +16,7 @@ if (window.attachEvent) {
 
 
 $(document).ready(function () {
-    $("#ie-breaker").mouseover(function () {
+    $(".ie-breaker").mouseover(function () {
         $("#dropDownGodina").hide();
     }).mouseout(function () {
         $("#dropDownGodina").show();

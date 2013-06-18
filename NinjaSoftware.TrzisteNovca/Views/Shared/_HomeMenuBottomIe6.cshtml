@@ -1,0 +1,17 @@
+﻿@using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
+
+<table>
+    <tr>
+        <td width="200px">
+            <img src="@Url.Content("~/Content/layout/ie6/logo_footer.jpg")" style="margin-left:40px;" alt="" />   
+        </td>
+        <td width="600px">
+            <ul id="bottom-nav">
+                <li>@Html.ActionLink("Početna", "Index")</li>
+                <li>@Html.ActionLink("Sudionici", "SudionikGrupaList")</li>
+                <li>@Html.ActionLink("Konferencije", "KonferencijaList")</li>
+                <li>@Html.ActionLink("Korisne adrese", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.KorisneAdrese })</li>
+            </ul>
+        </td>
+    </tr>
+</table>

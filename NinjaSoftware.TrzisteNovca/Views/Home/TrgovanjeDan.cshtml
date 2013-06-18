@@ -14,7 +14,9 @@
     string currentYear = DateTime.Now.Year.ToString();
 
     string title = danTrgovanja;
-    ViewBag.Title = "Tržište novca Zagreb - Trgovanje na dan: " + title;    
+    ViewBag.Title = "Tržište novca Zagreb - Trgovanje na dan: " + title;
+
+    int? ieVersion = Helper.GetIeVersion(Request);
 }
 <h1 class="no-space">
     Dnevni pokazatelji</h1>
@@ -23,13 +25,28 @@
 <div class="tn-datepicker">
     <table>
         <tr>
+            <td width="40px"></td>
             <td>
-                <img src="@Url.Content("~/Content/layout/kalendar.png")" />
+            @if (ieVersion.HasValue && ieVersion.Value < 7)
+            { 
+                <img src="@Url.Content("~/Content/layout/ie6/kalendar.jpg")" />          
+            }
+            else
+            {
+                <img src="@Url.Content("~/Content/layout/kalendar.png")" />              
+            }
             </td>
             <td>@Html.TextBox("inputDatum", Model.TrgovanjeGlava.Datum.ToString("dd.MM.yyyy"), new { id = "inputDatum" })
             </td>
             <td>
-            <img src="@Url.Content("~/Content/layout/print.png")" />
+            @if (ieVersion.HasValue && ieVersion.Value < 7)
+            { 
+                <img class="print-1" src="@Url.Content("~/Content/layout/ie6/print.jpg")" />            
+            }
+            else
+            {
+                <img class="print-1" src="@Url.Content("~/Content/layout/print.png")" />                
+            }
             </td>
         </tr>
     </table>
@@ -177,7 +194,7 @@
     </table>
 </div>
 @{
-    IEnumerable<TrgovanjeStavkaEntity> devizeTrgovanjeStavkaCollection = Model.TrgovanjeGlava.TrgovanjeStavkaCollection.Where(ts => 
+    IEnumerable<TrgovanjeStavkaEntity> devizeTrgovanjeStavkaCollection = Model.TrgovanjeGlava.TrgovanjeStavkaCollection.Where(ts =>
         ts.ValutaId != (long)ValutaEnum.Kn &&
         ts.Promet != 0);
 }
