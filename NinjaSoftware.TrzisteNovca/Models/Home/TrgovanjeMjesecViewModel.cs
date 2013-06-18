@@ -23,7 +23,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
 
             if (ValutaEnum.Kn == valutaEnum)
             {
-                LoadChartData(this.TrgovanjeGlavaCollection);
+                LoadChartData(this.TrgovanjeGlavaCollection, godina, mjesec);
             }
 
             CalculateSums(this.TrgovanjeGlavaCollection, valutaEnum);
@@ -33,7 +33,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
 
         #region Private methods
 
-        private void LoadChartData(IEnumerable<TrgovanjeGlavaEntity> trgovanjeGlavaCollection)
+        private void LoadChartData(IEnumerable<TrgovanjeGlavaEntity> trgovanjeGlavaCollection, int godina, int mjesec)
         {
             StringBuilder chartLinePonuda = new StringBuilder(256);
             chartLinePonuda.Append("[");
@@ -44,25 +44,48 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
             StringBuilder chartLinePromet = new StringBuilder(256);
             chartLinePromet.Append("[");
 
+            StringBuilder chartTicks = new StringBuilder(256);
+            chartTicks.Append("[");
+
+            int i = 0;
+
             foreach (TrgovanjeGlavaEntity trgovanjeGlava in trgovanjeGlavaCollection)
             {
+                i++;
+
                 decimal ponuda = trgovanjeGlava.Ponuda(ValutaEnum.Kn);
                 decimal potraznja = trgovanjeGlava.Potraznja(ValutaEnum.Kn);
                 decimal promet = trgovanjeGlava.Promet(ValutaEnum.Kn);
 
-                string dateString = trgovanjeGlava.Datum.ToString("yyyy-MM-dd");
-                chartLinePonuda.Append(string.Format("['{0}', {1}],", dateString, ponuda.ToStringInMilions("F", "en")));
-                chartLinePotraznja.Append(string.Format("['{0}', {1}],", dateString, potraznja.ToStringInMilions("F", "en")));
-                chartLinePromet.Append(string.Format("['{0}', {1}],", dateString, promet.ToStringInMilions("F", "en")));
+                //string dateString = trgovanjeGlava.Datum.ToString("yyyy-MM-dd");
+                chartLinePonuda.Append(string.Format("['{0}', {1}],", i, ponuda.ToStringInMilions("F", "en")));
+                chartLinePotraznja.Append(string.Format("['{0}', {1}],",i, potraznja.ToStringInMilions("F", "en")));
+                chartLinePromet.Append(string.Format("['{0}', {1}],", i, promet.ToStringInMilions("F", "en")));
+
+                string dateString = string.Format("{0}.{1}.", trgovanjeGlava.Datum.Day, mjesec);
+                chartTicks.Append(string.Format("[{0}, '{1}'],", i, dateString));
             }
 
             chartLinePonuda.Append("]");
             chartLinePotraznja.Append("]");
             chartLinePromet.Append("]");
 
+            int noOfDays = DateTime.DaysInMonth(godina, mjesec);
+
+            //StringBuilder chartTicks = new StringBuilder(256);
+            //chartTicks.Append("[");
+
+            //for (int i = 1; i <= noOfDays; i = i + 1)
+            //{
+            //    string dateString = string.Format("{0}.{1}.", i, mjesec);
+            //    chartTicks.Append(string.Format("[{0}, '{1}'],", i, dateString));
+            //}
+            chartTicks.Append("]");
+
             this.ChartLinePonudaDataSource = new HtmlString(chartLinePonuda.ToString());
             this.ChartLinePotraznjaDataSource = new HtmlString(chartLinePotraznja.ToString());
             this.ChartLinePrometDataSource = new HtmlString(chartLinePromet.ToString());
+            this.ChartTicks = new HtmlString(chartTicks.ToString());
         }
 
         private void CalculateSums(IEnumerable<TrgovanjeGlavaEntity> trgovanjeGlavaCollection, ValutaEnum valutaEnum)
@@ -90,6 +113,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
         public HtmlString ChartLinePonudaDataSource { get; set; }
         public HtmlString ChartLinePotraznjaDataSource { get; set; }
         public HtmlString ChartLinePrometDataSource { get; set; }
+        public HtmlString ChartTicks { get; set; }
         public decimal PonudaUkupno { get; set; }
         public decimal PotraznjaUkupno { get; set; }
         public decimal PrometUkupno { get; set; }

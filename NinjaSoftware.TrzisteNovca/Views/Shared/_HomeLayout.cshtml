@@ -59,6 +59,9 @@
     <script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
     <script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.highlighter.min.js"></script>
     <script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.enhancedLegendRenderer.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+    <script type="text/javascript" src="../../Scripts/jqplot/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="../../Scripts/jqplot/jquery.jqplot.min.css" />
    
     @if (ieVersion.HasValue && ieVersion.Value <= 8)
@@ -131,53 +134,26 @@
     </div>
     <div id="content" class="wrapper">
         @RenderBody()
-        <div id="content-info">
-            <div class="container_12">
-                <div class="grid_12">
-                    <div class="grid_9 alpha">
-                        <div class="grid_12">
-                            <div class="grid_5 alpha">
-                                <div class="info-box">
-                                    <div class="title">
-                                        Kontakt</div>
-                                    <div class="content">
-                                        Tržište novca i<br />
-                                        kratkoročnih vrijednosnica d.d.
-                                        <br />
-                                        <br />
-                                        Heinzelova 62a/III kat<br />
-                                        10000 Zagreb, Hrvatska
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid_7 omega">
-                                <div class="contact">
-                                    <div>
-                                        <span class="tel"></span>+385 1 6009 840
-                                    </div>
-                                    <div class="mt">
-                                        <span class="fax"></span>+385 1 6009 870
-                                    </div>
-                                    <div class="mt">
-                                        <span class="mail"></span>info@trzistenovca.hr
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid_3 omega">
-                        <div class="letter"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!--[if !IE 6]><!-->
+            @Html.Partial("_ContactInfo")
+        <!--<![endif]-->
     </div>
+    <!--[if IE 6]>
+        @Html.Partial("_ContactInfo")
+    <![endif]-->
     <div id="footer">
         <div class="wrapper">
             <div class="container_12">
                 <div class="grid_12">
                     <div class="grid_2">
-                        <img src="@Url.Content("~/Content/layout/logo_footer.png")" style="margin-left:40px;" alt="" />
+                        @if (ieVersion.HasValue && ieVersion.Value < 7)
+                        { 
+                            <img src="@Url.Content("~/Content/layout/ie6/logo_footer.jpg")" style="margin-left:40px;" alt="" />                        
+                        }
+                        else
+                        {
+                            <img src="@Url.Content("~/Content/layout/logo_footer.png")" style="margin-left:40px;" alt="" />                            
+                        }
                     </div>
                     <div class="grid_10">
                         <ul id="bottom-nav">

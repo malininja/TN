@@ -97,12 +97,17 @@
         var linePonuda = @Model.ChartLinePonudaDataSource;
         var linePotraznja = @Model.ChartLinePotraznjaDataSource;
         var linePromet = @Model.ChartLinePrometDataSource;
-
+        
         var plot1 = $.jqplot('chart', [linePonuda, linePotraznja, linePromet], {
+            axesDefaults: {
+                tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
+            },
             axes: {
                 xaxis: {
-                    renderer: $.jqplot.DateAxisRenderer,
-                    tickOptions: { formatString: "%d. %m." }
+                    ticks: @Model.ChartTicks,
+                   tickOptions: {
+                        angle: -45,
+                    }
                 },
                 yaxis: {
                     min: 0
@@ -114,7 +119,7 @@
                 location: "s",
                 placement: "outside",
                 labels: ["Ponuda", "Potražnja", "Promet"],
-                marginTop: "35px",
+                marginTop: "50px",
                 rendererOptions: {
                     numberRows: 1
                 }
@@ -123,5 +128,6 @@
     });
             </script>
         }
+        
     </div>
 </div>

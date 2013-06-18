@@ -73,7 +73,6 @@ h4
 /* LAYOUT */
 html
 {
-    background-color: #CEDBAA;
     background-image: url('layout/BG_pattern.jpg');
     background-repeat: repeat-x;
 }
@@ -112,7 +111,7 @@ div#content
     border-width: 0px 1px 1px 1px;
     border-color: #CCCCCC;
     background-color: #FFFFFF;
-    padding: 40px 30px 10px 30px;
+    padding: 40px 20px 10px 20px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -214,6 +213,8 @@ a#logo
     display: inline-block;
     margin-top: 115px;
 }
+
+span.logo-footer{ margin-left:40px;}
 
 div#content a {color:#006757;text-decoration:none;}
 div#content a:hover {text-decoration:underline;}
@@ -322,8 +323,19 @@ div.contact span.mail
     height: 17px;
     background-image: url('layout/mail.png');
     background-repeat: no-repeat;
-     display: inline-block;
+    display: inline-block;
     margin-right:20px;
+}
+
+span.logo-footer
+{
+    background-position: center center;
+    width: 61px;
+    height: 68px;
+    background-image: url('layout/ie6/logo_footer.jpg');
+    background-repeat: no-repeat;
+    display: inline-block;
+    margin-right: 20px;
 }
 
 div.letter
@@ -403,7 +415,7 @@ table.default thead tr th.noseparator, table.default tbody tr td.noseparator, ta
 
 table span.value-up
 {
-    background-image: url('layout/strelica_gore.png');
+    background-image: url('layout/ie6/strelica_gore.jpg');
     background-repeat: no-repeat;
     width: 13px;
     height: 12px;
@@ -413,7 +425,7 @@ table span.value-up
 
 table span.value-down
 {
-    background-image: url('layout/strelica_dolje.png');
+    background-image: url('layout/ie6/strelica_dolje.jpg');
     background-repeat: no-repeat;
     width: 13px;
     height: 12px;

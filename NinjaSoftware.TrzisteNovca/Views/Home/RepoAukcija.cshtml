@@ -34,21 +34,21 @@
             <td style="text-align: right">
                 Broj aukcije:
             </td>
-            <td>@Model.RepoAukcija.BrojAukcije
+            <td class="noseparator">@Model.RepoAukcija.BrojAukcije
             </td>
         </tr>
         <tr>
             <td style="text-align: right">
                 Datum aukcije:
             </td>
-            <td>@Html.DropDownList("DatumAukcijeDropdown", Model.DatumAukcijeSelectList)
+            <td class="noseparator">@Html.DropDownList("DatumAukcijeDropdown", Model.DatumAukcijeSelectList)
             </td>
         </tr>
         <tr>
             <td style="text-align: right">
                 Datum reotkupa:
             </td>
-            <td>
+            <td class="noseparator">
                 @{ string datumReotkupa = Model.RepoAukcija.DatumReotkupa.HasValue ? Model.RepoAukcija.DatumReotkupa.Value.ToShortDateString() : "-"; }
                 @datumReotkupa
             </td>
@@ -57,7 +57,7 @@
             <td style="text-align: right">
                 Ukupan iznos pristiglih ponuda:
             </td>
-            <td>
+            <td class="noseparator">
                 @{ string pristiglePonude = Model.RepoAukcija.PristiglePonudeUkupno.HasValue ? 
                        string.Format("{0} {1}", Model.RepoAukcija.PristiglePonudeUkupno.Value.ToString("N2"), milKunaString)  : 
                        "-"; }
@@ -68,7 +68,7 @@
             <td style="text-align: right">
                 Najviša ponuđena repo stopa:
             </td>
-            <td>
+            <td class="noseparator">
                 @{ string najvisaRepoStopa = Model.RepoAukcija.NajvisaRepoStopa.HasValue && Model.RepoAukcija.NajvisaRepoStopa.Value > 0 ?
                        string.Format("{0} {1}", Model.RepoAukcija.NajvisaRepoStopa.Value.ToString("N2"), postoString) : 
                        "-"; }
@@ -79,7 +79,7 @@
             <td style="text-align: right">
                 Najniža ponuđena repo stopa:
             </td>
-            <td>
+            <td class="noseparator">
                 @{ string najnizaRepoStopa = Model.RepoAukcija.NajnizaRepoStopa.HasValue && Model.RepoAukcija.NajnizaRepoStopa.Value > 0 ?
                        string.Format("{0} {1}", Model.RepoAukcija.NajnizaRepoStopa.Value.ToString("N2"), postoString) : "-"; }
                 @najnizaRepoStopa
@@ -89,7 +89,7 @@
             <td style="text-align: right">
                 Ukupan iznos prihvaćenih ponuda:
             </td>
-            <td>
+            <td class="noseparator">
                 @{ string prihvacenePonude = Model.RepoAukcija.PrihvacenePonudeUkupno.HasValue ?
                        string.Format("{0} {1}", Model.RepoAukcija.PrihvacenePonudeUkupno.Value.ToString("N2"), milKunaString) : "-"; }
                 @prihvacenePonude
@@ -99,7 +99,7 @@
             <td style="text-align: right">
                 Ukupan iznos odbijenih ponuda:
             </td>
-            <td>
+            <td class="noseparator">
                 @{ string odbijenePonude = Model.RepoAukcija.OdbijenePonudeUkupno.HasValue ? 
                        string.Format("{0} {1}", Model.RepoAukcija.OdbijenePonudeUkupno.Value.ToString("N2"), milKunaString) : 
                        "-"; }
@@ -110,7 +110,7 @@
             <td style="text-align: right">
                 Vagana repo stopa:
             </td>
-            <td>
+            <td class="noseparator">
                 @{ string vaganaStopa = Model.RepoAukcija.VaganaRepoStopa.HasValue && Model.RepoAukcija.VaganaRepoStopa.Value > 0 ?
                        string.Format("{0} {1}", Model.RepoAukcija.VaganaRepoStopa.Value.ToString("N2"), postoString) : 
                        "-"; }
@@ -121,7 +121,7 @@
             <td style="text-align: right">
                 Granična repo stopa:
             </td>
-            <td>
+            <td class="noseparator">
                 @{ string granicnaStopa = Model.RepoAukcija.GranicnaRepoStopa.HasValue && Model.RepoAukcija.GranicnaRepoStopa.Value > 0 ? 
                        string.Format("{0} {1}", Model.RepoAukcija.GranicnaRepoStopa.Value.ToString("N2"), postoString) : 
                        "-"; }
@@ -132,7 +132,7 @@
             <td style="text-align: right">
                 Fiksna repo stopa:
             </td>
-            <td>
+            <td class="noseparator">
                 @{ string fiksnaStopa = Model.RepoAukcija.FiksnaRepoStopa.HasValue ? 
                        string.Format("{0} {1}", Model.RepoAukcija.FiksnaRepoStopa.Value.ToString("N2"), postoString) : 
                        "-"; }
@@ -143,7 +143,7 @@
             <td style="text-align: right">
                 Prihvaćeno ponuda po graničnoj repo stopi:
             </td>
-            <td>
+            <td class="noseparator">
                 @{ string postoPrihvacenihPoGranicnojStopi = Model.RepoAukcija.PostoPrihvacenihPoGranicnojStopi.HasValue ? 
                        string.Format("{0} {1}", Model.RepoAukcija.PostoPrihvacenihPoGranicnojStopi.Value.ToString("N2"), postoString) : 
                        "-"; }
@@ -154,7 +154,7 @@
             <td style="text-align: right">
                 Koeficijent raspodjele:
             </td>
-            <td>
+            <td class="noseparator">
                 @{ string koeficijentRaspodjele = Model.RepoAukcija.KoeficijentRaspodjele.HasValue ?
                        string.Format("{0} {1}", Model.RepoAukcija.KoeficijentRaspodjele.Value.ToString("N2"), postoString) : 
                        "-"; }
