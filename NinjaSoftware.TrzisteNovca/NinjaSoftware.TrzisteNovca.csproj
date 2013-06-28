@@ -169,7 +169,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Content\grid960.css" />
-    <Content Include="Content\ie6.css" />
+    <Content Include="Content\ie6.9.css" />
     <Content Include="Content\Ie6DropDown.css" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\layout\BG_body.png" />
@@ -184,6 +184,7 @@
     <Content Include="Content\layout\ie6\logo_03.jpg" />
     <Content Include="Content\layout\ie6\logo_footer.jpg" />
     <Content Include="Content\layout\ie6\mail.jpg" />
+    <Content Include="Content\layout\ie6\oblacic_zuti.jpg" />
     <Content Include="Content\layout\ie6\participants\1.jpg" />
     <Content Include="Content\layout\ie6\participants\2.jpg" />
     <Content Include="Content\layout\ie6\participants\3.jpg" />
@@ -192,7 +193,9 @@
     <Content Include="Content\layout\ie6\pismo_slika_bez_sjene.jpg" />
     <Content Include="Content\layout\ie6\print.jpg" />
     <Content Include="Content\layout\ie6\strelica_dolje.jpg" />
+    <Content Include="Content\layout\ie6\strelica_dolje_foot.jpg" />
     <Content Include="Content\layout\ie6\strelica_gore.jpg" />
+    <Content Include="Content\layout\ie6\strelica_gore_foot.jpg" />
     <Content Include="Content\layout\ie6\tel.jpg" />
     <Content Include="Content\layout\kalendar.png" />
     <Content Include="Content\layout\kontakt_BG.png" />
@@ -226,11 +229,11 @@
     <Content Include="Content\layout\tel.png" />
     <Content Include="Content\layout\traka_naslov_graf.gif" />
     <Content Include="Content\layout\za_nabrajanje.png" />
-    <Content Include="Content\main-ie.css" />
-    <Content Include="Content\main7.css" />
+    <Content Include="Content\main-ie.9.css" />
+    <Content Include="Content\main.9.css" />
     <Content Include="Content\overrides.css" />
-    <Content Include="Content\superfish1.css" />
-    <Content Include="Content\tn.navigation.css" />
+    <Content Include="Content\superfish.9.css" />
+    <Content Include="Content\tn.navigation.9.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\ckeditor\build-config.js" />
     <Content Include="Scripts\ckeditor\ckeditor.js" />
@@ -837,7 +840,7 @@
     <Content Include="Scripts\methods_hr.js" />
     <Content Include="Scripts\NinjaSoftwareLib.js" />
     <Content Include="Scripts\superfish.js" />
-    <Content Include="Scripts\tn.navigation.js" />
+    <Content Include="Scripts\tn.navigation.8.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

@@ -1,6 +1,7 @@
 ﻿@model NinjaSoftware.TrzisteNovca.Models.Home.AukcijaTrezorskihZapisaPager
 @using System.Collections.Generic
 @using NinjaSoftware.TrzisteNovca.Common
+@using NinjaSoftware.TrzisteNovca.Models
 
 @{
     string title = "Aukcije trezorskih zapisa";
@@ -16,7 +17,7 @@
             <th>
                 Datum aukcije
             </th>
-            <th>
+            <th @Helper.GetTableSeparator()>
             </th>
         </tr>
       </thead>
@@ -27,14 +28,14 @@
                 @{ string path = string.Format("Upload/AukcijaTZ/{0}", aukcija.Value); }
                 <td>@aukcija.Key.ToShortDateString()
                 </td>
-                <td>@Html.ActionLink("Excel datoteka", "AukcijaTrezorskihZapisaDownload", new { fileName = aukcija.Value })
+                <td @Helper.GetTableSeparator()>@Html.ActionLink("Excel datoteka", "AukcijaTrezorskihZapisaDownload", new { fileName = aukcija.Value })
                 </td>
             </tr>
         }
       </tbody>
       <tfoot>
         <tr>
-            <td colspan="2" style="text-align: center;">
+            <td colspan="2" @Helper.GetTableSeparator("text-align: center;")>
                 @Model.GenerateDropDownPagingAndPrevNextHtmlElements(Config.PagerPrefixText())
             </td>
         </tr>      

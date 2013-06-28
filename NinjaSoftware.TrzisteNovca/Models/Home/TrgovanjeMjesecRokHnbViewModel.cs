@@ -22,9 +22,14 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
             StringBuilder bob = new StringBuilder(256);
             bob.Append("[");
 
+            StringBuilder chartTicks = new StringBuilder(256);
+            chartTicks.Append("[");
+
+            int i = 0;
+
             foreach (TrgovanjeGlavaHnbEntity trgovanjeGlavaHnb in this.TrgovanjeGlavaHnbCollection)
             {
-                string dateString = trgovanjeGlavaHnb.Datum.ToString("yyyy-MM-dd");
+                i++;
 
                 string kamatnaStopaString = "0";
                 decimal? kamatnaStopa = trgovanjeGlavaHnb.KamatnaStopaUkupno();
@@ -33,12 +38,17 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
                     kamatnaStopaString = kamatnaStopa.Value.ToString("F", new CultureInfo("en"));
                 }
 
-                bob.Append(string.Format("['{0}', {1}],", dateString, kamatnaStopaString));
+                bob.Append(string.Format("['{0}', {1}],", i, kamatnaStopaString));
+
+                string dateString = string.Format("{0}.{1}.", trgovanjeGlavaHnb.Datum.Day, mjesec);
+                chartTicks.Append(string.Format("[{0}, '{1}'],", i, dateString));
             }
 
             bob.Append("]");
+            chartTicks.Append("]");
 
             this.ChartLineProsjecnaDataSource = new HtmlString(bob.ToString());
+            this.ChartTicks = new HtmlString(chartTicks.ToString());
         }
 
         #endregion
@@ -47,6 +57,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
 
         public IEnumerable<TrgovanjeGlavaHnbEntity> TrgovanjeGlavaHnbCollection { get; set; }
         public HtmlString ChartLineProsjecnaDataSource { get; set; }
+        public HtmlString ChartTicks { get; set; }
 
         #endregion
     }

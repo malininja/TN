@@ -68,7 +68,7 @@
                 <th>
                     potražnja u mil. kn
                 </th>
-                <th class="noseparator">
+                <th @Helper.GetTableSeparator()>
                     promjena u %
                 </th>
             </tr>
@@ -86,7 +86,7 @@
                 </td>
                 <td>@Model.TrgovanjeGlava.Potraznja(ValutaEnum.Kn).ToStringInMilions()
                 </td>
-                <td class="noseparator">@potraznjaPromjenaPosto
+                <td @Helper.GetTableSeparator()>@potraznjaPromjenaPosto
                     @if (potraznjaPromjenaPosto == "-") { }
                     else if (potraznjaPromjenaPosto.Contains("-"))
                     {<span class="value-down"></span>}
@@ -111,7 +111,7 @@
                 <th>
                     kamatna stopa u %
                 </th>
-                <th class="noseparator">
+                <th @Helper.GetTableSeparator()>
                     promjena u %
                 </th>
             </tr>
@@ -141,7 +141,7 @@
                         else
                         { <span class="value-up"></span>}
                     </td>
-                    <td class="noseparator">@prometDodatakPromjenaPosto
+                    <td @Helper.GetTableSeparator()>@prometDodatakPromjenaPosto
                         @if (prometDodatakPromjenaPosto == "-") { }
                         else if (prometDodatakPromjenaPosto.Contains("-"))
                         {<span class="value-down"></span>}
@@ -171,23 +171,23 @@
                 <td>@ukupnoPrometPromjenaPosto
                     @if (ukupnoPrometPromjenaPosto == "-") { }
                     else if (ukupnoPrometPromjenaPosto.Contains("-"))
-                    {<span class="value-down"></span>}
+                    {<span class="value-down-foot"></span>}
                     else
-                    { <span class="value-up"></span>}
+                    { <span class="value-up-foot"></span>}
                 </td>
                 <td>@ukupnoPrometKamatnaStopaPosto
                     @if (ukupnoPrometKamatnaStopaPosto == "-") { }
                     else if (ukupnoPrometKamatnaStopaPosto.Contains("-"))
-                    {<span class="value-down"></span>}
+                    {<span class="value-down-foot"></span>}
                     else
-                    { <span class="value-up"></span>}
+                    { <span class="value-up-foot"></span>}
                 </td>
-                <td class="noseparator">@ukupnoPrometKamatnaStopaPromjenaPosto
+                <td @Helper.GetTableSeparator()>@ukupnoPrometKamatnaStopaPromjenaPosto
                     @if (ukupnoPrometKamatnaStopaPromjenaPosto == "-") { }
                     else if (ukupnoPrometKamatnaStopaPromjenaPosto.Contains("-"))
-                    {<span class="value-down"></span>}
+                    {<span class="value-down-foot"></span>}
                     else
-                    { <span class="value-up"></span>}
+                    { <span class="value-up-foot"></span>}
                 </td>
             </tr>
         </tfoot>
@@ -212,7 +212,7 @@
                     <th>
                         promet u mil.
                     </th>
-                    <th class="noseparator">
+                    <th @Helper.GetTableSeparator()>
                         kamatna stopa u %
                     </th>
                 </tr>
@@ -225,7 +225,7 @@
                         </td>
                         <td>@trgovanjeStavka.Promet.ToStringInMilions()
                         </td>
-                        <td class="noseparator">@trgovanjeStavka.PrometDodatak.ToString("N2")
+                        <td @Helper.GetTableSeparator()>@trgovanjeStavka.PrometDodatak.ToString("N2")
                             @if (trgovanjeStavka.PrometDodatak.ToString("N2") == "-") { }
                             else if (trgovanjeStavka.PrometDodatak.ToString("N2").Contains("-"))
                             {<span class="value-down"></span>}
@@ -244,17 +244,27 @@
     </div>
 </div>
 
+
+@{
+    HtmlString chartBoxStyle = new HtmlString(string.Empty);
+    
+    if (6 == ieVersion)
+    {
+        chartBoxStyle = new HtmlString("style='padding: 20px 20px 60px 20px;'");
+    }    
+}
+
 <div class="container_12">
     <div class="grid_6 alpha chartArea">
     <h4>TRGOVANJE KUNAMA (u mil. kn)</h4>
-    <div class="chart-box">
+    <div class="chart-box" @chartBoxStyle>
         <div id="chart">
         </div>
     </div>
     </div>
     <div class="grid_6 omega chartArea">
     <h4>PROSJEČNA KAMATNA STOPA (%)</h4>
-    <div class="chart-box">
+    <div class="chart-box" @chartBoxStyle>
         <div id="chartKamatnaStopa">
         </div>
     </div>
@@ -289,10 +299,15 @@
         var lineKamatnaStopa = @Model.ChartLineKamatnaStopaDataSource;
 
         var plot1 = $.jqplot('chart', [linePonuda, linePotraznja, linePromet], {
+            axesDefaults: {
+                tickRenderer: $.jqplot.CanvasAxisTickRenderer
+            },
             axes: {
                 xaxis: {
-                    renderer: $.jqplot.DateAxisRenderer,
-                    tickOptions: { formatString: "%d. %m." }
+                    ticks: @Model.ChartTicks,
+                   tickOptions: {
+                        angle: -45
+                    }
                 },
                 yaxis: {
                     min: 0
@@ -304,7 +319,7 @@
                 location: "s",
                 placement: "outside",
                 labels: ["Ponuda", "Potražnja", "Promet"],
-                marginTop: "35px",
+                marginTop: "50px",
                 rendererOptions: {
                     numberRows: 1
                 }
@@ -313,10 +328,15 @@
         });
 
         var plotKs = $.jqplot('chartKamatnaStopa', [lineKamatnaStopa], {
+            axesDefaults: {
+                tickRenderer: $.jqplot.CanvasAxisTickRenderer
+            },
             axes: {
                 xaxis: {
-                    renderer: $.jqplot.DateAxisRenderer,
-                    tickOptions: { formatString: "%d. %m." }
+                    ticks: @Model.ChartTicks,
+                   tickOptions: {
+                        angle: -45
+                    }
                 },
                 yaxis: {
                     min: 0

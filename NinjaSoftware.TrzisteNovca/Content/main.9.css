@@ -399,7 +399,7 @@ table.default tbody tr td
 table.default thead tr th:last-child, table.default tbody tr td:last-child, table.default tfoot tr td:last-child,
 table.default thead tr th.noseparator, table.default tbody tr td.noseparator, table.default tfoot tr td.noseparator
 {
-    background-image: none;
+    background-image: none !important;
 }
 
 table span.value-up

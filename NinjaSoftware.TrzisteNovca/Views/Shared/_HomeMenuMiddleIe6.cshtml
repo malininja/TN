@@ -8,14 +8,18 @@
                 <li>@Html.ActionLink("TRGOVANJE PO ROKOVIMA", "TrgovanjeGodinaRok", null, new { style = "background-image: none;" })</li>
             </ul>
         </li>
-        <li><a href="#" class="ie-breaker">KAMATNE STOPE</a>
+        <li><a href="#" class="ie-breaker">KAMATNE STOPE
+        </a>
             <ul class="ie-breaker">
-                <li>@Html.ActionLink("KAMATNE STOPE NA TRŽIŠTU NOVCA ZAGREB", "TrgovanjeGodinaRokKamatneStope", null, new { style = "background-image: none; width: 21em;" })</li>
+                <li>@Html.ActionLink("KAMATNE STOPE NA TRŽIŠTU NOVCA ZAGREB", "TrgovanjeGodinaRokKamatneStope", null, new { style = "background-image: none; width: 30em;" })</li>
                 <li>
-                    <a style="width: 21em;" href="@Url.Action("TrgovanjeGodinaRokHnbKamatneStope")">KAMATNE STOPE U MEĐUBANKARSKOM TRGOVANJU</a>
+                    <a style="width: 30em;" href="@Url.Action("TrgovanjeGodinaRokHnbKamatneStope")">
+                        KAMATNE STOPE U MEĐUBANKARSKOM TRGOVANJU
+                        &nbsp; <img src="@Url.Content("~/Content/layout/ie6/oblacic_zuti.jpg")" alt="" style="width: 33px; height: 14px;" />
+                    </a>
                 </li>
                 <li>
-                    <a style="width: 21em;" href="@Url.Action("KamatnaStopaHnb")">KAMATNE STOPE HNB-a</a>
+                    <a style="width: 30em;" href="@Url.Action("KamatnaStopaHnb")">KAMATNE STOPE HNB-a</a>
                 </li>
             </ul>
         </li>

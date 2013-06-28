@@ -178,12 +178,22 @@ namespace NinjaSoftware.TrzisteNovca.Models
 
             if (currentItemIndex == list.Count - 1)
             {
-                return new HtmlString("class='noseparator'");
+                return GetTableSeparator();
             }
             else
             {
                 return new HtmlString(string.Empty);
             }
+        }
+
+        public static HtmlString GetTableSeparator()
+        {
+            return GetTableSeparator(string.Empty);
+        }
+
+        public static HtmlString GetTableSeparator(string styles)
+        {
+            return new HtmlString(string.Format("style='background-image:none;{0}'", styles));
         }
 
         public static int? GetIeVersion(HttpRequestBase request)

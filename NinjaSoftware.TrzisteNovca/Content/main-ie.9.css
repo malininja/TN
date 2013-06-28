@@ -410,7 +410,7 @@ table.default tbody tr td
 table.default thead tr th:last-child, table.default tbody tr td:last-child, table.default tfoot tr td:last-child,
 table.default thead tr th.noseparator, table.default tbody tr td.noseparator, table.default tfoot tr td.noseparator
 {
-    background-image: none;
+    background-image: none   !important;
 }
 
 table span.value-up
@@ -426,6 +426,25 @@ table span.value-up
 table span.value-down
 {
     background-image: url('layout/ie6/strelica_dolje.jpg');
+    background-repeat: no-repeat;
+    width: 13px;
+    height: 12px;
+    display: inline-block;
+}
+
+table span.value-up-foot
+{
+    background-image: url('layout/ie6/strelica_gore_foot.jpg');
+    background-repeat: no-repeat;
+    width: 13px;
+    height: 12px;
+    display: inline-block;
+}
+
+
+table span.value-down-foot
+{
+    background-image: url('layout/ie6/strelica_dolje_foot.jpg');
     background-repeat: no-repeat;
     width: 13px;
     height: 12px;

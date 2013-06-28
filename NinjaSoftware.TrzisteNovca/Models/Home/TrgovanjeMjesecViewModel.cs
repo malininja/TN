@@ -57,7 +57,6 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
                 decimal potraznja = trgovanjeGlava.Potraznja(ValutaEnum.Kn);
                 decimal promet = trgovanjeGlava.Promet(ValutaEnum.Kn);
 
-                //string dateString = trgovanjeGlava.Datum.ToString("yyyy-MM-dd");
                 chartLinePonuda.Append(string.Format("['{0}', {1}],", i, ponuda.ToStringInMilions("F", "en")));
                 chartLinePotraznja.Append(string.Format("['{0}', {1}],",i, potraznja.ToStringInMilions("F", "en")));
                 chartLinePromet.Append(string.Format("['{0}', {1}],", i, promet.ToStringInMilions("F", "en")));
@@ -70,16 +69,6 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
             chartLinePotraznja.Append("]");
             chartLinePromet.Append("]");
 
-            int noOfDays = DateTime.DaysInMonth(godina, mjesec);
-
-            //StringBuilder chartTicks = new StringBuilder(256);
-            //chartTicks.Append("[");
-
-            //for (int i = 1; i <= noOfDays; i = i + 1)
-            //{
-            //    string dateString = string.Format("{0}.{1}.", i, mjesec);
-            //    chartTicks.Append(string.Format("[{0}, '{1}'],", i, dateString));
-            //}
             chartTicks.Append("]");
 
             this.ChartLinePonudaDataSource = new HtmlString(chartLinePonuda.ToString());

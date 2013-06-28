@@ -39,7 +39,7 @@
                     <th>
                         promet @iznosApendix
                     </th>
-                    <th class="noseparator">
+                    <th @Helper.GetTableSeparator()>
                         kamatna stopa (%)
                     </th>
                 </tr>
@@ -49,7 +49,7 @@
                 @if (Model.ValutaEnum != ValutaEnum.Kn)
                 {
                 <tr>
-                    <td colspan="5" class="noseparator"><strong>@Model.ValutaEnum.ToString().ToUpperInvariant()</strong></td>
+                    <td colspan="5" @Helper.GetTableSeparator()><strong>@Model.ValutaEnum.ToString().ToUpperInvariant()</strong></td>
                 </tr>
                 }
 
@@ -72,7 +72,7 @@
                         <td>
                             @trgovanjeGlava.Promet(Model.ValutaEnum).ToStringInMilions()
                         </td>
-                        <td class="noseparator">
+                        <td @Helper.GetTableSeparator()>
                             @kamatnaStopaString
                         </td>
                     </tr>
@@ -84,7 +84,7 @@
                     <td>@Model.PotraznjaUkupno.ToStringInMilions()</td>
                     <td>@Model.PonudaUkupno.ToStringInMilions()</td>
                     <td>@Model.PrometUkupno.ToStringInMilions()</td>
-                    <td class="noseparator">-</td>
+                    <td @Helper.GetTableSeparator()>-</td>
                 </tr>
             </tfoot>
         </table>
@@ -105,7 +105,7 @@
             axes: {
                 xaxis: {
                     ticks: @Model.ChartTicks,
-                   tickOptions: {
+                    tickOptions: {
                         angle: -45
                     }
                 },

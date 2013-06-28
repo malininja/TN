@@ -1,5 +1,8 @@
 ﻿@model NinjaSoftware.TrzisteNovca.Models.Home.SudionikViewModel
 @using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
+@using NinjaSoftware.TrzisteNovca.Models
+@using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
+
 @{
     string title = Model.SudionikGrupa.Name;
     ViewBag.Title = title;
@@ -25,4 +28,11 @@
             <li><a target="_blank" href="@item.WebAdresa">@item.Naziv</a></li>
         }
     </ul>
+
+    @if (Helper.GetIeVersion(Request) == 6 &&
+        (Model.SudionikGrupa.SudionikGrupaId == (long)SudionikGrupaEnum.MirovinskiFondovi || Model.SudionikGrupa.SudionikGrupaId == (long)SudionikGrupaEnum.StambeneStedionice))
+    { 
+        <br /><br /><br /><br /><br /><br />
+    }
+    
 </div>

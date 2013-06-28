@@ -10,7 +10,7 @@
 <table class="default">
  <thead>
     <tr>
-        <th colspan="6" class="noseparator">
+        <th colspan="5" @Helper.GetTableSeparator()>
             @string.Format("Trgovanje kunama u {0}. godini (u mil. kn)", Model.Godina)
         </th>
     </tr>
@@ -27,7 +27,7 @@
         <th>
             promet
         </th>
-        <th class="noseparator">
+        <th @Helper.GetTableSeparator()>
             kamatna <br /> stopa (%)
         </th>
     </tr>
@@ -56,7 +56,7 @@
         <td>
             @promet
         </td>
-        <td class="noseparator">
+        <td @Helper.GetTableSeparator()>
             @kamatnaStopa
         </td>
     </tr>
@@ -68,7 +68,7 @@
         <td>@Model.TrgovanjeMjesecList.Where(tm => tm.Valuta == ValutaEnum.Kn).Sum(tm => tm.Potraznja ?? 0).ToStringInMilions()</td>
         <td>@Model.TrgovanjeMjesecList.Where(tm => tm.Valuta == ValutaEnum.Kn).Sum(tm => tm.Ponuda ?? 0).ToStringInMilions()</td>
         <td>@Model.TrgovanjeMjesecList.Where(tm => tm.Valuta == ValutaEnum.Kn).Sum(tm => tm.Promet ?? 0).ToStringInMilions()</td>
-        <td class="noseparator">-</td>
+        <td @Helper.GetTableSeparator()>-</td>
     </tr>
     
 </tfoot>

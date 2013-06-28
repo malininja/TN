@@ -17,17 +17,16 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
         public TrgovanjeDanViewModel(DataAccessAdapterBase adapter, DateTime date)
         {
             this.TrgovanjeGlava = TrgovanjeGlavaEntity.FetchTrgovanjeGlavaForGuiDisplay(adapter, date);
-            LoadChartData(adapter, this.TrgovanjeGlava.Datum);
+            IEnumerable<TrgovanjeGlavaEntity> trgovanjeGlavaCollection = TrgovanjeGlavaEntity.FetchTrgovanjeGlavaCollection(adapter, date.AddDays(-14), date.AddDays(1), ValutaEnum.Kn);
+            LoadChartData(trgovanjeGlavaCollection);
         }
 
         #endregion
 
         #region PrivateMethods
 
-        private void LoadChartData(DataAccessAdapterBase adapter, DateTime date)
+        private void LoadChartData(IEnumerable<TrgovanjeGlavaEntity> trgovanjeGlavaCollection)
         {
-            IEnumerable<TrgovanjeGlavaEntity> trgovanjeGlavaCollection = TrgovanjeGlavaEntity.FetchTrgovanjeGlavaCollection(adapter, date.AddDays(-14), date.AddDays(1), ValutaEnum.Kn);
-
             StringBuilder chartLinePonuda = new StringBuilder(512);
             chartLinePonuda.Append("[");
 
@@ -40,28 +39,39 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
             StringBuilder chartLineKamatnaStopa = new StringBuilder(512);
             chartLineKamatnaStopa.Append("[");
 
+            StringBuilder chartTicks = new StringBuilder(256);
+            chartTicks.Append("[");
+
+            int i = 0;
+
             foreach (TrgovanjeGlavaEntity trgovanjeGlava in trgovanjeGlavaCollection)
             {
-                string dateString = trgovanjeGlava.Datum.ToString("yyyy-MM-dd");
-                chartLinePonuda.Append(string.Format("['{0}', {1}],", dateString, trgovanjeGlava.Ponuda(ValutaEnum.Kn).ToStringInMilions("F", "en")));
-                chartLinePotraznja.Append(string.Format("['{0}', {1}],", dateString, trgovanjeGlava.Potraznja(ValutaEnum.Kn).ToStringInMilions("F", "en")));
-                chartLinePromet.Append(string.Format("['{0}', {1}],", dateString, trgovanjeGlava.Promet(ValutaEnum.Kn).ToStringInMilions("F", "en")));
+                i++;
+
+                chartLinePonuda.Append(string.Format("['{0}', {1}],", i, trgovanjeGlava.Ponuda(ValutaEnum.Kn).ToStringInMilions("F", "en")));
+                chartLinePotraznja.Append(string.Format("['{0}', {1}],", i, trgovanjeGlava.Potraznja(ValutaEnum.Kn).ToStringInMilions("F", "en")));
+                chartLinePromet.Append(string.Format("['{0}', {1}],", i, trgovanjeGlava.Promet(ValutaEnum.Kn).ToStringInMilions("F", "en")));
 
                 CultureInfo cultureInfo = new CultureInfo("en");
                 decimal? kamatnaStopa = trgovanjeGlava.PrometKamatnaStopaPosto(ValutaEnum.Kn);
                 string kamatnaStopaString = kamatnaStopa.HasValue ? kamatnaStopa.Value.ToString("F", cultureInfo) : "0";
-                chartLineKamatnaStopa.Append(string.Format("['{0}', {1}],", dateString, kamatnaStopaString));
+                chartLineKamatnaStopa.Append(string.Format("['{0}', {1}],", i, kamatnaStopaString));
+
+                string dateString = string.Format("{0}.{1}.", trgovanjeGlava.Datum.Day, trgovanjeGlava.Datum.Month);
+                chartTicks.Append(string.Format("[{0}, '{1}'],", i, dateString));
             }
 
             chartLinePonuda.Append("]");
             chartLinePotraznja.Append("]");
             chartLinePromet.Append("]");
             chartLineKamatnaStopa.Append("]");
+            chartTicks.Append("]");
 
             this.ChartLinePonudaDataSource = new HtmlString(chartLinePonuda.ToString());
             this.ChartLinePotraznjaDataSource = new HtmlString(chartLinePotraznja.ToString());
             this.ChartLinePrometDataSource = new HtmlString(chartLinePromet.ToString());
             this.ChartLineKamatnaStopaDataSource = new HtmlString(chartLineKamatnaStopa.ToString());
+            this.ChartTicks = new HtmlString(chartTicks.ToString());
         }
 
         #endregion
@@ -73,6 +83,7 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
         public HtmlString ChartLinePotraznjaDataSource { get; set; }
         public HtmlString ChartLinePrometDataSource { get; set; }
         public HtmlString ChartLineKamatnaStopaDataSource { get; set; }
+        public HtmlString ChartTicks { get; set; }
 
         #endregion
     }

@@ -12,10 +12,15 @@
         var lineProsjecna = @Model.ChartLineProsjecnaDataSource;
 
         var plot1 = $.jqplot('chart', [lineProsjecna], {
+            axesDefaults: {
+                tickRenderer: $.jqplot.CanvasAxisTickRenderer
+            },
             axes: {
                 xaxis: {
-                    renderer: $.jqplot.DateAxisRenderer,
-                    tickOptions: { formatString: "%d. %m." }
+                    ticks: @Model.ChartTicks,
+                    tickOptions: {
+                        angle: -45
+                    }
                 },
                 yaxis: {
                     min: 0

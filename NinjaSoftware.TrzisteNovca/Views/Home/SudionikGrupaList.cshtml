@@ -1,4 +1,6 @@
 ﻿@using NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
+@using NinjaSoftware.TrzisteNovca.Models
+
 @{
     string title = "Sudionici";
     ViewBag.Title = title;
@@ -19,4 +21,10 @@
         <li>@Html.ActionLink("Osiguravajuća društva", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.OsiguravajucaDrustva })</li>
         <li>@Html.ActionLink("Stambene štedionice", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.StambeneStedionice })</li>
     </ul>
+
+
+    @if (Helper.GetIeVersion(Request) == 6)
+    { 
+        <br /><br /><br /><br /><br /><br />
+    }
 </div>

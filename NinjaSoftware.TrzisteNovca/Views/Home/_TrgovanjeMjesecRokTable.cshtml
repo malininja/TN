@@ -39,7 +39,7 @@
 
             @if (isFinalTable)
             {
-            <th colspan="2" class="noseparator">
+            <th colspan="2" @Helper.GetTableSeparator()>
                 UKUPNO
             </th>
             }
@@ -65,7 +65,7 @@
             <th>
                 &nbsp;&nbsp;&nbsp;promet&nbsp;&nbsp;&nbsp; <br /> (u mil. kn)
             </th>
-            <th class="noseparator">
+            <th @Helper.GetTableSeparator()>
                 kamatna&nbsp;
                 <br />
                 stopa (%)
@@ -107,7 +107,7 @@
                     
                 <td>@trgovanjeGlava.Promet(ValutaEnum.Kn).ToStringInMilions()</td>
 
-                <td class="noseparator">@ukupnoKamatnaStopaString</td>
+                <td @Helper.GetTableSeparator()>@ukupnoKamatnaStopaString</td>
                 }
             </tr>
         }
@@ -143,7 +143,7 @@
             }
                 
             <td>@totalString</td>
-            <td class="noseparator">-</td>
+            <td @Helper.GetTableSeparator()>-</td>
         }
         </tr>
       </tfoot>
