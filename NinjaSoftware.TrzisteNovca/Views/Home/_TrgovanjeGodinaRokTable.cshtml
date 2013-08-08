@@ -10,10 +10,12 @@
     IEnumerable<TrgovanjeVrstaRoEntity> trgovanjeVrstaCollection = null;
     bool isFinalTable = false;
 
-    if (null != ViewData && null != ViewData["startColumn"])
+    decimal prometUkupno = (decimal)ViewData["prometUkupno"];
+    
+    if (null != ViewData["startColumn"])
     {
         int startColumn = int.Parse(ViewData["startColumn"].ToString());
-        int noOfColumns = int.Parse(ViewData["onOfColumns"].ToString());
+        int noOfColumns = int.Parse(ViewData["noOfColumns"].ToString());
 
         trgovanjeVrstaCollection = Model.TrgovanjeVrstaList.Skip(startColumn).Take(noOfColumns).ToList();
 
@@ -130,7 +132,6 @@
         </tbody>
         <tfoot>
             <tr>
-                @{decimal prometUkupno = 0;}
                 <td>Ukupno:</td>
             @foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in trgovanjeVrstaCollection)
             {
@@ -139,7 +140,6 @@
                 if (null != trgovanjeRok && trgovanjeRok.Promet.HasValue)
                 {
                     prometString = trgovanjeRok.Promet.Value.ToStringInMilions();
-                    prometUkupno += trgovanjeRok.Promet.Value;
                 }
                 
                 <td>@prometString</td>

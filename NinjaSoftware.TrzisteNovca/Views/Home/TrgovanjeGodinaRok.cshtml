@@ -35,29 +35,43 @@
         {
             isPrintPage = true;
         }
+
+        decimal prometUkupno = 0;
+        
+        foreach (TrgovanjeVrstaRoEntity trgovanjeVrsta in Model.TrgovanjeVrstaList)
+        {
+            TrgovanjeRok trgovanjeRok = Model.TrgovanjeRokList.Where(tr => (long)tr.TrgovanjeVrstaEnum == trgovanjeVrsta.TrgovanjeVrstaId).SingleOrDefault();
+
+            if (null != trgovanjeRok && trgovanjeRok.Promet.HasValue)
+            {
+                prometUkupno += trgovanjeRok.Promet.Value;
+            }
+        }
+
+        ViewDataDictionary viewData = new ViewDataDictionary();
+        viewData["prometUkupno"] = prometUkupno;          
     }
         @if (isPrintPage)
         {
-            ViewDataDictionary viewData = new ViewDataDictionary();
             viewData["startColumn"] = 0;
-            viewData["onOfColumns"] = 4;
+            viewData["noOfColumns"] = 4;
             @Html.Partial("_TrgovanjeGodinaRokTable", Model, viewData)
 
             <br /><br />
             viewData["startColumn"] = 4;
-            viewData["onOfColumns"] = 4;
+            viewData["noOfColumns"] = 4;
             
             @Html.Partial("_TrgovanjeGodinaRokTable", Model, viewData)
 
             <br /><br />
             viewData["startColumn"] = 8;
-            viewData["onOfColumns"] = 3;
+            viewData["noOfColumns"] = 3;
             
             @Html.Partial("_TrgovanjeGodinaRokTable", Model, viewData)            
         }
         else
         {
-    @Html.Partial("_TrgovanjeGodinaRokTable", Model)
+    @Html.Partial("_TrgovanjeGodinaRokTable", Model, viewData)
         }
     </div>
 </div>
