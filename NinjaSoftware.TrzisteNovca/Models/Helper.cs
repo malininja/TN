@@ -213,6 +213,31 @@ namespace NinjaSoftware.TrzisteNovca.Models
             return ieVersion;
         }
 
+        public static HtmlString GetArrowClass(string value)
+        {
+            string arrowClass;
+
+            if ("-" == value)
+            {
+                arrowClass = string.Empty;
+            }
+            else if (value.Contains("-"))
+            { 
+                arrowClass = "<span class='value-down'></span>";
+            }
+            else
+            {
+                arrowClass = "<span class='value-up'></span>";
+            }
+
+            return new HtmlString(arrowClass);
+        }
+
+        public static HtmlString GetArrowClass(decimal value)
+        {
+            return GetArrowClass(value.ToString("N2"));
+        }
+
         #endregion HTML helpers
 
         #region DateTime helper

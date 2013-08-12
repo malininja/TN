@@ -77,21 +77,11 @@
             <tr>
                 <td>@Model.TrgovanjeGlava.Ponuda(ValutaEnum.Kn).ToStringInMilions()
                 </td>
-                <td>@ponudaPromjenaPosto
-                    @if (ponudaPromjenaPosto == "-") { }
-                    else if (ponudaPromjenaPosto.Contains("-"))
-                    {<span class="value-down"></span>}
-                    else
-                    { <span class="value-up"></span>}
+                <td>@ponudaPromjenaPosto @Helper.GetArrowClass(ponudaPromjenaPosto)
                 </td>
                 <td>@Model.TrgovanjeGlava.Potraznja(ValutaEnum.Kn).ToStringInMilions()
                 </td>
-                <td @Helper.GetTableSeparator()>@potraznjaPromjenaPosto
-                    @if (potraznjaPromjenaPosto == "-") { }
-                    else if (potraznjaPromjenaPosto.Contains("-"))
-                    {<span class="value-down"></span>}
-                    else
-                    { <span class="value-up"></span>}
+                <td @Helper.GetTableSeparator()>@potraznjaPromjenaPosto @Helper.GetArrowClass(potraznjaPromjenaPosto)
                 </td>
             </tr>
         </tbody>
@@ -127,26 +117,11 @@
                     </td>
                     <td>@trgovanjeStavka.Promet.ToStringInMilions()
                     </td>
-                    <td>@prometPromjenaPosto
-                        @if (prometPromjenaPosto == "-") { }
-                        else if (prometPromjenaPosto.Contains("-"))
-                        {<span class="value-down"></span>}
-                        else
-                        { <span class="value-up"></span>}
+                    <td>@prometPromjenaPosto @Helper.GetArrowClass(prometPromjenaPosto)
                     </td>
                     <td>@trgovanjeStavka.PrometDodatak.ToString("N2")
-                        @if (trgovanjeStavka.PrometDodatak.ToString("N2") == "-") { }
-                        else if (trgovanjeStavka.PrometDodatak.ToString("N2").Contains("-"))
-                        {<span class="value-down"></span>}
-                        else
-                        { <span class="value-up"></span>}
                     </td>
-                    <td @Helper.GetTableSeparator()>@prometDodatakPromjenaPosto
-                        @if (prometDodatakPromjenaPosto == "-") { }
-                        else if (prometDodatakPromjenaPosto.Contains("-"))
-                        {<span class="value-down"></span>}
-                        else
-                        { <span class="value-up"></span>}
+                    <td @Helper.GetTableSeparator()>@prometDodatakPromjenaPosto @Helper.GetArrowClass(prometDodatakPromjenaPosto)
                     </td>
                 </tr>
             }
@@ -168,26 +143,11 @@
                 </td>
                 <td>@Model.TrgovanjeGlava.Promet(ValutaEnum.Kn).ToStringInMilions()
                 </td>
-                <td>@ukupnoPrometPromjenaPosto
-                    @if (ukupnoPrometPromjenaPosto == "-") { }
-                    else if (ukupnoPrometPromjenaPosto.Contains("-"))
-                    {<span class="value-down-foot"></span>}
-                    else
-                    { <span class="value-up-foot"></span>}
+                <td>@ukupnoPrometPromjenaPosto @Helper.GetArrowClass(ukupnoPrometPromjenaPosto)
                 </td>
                 <td>@ukupnoPrometKamatnaStopaPosto
-                    @if (ukupnoPrometKamatnaStopaPosto == "-") { }
-                    else if (ukupnoPrometKamatnaStopaPosto.Contains("-"))
-                    {<span class="value-down-foot"></span>}
-                    else
-                    { <span class="value-up-foot"></span>}
                 </td>
-                <td @Helper.GetTableSeparator()>@ukupnoPrometKamatnaStopaPromjenaPosto
-                    @if (ukupnoPrometKamatnaStopaPromjenaPosto == "-") { }
-                    else if (ukupnoPrometKamatnaStopaPromjenaPosto.Contains("-"))
-                    {<span class="value-down-foot"></span>}
-                    else
-                    { <span class="value-up-foot"></span>}
+                <td @Helper.GetTableSeparator()>@ukupnoPrometKamatnaStopaPromjenaPosto @Helper.GetArrowClass(ukupnoPrometKamatnaStopaPromjenaPosto)
                 </td>
             </tr>
         </tfoot>
@@ -225,12 +185,8 @@
                         </td>
                         <td>@trgovanjeStavka.Promet.ToStringInMilions()
                         </td>
-                        <td @Helper.GetTableSeparator()>@trgovanjeStavka.PrometDodatak.ToString("N2")
-                            @if (trgovanjeStavka.PrometDodatak.ToString("N2") == "-") { }
-                            else if (trgovanjeStavka.PrometDodatak.ToString("N2").Contains("-"))
-                            {<span class="value-down"></span>}
-                            else
-                            { <span class="value-up"></span>}
+                        <td @Helper.GetTableSeparator()>@trgovanjeStavka.PrometDodatak.ToString("N2") 
+                            @Helper.GetArrowClass(trgovanjeStavka.PrometDodatak)
                         </td>
                     </tr>
                 }
