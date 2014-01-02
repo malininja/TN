@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinjaSoftware.TrzisteNovca", "NinjaSoftware.TrzisteNovca\NinjaSoftware.TrzisteNovca.csproj", "{EDFD7143-76E7-4BE0-BB7B-E817EC209894}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinjaSoftware.TrzisteNovca.Tests", "NinjaSoftware.TrzisteNovca.Tests\NinjaSoftware.TrzisteNovca.Tests.csproj", "{A95DDEDC-9D86-42AF-8864-8BF4B8088538}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinjaSoftware.TrzisteNovca.CoolJ", "CoolJ\NinjaSoftware.TrzisteNovca.CoolJ.csproj", "{FCB008CF-D231-444D-AD90-6FA6A49F41DC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinjaSoftware.TrzisteNovca.CoolJDBSpecific", "CoolJ\NinjaSoftware.TrzisteNovca.CoolJDBSpecific.csproj", "{B767C548-2D99-481B-8167-787D7EA0AE67}"
@@ -21,10 +19,6 @@ Global
 		{EDFD7143-76E7-4BE0-BB7B-E817EC209894}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDFD7143-76E7-4BE0-BB7B-E817EC209894}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDFD7143-76E7-4BE0-BB7B-E817EC209894}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A95DDEDC-9D86-42AF-8864-8BF4B8088538}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A95DDEDC-9D86-42AF-8864-8BF4B8088538}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A95DDEDC-9D86-42AF-8864-8BF4B8088538}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A95DDEDC-9D86-42AF-8864-8BF4B8088538}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FCB008CF-D231-444D-AD90-6FA6A49F41DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FCB008CF-D231-444D-AD90-6FA6A49F41DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCB008CF-D231-444D-AD90-6FA6A49F41DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
