@@ -16,8 +16,6 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
 
         public TrgovanjeGodinaRokViewModelBase(DataAccessAdapterBase adapter, int godina, TrgovanjeVrstaEnum[] trgovanjeVrstaEnumArray)
         {
-            this.Godina = godina;
-
             this.TrgovanjeVrstaList = new List<TrgovanjeVrstaRoEntity>();
             foreach (TrgovanjeVrstaEnum trgovanjeVrstaEnum in trgovanjeVrstaEnumArray)
             {

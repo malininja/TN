@@ -59,6 +59,8 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
             }
 
             base.Save(adapter, refetchAfterSave, recurse);
+
+            TrgovanjeGlavaHnbEntity._godinaTrgovanjaCollection = null;
         }
 
         public override void Delete(DataAccessAdapterBase adapter)
@@ -78,6 +80,8 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
             }
 
             base.Delete(adapter);
+
+            TrgovanjeGlavaHnbEntity._godinaTrgovanjaCollection = null;
         }
 
         public decimal IznosUkupno()

@@ -24,13 +24,14 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
             TrgovanjeMjesecRok trgovanjeMjesecRok = (from ts in trgovanjeStavkaCollection
                                                      where ts.ValutaId == (long)ValutaEnum.Kn && ts.TrgovanjeGlava.Datum.Month == mjesec
                                                      group ts by ts.ValutaId into g
+                                                     let prometUkupno = g.Sum(ts => ts.Promet)
                                                      select new TrgovanjeMjesecRok()
                                                      {
                                                          Valuta = (ValutaEnum)g.Key,
                                                          Godina = godina,
                                                          Mjesec = mjesec,
-                                                         PrometUkupno = g.Sum(ts => ts.Promet),
-                                                         KamatnaStopaUkupno = g.Sum(ts => ts.Promet * ts.PrometDodatak) / g.Sum(ts => ts.Promet)
+                                                         PrometUkupno = prometUkupno,
+                                                         KamatnaStopaUkupno = prometUkupno == 0 ? 0 : g.Sum(ts => ts.Promet * ts.PrometDodatak) / prometUkupno
                                                      }).SingleOrDefault();
 
             if (null != trgovanjeMjesecRok)
@@ -41,14 +42,14 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
                     TrgovanjeRok trgovanjeRok = (from ts in trgovanjeStavkaCollection
                                                  where ts.ValutaId == (long)ValutaEnum.Kn &&
                                                  ts.TrgovanjeGlava.Datum.Month == mjesec &&
-                                                 ts.TrgovanjeVrstaId == (long)trgovanjeVrstaEnum &&
-                                                 ts.Promet > 0
+                                                 ts.TrgovanjeVrstaId == (long)trgovanjeVrstaEnum
                                                  group ts by ts.ValutaId into g
+                                                 let promet = g.Sum(ts => ts.Promet)
                                                  select new TrgovanjeRok()
                                                  {
                                                      TrgovanjeVrstaEnum = trgovanjeVrstaEnum,
-                                                     Promet = g.Sum(ts => ts.Promet),
-                                                     KamatnaStopa = g.Sum(ts => ts.Promet * ts.PrometDodatak) / g.Sum(ts => ts.Promet)
+                                                     Promet = promet,
+                                                     KamatnaStopa = promet == 0 ? 0 : g.Sum(ts => ts.Promet * ts.PrometDodatak) / promet
                                                  }).SingleOrDefault();
 
                     if (null != trgovanjeRok)
@@ -73,13 +74,14 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
                 TrgovanjeMjesecRok trgovanjeMjesecRok = (from ts in trgovanjeStavkaCollection
                                                          where ts.ValutaId == (long)ValutaEnum.Kn && ts.TrgovanjeGlava.Datum.Month == mjesec
                                                          group ts by ts.ValutaId into g
+                                                         let prometUkupno = g.Sum(ts => ts.Promet)
                                                          select new TrgovanjeMjesecRok()
                                                          {
                                                              Valuta = (ValutaEnum)g.Key,
                                                              Godina = godina,
                                                              Mjesec = mjesec,
-                                                             PrometUkupno = g.Sum(ts => ts.Promet),
-                                                             KamatnaStopaUkupno = g.Sum(ts => ts.Promet * ts.PrometDodatak) / g.Sum(ts => ts.Promet)
+                                                             PrometUkupno = prometUkupno,
+                                                             KamatnaStopaUkupno = prometUkupno == 0 ? 0 : g.Sum(ts => ts.Promet * ts.PrometDodatak) / prometUkupno
                                                          }).SingleOrDefault();
 
                 if (null != trgovanjeMjesecRok)
@@ -93,11 +95,12 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
                                                      ts.TrgovanjeVrstaId == (long)trgovanjeVrstaEnum &&
                                                      ts.Promet > 0
                                                      group ts by ts.ValutaId into g
+                                                     let promet = g.Sum(ts => ts.Promet)
                                                      select new TrgovanjeRok()
                                                      {
                                                          TrgovanjeVrstaEnum = trgovanjeVrstaEnum,
-                                                         Promet = g.Sum(ts => ts.Promet),
-                                                         KamatnaStopa = g.Sum(ts => ts.Promet * ts.PrometDodatak) / g.Sum(ts => ts.Promet)
+                                                         Promet = promet,
+                                                         KamatnaStopa = promet == 0 ? 0 : g.Sum(ts => ts.Promet * ts.PrometDodatak) / promet
                                                      }).SingleOrDefault();
 
                         if (null != trgovanjeRok)

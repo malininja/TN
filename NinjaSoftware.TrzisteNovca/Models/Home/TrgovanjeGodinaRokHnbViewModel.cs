@@ -19,8 +19,18 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
         public TrgovanjeGodinaRokHnbViewModel(DataAccessAdapterBase adapter, int godina, TrgovanjeVrstaEnum[] trgovanjeVrstaEnumArray)
             :base(adapter, godina, trgovanjeVrstaEnumArray)
         {
-            this.TrgovanjeMjesecRokHnbCollection = TrgovanjeMjesecRokHnb.GetTrgovanjeMjesecRokHnbCollection(adapter, godina, trgovanjeVrstaEnumArray);
             this.GodinaSelectList = Helper.CreateTrgovanjeGlavaHnbGodinaSelectList(adapter, godina);
+
+            if (this.GodinaSelectList.Exists(g => g.Value == godina.ToString()))
+            {
+                this.Godina = godina;
+            }
+            else
+            {
+                this.Godina = Convert.ToInt32(this.GodinaSelectList.Last().Value);
+            }
+
+            this.TrgovanjeMjesecRokHnbCollection = TrgovanjeMjesecRokHnb.GetTrgovanjeMjesecRokHnbCollection(adapter, this.Godina, trgovanjeVrstaEnumArray);
 
             StringBuilder bob = new StringBuilder(256);
             bob.Append("[");

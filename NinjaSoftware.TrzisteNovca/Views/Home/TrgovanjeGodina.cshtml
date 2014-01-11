@@ -31,29 +31,31 @@
         var linePotraznja = @Model.ChartLinePotraznjaDataSource;
         var linePromet = @Model.ChartLinePrometDataSource;
 
-        var plot1 = $.jqplot('chart', [linePonuda, linePotraznja, linePromet], {
-            axes: {
-                xaxis: {
-                    ticks: [[1, "siječanj"], [2, "veljača"], [3, "ožujak"], [4, "travanj"], [5, "svibanj"], [6, "lipanj"], 
-                    [7, "srpanj"], [8, "kolovoz"], [9, "rujan"], [10, "listopad"], [11, "studeni"], [12, "prosinac"]]
+        if (linePonuda.length > 0 && linePotraznja.length > 0 && linePromet.length > 0)
+        {
+            var plot1 = $.jqplot('chart', [linePonuda, linePotraznja, linePromet], {
+                axes: {
+                    xaxis: {
+                        ticks: [[1, "siječanj"], [2, "veljača"], [3, "ožujak"], [4, "travanj"], [5, "svibanj"], [6, "lipanj"], 
+                        [7, "srpanj"], [8, "kolovoz"], [9, "rujan"], [10, "listopad"], [11, "studeni"], [12, "prosinac"]]
+                    },
+                    yaxis: {
+                        min: 0
+                    }
                 },
-                yaxis: {
-                    min: 0
+                legend: { 
+                    renderer: $.jqplot.EnhancedLegendRenderer,
+                    show: true,
+                    location: "s",
+                    placement: "outside",
+                    labels: ["Ponuda", "Potražnja", "Promet"],
+                    marginTop: "35px",
+                    rendererOptions: {
+                        numberRows: 1
+                    }
                 }
-            },
-            legend: { 
-                renderer: $.jqplot.EnhancedLegendRenderer,
-                show: true,
-                location: "s",
-                placement: "outside",
-                labels: ["Ponuda", "Potražnja", "Promet"],
-                marginTop: "35px",
-                rendererOptions: {
-                    numberRows: 1
-                }
-            }
-        });
-
+            });
+        }
         $("#dropDownGodina").change(function () {
             window.location.href = "@Url.Action("TrgovanjeGodina")" + "?godina=" + this.value;
         });

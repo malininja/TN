@@ -16,11 +16,19 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
 
         public TrgovanjeGodinaViewModel(DataAccessAdapterBase adapter, int godina)
         {
-            this.TrgovanjeMjesecList = TrgovanjeMjesec.GetTrgovanjeMjesecCollection(adapter, godina);
-            this.Godina = godina;
-            LoadChartData(adapter, this.TrgovanjeMjesecList.Where(tm => tm.Valuta == ValutaEnum.Kn));
-
             this.GodinaSelectList = Helper.CreateTrgovanjeGlavaGodinaSelectList(adapter, godina);
+
+            if (this.GodinaSelectList.Exists(g => g.Value == godina.ToString()))
+            {
+                this.Godina = godina;            
+            }
+            else
+            {
+                this.Godina = Convert.ToInt32(this.GodinaSelectList.Last().Value);
+            }
+
+            this.TrgovanjeMjesecList = TrgovanjeMjesec.GetTrgovanjeMjesecCollection(adapter, this.Godina);
+            LoadChartData(adapter, this.TrgovanjeMjesecList.Where(tm => tm.Valuta == ValutaEnum.Kn));
         }
 
         #endregion

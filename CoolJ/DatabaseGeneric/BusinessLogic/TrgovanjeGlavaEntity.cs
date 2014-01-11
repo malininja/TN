@@ -163,6 +163,8 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
             {
                 trgovanjeStavka.Save(adapter, refetchAfterSave, false);
             }
+
+            TrgovanjeGlavaEntity._godinaTrgovanjaCollection = null;
         }
 
         public override void Save(DataAccessAdapterBase adapter, bool refetchAfterSave, bool recurse)
@@ -178,6 +180,8 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
             }
 
             base.Save(adapter, refetchAfterSave, recurse);
+
+            TrgovanjeGlavaEntity._godinaTrgovanjaCollection = null;
         }
 
         public override void Delete(DataAccessAdapterBase adapter)
@@ -197,6 +201,8 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
             }
 
             base.Delete(adapter);
+
+            TrgovanjeGlavaEntity._godinaTrgovanjaCollection = null;
         }
 
         public void LoadTrgovanjeGlavaPrethodniDan(DataAccessAdapterBase adapter)

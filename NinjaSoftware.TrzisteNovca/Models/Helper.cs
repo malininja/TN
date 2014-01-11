@@ -287,6 +287,12 @@ namespace NinjaSoftware.TrzisteNovca.Models
         public static List<SelectListItem> CreateTrgovanjeGlavaGodinaSelectList(DataAccessAdapterBase adapter, int oznacenaGodina)
         {
             IEnumerable<int> godinaCollection = TrgovanjeGlavaEntity.GodinaTrgovanjaCollection(adapter);
+
+            if (!godinaCollection.Contains(oznacenaGodina))
+            {
+                oznacenaGodina = godinaCollection.Last();
+            }
+
             return CreateGodinaSelectList(godinaCollection, oznacenaGodina);
         }
 
