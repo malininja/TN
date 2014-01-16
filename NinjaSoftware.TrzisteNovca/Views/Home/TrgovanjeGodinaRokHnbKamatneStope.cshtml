@@ -13,7 +13,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#dropDownGodina").change(function () {
-            window.location.href = "@Url.Action("TrgovanjeGodinaRokKamatneStope")" + "?godina=" + this.value;
+            window.location.href = "@Url.Action("TrgovanjeGodinaRokHnbKamatneStope")" + "?godina=" + this.value;
         });
 
         var lineProsjecna = @Model.ChartLineProsjecnaDataSource;

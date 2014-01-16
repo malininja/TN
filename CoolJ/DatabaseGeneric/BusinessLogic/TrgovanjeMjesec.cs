@@ -26,6 +26,11 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
 
             IEnumerable<long> valutaIdCollection = trgovanjeStavkaCollection.Select(ts => ts.ValutaId).Distinct();
 
+            if (valutaIdCollection.Count() == 0)
+            {
+                valutaIdCollection = new long[] {(long)ValutaEnum.Kn };
+            }
+
             foreach (long valutaId in valutaIdCollection)
             {
                 for (int mjesec = 1; mjesec < 13; mjesec++)
