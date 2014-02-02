@@ -258,6 +258,13 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
         }
 
         [HttpGet]
+        public ActionResult DocDownload(string folderName, string fileName)
+        {
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Config.PdfFolderPath(), folderName, fileName);
+            return File(path, "application/msword");
+        }
+
+        [HttpGet]
         public ActionResult KonferencijaList()
         {
             return View();
