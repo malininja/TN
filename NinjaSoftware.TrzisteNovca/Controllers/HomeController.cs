@@ -265,6 +265,13 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
         }
 
         [HttpGet]
+        public ActionResult PptDownload(string folderName, string fileName)
+        {
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Config.PdfFolderPath(), folderName, fileName);
+            return File(path, "application/x-mspowerpoint");
+        }
+
+        [HttpGet]
         public ActionResult KonferencijaList()
         {
             return View();
