@@ -221,7 +221,8 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
         public ActionResult AukcijaTrezorskihZapisaDownload(string fileName)
         {
             string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Config.AukcijaTrezorskihZapisaFolderPath(), fileName);
-            return File(path, "application/vnd.ms-excel");
+            byte[] fileBytes = System.IO.File.ReadAllBytes(path);
+            return File(fileBytes, "application/vnd.ms-excel", fileName);
         }
 
         #endregion
@@ -254,21 +255,24 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
         public ActionResult PdfDownload(string folderName, string fileName)
         {
             string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Config.PdfFolderPath(), folderName, fileName);
-            return File(path, "application/pdf");
+            byte[] fileBytes = System.IO.File.ReadAllBytes(path);
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Pdf, fileName);
         }
 
         [HttpGet]
         public ActionResult DocDownload(string folderName, string fileName)
         {
             string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Config.PdfFolderPath(), folderName, fileName);
-            return File(path, "application/msword");
+            byte[] fileBytes = System.IO.File.ReadAllBytes(path);
+            return File(fileBytes, "application/msword", fileName);
         }
 
         [HttpGet]
         public ActionResult PptDownload(string folderName, string fileName)
         {
             string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Config.PdfFolderPath(), folderName, fileName);
-            return File(path, "application/x-mspowerpoint");
+            byte[] fileBytes = System.IO.File.ReadAllBytes(path);
+            return File(fileBytes, "application/x-mspowerpoint", fileName);
         }
 
         [HttpGet]

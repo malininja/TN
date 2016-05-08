@@ -16,6 +16,11 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -906,6 +911,7 @@
     <Content Include="Views\Home\TrgovanjeMjesec.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\filesystem.pubxml" />
     <None Include="Scripts\ckeditor\CHANGES.md" />
     <None Include="Scripts\ckeditor\LICENSE.md" />
     <None Include="Scripts\ckeditor\plugins\scayt\LICENSE.md" />

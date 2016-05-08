@@ -36,5 +36,10 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
 
             return FetchRepoAukcijaCollection(adapter, bucket, prefetchPath).SingleOrDefault();
         }
+
+        public static void RefreshRepoAukcijaDateCollectionCache()
+        {
+            _repoAukcijaDateCollection = null;
+        }
     }
 }

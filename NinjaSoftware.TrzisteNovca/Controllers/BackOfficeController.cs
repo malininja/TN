@@ -176,6 +176,7 @@ namespace NinjaSoftware.TrzisteNovca.Controllers
 
                 if (TryUpdateAndSaveIEntity2(repoAukcija, adapter, false, false))
                 {
+                    RepoAukcijaEntity.RefreshRepoAukcijaDateCollectionCache();
                     return RedirectToAction("RepoAukcijaList");
                 }
                 else
