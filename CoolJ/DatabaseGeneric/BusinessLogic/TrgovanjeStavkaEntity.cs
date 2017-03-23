@@ -81,13 +81,18 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses
                 if (null == zakljuceniMjesec)
                 {
                     month = DateTime.Now.Month;
+                    endDate = new DateTime(godina, month, 1);
+
+                }
+                else if (zakljuceniMjesec.Mjesec == 12)
+                {
+                    endDate = startDate.AddYears(1);
                 }
                 else
                 {
                     month = DateTime.Now.Month + 1;
+                    endDate = new DateTime(godina, month, 1);
                 }
-
-                endDate = new DateTime(godina, month, 1);
             }
             else
             {
