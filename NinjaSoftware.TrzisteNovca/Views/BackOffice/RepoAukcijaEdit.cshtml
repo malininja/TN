@@ -42,7 +42,7 @@
                 Broj aukcije:
             </td>
             <td>
-                @Html.TextBoxFor(model => model.BrojAukcije, new { @class = "number" })
+                @Html.TextBoxFor(model => model.BrojAukcije)
                 @Html.ValidationMessageFor(model => model.BrojAukcije)
             </td>
         </tr>
@@ -62,8 +62,7 @@
             </td>
             <td>
                 @Html.TextBoxFor(model => model.DatumReotkupa, new { id = "DatumReotkupa",
-                    @Value = Model.DatumReotkupa.HasValue ? Model.DatumReotkupa.Value.ToString("dd.MM.yyyy") : string.Empty,
-                    @class = "number"})
+                    @Value = Model.DatumReotkupa.HasValue ? Model.DatumReotkupa.Value.ToString("dd.MM.yyyy") : string.Empty})
                 @Html.ValidationMessageFor(model => model.DatumReotkupa)
             </td>
         </tr>
