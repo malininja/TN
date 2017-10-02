@@ -48,13 +48,16 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
                                                            Promet = g.Sum(ts => ts.Promet)
                                                        }).SingleOrDefault();
 
-                    if (trgovanjeMjesec != null && trgovanjeMjesec.Promet != 0)
+                    if (trgovanjeMjesec != null)
                     {
-                        decimal tmp = trgovanjeStavkaCollection.
-                            Where(ts => ts.ValutaId == valutaId && ts.TrgovanjeGlava.Datum.Month == mjesec).
-                            Sum(ts => ts.Promet * ts.PrometDodatak);
+                        if (trgovanjeMjesec.Promet != 0)
+                        {
+                            decimal tmp = trgovanjeStavkaCollection.
+                                Where(ts => ts.ValutaId == valutaId && ts.TrgovanjeGlava.Datum.Month == mjesec).
+                                Sum(ts => ts.Promet * ts.PrometDodatak);
 
-                        trgovanjeMjesec.KamatnaStopa = tmp / trgovanjeMjesec.Promet;
+                            trgovanjeMjesec.KamatnaStopa = tmp / trgovanjeMjesec.Promet;
+                        }
 
                         trgovanjeMjesecList.Add(trgovanjeMjesec);
                     }
