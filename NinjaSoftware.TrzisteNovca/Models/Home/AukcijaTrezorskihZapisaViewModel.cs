@@ -25,7 +25,16 @@ namespace NinjaSoftware.TrzisteNovca.Models.Home
                 try
                 {
                     string[] fileParts = fileInfo.Name.Split('_');
-                    int year = Convert.ToInt32(fileParts[3].Replace(".xls", ""));
+                    int year;
+                    if (fileParts[3].Contains(".xlsx"))
+                    {
+                        year = Convert.ToInt32(fileParts[3].Replace(".xlsx", ""));
+                    }
+                    else
+                    {
+                        year = Convert.ToInt32(fileParts[3].Replace(".xls", ""));
+                    }
+
                     int month = Convert.ToInt32(fileParts[2]);
                     int day = Convert.ToInt32(fileParts[1]);
 

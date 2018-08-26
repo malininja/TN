@@ -63,7 +63,8 @@ namespace NinjaSoftware.TrzisteNovca.CoolJ.DatabaseGeneric.BusinessLogic
         InvesticijskiFondovi = 4,
         MirovinskiFondovi = 5,
         OsiguravajucaDrustva = 6,
-        StambeneStedionice = 7
+        StambeneStedionice = 7,
+        Ostali = 8
     }
 
     public enum SistemskaInstancaPodatakaEnum

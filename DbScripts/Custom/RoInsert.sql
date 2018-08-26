@@ -115,6 +115,9 @@ INSERT INTO "SudionikGrupaRo" ("Code", "Name", "SudionikGrupaId")
 INSERT INTO "SudionikGrupaRo" ("Code", "Name", "SudionikGrupaId")
 	VALUES('StambeneStedionice', 'Stambene štedionice', 7);
 
+INSERT INTO "SudionikGrupaRo" ("Code", "Name", "SudionikGrupaId")
+	VALUES('Ostali', 'Ostali', 8);
+
 -- SistemskaInstancaPodataka
 INSERT INTO "SistemskaInstancaPodatakaRo" ("Code", "Name", "SistemskaInstancaPodatakaId")
 	VALUES('HtmlONamaHr', 'O nama HR verzija', 1);
