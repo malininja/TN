@@ -12,12 +12,12 @@
 <div class="participant-p2">
     <ul>
         <li>
-            @Html.ActionLink("Banke i štedne banke", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.Banke })
+            @Html.ActionLink("Banke", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.Banke })
         </li>
         <li>@Html.ActionLink("Društva za upravljanje investicijskim fondovima", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.InvesticijskiFondovi })</li>
         <li>@Html.ActionLink("Društva za upravljanje mirovinskim fondovima", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.MirovinskiFondovi })</li>
         <li><a href="http://www.hnb.hr/" target="_blank">Hrvatska narodna banka</a></li>
-        <li><a href="http://www.mfin.hr/" target="_blank">Ministarstvo financija HR</a></li>
+        <li><a href="http://www.mfin.hr/" target="_blank">Ministarstvo financija RH</a></li>
         <li>@Html.ActionLink("Osiguravajuća društva", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.OsiguravajucaDrustva })</li>
         <li>@Html.ActionLink("Stambene štedionice", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.StambeneStedionice })</li>
         <li>@Html.ActionLink("Ostali", "SudionikList", new { sudionikGrupaId = (long)SudionikGrupaEnum.Ostali })</li>
