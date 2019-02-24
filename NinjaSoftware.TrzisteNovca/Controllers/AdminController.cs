@@ -11,6 +11,7 @@ using NinjaSoftware.TrzisteNovca.CoolJ.EntityClasses;
 
 namespace NinjaSoftware.TrzisteNovca.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : NinjaSoftware.Api.Mvc.NsController
     {
         #region HtmlPage
